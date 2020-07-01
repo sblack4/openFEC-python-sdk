@@ -68,3 +68,6 @@ target/
 
 # virtualenv
 .venv
+
+# testing env var file
+.env
