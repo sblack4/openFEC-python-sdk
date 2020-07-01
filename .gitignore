@@ -62,3 +62,9 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# Editors
+.vscode
+
+# virtualenv
+.venv
