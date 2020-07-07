@@ -1,0 +1,19 @@
+---
+name: run python tests
+on:
+  push:
+    branches-ignore:
+      - '**'
+
+jobs:
+  pre-commit-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install prerequisites and test
+        run: |
+          bin/dev_setup.sh
+          source .venv/bin/activate
+          .venv/bin/python .venv/bin/nosetests

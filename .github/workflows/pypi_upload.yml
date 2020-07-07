@@ -25,6 +25,7 @@ jobs:
 
     - name: Build wheels
       run: |
+        export TAG=$(curl https://api.github.com/repos/rhythmictech/openFEC-python-sdk/releases/latest | jq -r .tag_name)
         python setup.py bdist_wheel
         python setup.py sdist
 

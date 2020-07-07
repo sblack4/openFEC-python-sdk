@@ -1,0 +1,16 @@
+---
+name: pre-commit-check
+on:
+  push:
+
+jobs:
+  pre-commit-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install prerequisites
+        run: ./bin/dev_setup.sh
+      - name: pre-commit
+        uses: pre-commit/action@v2.0.0
