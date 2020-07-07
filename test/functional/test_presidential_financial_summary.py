@@ -1,4 +1,4 @@
-import swagger_client
+import openfec_sdk
 import unittest
 from pprint import pprint
 import os
@@ -8,11 +8,11 @@ from test.configuration import setup_testing_environment
 setup_testing_environment()
 API_KEY = os.getenv('API_KEY')
 
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = API_KEY
 
 # create an instance of the API class
-api_instance = swagger_client.PresidentialApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.PresidentialApi(openfec_sdk.ApiClient(configuration))
 api_key = API_KEY
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
 sort = '-net_receipts' # str | Provide a field to sort by. Use - for descending order. (optional) (default to -net_receipts)

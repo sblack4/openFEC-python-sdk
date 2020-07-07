@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.totals_committee_page import TotalsCommitteePage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.totals_committee_page import TotalsCommitteePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestTotalsCommitteePage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestTotalsCommitteePage(unittest.TestCase):
     def testTotalsCommitteePage(self):
         """Test TotalsCommitteePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.totals_committee_page.TotalsCommitteePage()  # noqa: E501
+        # model = openfec_sdk.models.totals_committee_page.TotalsCommitteePage()  # noqa: E501
         pass
 
 

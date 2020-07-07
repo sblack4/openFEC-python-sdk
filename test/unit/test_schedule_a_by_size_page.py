@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.schedule_a_by_size_page import ScheduleABySizePage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.schedule_a_by_size_page import ScheduleABySizePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestScheduleABySizePage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestScheduleABySizePage(unittest.TestCase):
     def testScheduleABySizePage(self):
         """Test ScheduleABySizePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.schedule_a_by_size_page.ScheduleABySizePage()  # noqa: E501
+        # model = openfec_sdk.models.schedule_a_by_size_page.ScheduleABySizePage()  # noqa: E501
         pass
 
 

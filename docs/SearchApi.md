@@ -1,11 +1,11 @@
-# swagger_client.SearchApi
+# openfec_sdk.SearchApi
 
 All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**names_candidates_get**](SearchApi.md#names_candidates_get) | **GET** /names/candidates/ | 
-[**names_committees_get**](SearchApi.md#names_committees_get) | **GET** /names/committees/ | 
+[**names_candidates_get**](SearchApi.md#names_candidates_get) | **GET** /names/candidates/ |
+[**names_committees_get**](SearchApi.md#names_committees_get) | **GET** /names/committees/ |
 
 
 # **names_candidates_get**
@@ -13,34 +13,34 @@ Method | HTTP request | Description
 
 
 
- Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step. 
+ Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SearchApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.SearchApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 q = ['q_example'] # list[str] | Name (candidate or committee) to search for
 
@@ -56,7 +56,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for | 
+ **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for |
 
 ### Return type
 
@@ -78,34 +78,34 @@ Name | Type | Description  | Notes
 
 
 
- Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step. 
+ Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.SearchApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.SearchApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 q = ['q_example'] # list[str] | Name (candidate or committee) to search for
 
@@ -121,7 +121,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for | 
+ **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for |
 
 ### Return type
 
@@ -137,4 +137,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

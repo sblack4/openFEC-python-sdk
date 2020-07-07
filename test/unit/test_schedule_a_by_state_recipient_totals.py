@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.schedule_a_by_state_recipient_totals import ScheduleAByStateRecipientTotals  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.schedule_a_by_state_recipient_totals import ScheduleAByStateRecipientTotals  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestScheduleAByStateRecipientTotals(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestScheduleAByStateRecipientTotals(unittest.TestCase):
     def testScheduleAByStateRecipientTotals(self):
         """Test ScheduleAByStateRecipientTotals"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.schedule_a_by_state_recipient_totals.ScheduleAByStateRecipientTotals()  # noqa: E501
+        # model = openfec_sdk.models.schedule_a_by_state_recipient_totals.ScheduleAByStateRecipientTotals()  # noqa: E501
         pass
 
 

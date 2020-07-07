@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.efiling_api import EfilingApi  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.api.efiling_api import EfilingApi  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestEfilingApi(unittest.TestCase):
     """EfilingApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.efiling_api.EfilingApi()  # noqa: E501
+        self.api = openfec_sdk.api.efiling_api.EfilingApi()  # noqa: E501
 
     def tearDown(self):
         pass

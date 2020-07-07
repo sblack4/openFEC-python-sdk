@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.communication_cost_by_candidate import CommunicationCostByCandidate  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.communication_cost_by_candidate import CommunicationCostByCandidate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestCommunicationCostByCandidate(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestCommunicationCostByCandidate(unittest.TestCase):
     def testCommunicationCostByCandidate(self):
         """Test CommunicationCostByCandidate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.communication_cost_by_candidate.CommunicationCostByCandidate()  # noqa: E501
+        # model = openfec_sdk.models.communication_cost_by_candidate.CommunicationCostByCandidate()  # noqa: E501
         pass
 
 

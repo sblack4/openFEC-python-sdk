@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.inline_response_default5_results import InlineResponseDefault5Results  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.inline_response_default5_results import InlineResponseDefault5Results  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestInlineResponseDefault5Results(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestInlineResponseDefault5Results(unittest.TestCase):
     def testInlineResponseDefault5Results(self):
         """Test InlineResponseDefault5Results"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.inline_response_default5_results.InlineResponseDefault5Results()  # noqa: E501
+        # model = openfec_sdk.models.inline_response_default5_results.InlineResponseDefault5Results()  # noqa: E501
         pass
 
 

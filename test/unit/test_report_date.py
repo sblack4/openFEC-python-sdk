@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.report_date import ReportDate  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.report_date import ReportDate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestReportDate(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestReportDate(unittest.TestCase):
     def testReportDate(self):
         """Test ReportDate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.report_date.ReportDate()  # noqa: E501
+        # model = openfec_sdk.models.report_date.ReportDate()  # noqa: E501
         pass
 
 

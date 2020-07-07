@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.schedule_b_by_purpose import ScheduleBByPurpose  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.schedule_b_by_purpose import ScheduleBByPurpose  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestScheduleBByPurpose(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestScheduleBByPurpose(unittest.TestCase):
     def testScheduleBByPurpose(self):
         """Test ScheduleBByPurpose"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.schedule_b_by_purpose.ScheduleBByPurpose()  # noqa: E501
+        # model = openfec_sdk.models.schedule_b_by_purpose.ScheduleBByPurpose()  # noqa: E501
         pass
 
 

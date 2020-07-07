@@ -1,11 +1,11 @@
-# swagger_client.LoansApi
+# openfec_sdk.LoansApi
 
 All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**schedules_schedule_c_get**](LoansApi.md#schedules_schedule_c_get) | **GET** /schedules/schedule_c/ | 
-[**schedules_schedule_c_sub_id_get**](LoansApi.md#schedules_schedule_c_sub_id_get) | **GET** /schedules/schedule_c/{sub_id}/ | 
+[**schedules_schedule_c_get**](LoansApi.md#schedules_schedule_c_get) | **GET** /schedules/schedule_c/ |
+[**schedules_schedule_c_sub_id_get**](LoansApi.md#schedules_schedule_c_sub_id_get) | **GET** /schedules/schedule_c/{sub_id}/ |
 
 
 # **schedules_schedule_c_get**
@@ -13,34 +13,34 @@ Method | HTTP request | Description
 
 
 
- Schedule C shows all loans, endorsements and loan guarantees a committee receives or makes.  The committee continues to report the loan until it is repaid. 
+ Schedule C shows all loans, endorsements and loan guarantees a committee receives or makes.  The committee continues to report the loan until it is repaid.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.LoansApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.LoansApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 last_index = 56 # int | Index of last result from previous page (optional)
 min_payment_to_date = 56 # int |  Minimum payment to date  (optional)
@@ -75,26 +75,26 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **last_index** | **int**| Index of last result from previous page | [optional] 
- **min_payment_to_date** | **int**|  Minimum payment to date  | [optional] 
+ **last_index** | **int**| Index of last result from previous page | [optional]
+ **min_payment_to_date** | **int**|  Minimum payment to date  | [optional]
  **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] [default to -incurred_date]
- **max_amount** | **str**|  Filter for all amounts less than a value.  | [optional] 
- **max_incurred_date** | **date**|  Maximum incurred date  | [optional] 
- **min_image_number** | **str**|  | [optional] 
- **candidate_name** | [**list[str]**](str.md)| Name of candidate running for office | [optional] 
- **loan_source_name** | [**list[str]**](str.md)| Source of the loan (i.e., bank loan, brokerage account, credit card, home equity line of credit,               other line of credit, or personal funds of the candidate | [optional] 
+ **max_amount** | **str**|  Filter for all amounts less than a value.  | [optional]
+ **max_incurred_date** | **date**|  Maximum incurred date  | [optional]
+ **min_image_number** | **str**|  | [optional]
+ **candidate_name** | [**list[str]**](str.md)| Name of candidate running for office | [optional]
+ **loan_source_name** | [**list[str]**](str.md)| Source of the loan (i.e., bank loan, brokerage account, credit card, home equity line of credit,               other line of credit, or personal funds of the candidate | [optional]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to true]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to false]
- **line_number** | **str**|  Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.  | [optional] 
- **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional] 
- **max_payment_to_date** | **int**|  Maximum payment to date  | [optional] 
+ **line_number** | **str**|  Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.  | [optional]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **max_payment_to_date** | **int**|  Maximum payment to date  | [optional]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **min_amount** | **str**|  Filter for all amounts greater than a value.  | [optional] 
- **min_incurred_date** | **date**|  Minimum incurred date  | [optional] 
- **image_number** | [**list[str]**](str.md)|  An unique identifier for each page where the electronic or paper filing is reported.  | [optional] 
+ **min_amount** | **str**|  Filter for all amounts greater than a value.  | [optional]
+ **min_incurred_date** | **date**|  Minimum incurred date  | [optional]
+ **image_number** | [**list[str]**](str.md)|  An unique identifier for each page where the electronic or paper filing is reported.  | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to false]
- **max_image_number** | **str**|  | [optional] 
+ **max_image_number** | **str**|  | [optional]
 
 ### Return type
 
@@ -116,36 +116,36 @@ Name | Type | Description  | Notes
 
 
 
- Schedule C shows all loans, endorsements and loan guarantees a committee receives or makes.  The committee continues to report the loan until it is repaid. 
+ Schedule C shows all loans, endorsements and loan guarantees a committee receives or makes.  The committee continues to report the loan until it is repaid.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.LoansApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.LoansApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
-sub_id = 'sub_id_example' # str | 
+sub_id = 'sub_id_example' # str |
 page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
 sort_nulls_last = false # bool | Toggle that sorts null values last (optional) (default to false)
@@ -165,11 +165,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **sub_id** | **str**|  | 
+ **sub_id** | **str**|  |
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to false]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to false]
 
@@ -187,4 +187,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

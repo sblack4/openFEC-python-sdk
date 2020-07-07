@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.seek_info import SeekInfo  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.seek_info import SeekInfo  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestSeekInfo(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestSeekInfo(unittest.TestCase):
     def testSeekInfo(self):
         """Test SeekInfo"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.seek_info.SeekInfo()  # noqa: E501
+        # model = openfec_sdk.models.seek_info.SeekInfo()  # noqa: E501
         pass
 
 

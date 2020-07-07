@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.independent_expenditures_api import IndependentExpendituresApi  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.api.independent_expenditures_api import IndependentExpendituresApi  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestIndependentExpendituresApi(unittest.TestCase):
     """IndependentExpendituresApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.independent_expenditures_api.IndependentExpendituresApi()  # noqa: E501
+        self.api = openfec_sdk.api.independent_expenditures_api.IndependentExpendituresApi()  # noqa: E501
 
     def tearDown(self):
         pass

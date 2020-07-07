@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.schedule_a_efile_page import ScheduleAEfilePage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.schedule_a_efile_page import ScheduleAEfilePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestScheduleAEfilePage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestScheduleAEfilePage(unittest.TestCase):
     def testScheduleAEfilePage(self):
         """Test ScheduleAEfilePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.schedule_a_efile_page.ScheduleAEfilePage()  # noqa: E501
+        # model = openfec_sdk.models.schedule_a_efile_page.ScheduleAEfilePage()  # noqa: E501
         pass
 
 

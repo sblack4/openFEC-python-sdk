@@ -23,7 +23,7 @@ pip install git+https://github.com//.git
 
 Then import the package:
 ```python
-import swagger_client 
+import openfec_sdk
 ```
 
 ### Setuptools
@@ -37,7 +37,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import swagger_client
+import openfec_sdk
 ```
 
 ## Getting Started
@@ -47,28 +47,28 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.AuditApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.AuditApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 primary_category_id = 'all' # str |  Audit category ID (table PK)  (optional) (default to all)
 cycle = [56] # list[int] |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
@@ -104,98 +104,98 @@ All URIs are relative to *https://localhost/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuditApi* | [**audit_case_get**](docs/AuditApi.md#audit_case_get) | **GET** /audit-case/ | 
-*AuditApi* | [**audit_category_get**](docs/AuditApi.md#audit_category_get) | **GET** /audit-category/ | 
-*AuditApi* | [**audit_primary_category_get**](docs/AuditApi.md#audit_primary_category_get) | **GET** /audit-primary-category/ | 
-*AuditApi* | [**names_audit_candidates_get**](docs/AuditApi.md#names_audit_candidates_get) | **GET** /names/audit_candidates/ | 
-*AuditApi* | [**names_audit_committees_get**](docs/AuditApi.md#names_audit_committees_get) | **GET** /names/audit_committees/ | 
-*CandidateApi* | [**candidate_candidate_id_get**](docs/CandidateApi.md#candidate_candidate_id_get) | **GET** /candidate/{candidate_id}/ | 
-*CandidateApi* | [**candidate_candidate_id_history_cycle_get**](docs/CandidateApi.md#candidate_candidate_id_history_cycle_get) | **GET** /candidate/{candidate_id}/history/{cycle}/ | 
-*CandidateApi* | [**candidate_candidate_id_history_get**](docs/CandidateApi.md#candidate_candidate_id_history_get) | **GET** /candidate/{candidate_id}/history/ | 
-*CandidateApi* | [**candidate_candidate_id_totals_get**](docs/CandidateApi.md#candidate_candidate_id_totals_get) | **GET** /candidate/{candidate_id}/totals/ | 
-*CandidateApi* | [**candidates_get**](docs/CandidateApi.md#candidates_get) | **GET** /candidates/ | 
-*CandidateApi* | [**candidates_search_get**](docs/CandidateApi.md#candidates_search_get) | **GET** /candidates/search/ | 
-*CandidateApi* | [**candidates_totals_by_office_by_party_get**](docs/CandidateApi.md#candidates_totals_by_office_by_party_get) | **GET** /candidates/totals/by_office/by_party/ | 
-*CandidateApi* | [**candidates_totals_by_office_get**](docs/CandidateApi.md#candidates_totals_by_office_get) | **GET** /candidates/totals/by_office/ | 
-*CandidateApi* | [**candidates_totals_get**](docs/CandidateApi.md#candidates_totals_get) | **GET** /candidates/totals/ | 
-*CandidateApi* | [**committee_committee_id_candidates_get**](docs/CandidateApi.md#committee_committee_id_candidates_get) | **GET** /committee/{committee_id}/candidates/ | 
-*CandidateApi* | [**committee_committee_id_candidates_history_cycle_get**](docs/CandidateApi.md#committee_committee_id_candidates_history_cycle_get) | **GET** /committee/{committee_id}/candidates/history/{cycle}/ | 
-*CandidateApi* | [**committee_committee_id_candidates_history_get**](docs/CandidateApi.md#committee_committee_id_candidates_history_get) | **GET** /committee/{committee_id}/candidates/history/ | 
-*CommitteeApi* | [**candidate_candidate_id_committees_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_get) | **GET** /candidate/{candidate_id}/committees/ | 
-*CommitteeApi* | [**candidate_candidate_id_committees_history_cycle_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_history_cycle_get) | **GET** /candidate/{candidate_id}/committees/history/{cycle}/ | 
-*CommitteeApi* | [**candidate_candidate_id_committees_history_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_history_get) | **GET** /candidate/{candidate_id}/committees/history/ | 
-*CommitteeApi* | [**committee_committee_id_get**](docs/CommitteeApi.md#committee_committee_id_get) | **GET** /committee/{committee_id}/ | 
-*CommitteeApi* | [**committee_committee_id_history_cycle_get**](docs/CommitteeApi.md#committee_committee_id_history_cycle_get) | **GET** /committee/{committee_id}/history/{cycle}/ | 
-*CommitteeApi* | [**committee_committee_id_history_get**](docs/CommitteeApi.md#committee_committee_id_history_get) | **GET** /committee/{committee_id}/history/ | 
-*CommitteeApi* | [**committees_get**](docs/CommitteeApi.md#committees_get) | **GET** /committees/ | 
-*CommunicationCostApi* | [**committee_committee_id_communication_costs_by_candidate_get**](docs/CommunicationCostApi.md#committee_committee_id_communication_costs_by_candidate_get) | **GET** /committee/{committee_id}/communication_costs/by_candidate/ | 
-*CommunicationCostApi* | [**communication_costs_aggregates_get**](docs/CommunicationCostApi.md#communication_costs_aggregates_get) | **GET** /communication_costs/aggregates/ | 
-*CommunicationCostApi* | [**communication_costs_by_candidate_get**](docs/CommunicationCostApi.md#communication_costs_by_candidate_get) | **GET** /communication_costs/by_candidate/ | 
-*CommunicationCostApi* | [**communication_costs_get**](docs/CommunicationCostApi.md#communication_costs_get) | **GET** /communication-costs/ | 
-*CommunicationCostApi* | [**communication_costs_totals_by_candidate_get**](docs/CommunicationCostApi.md#communication_costs_totals_by_candidate_get) | **GET** /communication_costs/totals/by_candidate/ | 
-*DatesApi* | [**calendar_dates_export_get**](docs/DatesApi.md#calendar_dates_export_get) | **GET** /calendar-dates/export/ | 
-*DatesApi* | [**calendar_dates_get**](docs/DatesApi.md#calendar_dates_get) | **GET** /calendar-dates/ | 
-*DatesApi* | [**election_dates_get**](docs/DatesApi.md#election_dates_get) | **GET** /election-dates/ | 
-*DatesApi* | [**reporting_dates_get**](docs/DatesApi.md#reporting_dates_get) | **GET** /reporting-dates/ | 
-*DebtsApi* | [**schedules_schedule_d_get**](docs/DebtsApi.md#schedules_schedule_d_get) | **GET** /schedules/schedule_d/ | 
-*DebtsApi* | [**schedules_schedule_d_sub_id_get**](docs/DebtsApi.md#schedules_schedule_d_sub_id_get) | **GET** /schedules/schedule_d/{sub_id}/ | 
-*DisbursementsApi* | [**schedules_schedule_b_by_purpose_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_purpose_get) | **GET** /schedules/schedule_b/by_purpose/ | 
-*DisbursementsApi* | [**schedules_schedule_b_by_recipient_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_recipient_get) | **GET** /schedules/schedule_b/by_recipient/ | 
-*DisbursementsApi* | [**schedules_schedule_b_by_recipient_id_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_recipient_id_get) | **GET** /schedules/schedule_b/by_recipient_id/ | 
-*DisbursementsApi* | [**schedules_schedule_b_efile_get**](docs/DisbursementsApi.md#schedules_schedule_b_efile_get) | **GET** /schedules/schedule_b/efile/ | 
-*DisbursementsApi* | [**schedules_schedule_b_get**](docs/DisbursementsApi.md#schedules_schedule_b_get) | **GET** /schedules/schedule_b/ | 
-*DisbursementsApi* | [**schedules_schedule_b_sub_id_get**](docs/DisbursementsApi.md#schedules_schedule_b_sub_id_get) | **GET** /schedules/schedule_b/{sub_id}/ | 
-*EfilingApi* | [**efile_filings_get**](docs/EfilingApi.md#efile_filings_get) | **GET** /efile/filings/ | 
-*EfilingApi* | [**efile_reports_house_senate_get**](docs/EfilingApi.md#efile_reports_house_senate_get) | **GET** /efile/reports/house-senate/ | 
-*EfilingApi* | [**efile_reports_pac_party_get**](docs/EfilingApi.md#efile_reports_pac_party_get) | **GET** /efile/reports/pac-party/ | 
-*EfilingApi* | [**efile_reports_presidential_get**](docs/EfilingApi.md#efile_reports_presidential_get) | **GET** /efile/reports/presidential/ | 
-*ElectioneeringApi* | [**committee_committee_id_electioneering_by_candidate_get**](docs/ElectioneeringApi.md#committee_committee_id_electioneering_by_candidate_get) | **GET** /committee/{committee_id}/electioneering/by_candidate/ | 
-*ElectioneeringApi* | [**electioneering_aggregates_get**](docs/ElectioneeringApi.md#electioneering_aggregates_get) | **GET** /electioneering/aggregates/ | 
-*ElectioneeringApi* | [**electioneering_by_candidate_get**](docs/ElectioneeringApi.md#electioneering_by_candidate_get) | **GET** /electioneering/by_candidate/ | 
-*ElectioneeringApi* | [**electioneering_get**](docs/ElectioneeringApi.md#electioneering_get) | **GET** /electioneering/ | 
-*ElectioneeringApi* | [**electioneering_totals_by_candidate_get**](docs/ElectioneeringApi.md#electioneering_totals_by_candidate_get) | **GET** /electioneering/totals/by_candidate/ | 
-*FilerResourcesApi* | [**rad_analyst_get**](docs/FilerResourcesApi.md#rad_analyst_get) | **GET** /rad-analyst/ | 
-*FilerResourcesApi* | [**state_election_office_get**](docs/FilerResourcesApi.md#state_election_office_get) | **GET** /state-election-office/ | 
-*FilingsApi* | [**candidate_candidate_id_filings_get**](docs/FilingsApi.md#candidate_candidate_id_filings_get) | **GET** /candidate/{candidate_id}/filings/ | 
-*FilingsApi* | [**committee_committee_id_filings_get**](docs/FilingsApi.md#committee_committee_id_filings_get) | **GET** /committee/{committee_id}/filings/ | 
-*FilingsApi* | [**filings_get**](docs/FilingsApi.md#filings_get) | **GET** /filings/ | 
-*FilingsApi* | [**operations_log_get**](docs/FilingsApi.md#operations_log_get) | **GET** /operations-log/ | 
-*FinancialApi* | [**committee_committee_id_reports_get**](docs/FinancialApi.md#committee_committee_id_reports_get) | **GET** /committee/{committee_id}/reports/ | 
-*FinancialApi* | [**committee_committee_id_totals_get**](docs/FinancialApi.md#committee_committee_id_totals_get) | **GET** /committee/{committee_id}/totals/ | 
-*FinancialApi* | [**elections_get**](docs/FinancialApi.md#elections_get) | **GET** /elections/ | 
-*FinancialApi* | [**elections_search_get**](docs/FinancialApi.md#elections_search_get) | **GET** /elections/search/ | 
-*FinancialApi* | [**elections_summary_get**](docs/FinancialApi.md#elections_summary_get) | **GET** /elections/summary/ | 
-*FinancialApi* | [**reports_committee_type_get**](docs/FinancialApi.md#reports_committee_type_get) | **GET** /reports/{committee_type}/ | 
-*FinancialApi* | [**totals_by_entity_get**](docs/FinancialApi.md#totals_by_entity_get) | **GET** /totals/by_entity/ | 
-*FinancialApi* | [**totals_committee_type_get**](docs/FinancialApi.md#totals_committee_type_get) | **GET** /totals/{committee_type}/ | 
-*IndependentExpendituresApi* | [**schedules_schedule_e_by_candidate_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_by_candidate_get) | **GET** /schedules/schedule_e/by_candidate/ | 
-*IndependentExpendituresApi* | [**schedules_schedule_e_efile_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_efile_get) | **GET** /schedules/schedule_e/efile/ | 
-*IndependentExpendituresApi* | [**schedules_schedule_e_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_get) | **GET** /schedules/schedule_e/ | 
-*IndependentExpendituresApi* | [**schedules_schedule_e_totals_by_candidate_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_totals_by_candidate_get) | **GET** /schedules/schedule_e/totals/by_candidate/ | 
-*LegalApi* | [**legal_search_get**](docs/LegalApi.md#legal_search_get) | **GET** /legal/search/ | 
-*LoansApi* | [**schedules_schedule_c_get**](docs/LoansApi.md#schedules_schedule_c_get) | **GET** /schedules/schedule_c/ | 
-*LoansApi* | [**schedules_schedule_c_sub_id_get**](docs/LoansApi.md#schedules_schedule_c_sub_id_get) | **GET** /schedules/schedule_c/{sub_id}/ | 
-*PartyCoordinatedExpendituresApi* | [**schedules_schedule_f_get**](docs/PartyCoordinatedExpendituresApi.md#schedules_schedule_f_get) | **GET** /schedules/schedule_f/ | 
-*PartyCoordinatedExpendituresApi* | [**schedules_schedule_f_sub_id_get**](docs/PartyCoordinatedExpendituresApi.md#schedules_schedule_f_sub_id_get) | **GET** /schedules/schedule_f/{sub_id}/ | 
-*PresidentialApi* | [**presidential_contributions_by_candidate_get**](docs/PresidentialApi.md#presidential_contributions_by_candidate_get) | **GET** /presidential/contributions/by_candidate/ | 
-*PresidentialApi* | [**presidential_contributions_by_size_get**](docs/PresidentialApi.md#presidential_contributions_by_size_get) | **GET** /presidential/contributions/by_size/ | 
-*PresidentialApi* | [**presidential_contributions_by_state_get**](docs/PresidentialApi.md#presidential_contributions_by_state_get) | **GET** /presidential/contributions/by_state/ | 
-*PresidentialApi* | [**presidential_coverage_end_date_get**](docs/PresidentialApi.md#presidential_coverage_end_date_get) | **GET** /presidential/coverage_end_date/ | 
-*PresidentialApi* | [**presidential_financial_summary_get**](docs/PresidentialApi.md#presidential_financial_summary_get) | **GET** /presidential/financial_summary/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_employer_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_employer_get) | **GET** /schedules/schedule_a/by_employer/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_occupation_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_occupation_get) | **GET** /schedules/schedule_a/by_occupation/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_size_by_candidate_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_size_by_candidate_get) | **GET** /schedules/schedule_a/by_size/by_candidate/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_size_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_size_get) | **GET** /schedules/schedule_a/by_size/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_state_by_candidate_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_by_candidate_get) | **GET** /schedules/schedule_a/by_state/by_candidate/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_state_by_candidate_totals_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_by_candidate_totals_get) | **GET** /schedules/schedule_a/by_state/by_candidate/totals/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_state_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_get) | **GET** /schedules/schedule_a/by_state/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_state_totals_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_totals_get) | **GET** /schedules/schedule_a/by_state/totals/ | 
-*ReceiptsApi* | [**schedules_schedule_a_by_zip_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_zip_get) | **GET** /schedules/schedule_a/by_zip/ | 
-*ReceiptsApi* | [**schedules_schedule_a_efile_get**](docs/ReceiptsApi.md#schedules_schedule_a_efile_get) | **GET** /schedules/schedule_a/efile/ | 
-*ReceiptsApi* | [**schedules_schedule_a_get**](docs/ReceiptsApi.md#schedules_schedule_a_get) | **GET** /schedules/schedule_a/ | 
-*ReceiptsApi* | [**schedules_schedule_a_sub_id_get**](docs/ReceiptsApi.md#schedules_schedule_a_sub_id_get) | **GET** /schedules/schedule_a/{sub_id}/ | 
-*SearchApi* | [**names_candidates_get**](docs/SearchApi.md#names_candidates_get) | **GET** /names/candidates/ | 
-*SearchApi* | [**names_committees_get**](docs/SearchApi.md#names_committees_get) | **GET** /names/committees/ | 
+*AuditApi* | [**audit_case_get**](docs/AuditApi.md#audit_case_get) | **GET** /audit-case/ |
+*AuditApi* | [**audit_category_get**](docs/AuditApi.md#audit_category_get) | **GET** /audit-category/ |
+*AuditApi* | [**audit_primary_category_get**](docs/AuditApi.md#audit_primary_category_get) | **GET** /audit-primary-category/ |
+*AuditApi* | [**names_audit_candidates_get**](docs/AuditApi.md#names_audit_candidates_get) | **GET** /names/audit_candidates/ |
+*AuditApi* | [**names_audit_committees_get**](docs/AuditApi.md#names_audit_committees_get) | **GET** /names/audit_committees/ |
+*CandidateApi* | [**candidate_candidate_id_get**](docs/CandidateApi.md#candidate_candidate_id_get) | **GET** /candidate/{candidate_id}/ |
+*CandidateApi* | [**candidate_candidate_id_history_cycle_get**](docs/CandidateApi.md#candidate_candidate_id_history_cycle_get) | **GET** /candidate/{candidate_id}/history/{cycle}/ |
+*CandidateApi* | [**candidate_candidate_id_history_get**](docs/CandidateApi.md#candidate_candidate_id_history_get) | **GET** /candidate/{candidate_id}/history/ |
+*CandidateApi* | [**candidate_candidate_id_totals_get**](docs/CandidateApi.md#candidate_candidate_id_totals_get) | **GET** /candidate/{candidate_id}/totals/ |
+*CandidateApi* | [**candidates_get**](docs/CandidateApi.md#candidates_get) | **GET** /candidates/ |
+*CandidateApi* | [**candidates_search_get**](docs/CandidateApi.md#candidates_search_get) | **GET** /candidates/search/ |
+*CandidateApi* | [**candidates_totals_by_office_by_party_get**](docs/CandidateApi.md#candidates_totals_by_office_by_party_get) | **GET** /candidates/totals/by_office/by_party/ |
+*CandidateApi* | [**candidates_totals_by_office_get**](docs/CandidateApi.md#candidates_totals_by_office_get) | **GET** /candidates/totals/by_office/ |
+*CandidateApi* | [**candidates_totals_get**](docs/CandidateApi.md#candidates_totals_get) | **GET** /candidates/totals/ |
+*CandidateApi* | [**committee_committee_id_candidates_get**](docs/CandidateApi.md#committee_committee_id_candidates_get) | **GET** /committee/{committee_id}/candidates/ |
+*CandidateApi* | [**committee_committee_id_candidates_history_cycle_get**](docs/CandidateApi.md#committee_committee_id_candidates_history_cycle_get) | **GET** /committee/{committee_id}/candidates/history/{cycle}/ |
+*CandidateApi* | [**committee_committee_id_candidates_history_get**](docs/CandidateApi.md#committee_committee_id_candidates_history_get) | **GET** /committee/{committee_id}/candidates/history/ |
+*CommitteeApi* | [**candidate_candidate_id_committees_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_get) | **GET** /candidate/{candidate_id}/committees/ |
+*CommitteeApi* | [**candidate_candidate_id_committees_history_cycle_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_history_cycle_get) | **GET** /candidate/{candidate_id}/committees/history/{cycle}/ |
+*CommitteeApi* | [**candidate_candidate_id_committees_history_get**](docs/CommitteeApi.md#candidate_candidate_id_committees_history_get) | **GET** /candidate/{candidate_id}/committees/history/ |
+*CommitteeApi* | [**committee_committee_id_get**](docs/CommitteeApi.md#committee_committee_id_get) | **GET** /committee/{committee_id}/ |
+*CommitteeApi* | [**committee_committee_id_history_cycle_get**](docs/CommitteeApi.md#committee_committee_id_history_cycle_get) | **GET** /committee/{committee_id}/history/{cycle}/ |
+*CommitteeApi* | [**committee_committee_id_history_get**](docs/CommitteeApi.md#committee_committee_id_history_get) | **GET** /committee/{committee_id}/history/ |
+*CommitteeApi* | [**committees_get**](docs/CommitteeApi.md#committees_get) | **GET** /committees/ |
+*CommunicationCostApi* | [**committee_committee_id_communication_costs_by_candidate_get**](docs/CommunicationCostApi.md#committee_committee_id_communication_costs_by_candidate_get) | **GET** /committee/{committee_id}/communication_costs/by_candidate/ |
+*CommunicationCostApi* | [**communication_costs_aggregates_get**](docs/CommunicationCostApi.md#communication_costs_aggregates_get) | **GET** /communication_costs/aggregates/ |
+*CommunicationCostApi* | [**communication_costs_by_candidate_get**](docs/CommunicationCostApi.md#communication_costs_by_candidate_get) | **GET** /communication_costs/by_candidate/ |
+*CommunicationCostApi* | [**communication_costs_get**](docs/CommunicationCostApi.md#communication_costs_get) | **GET** /communication-costs/ |
+*CommunicationCostApi* | [**communication_costs_totals_by_candidate_get**](docs/CommunicationCostApi.md#communication_costs_totals_by_candidate_get) | **GET** /communication_costs/totals/by_candidate/ |
+*DatesApi* | [**calendar_dates_export_get**](docs/DatesApi.md#calendar_dates_export_get) | **GET** /calendar-dates/export/ |
+*DatesApi* | [**calendar_dates_get**](docs/DatesApi.md#calendar_dates_get) | **GET** /calendar-dates/ |
+*DatesApi* | [**election_dates_get**](docs/DatesApi.md#election_dates_get) | **GET** /election-dates/ |
+*DatesApi* | [**reporting_dates_get**](docs/DatesApi.md#reporting_dates_get) | **GET** /reporting-dates/ |
+*DebtsApi* | [**schedules_schedule_d_get**](docs/DebtsApi.md#schedules_schedule_d_get) | **GET** /schedules/schedule_d/ |
+*DebtsApi* | [**schedules_schedule_d_sub_id_get**](docs/DebtsApi.md#schedules_schedule_d_sub_id_get) | **GET** /schedules/schedule_d/{sub_id}/ |
+*DisbursementsApi* | [**schedules_schedule_b_by_purpose_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_purpose_get) | **GET** /schedules/schedule_b/by_purpose/ |
+*DisbursementsApi* | [**schedules_schedule_b_by_recipient_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_recipient_get) | **GET** /schedules/schedule_b/by_recipient/ |
+*DisbursementsApi* | [**schedules_schedule_b_by_recipient_id_get**](docs/DisbursementsApi.md#schedules_schedule_b_by_recipient_id_get) | **GET** /schedules/schedule_b/by_recipient_id/ |
+*DisbursementsApi* | [**schedules_schedule_b_efile_get**](docs/DisbursementsApi.md#schedules_schedule_b_efile_get) | **GET** /schedules/schedule_b/efile/ |
+*DisbursementsApi* | [**schedules_schedule_b_get**](docs/DisbursementsApi.md#schedules_schedule_b_get) | **GET** /schedules/schedule_b/ |
+*DisbursementsApi* | [**schedules_schedule_b_sub_id_get**](docs/DisbursementsApi.md#schedules_schedule_b_sub_id_get) | **GET** /schedules/schedule_b/{sub_id}/ |
+*EfilingApi* | [**efile_filings_get**](docs/EfilingApi.md#efile_filings_get) | **GET** /efile/filings/ |
+*EfilingApi* | [**efile_reports_house_senate_get**](docs/EfilingApi.md#efile_reports_house_senate_get) | **GET** /efile/reports/house-senate/ |
+*EfilingApi* | [**efile_reports_pac_party_get**](docs/EfilingApi.md#efile_reports_pac_party_get) | **GET** /efile/reports/pac-party/ |
+*EfilingApi* | [**efile_reports_presidential_get**](docs/EfilingApi.md#efile_reports_presidential_get) | **GET** /efile/reports/presidential/ |
+*ElectioneeringApi* | [**committee_committee_id_electioneering_by_candidate_get**](docs/ElectioneeringApi.md#committee_committee_id_electioneering_by_candidate_get) | **GET** /committee/{committee_id}/electioneering/by_candidate/ |
+*ElectioneeringApi* | [**electioneering_aggregates_get**](docs/ElectioneeringApi.md#electioneering_aggregates_get) | **GET** /electioneering/aggregates/ |
+*ElectioneeringApi* | [**electioneering_by_candidate_get**](docs/ElectioneeringApi.md#electioneering_by_candidate_get) | **GET** /electioneering/by_candidate/ |
+*ElectioneeringApi* | [**electioneering_get**](docs/ElectioneeringApi.md#electioneering_get) | **GET** /electioneering/ |
+*ElectioneeringApi* | [**electioneering_totals_by_candidate_get**](docs/ElectioneeringApi.md#electioneering_totals_by_candidate_get) | **GET** /electioneering/totals/by_candidate/ |
+*FilerResourcesApi* | [**rad_analyst_get**](docs/FilerResourcesApi.md#rad_analyst_get) | **GET** /rad-analyst/ |
+*FilerResourcesApi* | [**state_election_office_get**](docs/FilerResourcesApi.md#state_election_office_get) | **GET** /state-election-office/ |
+*FilingsApi* | [**candidate_candidate_id_filings_get**](docs/FilingsApi.md#candidate_candidate_id_filings_get) | **GET** /candidate/{candidate_id}/filings/ |
+*FilingsApi* | [**committee_committee_id_filings_get**](docs/FilingsApi.md#committee_committee_id_filings_get) | **GET** /committee/{committee_id}/filings/ |
+*FilingsApi* | [**filings_get**](docs/FilingsApi.md#filings_get) | **GET** /filings/ |
+*FilingsApi* | [**operations_log_get**](docs/FilingsApi.md#operations_log_get) | **GET** /operations-log/ |
+*FinancialApi* | [**committee_committee_id_reports_get**](docs/FinancialApi.md#committee_committee_id_reports_get) | **GET** /committee/{committee_id}/reports/ |
+*FinancialApi* | [**committee_committee_id_totals_get**](docs/FinancialApi.md#committee_committee_id_totals_get) | **GET** /committee/{committee_id}/totals/ |
+*FinancialApi* | [**elections_get**](docs/FinancialApi.md#elections_get) | **GET** /elections/ |
+*FinancialApi* | [**elections_search_get**](docs/FinancialApi.md#elections_search_get) | **GET** /elections/search/ |
+*FinancialApi* | [**elections_summary_get**](docs/FinancialApi.md#elections_summary_get) | **GET** /elections/summary/ |
+*FinancialApi* | [**reports_committee_type_get**](docs/FinancialApi.md#reports_committee_type_get) | **GET** /reports/{committee_type}/ |
+*FinancialApi* | [**totals_by_entity_get**](docs/FinancialApi.md#totals_by_entity_get) | **GET** /totals/by_entity/ |
+*FinancialApi* | [**totals_committee_type_get**](docs/FinancialApi.md#totals_committee_type_get) | **GET** /totals/{committee_type}/ |
+*IndependentExpendituresApi* | [**schedules_schedule_e_by_candidate_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_by_candidate_get) | **GET** /schedules/schedule_e/by_candidate/ |
+*IndependentExpendituresApi* | [**schedules_schedule_e_efile_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_efile_get) | **GET** /schedules/schedule_e/efile/ |
+*IndependentExpendituresApi* | [**schedules_schedule_e_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_get) | **GET** /schedules/schedule_e/ |
+*IndependentExpendituresApi* | [**schedules_schedule_e_totals_by_candidate_get**](docs/IndependentExpendituresApi.md#schedules_schedule_e_totals_by_candidate_get) | **GET** /schedules/schedule_e/totals/by_candidate/ |
+*LegalApi* | [**legal_search_get**](docs/LegalApi.md#legal_search_get) | **GET** /legal/search/ |
+*LoansApi* | [**schedules_schedule_c_get**](docs/LoansApi.md#schedules_schedule_c_get) | **GET** /schedules/schedule_c/ |
+*LoansApi* | [**schedules_schedule_c_sub_id_get**](docs/LoansApi.md#schedules_schedule_c_sub_id_get) | **GET** /schedules/schedule_c/{sub_id}/ |
+*PartyCoordinatedExpendituresApi* | [**schedules_schedule_f_get**](docs/PartyCoordinatedExpendituresApi.md#schedules_schedule_f_get) | **GET** /schedules/schedule_f/ |
+*PartyCoordinatedExpendituresApi* | [**schedules_schedule_f_sub_id_get**](docs/PartyCoordinatedExpendituresApi.md#schedules_schedule_f_sub_id_get) | **GET** /schedules/schedule_f/{sub_id}/ |
+*PresidentialApi* | [**presidential_contributions_by_candidate_get**](docs/PresidentialApi.md#presidential_contributions_by_candidate_get) | **GET** /presidential/contributions/by_candidate/ |
+*PresidentialApi* | [**presidential_contributions_by_size_get**](docs/PresidentialApi.md#presidential_contributions_by_size_get) | **GET** /presidential/contributions/by_size/ |
+*PresidentialApi* | [**presidential_contributions_by_state_get**](docs/PresidentialApi.md#presidential_contributions_by_state_get) | **GET** /presidential/contributions/by_state/ |
+*PresidentialApi* | [**presidential_coverage_end_date_get**](docs/PresidentialApi.md#presidential_coverage_end_date_get) | **GET** /presidential/coverage_end_date/ |
+*PresidentialApi* | [**presidential_financial_summary_get**](docs/PresidentialApi.md#presidential_financial_summary_get) | **GET** /presidential/financial_summary/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_employer_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_employer_get) | **GET** /schedules/schedule_a/by_employer/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_occupation_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_occupation_get) | **GET** /schedules/schedule_a/by_occupation/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_size_by_candidate_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_size_by_candidate_get) | **GET** /schedules/schedule_a/by_size/by_candidate/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_size_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_size_get) | **GET** /schedules/schedule_a/by_size/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_state_by_candidate_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_by_candidate_get) | **GET** /schedules/schedule_a/by_state/by_candidate/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_state_by_candidate_totals_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_by_candidate_totals_get) | **GET** /schedules/schedule_a/by_state/by_candidate/totals/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_state_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_get) | **GET** /schedules/schedule_a/by_state/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_state_totals_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_state_totals_get) | **GET** /schedules/schedule_a/by_state/totals/ |
+*ReceiptsApi* | [**schedules_schedule_a_by_zip_get**](docs/ReceiptsApi.md#schedules_schedule_a_by_zip_get) | **GET** /schedules/schedule_a/by_zip/ |
+*ReceiptsApi* | [**schedules_schedule_a_efile_get**](docs/ReceiptsApi.md#schedules_schedule_a_efile_get) | **GET** /schedules/schedule_a/efile/ |
+*ReceiptsApi* | [**schedules_schedule_a_get**](docs/ReceiptsApi.md#schedules_schedule_a_get) | **GET** /schedules/schedule_a/ |
+*ReceiptsApi* | [**schedules_schedule_a_sub_id_get**](docs/ReceiptsApi.md#schedules_schedule_a_sub_id_get) | **GET** /schedules/schedule_a/{sub_id}/ |
+*SearchApi* | [**names_candidates_get**](docs/SearchApi.md#names_candidates_get) | **GET** /names/candidates/ |
+*SearchApi* | [**names_committees_get**](docs/SearchApi.md#names_committees_get) | **GET** /names/committees/ |
 
 
 ## Documentation For Models
@@ -418,6 +418,3 @@ Class | Method | HTTP request | Description
 
 
 ## Author
-
-
-

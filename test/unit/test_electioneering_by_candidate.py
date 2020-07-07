@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.electioneering_by_candidate import ElectioneeringByCandidate  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.electioneering_by_candidate import ElectioneeringByCandidate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestElectioneeringByCandidate(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestElectioneeringByCandidate(unittest.TestCase):
     def testElectioneeringByCandidate(self):
         """Test ElectioneeringByCandidate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.electioneering_by_candidate.ElectioneeringByCandidate()  # noqa: E501
+        # model = openfec_sdk.models.electioneering_by_candidate.ElectioneeringByCandidate()  # noqa: E501
         pass
 
 

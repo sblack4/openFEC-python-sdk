@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.base_f3_p_filing_page import BaseF3PFilingPage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.base_f3_p_filing_page import BaseF3PFilingPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestBaseF3PFilingPage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestBaseF3PFilingPage(unittest.TestCase):
     def testBaseF3PFilingPage(self):
         """Test BaseF3PFilingPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.base_f3_p_filing_page.BaseF3PFilingPage()  # noqa: E501
+        # model = openfec_sdk.models.base_f3_p_filing_page.BaseF3PFilingPage()  # noqa: E501
         pass
 
 

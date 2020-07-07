@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.audit_primary_category import AuditPrimaryCategory  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.audit_primary_category import AuditPrimaryCategory  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestAuditPrimaryCategory(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestAuditPrimaryCategory(unittest.TestCase):
     def testAuditPrimaryCategory(self):
         """Test AuditPrimaryCategory"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.audit_primary_category.AuditPrimaryCategory()  # noqa: E501
+        # model = openfec_sdk.models.audit_primary_category.AuditPrimaryCategory()  # noqa: E501
         pass
 
 

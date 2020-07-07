@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.operations_log_page import OperationsLogPage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.operations_log_page import OperationsLogPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestOperationsLogPage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestOperationsLogPage(unittest.TestCase):
     def testOperationsLogPage(self):
         """Test OperationsLogPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.operations_log_page.OperationsLogPage()  # noqa: E501
+        # model = openfec_sdk.models.operations_log_page.OperationsLogPage()  # noqa: E501
         pass
 
 

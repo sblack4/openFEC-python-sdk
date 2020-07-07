@@ -1,14 +1,14 @@
-# swagger_client.CommunicationCostApi
+# openfec_sdk.CommunicationCostApi
 
 All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**committee_committee_id_communication_costs_by_candidate_get**](CommunicationCostApi.md#committee_committee_id_communication_costs_by_candidate_get) | **GET** /committee/{committee_id}/communication_costs/by_candidate/ | 
-[**communication_costs_aggregates_get**](CommunicationCostApi.md#communication_costs_aggregates_get) | **GET** /communication_costs/aggregates/ | 
-[**communication_costs_by_candidate_get**](CommunicationCostApi.md#communication_costs_by_candidate_get) | **GET** /communication_costs/by_candidate/ | 
-[**communication_costs_get**](CommunicationCostApi.md#communication_costs_get) | **GET** /communication-costs/ | 
-[**communication_costs_totals_by_candidate_get**](CommunicationCostApi.md#communication_costs_totals_by_candidate_get) | **GET** /communication_costs/totals/by_candidate/ | 
+[**committee_committee_id_communication_costs_by_candidate_get**](CommunicationCostApi.md#committee_committee_id_communication_costs_by_candidate_get) | **GET** /committee/{committee_id}/communication_costs/by_candidate/ |
+[**communication_costs_aggregates_get**](CommunicationCostApi.md#communication_costs_aggregates_get) | **GET** /communication_costs/aggregates/ |
+[**communication_costs_by_candidate_get**](CommunicationCostApi.md#communication_costs_by_candidate_get) | **GET** /communication_costs/by_candidate/ |
+[**communication_costs_get**](CommunicationCostApi.md#communication_costs_get) | **GET** /communication-costs/ |
+[**communication_costs_totals_by_candidate_get**](CommunicationCostApi.md#communication_costs_totals_by_candidate_get) | **GET** /communication_costs/totals/by_candidate/ |
 
 
 # **committee_committee_id_communication_costs_by_candidate_get**
@@ -22,30 +22,30 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.CommunicationCostApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.CommunicationCostApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
-committee_id = 'committee_id_example' # str | 
+committee_id = 'committee_id_example' # str |
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
 cycle = [56] # list[int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 sort = 'sort_example' # str | Provide a field to sort by. Use - for descending order. (optional)
@@ -72,15 +72,15 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **committee_id** | **str**|  | 
+ **committee_id** | **str**|  |
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional] 
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
- **office** | **str**| Federal office candidate runs for: H, S or P | [optional] 
- **support_oppose** | **str**| Support or opposition | [optional] 
- **state** | **str**| US state or territory where a candidate runs for office | [optional] 
- **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional] 
- **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional] 
+ **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
+ **office** | **str**| Federal office candidate runs for: H, S or P | [optional]
+ **support_oppose** | **str**| Support or opposition | [optional]
+ **state** | **str**| US state or territory where a candidate runs for office | [optional]
+ **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
  **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] [default to true]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
@@ -113,28 +113,28 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.CommunicationCostApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.CommunicationCostApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
@@ -159,12 +159,12 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional] 
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional] 
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
- **support_oppose_indicator** | **str**| Support or opposition | [optional] 
- **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional] 
+ **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
+ **support_oppose_indicator** | **str**| Support or opposition | [optional]
+ **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to false]
@@ -196,28 +196,28 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.CommunicationCostApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.CommunicationCostApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
 cycle = [56] # list[int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
@@ -246,13 +246,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional] 
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
- **office** | **str**| Federal office candidate runs for: H, S or P | [optional] 
- **support_oppose** | **str**| Support or opposition | [optional] 
- **state** | **str**| US state or territory where a candidate runs for office | [optional] 
- **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional] 
- **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional] 
+ **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
+ **office** | **str**| Federal office candidate runs for: H, S or P | [optional]
+ **support_oppose** | **str**| Support or opposition | [optional]
+ **state** | **str**| US state or territory where a candidate runs for office | [optional]
+ **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
  **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] [default to true]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
@@ -279,34 +279,34 @@ Name | Type | Description  | Notes
 
 
 
- 52 U.S.C. 30118 allows \"communications by a corporation to its stockholders and executive or administrative personnel and their families or by a labor organization to its members and their families on any subject,\" including the express advocacy of the election or defeat of any Federal candidate.  The costs of such communications must be reported to the Federal Election Commission under certain circumstances. 
+ 52 U.S.C. 30118 allows \"communications by a corporation to its stockholders and executive or administrative personnel and their families or by a labor organization to its members and their families on any subject,\" including the express advocacy of the election or defeat of any Federal candidate.  The costs of such communications must be reported to the Federal Election Commission under certain circumstances.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.CommunicationCostApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.CommunicationCostApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 sort = 'sort_example' # str | Provide a field to sort by. Use - for descending order. (optional)
 support_oppose_indicator = ['support_oppose_indicator_example'] # list[str] | Support or opposition (optional)
@@ -338,23 +338,23 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
- **support_oppose_indicator** | [**list[str]**](str.md)| Support or opposition | [optional] 
- **max_amount** | **str**| Filter for all amounts less than a value. | [optional] 
- **min_image_number** | **str**|  | [optional] 
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
+ **support_oppose_indicator** | [**list[str]**](str.md)| Support or opposition | [optional]
+ **max_amount** | **str**| Filter for all amounts less than a value. | [optional]
+ **min_image_number** | **str**|  | [optional]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to false]
- **min_date** | **date**| Minimum date | [optional] 
- **line_number** | **str**| Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;. | [optional] 
- **max_date** | **date**| Maximum date | [optional] 
- **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional] 
+ **min_date** | **date**| Minimum date | [optional]
+ **line_number** | **str**| Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;. | [optional]
+ **max_date** | **date**| Maximum date | [optional]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **min_amount** | **str**| Filter for all amounts greater than a value. | [optional] 
- **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional] 
- **image_number** | [**list[str]**](str.md)| The image number of the page where the schedule item is reported | [optional] 
+ **min_amount** | **str**| Filter for all amounts greater than a value. | [optional]
+ **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **image_number** | [**list[str]**](str.md)| The image number of the page where the schedule item is reported | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to false]
- **max_image_number** | **str**|  | [optional] 
+ **max_image_number** | **str**|  | [optional]
 
 ### Return type
 
@@ -376,34 +376,34 @@ Name | Type | Description  | Notes
 
 
 
- Total communications costs aggregated across committees on supported or opposed candidates by cycle or candidate election year. 
+ Total communications costs aggregated across committees on supported or opposed candidates by cycle or candidate election year.
 
 ### Example
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['X-Api-Key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 # Configure API key authorization: apiKey
-configuration = swagger_client.Configuration()
+configuration = openfec_sdk.Configuration()
 configuration.api_key['api_key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.CommunicationCostApi(swagger_client.ApiClient(configuration))
+api_instance = openfec_sdk.CommunicationCostApi(openfec_sdk.ApiClient(configuration))
 api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to DEMO_KEY)
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
 cycle = [56] # list[int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
@@ -428,9 +428,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to DEMO_KEY]
  **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
- **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional] 
- **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional] 
- **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional] 
+ **cycle** | [**list[int]**](int.md)|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **sort** | **str**| Provide a field to sort by. Use - for descending order. | [optional]
+ **candidate_id** | [**list[str]**](str.md)|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
  **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] [default to true]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
  **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to false]
@@ -451,4 +451,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

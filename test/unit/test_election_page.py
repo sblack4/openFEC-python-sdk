@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.election_page import ElectionPage  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.election_page import ElectionPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestElectionPage(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestElectionPage(unittest.TestCase):
     def testElectionPage(self):
         """Test ElectionPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.election_page.ElectionPage()  # noqa: E501
+        # model = openfec_sdk.models.election_page.ElectionPage()  # noqa: E501
         pass
 
 

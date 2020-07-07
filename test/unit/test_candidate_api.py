@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.candidate_api import CandidateApi  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.api.candidate_api import CandidateApi  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestCandidateApi(unittest.TestCase):
     """CandidateApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.candidate_api.CandidateApi()  # noqa: E501
+        self.api = openfec_sdk.api.candidate_api.CandidateApi()  # noqa: E501
 
     def tearDown(self):
         pass

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.total_by_office_by_party import TotalByOfficeByParty  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.total_by_office_by_party import TotalByOfficeByParty  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestTotalByOfficeByParty(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestTotalByOfficeByParty(unittest.TestCase):
     def testTotalByOfficeByParty(self):
         """Test TotalByOfficeByParty"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.total_by_office_by_party.TotalByOfficeByParty()  # noqa: E501
+        # model = openfec_sdk.models.total_by_office_by_party.TotalByOfficeByParty()  # noqa: E501
         pass
 
 

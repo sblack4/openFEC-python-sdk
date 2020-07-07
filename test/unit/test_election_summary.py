@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.election_summary import ElectionSummary  # noqa: E501
-from swagger_client.rest import ApiException
+import openfec_sdk
+from openfec_sdk.models.election_summary import ElectionSummary  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 
 class TestElectionSummary(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestElectionSummary(unittest.TestCase):
     def testElectionSummary(self):
         """Test ElectionSummary"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.election_summary.ElectionSummary()  # noqa: E501
+        # model = openfec_sdk.models.election_summary.ElectionSummary()  # noqa: E501
         pass
 
 
