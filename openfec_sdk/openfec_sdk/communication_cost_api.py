@@ -70,19 +70,19 @@ class CommunicationCostApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                office (str): Federal office candidate runs for: H, S or P. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 state (str): US state or territory where a candidate runs for office. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                office (str): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -150,27 +150,27 @@ class CommunicationCostApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'page',
-                    'cycle',
-                    'support_oppose',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'district',
                     'election_full',
-                    'office',
-                    'per_page',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
                     'state',
+                    'sort_hide_null',
+                    'per_page',
+                    'district',
+                    'sort_nulls_last',
+                    'cycle',
+                    'page',
+                    'support_oppose',
+                    'sort_null_only',
+                    'office',
                 ],
                 'required': [
                     'api_key',
                     'committee_id',
                 ],
                 'nullable': [
-                    'support_oppose',
                     'sort',
+                    'support_oppose',
                 ],
                 'enum': [
                     'support_oppose',
@@ -200,70 +200,70 @@ class CommunicationCostApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'cycle':
-                        ([int],),
-                    'support_oppose':
-                        (str, none_type,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'district':
-                        (str,),
                     'election_full':
                         (bool,),
-                    'office':
-                        (str,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
+                    'state':
+                        (str,),
                     'sort_hide_null':
                         (bool,),
-                    'state':
+                    'per_page':
+                        (int,),
+                    'district':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'support_oppose':
+                        (str, none_type,),
+                    'sort_null_only':
+                        (bool,),
+                    'office':
                         (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'page': 'page',
-                    'cycle': 'cycle',
-                    'support_oppose': 'support_oppose',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'district': 'district',
                     'election_full': 'election_full',
-                    'office': 'office',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
                     'state': 'state',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'support_oppose': 'support_oppose',
+                    'sort_null_only': 'sort_null_only',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'page': 'query',
-                    'cycle': 'query',
-                    'support_oppose': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'district': 'query',
                     'election_full': 'query',
-                    'office': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
                     'state': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'support_oppose': 'query',
+                    'sort_null_only': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'cycle': 'multi',
                     'candidate_id': 'multi',
+                    'cycle': 'multi',
                 }
             },
             headers_map={
@@ -293,16 +293,16 @@ class CommunicationCostApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                support_oppose_indicator (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                support_oppose_indicator (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -367,16 +367,16 @@ class CommunicationCostApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'committee_id',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
-                    'support_oppose_indicator',
+                    'per_page',
+                    'sort_nulls_last',
+                    'committee_id',
                     'cycle',
+                    'page',
+                    'sort_null_only',
+                    'support_oppose_indicator',
                 ],
                 'required': [
                     'api_key',
@@ -404,56 +404,56 @@ class CommunicationCostApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
-                    'support_oppose_indicator':
-                        (str, none_type,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'committee_id':
+                        ([str],),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
+                    'support_oppose_indicator':
+                        (str, none_type,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
-                    'support_oppose_indicator': 'support_oppose_indicator',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
+                    'support_oppose_indicator': 'support_oppose_indicator',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
-                    'support_oppose_indicator': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
+                    'support_oppose_indicator': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
                     'candidate_id': 'multi',
+                    'committee_id': 'multi',
                     'cycle': 'multi',
                 }
             },
@@ -484,19 +484,19 @@ class CommunicationCostApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                office (str): Federal office candidate runs for: H, S or P. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 state (str): US state or territory where a candidate runs for office. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                office (str): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -561,26 +561,26 @@ class CommunicationCostApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'cycle',
-                    'support_oppose',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'district',
                     'election_full',
-                    'office',
-                    'per_page',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
                     'state',
+                    'sort_hide_null',
+                    'per_page',
+                    'district',
+                    'sort_nulls_last',
+                    'cycle',
+                    'page',
+                    'support_oppose',
+                    'sort_null_only',
+                    'office',
                 ],
                 'required': [
                     'api_key',
                 ],
                 'nullable': [
-                    'support_oppose',
                     'sort',
+                    'support_oppose',
                 ],
                 'enum': [
                     'support_oppose',
@@ -608,68 +608,68 @@ class CommunicationCostApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'cycle':
-                        ([int],),
-                    'support_oppose':
-                        (str, none_type,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'district':
-                        (str,),
                     'election_full':
                         (bool,),
-                    'office':
-                        (str,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
+                    'state':
+                        (str,),
                     'sort_hide_null':
                         (bool,),
-                    'state':
+                    'per_page':
+                        (int,),
+                    'district':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'support_oppose':
+                        (str, none_type,),
+                    'sort_null_only':
+                        (bool,),
+                    'office':
                         (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'cycle': 'cycle',
-                    'support_oppose': 'support_oppose',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'district': 'district',
                     'election_full': 'election_full',
-                    'office': 'office',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
                     'state': 'state',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'support_oppose': 'support_oppose',
+                    'sort_null_only': 'sort_null_only',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'cycle': 'query',
-                    'support_oppose': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'district': 'query',
                     'election_full': 'query',
-                    'office': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
                     'state': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'support_oppose': 'query',
+                    'sort_null_only': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'cycle': 'multi',
                     'candidate_id': 'multi',
+                    'cycle': 'multi',
                 }
             },
             headers_map={
@@ -699,23 +699,23 @@ class CommunicationCostApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                min_date (date): Minimum date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                min_image_number (str): [optional]
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                max_date (date): Maximum date. [optional]
-                support_oppose_indicator ([str]): Support or opposition. [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                max_image_number (str): [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
                 max_amount (str): Filter for all amounts less than a value.. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_date (date): Maximum date. [optional]
+                min_date (date): Minimum date. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                min_image_number (str): [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                max_image_number (str): [optional]
+                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
+                support_oppose_indicator ([str]): Support or opposition. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -780,23 +780,23 @@ class CommunicationCostApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'min_amount',
-                    'min_date',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'per_page',
+                    'min_image_number',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
-                    'max_date',
-                    'support_oppose_indicator',
-                    'line_number',
-                    'sort_null_only',
-                    'max_image_number',
+                    'sort_nulls_last',
+                    'min_amount',
                     'max_amount',
+                    'sort_null_only',
+                    'max_date',
+                    'min_date',
+                    'per_page',
+                    'sort_hide_null',
                     'image_number',
-                    'min_image_number',
+                    'committee_id',
+                    'page',
+                    'max_image_number',
+                    'line_number',
+                    'support_oppose_indicator',
                 ],
                 'required': [
                     'api_key',
@@ -823,86 +823,86 @@ class CommunicationCostApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'min_amount':
+                    'min_image_number':
                         (str,),
-                    'min_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
-                    'sort_hide_null':
+                    'sort_nulls_last':
                         (bool,),
-                    'max_date':
-                        (date,),
-                    'support_oppose_indicator':
-                        ([str],),
-                    'line_number':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'max_image_number':
+                    'min_amount':
                         (str,),
                     'max_amount':
                         (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'max_date':
+                        (date,),
+                    'min_date':
+                        (date,),
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
+                        (bool,),
                     'image_number':
                         ([str],),
-                    'min_image_number':
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'max_image_number':
                         (str,),
+                    'line_number':
+                        (str,),
+                    'support_oppose_indicator':
+                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'min_amount': 'min_amount',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
+                    'min_image_number': 'min_image_number',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'max_date': 'max_date',
-                    'support_oppose_indicator': 'support_oppose_indicator',
-                    'line_number': 'line_number',
-                    'sort_null_only': 'sort_null_only',
-                    'max_image_number': 'max_image_number',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'min_amount': 'min_amount',
                     'max_amount': 'max_amount',
+                    'sort_null_only': 'sort_null_only',
+                    'max_date': 'max_date',
+                    'min_date': 'min_date',
+                    'per_page': 'per_page',
+                    'sort_hide_null': 'sort_hide_null',
                     'image_number': 'image_number',
-                    'min_image_number': 'min_image_number',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'max_image_number': 'max_image_number',
+                    'line_number': 'line_number',
+                    'support_oppose_indicator': 'support_oppose_indicator',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'min_amount': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
+                    'min_image_number': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
-                    'max_date': 'query',
-                    'support_oppose_indicator': 'query',
-                    'line_number': 'query',
-                    'sort_null_only': 'query',
-                    'max_image_number': 'query',
+                    'sort_nulls_last': 'query',
+                    'min_amount': 'query',
                     'max_amount': 'query',
+                    'sort_null_only': 'query',
+                    'max_date': 'query',
+                    'min_date': 'query',
+                    'per_page': 'query',
+                    'sort_hide_null': 'query',
                     'image_number': 'query',
-                    'min_image_number': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'max_image_number': 'query',
+                    'line_number': 'query',
+                    'support_oppose_indicator': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
                     'candidate_id': 'multi',
-                    'support_oppose_indicator': 'multi',
                     'image_number': 'multi',
+                    'committee_id': 'multi',
+                    'support_oppose_indicator': 'multi',
                 }
             },
             headers_map={
@@ -932,15 +932,15 @@ class CommunicationCostApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1005,15 +1005,15 @@ class CommunicationCostApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_full',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -1034,48 +1034,48 @@ class CommunicationCostApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_full':
                         (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_full': 'election_full',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_full': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'candidate_id': 'multi',

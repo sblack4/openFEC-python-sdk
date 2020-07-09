@@ -66,28 +66,28 @@ class DebtsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                min_date (date): Minimum date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                max_amount_incurred (float): [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                nature_of_debt (str): [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'load_date'
-                creditor_debtor_name ([str]): [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                max_date (date): Maximum date. [optional]
-                min_payment_period (float): [optional]
-                max_payment_period (float): [optional]
-                min_amount_incurred (float): [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                max_image_number (str): [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
                 min_image_number (str): [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'load_date'
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                max_amount_incurred (float): [optional]
+                min_amount_incurred (float): [optional]
+                max_payment_period (float): [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_date (date): Maximum date. [optional]
+                min_date (date): Minimum date. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                min_payment_period (float): [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                max_image_number (str): [optional]
+                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
+                nature_of_debt (str): [optional]
+                creditor_debtor_name ([str]): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -152,28 +152,28 @@ class DebtsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'min_amount',
-                    'min_date',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'max_amount_incurred',
-                    'per_page',
-                    'nature_of_debt',
-                    'sort',
-                    'creditor_debtor_name',
-                    'sort_hide_null',
-                    'candidate_id',
-                    'max_date',
-                    'min_payment_period',
-                    'max_payment_period',
-                    'min_amount_incurred',
-                    'line_number',
-                    'sort_null_only',
-                    'max_image_number',
-                    'max_amount',
-                    'image_number',
                     'min_image_number',
+                    'sort',
+                    'candidate_id',
+                    'max_amount_incurred',
+                    'min_amount_incurred',
+                    'max_payment_period',
+                    'sort_nulls_last',
+                    'min_amount',
+                    'max_amount',
+                    'sort_null_only',
+                    'max_date',
+                    'min_date',
+                    'sort_hide_null',
+                    'min_payment_period',
+                    'per_page',
+                    'image_number',
+                    'committee_id',
+                    'page',
+                    'max_image_number',
+                    'line_number',
+                    'nature_of_debt',
+                    'creditor_debtor_name',
                 ],
                 'required': [
                     'api_key',
@@ -193,106 +193,106 @@ class DebtsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'min_amount':
-                        (str,),
-                    'min_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'max_amount_incurred':
-                        (float,),
-                    'per_page':
-                        (int,),
-                    'nature_of_debt':
+                    'min_image_number':
                         (str,),
                     'sort':
                         (str,),
-                    'creditor_debtor_name':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
                     'candidate_id':
                         ([str],),
-                    'max_date':
-                        (date,),
-                    'min_payment_period':
-                        (float,),
-                    'max_payment_period':
+                    'max_amount_incurred':
                         (float,),
                     'min_amount_incurred':
                         (float,),
-                    'line_number':
-                        (str,),
-                    'sort_null_only':
+                    'max_payment_period':
+                        (float,),
+                    'sort_nulls_last':
                         (bool,),
-                    'max_image_number':
+                    'min_amount':
                         (str,),
                     'max_amount':
                         (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'max_date':
+                        (date,),
+                    'min_date':
+                        (date,),
+                    'sort_hide_null':
+                        (bool,),
+                    'min_payment_period':
+                        (float,),
+                    'per_page':
+                        (int,),
                     'image_number':
                         ([str],),
-                    'min_image_number':
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'max_image_number':
                         (str,),
+                    'line_number':
+                        (str,),
+                    'nature_of_debt':
+                        (str,),
+                    'creditor_debtor_name':
+                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'min_amount': 'min_amount',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'max_amount_incurred': 'max_amount_incurred',
-                    'per_page': 'per_page',
-                    'nature_of_debt': 'nature_of_debt',
-                    'sort': 'sort',
-                    'creditor_debtor_name': 'creditor_debtor_name',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_id': 'candidate_id',
-                    'max_date': 'max_date',
-                    'min_payment_period': 'min_payment_period',
-                    'max_payment_period': 'max_payment_period',
-                    'min_amount_incurred': 'min_amount_incurred',
-                    'line_number': 'line_number',
-                    'sort_null_only': 'sort_null_only',
-                    'max_image_number': 'max_image_number',
-                    'max_amount': 'max_amount',
-                    'image_number': 'image_number',
                     'min_image_number': 'min_image_number',
+                    'sort': 'sort',
+                    'candidate_id': 'candidate_id',
+                    'max_amount_incurred': 'max_amount_incurred',
+                    'min_amount_incurred': 'min_amount_incurred',
+                    'max_payment_period': 'max_payment_period',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'min_amount': 'min_amount',
+                    'max_amount': 'max_amount',
+                    'sort_null_only': 'sort_null_only',
+                    'max_date': 'max_date',
+                    'min_date': 'min_date',
+                    'sort_hide_null': 'sort_hide_null',
+                    'min_payment_period': 'min_payment_period',
+                    'per_page': 'per_page',
+                    'image_number': 'image_number',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'max_image_number': 'max_image_number',
+                    'line_number': 'line_number',
+                    'nature_of_debt': 'nature_of_debt',
+                    'creditor_debtor_name': 'creditor_debtor_name',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'min_amount': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'max_amount_incurred': 'query',
-                    'per_page': 'query',
-                    'nature_of_debt': 'query',
-                    'sort': 'query',
-                    'creditor_debtor_name': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_id': 'query',
-                    'max_date': 'query',
-                    'min_payment_period': 'query',
-                    'max_payment_period': 'query',
-                    'min_amount_incurred': 'query',
-                    'line_number': 'query',
-                    'sort_null_only': 'query',
-                    'max_image_number': 'query',
-                    'max_amount': 'query',
-                    'image_number': 'query',
                     'min_image_number': 'query',
+                    'sort': 'query',
+                    'candidate_id': 'query',
+                    'max_amount_incurred': 'query',
+                    'min_amount_incurred': 'query',
+                    'max_payment_period': 'query',
+                    'sort_nulls_last': 'query',
+                    'min_amount': 'query',
+                    'max_amount': 'query',
+                    'sort_null_only': 'query',
+                    'max_date': 'query',
+                    'min_date': 'query',
+                    'sort_hide_null': 'query',
+                    'min_payment_period': 'query',
+                    'per_page': 'query',
+                    'image_number': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'max_image_number': 'query',
+                    'line_number': 'query',
+                    'nature_of_debt': 'query',
+                    'creditor_debtor_name': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
-                    'creditor_debtor_name': 'multi',
                     'candidate_id': 'multi',
                     'image_number': 'multi',
+                    'committee_id': 'multi',
+                    'creditor_debtor_name': 'multi',
                 }
             },
             headers_map={
@@ -324,12 +324,12 @@ class DebtsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'load_date'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -397,12 +397,12 @@ class DebtsApi(object):
                 'all': [
                     'api_key',
                     'sub_id',
-                    'per_page',
-                    'page',
                     'sort_nulls_last',
+                    'page',
                     'sort',
-                    'sort_hide_null',
                     'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -425,38 +425,38 @@ class DebtsApi(object):
                         (str,),
                     'sub_id':
                         (str,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
                     'sort_nulls_last':
                         (bool,),
+                    'page':
+                        (int,),
                     'sort':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
                     'sort_null_only':
                         (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'sub_id': 'sub_id',
-                    'per_page': 'per_page',
-                    'page': 'page',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
                     'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
                     'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'sub_id': 'path',
-                    'per_page': 'query',
-                    'page': 'query',
                     'sort_nulls_last': 'query',
+                    'page': 'query',
                     'sort': 'query',
-                    'sort_hide_null': 'query',
                     'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }

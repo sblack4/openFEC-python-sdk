@@ -70,15 +70,15 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 purpose ([str]): Disbursement purpose category. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -143,15 +143,15 @@ class DisbursementsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
                     'purpose',
-                    'committee_id',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'committee_id',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -172,48 +172,48 @@ class DisbursementsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
                     'purpose':
                         ([str],),
-                    'committee_id':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'committee_id':
+                        ([str],),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
                     'purpose': 'purpose',
-                    'committee_id': 'committee_id',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
                     'purpose': 'query',
-                    'committee_id': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'purpose': 'multi',
@@ -248,15 +248,15 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -321,15 +321,15 @@ class DisbursementsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'recipient_name',
-                    'committee_id',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'recipient_name',
+                    'sort_nulls_last',
+                    'committee_id',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -350,48 +350,48 @@ class DisbursementsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'recipient_name':
-                        ([str],),
-                    'committee_id':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'recipient_name':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'committee_id':
+                        ([str],),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'recipient_name': 'recipient_name',
-                    'committee_id': 'committee_id',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'recipient_name': 'recipient_name',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'recipient_name': 'query',
-                    'committee_id': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'recipient_name': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'recipient_name': 'multi',
@@ -426,15 +426,15 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                recipient_id ([str]): The FEC identifier should be represented here if the entity receiving the disbursement is registered with the FEC.. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                recipient_id ([str]): The FEC identifier should be represented here if the entity receiving the disbursement is registered with the FEC.. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -499,15 +499,15 @@ class DisbursementsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'recipient_id',
-                    'committee_id',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
+                    'recipient_id',
+                    'per_page',
                     'sort_hide_null',
+                    'sort_nulls_last',
+                    'committee_id',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -528,48 +528,48 @@ class DisbursementsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
+                    'sort':
+                        (str, none_type,),
                     'recipient_id':
                         ([str],),
-                    'committee_id':
-                        ([str],),
-                    'sort_null_only':
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
                         (bool,),
                     'sort_nulls_last':
                         (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'sort_hide_null':
-                        (bool,),
+                    'committee_id':
+                        ([str],),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'recipient_id': 'recipient_id',
-                    'committee_id': 'committee_id',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'recipient_id': 'recipient_id',
+                    'per_page': 'per_page',
                     'sort_hide_null': 'sort_hide_null',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'recipient_id': 'query',
-                    'committee_id': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'recipient_id': 'query',
+                    'per_page': 'query',
                     'sort_hide_null': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'recipient_id': 'multi',
@@ -604,20 +604,20 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                recipient_state ([str]): State of recipient. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 disbursement_description ([str]): Description of disbursement. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                min_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the         &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index         of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                min_amount (str): Filter for all amounts less than a value.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
+                min_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the         &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index         of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                recipient_city ([str]): City of recipient. [optional]
+                recipient_state ([str]): State of recipient. [optional]
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_amount (str): Filter for all amounts less than a value.. [optional]
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 max_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the         &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index         of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
@@ -683,20 +683,20 @@ class DisbursementsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'recipient_state',
-                    'page',
                     'disbursement_description',
-                    'recipient_city',
-                    'min_date',
-                    'committee_id',
-                    'min_amount',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'image_number',
-                    'max_amount',
-                    'per_page',
                     'sort',
+                    'min_date',
+                    'per_page',
                     'sort_hide_null',
+                    'recipient_city',
+                    'recipient_state',
+                    'image_number',
+                    'sort_nulls_last',
+                    'committee_id',
+                    'page',
+                    'min_amount',
+                    'max_amount',
+                    'sort_null_only',
                     'max_date',
                 ],
                 'required': [
@@ -719,79 +719,79 @@ class DisbursementsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
+                    'disbursement_description':
+                        ([str],),
+                    'sort':
+                        (str,),
+                    'min_date':
+                        (date, none_type,),
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
+                        (bool,),
+                    'recipient_city':
+                        ([str],),
                     'recipient_state':
+                        ([str],),
+                    'image_number':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'committee_id':
                         ([str],),
                     'page':
                         (int,),
-                    'disbursement_description':
-                        ([str],),
-                    'recipient_city':
-                        ([str],),
-                    'min_date':
-                        (date, none_type,),
-                    'committee_id':
-                        ([str],),
                     'min_amount':
                         (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'image_number':
-                        ([str],),
                     'max_amount':
                         (str,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
+                    'sort_null_only':
                         (bool,),
                     'max_date':
                         (date, none_type,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'recipient_state': 'recipient_state',
-                    'page': 'page',
                     'disbursement_description': 'disbursement_description',
-                    'recipient_city': 'recipient_city',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'min_amount': 'min_amount',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'image_number': 'image_number',
-                    'max_amount': 'max_amount',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'min_date': 'min_date',
+                    'per_page': 'per_page',
                     'sort_hide_null': 'sort_hide_null',
+                    'recipient_city': 'recipient_city',
+                    'recipient_state': 'recipient_state',
+                    'image_number': 'image_number',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'min_amount': 'min_amount',
+                    'max_amount': 'max_amount',
+                    'sort_null_only': 'sort_null_only',
                     'max_date': 'max_date',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'recipient_state': 'query',
-                    'page': 'query',
                     'disbursement_description': 'query',
-                    'recipient_city': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'min_amount': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'image_number': 'query',
-                    'max_amount': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'min_date': 'query',
+                    'per_page': 'query',
                     'sort_hide_null': 'query',
+                    'recipient_city': 'query',
+                    'recipient_state': 'query',
+                    'image_number': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'min_amount': 'query',
+                    'max_amount': 'query',
+                    'sort_null_only': 'query',
                     'max_date': 'query',
                 },
                 'collection_format_map': {
-                    'recipient_state': 'multi',
                     'disbursement_description': 'multi',
                     'recipient_city': 'multi',
-                    'committee_id': 'multi',
+                    'recipient_state': 'multi',
                     'image_number': 'multi',
+                    'committee_id': 'multi',
                 }
             },
             headers_map={
@@ -821,32 +821,32 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                recipient_state ([str]): State of recipient. [optional]
-                disbursement_description ([str]): Description of disbursement. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                min_date (date): Minimum date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                max_date (date): Maximum date. [optional]
-                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                last_index (int, none_type): Index of last result from previous page. [optional]
-                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
-                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                max_image_number (str): [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
                 min_image_number (str): [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
+                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
+                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
+                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
+                recipient_city ([str]): City of recipient. [optional]
+                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                last_index (int, none_type): Index of last result from previous page. [optional]
+                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
+                max_date (date): Maximum date. [optional]
+                disbursement_description ([str]): Description of disbursement. [optional]
+                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
+                min_date (date): Minimum date. [optional]
+                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                recipient_state ([str]): State of recipient. [optional]
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                max_image_number (str): [optional]
+                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -911,44 +911,44 @@ class DisbursementsApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'recipient_state',
-                    'disbursement_description',
-                    'recipient_city',
-                    'min_amount',
-                    'min_date',
-                    'committee_id',
-                    'spender_committee_designation',
-                    'per_page',
-                    'last_disbursement_date',
-                    'sort',
-                    'sort_hide_null',
-                    'max_date',
-                    'spender_committee_type',
-                    'last_index',
-                    'two_year_transaction_period',
-                    'disbursement_purpose_category',
-                    'recipient_name',
-                    'last_disbursement_amount',
-                    'recipient_committee_id',
-                    'line_number',
-                    'sort_null_only',
-                    'max_image_number',
-                    'max_amount',
-                    'spender_committee_org_type',
-                    'image_number',
                     'min_image_number',
+                    'sort',
+                    'last_disbursement_date',
+                    'spender_committee_type',
+                    'last_disbursement_amount',
+                    'recipient_name',
+                    'recipient_city',
+                    'recipient_committee_id',
+                    'min_amount',
+                    'max_amount',
+                    'last_index',
+                    'spender_committee_designation',
+                    'sort_null_only',
+                    'disbursement_purpose_category',
+                    'max_date',
+                    'disbursement_description',
+                    'spender_committee_org_type',
+                    'min_date',
+                    'two_year_transaction_period',
+                    'sort_hide_null',
+                    'per_page',
+                    'recipient_state',
+                    'image_number',
+                    'committee_id',
+                    'max_image_number',
+                    'line_number',
                 ],
                 'required': [
                     'api_key',
                 ],
                 'nullable': [
                     'last_disbursement_date',
-                    'last_index',
                     'last_disbursement_amount',
+                    'last_index',
                 ],
                 'enum': [
-                    'spender_committee_designation',
                     'spender_committee_type',
+                    'spender_committee_designation',
                     'spender_committee_org_type',
                 ],
                 'validation': [
@@ -958,16 +958,6 @@ class DisbursementsApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('spender_committee_designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
                     ('spender_committee_type',): {
 
                         'EMPTY': '',
@@ -988,6 +978,16 @@ class DisbursementsApi(object):
                         'Y': 'Y',
                         'Z': 'Z'
                     },
+                    ('spender_committee_designation',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'J': 'J',
+                        'P': 'P',
+                        'U': 'U',
+                        'B': 'B',
+                        'D': 'D'
+                    },
                     ('spender_committee_org_type',): {
 
                         'EMPTY': '',
@@ -1002,130 +1002,130 @@ class DisbursementsApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'recipient_state':
-                        ([str],),
-                    'disbursement_description':
-                        ([str],),
-                    'recipient_city':
-                        ([str],),
-                    'min_amount':
+                    'min_image_number':
                         (str,),
-                    'min_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'spender_committee_designation':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'last_disbursement_date':
-                        (date, none_type,),
                     'sort':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'max_date':
-                        (date,),
+                    'last_disbursement_date':
+                        (date, none_type,),
                     'spender_committee_type':
-                        ([str],),
-                    'last_index':
-                        (int, none_type,),
-                    'two_year_transaction_period':
-                        ([int],),
-                    'disbursement_purpose_category':
-                        ([str],),
-                    'recipient_name':
                         ([str],),
                     'last_disbursement_amount':
                         (float, none_type,),
+                    'recipient_name':
+                        ([str],),
+                    'recipient_city':
+                        ([str],),
                     'recipient_committee_id':
                         ([str],),
-                    'line_number':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'max_image_number':
+                    'min_amount':
                         (str,),
                     'max_amount':
                         (str,),
+                    'last_index':
+                        (int, none_type,),
+                    'spender_committee_designation':
+                        ([str],),
+                    'sort_null_only':
+                        (bool,),
+                    'disbursement_purpose_category':
+                        ([str],),
+                    'max_date':
+                        (date,),
+                    'disbursement_description':
+                        ([str],),
                     'spender_committee_org_type':
+                        ([str],),
+                    'min_date':
+                        (date,),
+                    'two_year_transaction_period':
+                        ([int],),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'recipient_state':
                         ([str],),
                     'image_number':
                         ([str],),
-                    'min_image_number':
+                    'committee_id':
+                        ([str],),
+                    'max_image_number':
+                        (str,),
+                    'line_number':
                         (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'recipient_state': 'recipient_state',
-                    'disbursement_description': 'disbursement_description',
-                    'recipient_city': 'recipient_city',
-                    'min_amount': 'min_amount',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'spender_committee_designation': 'spender_committee_designation',
-                    'per_page': 'per_page',
-                    'last_disbursement_date': 'last_disbursement_date',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'max_date': 'max_date',
-                    'spender_committee_type': 'spender_committee_type',
-                    'last_index': 'last_index',
-                    'two_year_transaction_period': 'two_year_transaction_period',
-                    'disbursement_purpose_category': 'disbursement_purpose_category',
-                    'recipient_name': 'recipient_name',
-                    'last_disbursement_amount': 'last_disbursement_amount',
-                    'recipient_committee_id': 'recipient_committee_id',
-                    'line_number': 'line_number',
-                    'sort_null_only': 'sort_null_only',
-                    'max_image_number': 'max_image_number',
-                    'max_amount': 'max_amount',
-                    'spender_committee_org_type': 'spender_committee_org_type',
-                    'image_number': 'image_number',
                     'min_image_number': 'min_image_number',
+                    'sort': 'sort',
+                    'last_disbursement_date': 'last_disbursement_date',
+                    'spender_committee_type': 'spender_committee_type',
+                    'last_disbursement_amount': 'last_disbursement_amount',
+                    'recipient_name': 'recipient_name',
+                    'recipient_city': 'recipient_city',
+                    'recipient_committee_id': 'recipient_committee_id',
+                    'min_amount': 'min_amount',
+                    'max_amount': 'max_amount',
+                    'last_index': 'last_index',
+                    'spender_committee_designation': 'spender_committee_designation',
+                    'sort_null_only': 'sort_null_only',
+                    'disbursement_purpose_category': 'disbursement_purpose_category',
+                    'max_date': 'max_date',
+                    'disbursement_description': 'disbursement_description',
+                    'spender_committee_org_type': 'spender_committee_org_type',
+                    'min_date': 'min_date',
+                    'two_year_transaction_period': 'two_year_transaction_period',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'recipient_state': 'recipient_state',
+                    'image_number': 'image_number',
+                    'committee_id': 'committee_id',
+                    'max_image_number': 'max_image_number',
+                    'line_number': 'line_number',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'recipient_state': 'query',
-                    'disbursement_description': 'query',
-                    'recipient_city': 'query',
-                    'min_amount': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'spender_committee_designation': 'query',
-                    'per_page': 'query',
-                    'last_disbursement_date': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'max_date': 'query',
-                    'spender_committee_type': 'query',
-                    'last_index': 'query',
-                    'two_year_transaction_period': 'query',
-                    'disbursement_purpose_category': 'query',
-                    'recipient_name': 'query',
-                    'last_disbursement_amount': 'query',
-                    'recipient_committee_id': 'query',
-                    'line_number': 'query',
-                    'sort_null_only': 'query',
-                    'max_image_number': 'query',
-                    'max_amount': 'query',
-                    'spender_committee_org_type': 'query',
-                    'image_number': 'query',
                     'min_image_number': 'query',
+                    'sort': 'query',
+                    'last_disbursement_date': 'query',
+                    'spender_committee_type': 'query',
+                    'last_disbursement_amount': 'query',
+                    'recipient_name': 'query',
+                    'recipient_city': 'query',
+                    'recipient_committee_id': 'query',
+                    'min_amount': 'query',
+                    'max_amount': 'query',
+                    'last_index': 'query',
+                    'spender_committee_designation': 'query',
+                    'sort_null_only': 'query',
+                    'disbursement_purpose_category': 'query',
+                    'max_date': 'query',
+                    'disbursement_description': 'query',
+                    'spender_committee_org_type': 'query',
+                    'min_date': 'query',
+                    'two_year_transaction_period': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'recipient_state': 'query',
+                    'image_number': 'query',
+                    'committee_id': 'query',
+                    'max_image_number': 'query',
+                    'line_number': 'query',
                 },
                 'collection_format_map': {
-                    'recipient_state': 'multi',
-                    'disbursement_description': 'multi',
-                    'recipient_city': 'multi',
-                    'committee_id': 'multi',
-                    'spender_committee_designation': 'multi',
                     'spender_committee_type': 'multi',
-                    'two_year_transaction_period': 'multi',
-                    'disbursement_purpose_category': 'multi',
                     'recipient_name': 'multi',
+                    'recipient_city': 'multi',
                     'recipient_committee_id': 'multi',
+                    'spender_committee_designation': 'multi',
+                    'disbursement_purpose_category': 'multi',
+                    'disbursement_description': 'multi',
                     'spender_committee_org_type': 'multi',
+                    'two_year_transaction_period': 'multi',
+                    'recipient_state': 'multi',
                     'image_number': 'multi',
+                    'committee_id': 'multi',
                 }
             },
             headers_map={
@@ -1157,32 +1157,32 @@ class DisbursementsApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                recipient_state ([str]): State of recipient. [optional]
-                disbursement_description ([str]): Description of disbursement. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                min_date (date): Minimum date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                max_date (date): Maximum date. [optional]
-                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                last_index (int, none_type): Index of last result from previous page. [optional]
-                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
-                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                max_image_number (str): [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
                 min_image_number (str): [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
+                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
+                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
+                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
+                recipient_city ([str]): City of recipient. [optional]
+                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                last_index (int, none_type): Index of last result from previous page. [optional]
+                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
+                max_date (date): Maximum date. [optional]
+                disbursement_description ([str]): Description of disbursement. [optional]
+                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
+                min_date (date): Minimum date. [optional]
+                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                recipient_state ([str]): State of recipient. [optional]
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                max_image_number (str): [optional]
+                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1250,32 +1250,32 @@ class DisbursementsApi(object):
                 'all': [
                     'api_key',
                     'sub_id',
-                    'recipient_state',
-                    'disbursement_description',
-                    'recipient_city',
-                    'min_amount',
-                    'min_date',
-                    'committee_id',
-                    'spender_committee_designation',
-                    'per_page',
-                    'last_disbursement_date',
-                    'sort',
-                    'sort_hide_null',
-                    'max_date',
-                    'spender_committee_type',
-                    'last_index',
-                    'two_year_transaction_period',
-                    'disbursement_purpose_category',
-                    'recipient_name',
-                    'last_disbursement_amount',
-                    'recipient_committee_id',
-                    'line_number',
-                    'sort_null_only',
-                    'max_image_number',
-                    'max_amount',
-                    'spender_committee_org_type',
-                    'image_number',
                     'min_image_number',
+                    'sort',
+                    'last_disbursement_date',
+                    'spender_committee_type',
+                    'last_disbursement_amount',
+                    'recipient_name',
+                    'recipient_city',
+                    'recipient_committee_id',
+                    'min_amount',
+                    'max_amount',
+                    'last_index',
+                    'spender_committee_designation',
+                    'sort_null_only',
+                    'disbursement_purpose_category',
+                    'max_date',
+                    'disbursement_description',
+                    'spender_committee_org_type',
+                    'min_date',
+                    'two_year_transaction_period',
+                    'sort_hide_null',
+                    'per_page',
+                    'recipient_state',
+                    'image_number',
+                    'committee_id',
+                    'max_image_number',
+                    'line_number',
                 ],
                 'required': [
                     'api_key',
@@ -1283,12 +1283,12 @@ class DisbursementsApi(object):
                 ],
                 'nullable': [
                     'last_disbursement_date',
-                    'last_index',
                     'last_disbursement_amount',
+                    'last_index',
                 ],
                 'enum': [
-                    'spender_committee_designation',
                     'spender_committee_type',
+                    'spender_committee_designation',
                     'spender_committee_org_type',
                 ],
                 'validation': [
@@ -1298,16 +1298,6 @@ class DisbursementsApi(object):
                 'validations': {
                 },
                 'allowed_values': {
-                    ('spender_committee_designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
                     ('spender_committee_type',): {
 
                         'EMPTY': '',
@@ -1328,6 +1318,16 @@ class DisbursementsApi(object):
                         'Y': 'Y',
                         'Z': 'Z'
                     },
+                    ('spender_committee_designation',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'J': 'J',
+                        'P': 'P',
+                        'U': 'U',
+                        'B': 'B',
+                        'D': 'D'
+                    },
                     ('spender_committee_org_type',): {
 
                         'EMPTY': '',
@@ -1344,132 +1344,132 @@ class DisbursementsApi(object):
                         (str,),
                     'sub_id':
                         (str,),
-                    'recipient_state':
-                        ([str],),
-                    'disbursement_description':
-                        ([str],),
-                    'recipient_city':
-                        ([str],),
-                    'min_amount':
+                    'min_image_number':
                         (str,),
-                    'min_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'spender_committee_designation':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'last_disbursement_date':
-                        (date, none_type,),
                     'sort':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'max_date':
-                        (date,),
+                    'last_disbursement_date':
+                        (date, none_type,),
                     'spender_committee_type':
-                        ([str],),
-                    'last_index':
-                        (int, none_type,),
-                    'two_year_transaction_period':
-                        ([int],),
-                    'disbursement_purpose_category':
-                        ([str],),
-                    'recipient_name':
                         ([str],),
                     'last_disbursement_amount':
                         (float, none_type,),
+                    'recipient_name':
+                        ([str],),
+                    'recipient_city':
+                        ([str],),
                     'recipient_committee_id':
                         ([str],),
-                    'line_number':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'max_image_number':
+                    'min_amount':
                         (str,),
                     'max_amount':
                         (str,),
+                    'last_index':
+                        (int, none_type,),
+                    'spender_committee_designation':
+                        ([str],),
+                    'sort_null_only':
+                        (bool,),
+                    'disbursement_purpose_category':
+                        ([str],),
+                    'max_date':
+                        (date,),
+                    'disbursement_description':
+                        ([str],),
                     'spender_committee_org_type':
+                        ([str],),
+                    'min_date':
+                        (date,),
+                    'two_year_transaction_period':
+                        ([int],),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'recipient_state':
                         ([str],),
                     'image_number':
                         ([str],),
-                    'min_image_number':
+                    'committee_id':
+                        ([str],),
+                    'max_image_number':
+                        (str,),
+                    'line_number':
                         (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'sub_id': 'sub_id',
-                    'recipient_state': 'recipient_state',
-                    'disbursement_description': 'disbursement_description',
-                    'recipient_city': 'recipient_city',
-                    'min_amount': 'min_amount',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'spender_committee_designation': 'spender_committee_designation',
-                    'per_page': 'per_page',
-                    'last_disbursement_date': 'last_disbursement_date',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'max_date': 'max_date',
-                    'spender_committee_type': 'spender_committee_type',
-                    'last_index': 'last_index',
-                    'two_year_transaction_period': 'two_year_transaction_period',
-                    'disbursement_purpose_category': 'disbursement_purpose_category',
-                    'recipient_name': 'recipient_name',
-                    'last_disbursement_amount': 'last_disbursement_amount',
-                    'recipient_committee_id': 'recipient_committee_id',
-                    'line_number': 'line_number',
-                    'sort_null_only': 'sort_null_only',
-                    'max_image_number': 'max_image_number',
-                    'max_amount': 'max_amount',
-                    'spender_committee_org_type': 'spender_committee_org_type',
-                    'image_number': 'image_number',
                     'min_image_number': 'min_image_number',
+                    'sort': 'sort',
+                    'last_disbursement_date': 'last_disbursement_date',
+                    'spender_committee_type': 'spender_committee_type',
+                    'last_disbursement_amount': 'last_disbursement_amount',
+                    'recipient_name': 'recipient_name',
+                    'recipient_city': 'recipient_city',
+                    'recipient_committee_id': 'recipient_committee_id',
+                    'min_amount': 'min_amount',
+                    'max_amount': 'max_amount',
+                    'last_index': 'last_index',
+                    'spender_committee_designation': 'spender_committee_designation',
+                    'sort_null_only': 'sort_null_only',
+                    'disbursement_purpose_category': 'disbursement_purpose_category',
+                    'max_date': 'max_date',
+                    'disbursement_description': 'disbursement_description',
+                    'spender_committee_org_type': 'spender_committee_org_type',
+                    'min_date': 'min_date',
+                    'two_year_transaction_period': 'two_year_transaction_period',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'recipient_state': 'recipient_state',
+                    'image_number': 'image_number',
+                    'committee_id': 'committee_id',
+                    'max_image_number': 'max_image_number',
+                    'line_number': 'line_number',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'sub_id': 'path',
-                    'recipient_state': 'query',
-                    'disbursement_description': 'query',
-                    'recipient_city': 'query',
-                    'min_amount': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'spender_committee_designation': 'query',
-                    'per_page': 'query',
-                    'last_disbursement_date': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'max_date': 'query',
-                    'spender_committee_type': 'query',
-                    'last_index': 'query',
-                    'two_year_transaction_period': 'query',
-                    'disbursement_purpose_category': 'query',
-                    'recipient_name': 'query',
-                    'last_disbursement_amount': 'query',
-                    'recipient_committee_id': 'query',
-                    'line_number': 'query',
-                    'sort_null_only': 'query',
-                    'max_image_number': 'query',
-                    'max_amount': 'query',
-                    'spender_committee_org_type': 'query',
-                    'image_number': 'query',
                     'min_image_number': 'query',
+                    'sort': 'query',
+                    'last_disbursement_date': 'query',
+                    'spender_committee_type': 'query',
+                    'last_disbursement_amount': 'query',
+                    'recipient_name': 'query',
+                    'recipient_city': 'query',
+                    'recipient_committee_id': 'query',
+                    'min_amount': 'query',
+                    'max_amount': 'query',
+                    'last_index': 'query',
+                    'spender_committee_designation': 'query',
+                    'sort_null_only': 'query',
+                    'disbursement_purpose_category': 'query',
+                    'max_date': 'query',
+                    'disbursement_description': 'query',
+                    'spender_committee_org_type': 'query',
+                    'min_date': 'query',
+                    'two_year_transaction_period': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'recipient_state': 'query',
+                    'image_number': 'query',
+                    'committee_id': 'query',
+                    'max_image_number': 'query',
+                    'line_number': 'query',
                 },
                 'collection_format_map': {
-                    'recipient_state': 'multi',
-                    'disbursement_description': 'multi',
-                    'recipient_city': 'multi',
-                    'committee_id': 'multi',
-                    'spender_committee_designation': 'multi',
                     'spender_committee_type': 'multi',
-                    'two_year_transaction_period': 'multi',
-                    'disbursement_purpose_category': 'multi',
                     'recipient_name': 'multi',
+                    'recipient_city': 'multi',
                     'recipient_committee_id': 'multi',
+                    'spender_committee_designation': 'multi',
+                    'disbursement_purpose_category': 'multi',
+                    'disbursement_description': 'multi',
                     'spender_committee_org_type': 'multi',
+                    'two_year_transaction_period': 'multi',
+                    'recipient_state': 'multi',
                     'image_number': 'multi',
+                    'committee_id': 'multi',
                 }
             },
             headers_map={

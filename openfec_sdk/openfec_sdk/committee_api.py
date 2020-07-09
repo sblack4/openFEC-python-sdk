@@ -70,18 +70,18 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
+                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -149,18 +149,18 @@ class CommitteeApi(object):
                 'all': [
                     'api_key',
                     'candidate_id',
-                    'page',
-                    'sort_nulls_last',
-                    'committee_type',
-                    'designation',
-                    'sort_null_only',
-                    'organization_type',
-                    'per_page',
-                    'sort',
-                    'filing_frequency',
-                    'sort_hide_null',
                     'year',
+                    'filing_frequency',
+                    'sort',
+                    'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'committee_type',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'organization_type',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -169,10 +169,10 @@ class CommitteeApi(object):
                 'nullable': [
                 ],
                 'enum': [
-                    'committee_type',
-                    'designation',
-                    'organization_type',
                     'filing_frequency',
+                    'designation',
+                    'committee_type',
+                    'organization_type',
                 ],
                 'validation': [
                 ]
@@ -181,6 +181,28 @@ class CommitteeApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('filing_frequency',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'M': 'M',
+                        'N': 'N',
+                        'Q': 'Q',
+                        'T': 'T',
+                        'W': 'W',
+                        '-A': '-A',
+                        '-T': '-T'
+                    },
+                    ('designation',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'J': 'J',
+                        'P': 'P',
+                        'U': 'U',
+                        'B': 'B',
+                        'D': 'D'
+                    },
                     ('committee_type',): {
 
                         'EMPTY': '',
@@ -201,16 +223,6 @@ class CommitteeApi(object):
                         'Y': 'Y',
                         'Z': 'Z'
                     },
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
                     ('organization_type',): {
 
                         'EMPTY': '',
@@ -221,88 +233,76 @@ class CommitteeApi(object):
                         'V': 'V',
                         'W': 'W'
                     },
-                    ('filing_frequency',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'M': 'M',
-                        'N': 'N',
-                        'Q': 'Q',
-                        'T': 'T',
-                        'W': 'W',
-                        '-A': '-A',
-                        '-T': '-T'
-                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
                     'candidate_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
+                    'year':
+                        ([int],),
+                    'filing_frequency':
+                        ([str],),
+                    'sort':
+                        (str,),
+                    'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
                     'committee_type':
                         ([str],),
-                    'designation':
+                    'sort_nulls_last':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'organization_type':
                         ([str],),
                     'sort_null_only':
                         (bool,),
-                    'organization_type':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'filing_frequency':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'year':
-                        ([int],),
-                    'cycle':
-                        ([int],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'candidate_id': 'candidate_id',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_type': 'committee_type',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'organization_type': 'organization_type',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'filing_frequency': 'filing_frequency',
-                    'sort_hide_null': 'sort_hide_null',
                     'year': 'year',
+                    'filing_frequency': 'filing_frequency',
+                    'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'committee_type': 'committee_type',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'organization_type': 'organization_type',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'candidate_id': 'path',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_type': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'organization_type': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'filing_frequency': 'query',
-                    'sort_hide_null': 'query',
                     'year': 'query',
+                    'filing_frequency': 'query',
+                    'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'committee_type': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'organization_type': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'committee_type': 'multi',
-                    'designation': 'multi',
-                    'organization_type': 'multi',
-                    'filing_frequency': 'multi',
                     'year': 'multi',
+                    'filing_frequency': 'multi',
+                    'designation': 'multi',
+                    'committee_type': 'multi',
                     'cycle': 'multi',
+                    'organization_type': 'multi',
                 }
             },
             headers_map={
@@ -336,14 +336,14 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -414,14 +414,14 @@ class CommitteeApi(object):
                     'api_key',
                     'cycle',
                     'candidate_id',
-                    'page',
-                    'sort_null_only',
-                    'designation',
                     'election_full',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -458,48 +458,48 @@ class CommitteeApi(object):
                         (int,),
                     'candidate_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'designation':
-                        ([str],),
                     'election_full':
                         (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
                         (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'cycle': 'cycle',
                     'candidate_id': 'candidate_id',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'designation': 'designation',
                     'election_full': 'election_full',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'cycle': 'path',
                     'candidate_id': 'path',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'designation': 'query',
                     'election_full': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'designation': 'multi',
@@ -534,14 +534,14 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -609,14 +609,14 @@ class CommitteeApi(object):
                 'all': [
                     'api_key',
                     'candidate_id',
-                    'page',
-                    'sort_null_only',
-                    'designation',
                     'election_full',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -650,46 +650,46 @@ class CommitteeApi(object):
                         (str,),
                     'candidate_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'designation':
-                        ([str],),
                     'election_full':
                         (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
                         (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'candidate_id': 'candidate_id',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'designation': 'designation',
                     'election_full': 'election_full',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'candidate_id': 'path',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'designation': 'query',
                     'election_full': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'designation': 'multi',
@@ -724,18 +724,18 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
+                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -803,18 +803,18 @@ class CommitteeApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'page',
-                    'sort_nulls_last',
-                    'committee_type',
-                    'designation',
-                    'sort_null_only',
-                    'organization_type',
-                    'per_page',
-                    'sort',
-                    'filing_frequency',
-                    'sort_hide_null',
                     'year',
+                    'filing_frequency',
+                    'sort',
+                    'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'committee_type',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'organization_type',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -823,10 +823,10 @@ class CommitteeApi(object):
                 'nullable': [
                 ],
                 'enum': [
-                    'committee_type',
-                    'designation',
-                    'organization_type',
                     'filing_frequency',
+                    'designation',
+                    'committee_type',
+                    'organization_type',
                 ],
                 'validation': [
                 ]
@@ -835,6 +835,28 @@ class CommitteeApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('filing_frequency',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'M': 'M',
+                        'N': 'N',
+                        'Q': 'Q',
+                        'T': 'T',
+                        'W': 'W',
+                        '-A': '-A',
+                        '-T': '-T'
+                    },
+                    ('designation',): {
+
+                        'EMPTY': '',
+                        'A': 'A',
+                        'J': 'J',
+                        'P': 'P',
+                        'U': 'U',
+                        'B': 'B',
+                        'D': 'D'
+                    },
                     ('committee_type',): {
 
                         'EMPTY': '',
@@ -855,16 +877,6 @@ class CommitteeApi(object):
                         'Y': 'Y',
                         'Z': 'Z'
                     },
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
                     ('organization_type',): {
 
                         'EMPTY': '',
@@ -875,88 +887,76 @@ class CommitteeApi(object):
                         'V': 'V',
                         'W': 'W'
                     },
-                    ('filing_frequency',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'M': 'M',
-                        'N': 'N',
-                        'Q': 'Q',
-                        'T': 'T',
-                        'W': 'W',
-                        '-A': '-A',
-                        '-T': '-T'
-                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
                     'committee_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
+                    'year':
+                        ([int],),
+                    'filing_frequency':
+                        ([str],),
+                    'sort':
+                        (str,),
+                    'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
                     'committee_type':
                         ([str],),
-                    'designation':
+                    'sort_nulls_last':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'organization_type':
                         ([str],),
                     'sort_null_only':
                         (bool,),
-                    'organization_type':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'filing_frequency':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'year':
-                        ([int],),
-                    'cycle':
-                        ([int],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_type': 'committee_type',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'organization_type': 'organization_type',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'filing_frequency': 'filing_frequency',
-                    'sort_hide_null': 'sort_hide_null',
                     'year': 'year',
+                    'filing_frequency': 'filing_frequency',
+                    'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'committee_type': 'committee_type',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'organization_type': 'organization_type',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_type': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'organization_type': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'filing_frequency': 'query',
-                    'sort_hide_null': 'query',
                     'year': 'query',
+                    'filing_frequency': 'query',
+                    'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'committee_type': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'organization_type': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'committee_type': 'multi',
-                    'designation': 'multi',
-                    'organization_type': 'multi',
-                    'filing_frequency': 'multi',
                     'year': 'multi',
+                    'filing_frequency': 'multi',
+                    'designation': 'multi',
+                    'committee_type': 'multi',
                     'cycle': 'multi',
+                    'organization_type': 'multi',
                 }
             },
             headers_map={
@@ -990,14 +990,14 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1068,14 +1068,14 @@ class CommitteeApi(object):
                     'api_key',
                     'committee_id',
                     'cycle',
-                    'page',
-                    'sort_null_only',
-                    'designation',
                     'election_full',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -1112,48 +1112,48 @@ class CommitteeApi(object):
                         (str,),
                     'cycle':
                         (int,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'designation':
-                        ([str],),
                     'election_full':
                         (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
                         (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
                     'cycle': 'cycle',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'designation': 'designation',
                     'election_full': 'election_full',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
                     'cycle': 'path',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'designation': 'query',
                     'election_full': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'designation': 'multi',
@@ -1188,14 +1188,14 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1263,14 +1263,14 @@ class CommitteeApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'page',
-                    'sort_null_only',
-                    'designation',
                     'election_full',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -1304,46 +1304,46 @@ class CommitteeApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'designation':
-                        ([str],),
                     'election_full':
                         (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
                         (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'designation': 'designation',
                     'election_full': 'election_full',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'designation': 'query',
                     'election_full': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'designation': 'multi',
@@ -1376,28 +1376,28 @@ class CommitteeApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
                 max_first_file_date (date): Filter for committees whose first filing was received on or before this date.. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                max_last_f1_date (date): Filter for committees whose latest Form 1 was received on or before this date.. [optional]
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
-                cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                min_last_f1_date (date): Filter for committees whose latest Form 1 was received on or after this date.. [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
+                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
                 committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                treasurer_name ([str]): Name of the Committee&#39;s treasurer. If multiple treasurers for the committee, the most recent treasurer will be shown.. [optional]
-                min_first_file_date (date): Filter for committees whose first filing was received on or after this date.. [optional]
                 state ([str]): US state or territory. [optional]
+                max_last_f1_date (date): Filter for committees whose latest Form 1 was received on or before this date.. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                min_last_f1_date (date): Filter for committees whose latest Form 1 was received on or after this date.. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                min_first_file_date (date): Filter for committees whose first filing was received on or after this date.. [optional]
+                treasurer_name ([str]): Name of the Committee&#39;s treasurer. If multiple treasurers for the committee, the most recent treasurer will be shown.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1462,28 +1462,28 @@ class CommitteeApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
+                    'year',
                     'max_first_file_date',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'designation',
-                    'q',
-                    'organization_type',
-                    'per_page',
-                    'max_last_f1_date',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
-                    'year',
-                    'cycle',
-                    'min_last_f1_date',
-                    'party',
+                    'q',
+                    'designation',
                     'committee_type',
+                    'sort_nulls_last',
+                    'organization_type',
                     'sort_null_only',
                     'filing_frequency',
-                    'treasurer_name',
-                    'min_first_file_date',
                     'state',
+                    'max_last_f1_date',
+                    'sort_hide_null',
+                    'per_page',
+                    'party',
+                    'min_last_f1_date',
+                    'committee_id',
+                    'page',
+                    'cycle',
+                    'min_first_file_date',
+                    'treasurer_name',
                 ],
                 'required': [
                     'api_key',
@@ -1492,8 +1492,8 @@ class CommitteeApi(object):
                 ],
                 'enum': [
                     'designation',
-                    'organization_type',
                     'committee_type',
+                    'organization_type',
                     'filing_frequency',
                 ],
                 'validation': [
@@ -1512,16 +1512,6 @@ class CommitteeApi(object):
                         'U': 'U',
                         'B': 'B',
                         'D': 'D'
-                    },
-                    ('organization_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
                     },
                     ('committee_type',): {
 
@@ -1543,6 +1533,16 @@ class CommitteeApi(object):
                         'Y': 'Y',
                         'Z': 'Z'
                     },
+                    ('organization_type',): {
+
+                        'EMPTY': '',
+                        'C': 'C',
+                        'L': 'L',
+                        'M': 'M',
+                        'T': 'T',
+                        'V': 'V',
+                        'W': 'W'
+                    },
                     ('filing_frequency',): {
 
                         'EMPTY': '',
@@ -1559,114 +1559,114 @@ class CommitteeApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
+                    'year':
+                        ([int],),
                     'max_first_file_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'q':
-                        ([str],),
-                    'organization_type':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'max_last_f1_date':
                         (date,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'year':
-                        ([int],),
-                    'cycle':
-                        ([int],),
-                    'min_last_f1_date':
-                        (date,),
-                    'party':
+                    'q':
+                        ([str],),
+                    'designation':
                         ([str],),
                     'committee_type':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'organization_type':
                         ([str],),
                     'sort_null_only':
                         (bool,),
                     'filing_frequency':
                         ([str],),
-                    'treasurer_name':
+                    'state':
                         ([str],),
+                    'max_last_f1_date':
+                        (date,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'party':
+                        ([str],),
+                    'min_last_f1_date':
+                        (date,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'cycle':
+                        ([int],),
                     'min_first_file_date':
                         (date,),
-                    'state':
+                    'treasurer_name':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
+                    'year': 'year',
                     'max_first_file_date': 'max_first_file_date',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'designation': 'designation',
-                    'q': 'q',
-                    'organization_type': 'organization_type',
-                    'per_page': 'per_page',
-                    'max_last_f1_date': 'max_last_f1_date',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'year': 'year',
-                    'cycle': 'cycle',
-                    'min_last_f1_date': 'min_last_f1_date',
-                    'party': 'party',
+                    'q': 'q',
+                    'designation': 'designation',
                     'committee_type': 'committee_type',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'organization_type': 'organization_type',
                     'sort_null_only': 'sort_null_only',
                     'filing_frequency': 'filing_frequency',
-                    'treasurer_name': 'treasurer_name',
-                    'min_first_file_date': 'min_first_file_date',
                     'state': 'state',
+                    'max_last_f1_date': 'max_last_f1_date',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'party': 'party',
+                    'min_last_f1_date': 'min_last_f1_date',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'cycle': 'cycle',
+                    'min_first_file_date': 'min_first_file_date',
+                    'treasurer_name': 'treasurer_name',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
+                    'year': 'query',
                     'max_first_file_date': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'designation': 'query',
-                    'q': 'query',
-                    'organization_type': 'query',
-                    'per_page': 'query',
-                    'max_last_f1_date': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
-                    'year': 'query',
-                    'cycle': 'query',
-                    'min_last_f1_date': 'query',
-                    'party': 'query',
+                    'q': 'query',
+                    'designation': 'query',
                     'committee_type': 'query',
+                    'sort_nulls_last': 'query',
+                    'organization_type': 'query',
                     'sort_null_only': 'query',
                     'filing_frequency': 'query',
-                    'treasurer_name': 'query',
-                    'min_first_file_date': 'query',
                     'state': 'query',
+                    'max_last_f1_date': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'party': 'query',
+                    'min_last_f1_date': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'cycle': 'query',
+                    'min_first_file_date': 'query',
+                    'treasurer_name': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
-                    'designation': 'multi',
-                    'q': 'multi',
-                    'organization_type': 'multi',
-                    'candidate_id': 'multi',
                     'year': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
+                    'candidate_id': 'multi',
+                    'q': 'multi',
+                    'designation': 'multi',
                     'committee_type': 'multi',
+                    'organization_type': 'multi',
                     'filing_frequency': 'multi',
-                    'treasurer_name': 'multi',
                     'state': 'multi',
+                    'party': 'multi',
+                    'committee_id': 'multi',
+                    'cycle': 'multi',
+                    'treasurer_name': 'multi',
                 }
             },
             headers_map={

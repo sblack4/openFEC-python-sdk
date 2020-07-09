@@ -70,14 +70,14 @@ class PresidentialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                contributor_state ([str]): State of contributor. [optional]
                 election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-net_receipts'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                contributor_state ([str]): State of contributor. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -142,14 +142,14 @@ class PresidentialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'contributor_state',
                     'election_year',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'contributor_state',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -169,48 +169,48 @@ class PresidentialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'contributor_state':
-                        ([str],),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'contributor_state':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'contributor_state': 'contributor_state',
                     'election_year': 'election_year',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'contributor_state': 'contributor_state',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'contributor_state': 'query',
                     'election_year': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'contributor_state': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'contributor_state': 'multi',
                     'election_year': 'multi',
+                    'contributor_state': 'multi',
                 }
             },
             headers_map={
@@ -240,15 +240,15 @@ class PresidentialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                size ([int]):  The total all contributions in the following ranges: &#x60;&#x60;&#x60;   -0    $200 and under   -200  $200.01 - $499.99   -500  $500 - $999.99   -1000 $1000 - $1999.99   -2000 $2000 + &#x60;&#x60;&#x60; Unitemized contributions are included in the &#x60;0&#x60; category. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'size'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans . [optional]
+                size ([int]):  The total all contributions in the following ranges: &#x60;&#x60;&#x60;   -0    $200 and under   -200  $200.01 - $499.99   -500  $500 - $999.99   -1000 $1000 - $1999.99   -2000 $2000 + &#x60;&#x60;&#x60; Unitemized contributions are included in the &#x60;0&#x60; category. . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -313,15 +313,15 @@ class PresidentialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'size',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_year',
-                    'per_page',
                     'sort',
                     'candidate_id',
+                    'size',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -350,53 +350,53 @@ class PresidentialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'size':
-                        ([int],),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
+                    'size':
+                        ([int],),
                     'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
                         (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'size': 'size',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_year': 'election_year',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
+                    'size': 'size',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'size': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_year': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
+                    'size': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'size': 'multi',
                     'election_year': 'multi',
                     'candidate_id': 'multi',
+                    'size': 'multi',
                 }
             },
             headers_map={
@@ -426,14 +426,14 @@ class PresidentialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-contribution_receipt_amount'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -498,14 +498,14 @@ class PresidentialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_year',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -525,44 +525,44 @@ class PresidentialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_year': 'election_year',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_year': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'election_year': 'multi',
@@ -596,14 +596,14 @@ class PresidentialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'candidate_id'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -668,14 +668,14 @@ class PresidentialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_year',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -695,44 +695,44 @@ class PresidentialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_year': 'election_year',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_year': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'election_year': 'multi',
@@ -766,14 +766,14 @@ class PresidentialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-net_receipts'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -838,14 +838,14 @@ class PresidentialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_year',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -865,44 +865,44 @@ class PresidentialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_year': 'election_year',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_year': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'election_year': 'multi',

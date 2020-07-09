@@ -69,20 +69,20 @@ class IndependentExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                office (str): Federal office candidate runs for: H, S or P. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 state (str): US state or territory where a candidate runs for office. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                support_oppose (str, none_type): Support or opposition. [optional] if omitted the server will use the default value of 'null'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                office (str): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -147,27 +147,27 @@ class IndependentExpendituresApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'cycle',
-                    'support_oppose',
-                    'committee_id',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'district',
                     'election_full',
-                    'office',
-                    'per_page',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
                     'state',
+                    'sort_hide_null',
+                    'per_page',
+                    'district',
+                    'sort_nulls_last',
+                    'cycle',
+                    'page',
+                    'committee_id',
+                    'support_oppose',
+                    'sort_null_only',
+                    'office',
                 ],
                 'required': [
                     'api_key',
                 ],
                 'nullable': [
-                    'support_oppose',
                     'sort',
+                    'support_oppose',
                 ],
                 'enum': [
                     'support_oppose',
@@ -195,73 +195,73 @@ class IndependentExpendituresApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'cycle':
-                        ([int],),
-                    'support_oppose':
-                        (str, none_type,),
-                    'committee_id':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'district':
-                        (str,),
                     'election_full':
                         (bool,),
-                    'office':
-                        (str,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
+                    'state':
+                        (str,),
                     'sort_hide_null':
                         (bool,),
-                    'state':
+                    'per_page':
+                        (int,),
+                    'district':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'committee_id':
+                        ([str],),
+                    'support_oppose':
+                        (str, none_type,),
+                    'sort_null_only':
+                        (bool,),
+                    'office':
                         (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'cycle': 'cycle',
-                    'support_oppose': 'support_oppose',
-                    'committee_id': 'committee_id',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'district': 'district',
                     'election_full': 'election_full',
-                    'office': 'office',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
                     'state': 'state',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'committee_id': 'committee_id',
+                    'support_oppose': 'support_oppose',
+                    'sort_null_only': 'sort_null_only',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'cycle': 'query',
-                    'support_oppose': 'query',
-                    'committee_id': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'district': 'query',
                     'election_full': 'query',
-                    'office': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
                     'state': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'committee_id': 'query',
+                    'support_oppose': 'query',
+                    'sort_null_only': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
+                    'candidate_id': 'multi',
                     'cycle': 'multi',
                     'committee_id': 'multi',
-                    'candidate_id': 'multi',
                 }
             },
             headers_map={
@@ -291,34 +291,34 @@ class IndependentExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                min_dissemination_date (date): Selects all items distributed by this committee after this date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                spender_name ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 candidate_search ([str]):  Search for candidates by candiate id or candidate first or last name . [optional]
-                most_recent (bool):  The report associated with the transaction is either new or is the most-recently filed amendment. Undetermined version (&#x60;null&#x60;) is always included. . [optional]
+                min_expenditure_date (date): Selects all items expended by this committee after this date. [optional]
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-expenditure_date'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_office (str): Federal office candidate runs for: H, S or P. [optional]
-                candidate_party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
                 candidate_office_state ([str]): US state or territory where a candidate runs for office. [optional]
-                support_oppose_indicator ([str]): Explains if the money was spent in order to support or oppose a candidate or candidates. (Coded S or O for support or oppose.) This indicator applies to independent expenditures and communication costs.. [optional]
-                max_expenditure_date (date): Selects all items expended by this committee before this date. [optional]
-                max_expenditure_amount (int): Selects all items expended by this committee less than this amount. [optional]
-                is_notice (bool):  Record filed as 24- or 48-hour notice. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                min_expenditure_date (date): Selects all items expended by this committee after this date. [optional]
-                min_filed_date (date): Timestamp of electronic or paper record that FEC received. [optional]
-                candidate_office_district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                min_dissemination_date (date): Selects all items distributed by this committee after this date. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 max_filed_date (date): Timestamp of electronic or paper record that FEC received. [optional]
-                payee_name ([str]):  Name of the entity that received the payment. . [optional]
+                is_notice (bool):  Record filed as 24- or 48-hour notice. . [optional]
                 max_dissemination_date (date): Selects all items distributed by this committee before this date. [optional]
-                image_number ([str]):  An unique identifier for each page where the electronic or paper filing is reported. . [optional]
-                min_expenditure_amount (int): Selects all items expended by this committee greater than this amount. [optional]
+                candidate_party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_expenditure_amount (int): Selects all items expended by this committee less than this amount. [optional]
                 filing_form ([str]): The form where the underlying data comes from, for example, Form 1 would appear as F1:     - F1   Statement of Organization     - F1M  Notification of Multicandidate Status     - F2   Statement of Candidacy     - F3   Report of Receipts and Disbursements for an Authorized Committee     - F3P  Report of Receipts and Disbursements by an Authorized Committee of a Candidate for     The Office of President or Vice President     - F3L  Report of Contributions Bundled by Lobbyists/Registrants and Lobbyist/Registrant PACs     - F3X  Report of Receipts and Disbursements for other than an Authorized Committee     - F4   Report of Receipts and Disbursements for a Committee or Organization Supporting a Nomination Convention     - F5   Report of Independent Expenditures Made and Contributions Received     - F6   48 Hour Notice of Contributions/Loans Received     - F7   Report of Communication Costs by Corporations and Membership Organizations     - F8   Debt Settlement Plan     - F9   24 Hour Notice of Disbursements for Electioneering Communications     - F13  Report of Donations Accepted for Inaugural Committee     - F99  Miscellaneous Text     - FRQ  Request for Additional Information . [optional]
+                max_expenditure_date (date): Selects all items expended by this committee before this date. [optional]
+                min_expenditure_amount (int): Selects all items expended by this committee greater than this amount. [optional]
+                spender_name ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
+                most_recent (bool):  The report associated with the transaction is either new or is the most-recently filed amendment. Undetermined version (&#x60;null&#x60;) is always included. . [optional]
+                candidate_office_district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                image_number ([str]):  An unique identifier for each page where the electronic or paper filing is reported. . [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                payee_name ([str]):  Name of the entity that received the payment. . [optional]
+                min_filed_date (date): Timestamp of electronic or paper record that FEC received. [optional]
+                support_oppose_indicator ([str]): Explains if the money was spent in order to support or oppose a candidate or candidates. (Coded S or O for support or oppose.) This indicator applies to independent expenditures and communication costs.. [optional]
+                candidate_office (str): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -383,34 +383,34 @@ class IndependentExpendituresApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'min_dissemination_date',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'spender_name',
-                    'per_page',
                     'candidate_search',
-                    'most_recent',
+                    'min_expenditure_date',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
-                    'candidate_office',
-                    'candidate_party',
                     'candidate_office_state',
-                    'support_oppose_indicator',
-                    'max_expenditure_date',
-                    'max_expenditure_amount',
-                    'is_notice',
-                    'sort_null_only',
-                    'min_expenditure_date',
-                    'min_filed_date',
-                    'candidate_office_district',
+                    'min_dissemination_date',
+                    'sort_nulls_last',
                     'max_filed_date',
-                    'payee_name',
+                    'is_notice',
                     'max_dissemination_date',
-                    'image_number',
-                    'min_expenditure_amount',
+                    'candidate_party',
+                    'sort_null_only',
+                    'max_expenditure_amount',
                     'filing_form',
+                    'max_expenditure_date',
+                    'min_expenditure_amount',
+                    'spender_name',
+                    'most_recent',
+                    'candidate_office_district',
+                    'per_page',
+                    'sort_hide_null',
+                    'image_number',
+                    'committee_id',
+                    'page',
+                    'payee_name',
+                    'min_filed_date',
+                    'support_oppose_indicator',
+                    'candidate_office',
                 ],
                 'required': [
                     'api_key',
@@ -418,8 +418,8 @@ class IndependentExpendituresApi(object):
                 'nullable': [
                 ],
                 'enum': [
-                    'candidate_office',
                     'support_oppose_indicator',
+                    'candidate_office',
                 ],
                 'validation': [
                 ]
@@ -428,6 +428,11 @@ class IndependentExpendituresApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('support_oppose_indicator',): {
+
+                        'S': 'S',
+                        'O': 'O'
+                    },
                     ('candidate_office',): {
 
                         'EMPTY': '',
@@ -435,146 +440,141 @@ class IndependentExpendituresApi(object):
                         'S': 'S',
                         'P': 'P'
                     },
-                    ('support_oppose_indicator',): {
-
-                        'S': 'S',
-                        'O': 'O'
-                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'min_dissemination_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'spender_name':
-                        ([str],),
-                    'per_page':
-                        (int,),
                     'candidate_search':
                         ([str],),
-                    'most_recent':
-                        (bool,),
+                    'min_expenditure_date':
+                        (date,),
                     'sort':
                         (str,),
                     'candidate_id':
                         ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_office':
-                        (str,),
-                    'candidate_party':
-                        ([str],),
                     'candidate_office_state':
                         ([str],),
-                    'support_oppose_indicator':
-                        ([str],),
-                    'max_expenditure_date':
+                    'min_dissemination_date':
                         (date,),
-                    'max_expenditure_amount':
-                        (int,),
-                    'is_notice':
+                    'sort_nulls_last':
                         (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'min_expenditure_date':
-                        (date,),
-                    'min_filed_date':
-                        (date,),
-                    'candidate_office_district':
-                        ([str],),
                     'max_filed_date':
                         (date,),
-                    'payee_name':
-                        ([str],),
+                    'is_notice':
+                        (bool,),
                     'max_dissemination_date':
                         (date,),
-                    'image_number':
+                    'candidate_party':
                         ([str],),
-                    'min_expenditure_amount':
+                    'sort_null_only':
+                        (bool,),
+                    'max_expenditure_amount':
                         (int,),
                     'filing_form':
                         ([str],),
+                    'max_expenditure_date':
+                        (date,),
+                    'min_expenditure_amount':
+                        (int,),
+                    'spender_name':
+                        ([str],),
+                    'most_recent':
+                        (bool,),
+                    'candidate_office_district':
+                        ([str],),
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
+                        (bool,),
+                    'image_number':
+                        ([str],),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'payee_name':
+                        ([str],),
+                    'min_filed_date':
+                        (date,),
+                    'support_oppose_indicator':
+                        ([str],),
+                    'candidate_office':
+                        (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'min_dissemination_date': 'min_dissemination_date',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'spender_name': 'spender_name',
-                    'per_page': 'per_page',
                     'candidate_search': 'candidate_search',
-                    'most_recent': 'most_recent',
+                    'min_expenditure_date': 'min_expenditure_date',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_office': 'candidate_office',
-                    'candidate_party': 'candidate_party',
                     'candidate_office_state': 'candidate_office_state',
-                    'support_oppose_indicator': 'support_oppose_indicator',
-                    'max_expenditure_date': 'max_expenditure_date',
-                    'max_expenditure_amount': 'max_expenditure_amount',
-                    'is_notice': 'is_notice',
-                    'sort_null_only': 'sort_null_only',
-                    'min_expenditure_date': 'min_expenditure_date',
-                    'min_filed_date': 'min_filed_date',
-                    'candidate_office_district': 'candidate_office_district',
+                    'min_dissemination_date': 'min_dissemination_date',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'max_filed_date': 'max_filed_date',
-                    'payee_name': 'payee_name',
+                    'is_notice': 'is_notice',
                     'max_dissemination_date': 'max_dissemination_date',
-                    'image_number': 'image_number',
-                    'min_expenditure_amount': 'min_expenditure_amount',
+                    'candidate_party': 'candidate_party',
+                    'sort_null_only': 'sort_null_only',
+                    'max_expenditure_amount': 'max_expenditure_amount',
                     'filing_form': 'filing_form',
+                    'max_expenditure_date': 'max_expenditure_date',
+                    'min_expenditure_amount': 'min_expenditure_amount',
+                    'spender_name': 'spender_name',
+                    'most_recent': 'most_recent',
+                    'candidate_office_district': 'candidate_office_district',
+                    'per_page': 'per_page',
+                    'sort_hide_null': 'sort_hide_null',
+                    'image_number': 'image_number',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'payee_name': 'payee_name',
+                    'min_filed_date': 'min_filed_date',
+                    'support_oppose_indicator': 'support_oppose_indicator',
+                    'candidate_office': 'candidate_office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'min_dissemination_date': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'spender_name': 'query',
-                    'per_page': 'query',
                     'candidate_search': 'query',
-                    'most_recent': 'query',
+                    'min_expenditure_date': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_office': 'query',
-                    'candidate_party': 'query',
                     'candidate_office_state': 'query',
-                    'support_oppose_indicator': 'query',
-                    'max_expenditure_date': 'query',
-                    'max_expenditure_amount': 'query',
-                    'is_notice': 'query',
-                    'sort_null_only': 'query',
-                    'min_expenditure_date': 'query',
-                    'min_filed_date': 'query',
-                    'candidate_office_district': 'query',
+                    'min_dissemination_date': 'query',
+                    'sort_nulls_last': 'query',
                     'max_filed_date': 'query',
-                    'payee_name': 'query',
+                    'is_notice': 'query',
                     'max_dissemination_date': 'query',
-                    'image_number': 'query',
-                    'min_expenditure_amount': 'query',
+                    'candidate_party': 'query',
+                    'sort_null_only': 'query',
+                    'max_expenditure_amount': 'query',
                     'filing_form': 'query',
+                    'max_expenditure_date': 'query',
+                    'min_expenditure_amount': 'query',
+                    'spender_name': 'query',
+                    'most_recent': 'query',
+                    'candidate_office_district': 'query',
+                    'per_page': 'query',
+                    'sort_hide_null': 'query',
+                    'image_number': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'payee_name': 'query',
+                    'min_filed_date': 'query',
+                    'support_oppose_indicator': 'query',
+                    'candidate_office': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
-                    'spender_name': 'multi',
                     'candidate_search': 'multi',
                     'candidate_id': 'multi',
-                    'candidate_party': 'multi',
                     'candidate_office_state': 'multi',
-                    'support_oppose_indicator': 'multi',
-                    'candidate_office_district': 'multi',
-                    'payee_name': 'multi',
-                    'image_number': 'multi',
+                    'candidate_party': 'multi',
                     'filing_form': 'multi',
+                    'spender_name': 'multi',
+                    'candidate_office_district': 'multi',
+                    'image_number': 'multi',
+                    'committee_id': 'multi',
+                    'payee_name': 'multi',
+                    'support_oppose_indicator': 'multi',
                 }
             },
             headers_map={
@@ -604,39 +604,39 @@ class IndependentExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                min_dissemination_date (date): Selects all items distributed by this committee after this date. [optional]
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                min_date (date): Minimum date. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                min_filing_date (date):  Selects all filings received after this date . [optional]
+                min_image_number (str): [optional]
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-expenditure_date'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_office ([str]): Federal office candidate runs for: H, S or P. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 last_index (int, none_type): Index of last result from previous page. [optional]
-                candidate_office_state ([str]): US state or territory. [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                last_expenditure_date (date, none_type):  When sorting by &#x60;expenditure_date&#x60;, this is populated with the &#x60;expenditure_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page. . [optional]
+                max_date (date): Maximum date. [optional]
+                filing_form ([str]): The form where the underlying data comes from, for example, Form 1 would appear as F1:     - F1   Statement of Organization     - F1M  Notification of Multicandidate Status     - F2   Statement of Candidacy     - F3   Report of Receipts and Disbursements for an Authorized Committee     - F3P  Report of Receipts and Disbursements by an Authorized Committee of a Candidate for     The Office of President or Vice President     - F3L  Report of Contributions Bundled by Lobbyists/Registrants and Lobbyist/Registrant PACs     - F3X  Report of Receipts and Disbursements for other than an Authorized Committee     - F4   Report of Receipts and Disbursements for a Committee or Organization Supporting a Nomination Convention     - F5   Report of Independent Expenditures Made and Contributions Received     - F6   48 Hour Notice of Contributions/Loans Received     - F7   Report of Communication Costs by Corporations and Membership Organizations     - F8   Debt Settlement Plan     - F9   24 Hour Notice of Disbursements for Electioneering Communications     - F13  Report of Donations Accepted for Inaugural Committee     - F99  Miscellaneous Text     - FRQ  Request for Additional Information . [optional]
+                most_recent (bool):  The report associated with the transaction is either new or is the most-recently filed amendment. Undetermined version (&#x60;null&#x60;) is always included. . [optional]
+                min_date (date): Minimum date. [optional]
                 last_support_oppose_indicator (str, none_type):  When sorting by &#x60;support_oppose_indicator&#x60;, this is populated with the &#x60;support_oppose_indicator&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.&#39; . [optional] if omitted the server will use the default value of 'null'
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                max_image_number (str): [optional]
                 last_office_total_ytd (float, none_type):  When sorting by &#x60;office_total_ytd&#x60;, this is populated with the &#x60;office_total_ytd&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.&#39; . [optional]
                 line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                max_image_number (str): [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                candidate_office_district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                max_dissemination_date (date): Selects all items distributed by this committee before this date. [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                min_image_number (str): [optional]
-                is_notice ([bool]):  Record filed as 24- or 48-hour notice. . [optional]
-                filing_form ([str]): The form where the underlying data comes from, for example, Form 1 would appear as F1:     - F1   Statement of Organization     - F1M  Notification of Multicandidate Status     - F2   Statement of Candidacy     - F3   Report of Receipts and Disbursements for an Authorized Committee     - F3P  Report of Receipts and Disbursements by an Authorized Committee of a Candidate for     The Office of President or Vice President     - F3L  Report of Contributions Bundled by Lobbyists/Registrants and Lobbyist/Registrant PACs     - F3X  Report of Receipts and Disbursements for other than an Authorized Committee     - F4   Report of Receipts and Disbursements for a Committee or Organization Supporting a Nomination Convention     - F5   Report of Independent Expenditures Made and Contributions Received     - F6   48 Hour Notice of Contributions/Loans Received     - F7   Report of Communication Costs by Corporations and Membership Organizations     - F8   Debt Settlement Plan     - F9   24 Hour Notice of Disbursements for Electioneering Communications     - F13  Report of Donations Accepted for Inaugural Committee     - F99  Miscellaneous Text     - FRQ  Request for Additional Information . [optional]
-                last_expenditure_amount (float, none_type):  When sorting by &#x60;expenditure_amount&#x60;, this is populated with the &#x60;expenditure_amount&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                most_recent (bool):  The report associated with the transaction is either new or is the most-recently filed amendment. Undetermined version (&#x60;null&#x60;) is always included. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                max_date (date): Maximum date. [optional]
-                candidate_party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
                 support_oppose_indicator ([str]): Explains if the money was spent in order to support or oppose a candidate or candidates. (Coded S or O for support or oppose.) This indicator applies to independent expenditures and communication costs.. [optional]
+                candidate_office ([str]): Federal office candidate runs for: H, S or P. [optional]
+                last_expenditure_date (date, none_type):  When sorting by &#x60;expenditure_date&#x60;, this is populated with the &#x60;expenditure_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page. . [optional]
+                candidate_office_state ([str]): US state or territory. [optional]
+                last_expenditure_amount (float, none_type):  When sorting by &#x60;expenditure_amount&#x60;, this is populated with the &#x60;expenditure_amount&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page. . [optional]
+                min_filing_date (date):  Selects all filings received after this date . [optional]
+                min_dissemination_date (date): Selects all items distributed by this committee after this date. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                is_notice ([bool]):  Record filed as 24- or 48-hour notice. . [optional]
+                max_dissemination_date (date): Selects all items distributed by this committee before this date. [optional]
+                candidate_party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                candidate_office_district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 max_filing_date (date):  Selects all filings received before this date . [optional]
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 payee_name ([str]):  Name of the entity that received the payment. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
@@ -702,39 +702,39 @@ class IndependentExpendituresApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'min_dissemination_date',
-                    'min_amount',
-                    'min_date',
-                    'committee_id',
-                    'min_filing_date',
+                    'min_image_number',
                     'sort',
-                    'sort_hide_null',
-                    'candidate_office',
+                    'candidate_id',
                     'last_index',
-                    'candidate_office_state',
-                    'cycle',
-                    'last_expenditure_date',
+                    'max_date',
+                    'filing_form',
+                    'most_recent',
+                    'min_date',
                     'last_support_oppose_indicator',
+                    'image_number',
+                    'committee_id',
+                    'max_image_number',
                     'last_office_total_ytd',
                     'line_number',
-                    'max_image_number',
-                    'max_amount',
-                    'candidate_office_district',
-                    'max_dissemination_date',
-                    'image_number',
-                    'min_image_number',
-                    'is_notice',
-                    'filing_form',
-                    'last_expenditure_amount',
-                    'sort_nulls_last',
-                    'per_page',
-                    'most_recent',
-                    'candidate_id',
-                    'max_date',
-                    'candidate_party',
                     'support_oppose_indicator',
+                    'candidate_office',
+                    'last_expenditure_date',
+                    'candidate_office_state',
+                    'last_expenditure_amount',
+                    'min_filing_date',
+                    'min_dissemination_date',
+                    'sort_nulls_last',
+                    'min_amount',
+                    'max_amount',
+                    'is_notice',
+                    'max_dissemination_date',
+                    'candidate_party',
                     'sort_null_only',
+                    'candidate_office_district',
+                    'per_page',
+                    'sort_hide_null',
                     'max_filing_date',
+                    'cycle',
                     'payee_name',
                 ],
                 'required': [
@@ -742,14 +742,14 @@ class IndependentExpendituresApi(object):
                 ],
                 'nullable': [
                     'last_index',
-                    'last_expenditure_date',
                     'last_support_oppose_indicator',
                     'last_office_total_ytd',
+                    'last_expenditure_date',
                     'last_expenditure_amount',
                 ],
                 'enum': [
-                    'candidate_office',
                     'support_oppose_indicator',
+                    'candidate_office',
                 ],
                 'validation': [
                 ]
@@ -758,6 +758,11 @@ class IndependentExpendituresApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('support_oppose_indicator',): {
+
+                        'S': 'S',
+                        'O': 'O'
+                    },
                     ('candidate_office',): {
 
                         'EMPTY': '',
@@ -765,170 +770,165 @@ class IndependentExpendituresApi(object):
                         'S': 'S',
                         'P': 'P'
                     },
-                    ('support_oppose_indicator',): {
-
-                        'S': 'S',
-                        'O': 'O'
-                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'min_dissemination_date':
-                        (date,),
-                    'min_amount':
+                    'min_image_number':
                         (str,),
-                    'min_date':
-                        (date,),
-                    'committee_id':
-                        ([str],),
-                    'min_filing_date':
-                        (date,),
                     'sort':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_office':
+                    'candidate_id':
                         ([str],),
                     'last_index':
                         (int, none_type,),
-                    'candidate_office_state':
+                    'max_date':
+                        (date,),
+                    'filing_form':
                         ([str],),
-                    'cycle':
-                        ([int],),
-                    'last_expenditure_date':
-                        (date, none_type,),
+                    'most_recent':
+                        (bool,),
+                    'min_date':
+                        (date,),
                     'last_support_oppose_indicator':
                         (str, none_type,),
+                    'image_number':
+                        ([str],),
+                    'committee_id':
+                        ([str],),
+                    'max_image_number':
+                        (str,),
                     'last_office_total_ytd':
                         (float, none_type,),
                     'line_number':
                         (str,),
-                    'max_image_number':
-                        (str,),
-                    'max_amount':
-                        (str,),
-                    'candidate_office_district':
+                    'support_oppose_indicator':
                         ([str],),
-                    'max_dissemination_date':
-                        (date,),
-                    'image_number':
+                    'candidate_office':
                         ([str],),
-                    'min_image_number':
-                        (str,),
-                    'is_notice':
-                        ([bool],),
-                    'filing_form':
+                    'last_expenditure_date':
+                        (date, none_type,),
+                    'candidate_office_state':
                         ([str],),
                     'last_expenditure_amount':
                         (float, none_type,),
+                    'min_filing_date':
+                        (date,),
+                    'min_dissemination_date':
+                        (date,),
                     'sort_nulls_last':
                         (bool,),
-                    'per_page':
-                        (int,),
-                    'most_recent':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
-                    'max_date':
+                    'min_amount':
+                        (str,),
+                    'max_amount':
+                        (str,),
+                    'is_notice':
+                        ([bool],),
+                    'max_dissemination_date':
                         (date,),
                     'candidate_party':
                         ([str],),
-                    'support_oppose_indicator':
-                        ([str],),
                     'sort_null_only':
+                        (bool,),
+                    'candidate_office_district':
+                        ([str],),
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
                         (bool,),
                     'max_filing_date':
                         (date,),
+                    'cycle':
+                        ([int],),
                     'payee_name':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'min_dissemination_date': 'min_dissemination_date',
-                    'min_amount': 'min_amount',
-                    'min_date': 'min_date',
-                    'committee_id': 'committee_id',
-                    'min_filing_date': 'min_filing_date',
+                    'min_image_number': 'min_image_number',
                     'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_office': 'candidate_office',
+                    'candidate_id': 'candidate_id',
                     'last_index': 'last_index',
-                    'candidate_office_state': 'candidate_office_state',
-                    'cycle': 'cycle',
-                    'last_expenditure_date': 'last_expenditure_date',
+                    'max_date': 'max_date',
+                    'filing_form': 'filing_form',
+                    'most_recent': 'most_recent',
+                    'min_date': 'min_date',
                     'last_support_oppose_indicator': 'last_support_oppose_indicator',
+                    'image_number': 'image_number',
+                    'committee_id': 'committee_id',
+                    'max_image_number': 'max_image_number',
                     'last_office_total_ytd': 'last_office_total_ytd',
                     'line_number': 'line_number',
-                    'max_image_number': 'max_image_number',
-                    'max_amount': 'max_amount',
-                    'candidate_office_district': 'candidate_office_district',
-                    'max_dissemination_date': 'max_dissemination_date',
-                    'image_number': 'image_number',
-                    'min_image_number': 'min_image_number',
-                    'is_notice': 'is_notice',
-                    'filing_form': 'filing_form',
-                    'last_expenditure_amount': 'last_expenditure_amount',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
-                    'most_recent': 'most_recent',
-                    'candidate_id': 'candidate_id',
-                    'max_date': 'max_date',
-                    'candidate_party': 'candidate_party',
                     'support_oppose_indicator': 'support_oppose_indicator',
+                    'candidate_office': 'candidate_office',
+                    'last_expenditure_date': 'last_expenditure_date',
+                    'candidate_office_state': 'candidate_office_state',
+                    'last_expenditure_amount': 'last_expenditure_amount',
+                    'min_filing_date': 'min_filing_date',
+                    'min_dissemination_date': 'min_dissemination_date',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'min_amount': 'min_amount',
+                    'max_amount': 'max_amount',
+                    'is_notice': 'is_notice',
+                    'max_dissemination_date': 'max_dissemination_date',
+                    'candidate_party': 'candidate_party',
                     'sort_null_only': 'sort_null_only',
+                    'candidate_office_district': 'candidate_office_district',
+                    'per_page': 'per_page',
+                    'sort_hide_null': 'sort_hide_null',
                     'max_filing_date': 'max_filing_date',
+                    'cycle': 'cycle',
                     'payee_name': 'payee_name',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'min_dissemination_date': 'query',
-                    'min_amount': 'query',
-                    'min_date': 'query',
-                    'committee_id': 'query',
-                    'min_filing_date': 'query',
+                    'min_image_number': 'query',
                     'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_office': 'query',
+                    'candidate_id': 'query',
                     'last_index': 'query',
-                    'candidate_office_state': 'query',
-                    'cycle': 'query',
-                    'last_expenditure_date': 'query',
+                    'max_date': 'query',
+                    'filing_form': 'query',
+                    'most_recent': 'query',
+                    'min_date': 'query',
                     'last_support_oppose_indicator': 'query',
+                    'image_number': 'query',
+                    'committee_id': 'query',
+                    'max_image_number': 'query',
                     'last_office_total_ytd': 'query',
                     'line_number': 'query',
-                    'max_image_number': 'query',
-                    'max_amount': 'query',
-                    'candidate_office_district': 'query',
-                    'max_dissemination_date': 'query',
-                    'image_number': 'query',
-                    'min_image_number': 'query',
-                    'is_notice': 'query',
-                    'filing_form': 'query',
-                    'last_expenditure_amount': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
-                    'most_recent': 'query',
-                    'candidate_id': 'query',
-                    'max_date': 'query',
-                    'candidate_party': 'query',
                     'support_oppose_indicator': 'query',
+                    'candidate_office': 'query',
+                    'last_expenditure_date': 'query',
+                    'candidate_office_state': 'query',
+                    'last_expenditure_amount': 'query',
+                    'min_filing_date': 'query',
+                    'min_dissemination_date': 'query',
+                    'sort_nulls_last': 'query',
+                    'min_amount': 'query',
+                    'max_amount': 'query',
+                    'is_notice': 'query',
+                    'max_dissemination_date': 'query',
+                    'candidate_party': 'query',
                     'sort_null_only': 'query',
+                    'candidate_office_district': 'query',
+                    'per_page': 'query',
+                    'sort_hide_null': 'query',
                     'max_filing_date': 'query',
+                    'cycle': 'query',
                     'payee_name': 'query',
                 },
                 'collection_format_map': {
+                    'candidate_id': 'multi',
+                    'filing_form': 'multi',
+                    'image_number': 'multi',
                     'committee_id': 'multi',
+                    'support_oppose_indicator': 'multi',
                     'candidate_office': 'multi',
                     'candidate_office_state': 'multi',
-                    'cycle': 'multi',
-                    'candidate_office_district': 'multi',
-                    'image_number': 'multi',
                     'is_notice': 'multi',
-                    'filing_form': 'multi',
-                    'candidate_id': 'multi',
                     'candidate_party': 'multi',
-                    'support_oppose_indicator': 'multi',
+                    'candidate_office_district': 'multi',
+                    'cycle': 'multi',
                     'payee_name': 'multi',
                 }
             },
@@ -959,15 +959,15 @@ class IndependentExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1032,15 +1032,15 @@ class IndependentExpendituresApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
                     'election_full',
-                    'per_page',
                     'sort',
                     'candidate_id',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -1061,48 +1061,48 @@ class IndependentExpendituresApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
                     'election_full':
                         (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
                     'election_full': 'election_full',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
                     'election_full': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'candidate_id': 'multi',

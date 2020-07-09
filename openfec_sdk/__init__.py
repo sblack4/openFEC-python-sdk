@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = '1.0.0'
+__version__ = 'v0.1.0'
 
 # import apis into sdk package
 from openfec_sdk.audit_api import AuditApi

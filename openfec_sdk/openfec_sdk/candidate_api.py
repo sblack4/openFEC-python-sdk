@@ -74,24 +74,24 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
                 name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                election_year ([int]): Year of election. [optional]
+                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
                 state ([str]): US state or territory where a candidate runs for office. [optional]
+                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
+                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                office ([str]): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -159,24 +159,24 @@ class CandidateApi(object):
                 'all': [
                     'api_key',
                     'candidate_id',
-                    'page',
-                    'incumbent_challenge',
-                    'federal_funds_flag',
-                    'sort_nulls_last',
-                    'election_year',
-                    'per_page',
-                    'sort',
-                    'office',
-                    'sort_hide_null',
                     'year',
-                    'cycle',
-                    'has_raised_funds',
-                    'party',
-                    'sort_null_only',
-                    'district',
+                    'sort',
                     'name',
-                    'candidate_status',
+                    'district',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'election_year',
+                    'incumbent_challenge',
                     'state',
+                    'candidate_status',
+                    'per_page',
+                    'federal_funds_flag',
+                    'sort_hide_null',
+                    'party',
+                    'has_raised_funds',
+                    'cycle',
+                    'page',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -186,8 +186,8 @@ class CandidateApi(object):
                 ],
                 'enum': [
                     'incumbent_challenge',
-                    'office',
                     'candidate_status',
+                    'office',
                 ],
                 'validation': [
                 ]
@@ -203,13 +203,6 @@ class CandidateApi(object):
                         'C': 'C',
                         'O': 'O'
                     },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
                     ('candidate_status',): {
 
                         'EMPTY': '',
@@ -218,103 +211,110 @@ class CandidateApi(object):
                         'N': 'N',
                         'P': 'P'
                     },
+                    ('office',): {
+
+                        'EMPTY': '',
+                        'H': 'H',
+                        'S': 'S',
+                        'P': 'P'
+                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
                     'candidate_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'incumbent_challenge':
+                    'year':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'name':
                         ([str],),
-                    'federal_funds_flag':
-                        (bool,),
+                    'district':
+                        ([str],),
                     'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
                         (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'office':
+                    'incumbent_challenge':
                         ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'year':
-                        (str,),
-                    'cycle':
-                        ([int],),
-                    'has_raised_funds':
-                        (bool,),
-                    'party':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'district':
-                        ([str],),
-                    'name':
+                    'state':
                         ([str],),
                     'candidate_status':
                         ([str],),
-                    'state':
+                    'per_page':
+                        (int,),
+                    'federal_funds_flag':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'party':
+                        ([str],),
+                    'has_raised_funds':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'office':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'candidate_id': 'candidate_id',
-                    'page': 'page',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
                     'year': 'year',
-                    'cycle': 'cycle',
-                    'has_raised_funds': 'has_raised_funds',
-                    'party': 'party',
-                    'sort_null_only': 'sort_null_only',
-                    'district': 'district',
+                    'sort': 'sort',
                     'name': 'name',
-                    'candidate_status': 'candidate_status',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'election_year': 'election_year',
+                    'incumbent_challenge': 'incumbent_challenge',
                     'state': 'state',
+                    'candidate_status': 'candidate_status',
+                    'per_page': 'per_page',
+                    'federal_funds_flag': 'federal_funds_flag',
+                    'sort_hide_null': 'sort_hide_null',
+                    'party': 'party',
+                    'has_raised_funds': 'has_raised_funds',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'candidate_id': 'path',
-                    'page': 'query',
-                    'incumbent_challenge': 'query',
-                    'federal_funds_flag': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'office': 'query',
-                    'sort_hide_null': 'query',
                     'year': 'query',
-                    'cycle': 'query',
-                    'has_raised_funds': 'query',
-                    'party': 'query',
-                    'sort_null_only': 'query',
-                    'district': 'query',
+                    'sort': 'query',
                     'name': 'query',
-                    'candidate_status': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'election_year': 'query',
+                    'incumbent_challenge': 'query',
                     'state': 'query',
+                    'candidate_status': 'query',
+                    'per_page': 'query',
+                    'federal_funds_flag': 'query',
+                    'sort_hide_null': 'query',
+                    'party': 'query',
+                    'has_raised_funds': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'election_year': 'multi',
-                    'office': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
-                    'district': 'multi',
                     'name': 'multi',
-                    'candidate_status': 'multi',
+                    'district': 'multi',
+                    'election_year': 'multi',
+                    'incumbent_challenge': 'multi',
                     'state': 'multi',
+                    'candidate_status': 'multi',
+                    'party': 'multi',
+                    'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -348,13 +348,13 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -425,13 +425,13 @@ class CandidateApi(object):
                     'api_key',
                     'cycle',
                     'candidate_id',
-                    'per_page',
-                    'page',
                     'sort_nulls_last',
-                    'sort',
-                    'sort_hide_null',
-                    'sort_null_only',
                     'election_full',
+                    'page',
+                    'sort',
+                    'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -457,44 +457,44 @@ class CandidateApi(object):
                         (int,),
                     'candidate_id':
                         (str,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
                     'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'election_full':
                         (bool,),
+                    'page':
+                        (int,),
+                    'sort':
+                        (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'cycle': 'cycle',
                     'candidate_id': 'candidate_id',
-                    'per_page': 'per_page',
-                    'page': 'page',
                     'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
                     'election_full': 'election_full',
+                    'page': 'page',
+                    'sort': 'sort',
+                    'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'cycle': 'path',
                     'candidate_id': 'path',
-                    'per_page': 'query',
-                    'page': 'query',
                     'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
                     'election_full': 'query',
+                    'page': 'query',
+                    'sort': 'query',
+                    'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -528,13 +528,13 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -602,13 +602,13 @@ class CandidateApi(object):
                 'all': [
                     'api_key',
                     'candidate_id',
-                    'per_page',
-                    'page',
                     'sort_nulls_last',
-                    'sort',
-                    'sort_hide_null',
-                    'sort_null_only',
                     'election_full',
+                    'page',
+                    'sort',
+                    'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -631,42 +631,42 @@ class CandidateApi(object):
                         (str,),
                     'candidate_id':
                         (str,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
                     'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'election_full':
                         (bool,),
+                    'page':
+                        (int,),
+                    'sort':
+                        (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'candidate_id': 'candidate_id',
-                    'per_page': 'per_page',
-                    'page': 'page',
                     'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
                     'election_full': 'election_full',
+                    'page': 'page',
+                    'sort': 'sort',
+                    'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'candidate_id': 'path',
-                    'per_page': 'query',
-                    'page': 'query',
                     'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
                     'election_full': 'query',
+                    'page': 'query',
+                    'sort': 'query',
+                    'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -700,15 +700,15 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                full_election (bool): Parameter &#x60;full_election&#x60; is replaced by &#x60;election_full&#x60;. Please use &#x60;election_full&#x60; instead.. [optional]
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                full_election (bool): Parameter &#x60;full_election&#x60; is replaced by &#x60;election_full&#x60;. Please use &#x60;election_full&#x60; instead.. [optional]
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -776,15 +776,15 @@ class CandidateApi(object):
                 'all': [
                     'api_key',
                     'candidate_id',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'full_election',
                     'election_full',
-                    'per_page',
+                    'full_election',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -807,50 +807,50 @@ class CandidateApi(object):
                         (str,),
                     'candidate_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
+                    'election_full':
                         (bool,),
                     'full_election':
                         (bool,),
-                    'election_full':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'candidate_id': 'candidate_id',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'full_election': 'full_election',
                     'election_full': 'election_full',
-                    'per_page': 'per_page',
+                    'full_election': 'full_election',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'candidate_id': 'path',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'full_election': 'query',
                     'election_full': 'query',
-                    'per_page': 'query',
+                    'full_election': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'cycle': 'multi',
@@ -883,29 +883,29 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                q ([str]): Name of candidate running for office. [optional]
-                election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
+                q ([str]): Name of candidate running for office. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
+                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
+                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                election_year ([int]): Year of election. [optional]
+                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
                 state ([str]): US state or territory where a candidate runs for office. [optional]
+                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
+                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
+                office ([str]): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -970,29 +970,29 @@ class CandidateApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'incumbent_challenge',
-                    'federal_funds_flag',
-                    'max_first_file_date',
-                    'is_active_candidate',
-                    'sort_nulls_last',
-                    'q',
-                    'election_year',
-                    'per_page',
-                    'sort',
-                    'office',
-                    'sort_hide_null',
-                    'candidate_id',
                     'year',
-                    'cycle',
-                    'has_raised_funds',
-                    'party',
-                    'sort_null_only',
-                    'district',
+                    'max_first_file_date',
+                    'sort',
+                    'q',
+                    'candidate_id',
                     'name',
-                    'candidate_status',
-                    'min_first_file_date',
+                    'is_active_candidate',
+                    'district',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'election_year',
+                    'incumbent_challenge',
                     'state',
+                    'candidate_status',
+                    'per_page',
+                    'federal_funds_flag',
+                    'sort_hide_null',
+                    'party',
+                    'has_raised_funds',
+                    'cycle',
+                    'page',
+                    'min_first_file_date',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -1001,8 +1001,8 @@ class CandidateApi(object):
                 ],
                 'enum': [
                     'incumbent_challenge',
-                    'office',
                     'candidate_status',
+                    'office',
                 ],
                 'validation': [
                 ]
@@ -1018,13 +1018,6 @@ class CandidateApi(object):
                         'C': 'C',
                         'O': 'O'
                     },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
                     ('candidate_status',): {
 
                         'EMPTY': '',
@@ -1033,121 +1026,128 @@ class CandidateApi(object):
                         'N': 'N',
                         'P': 'P'
                     },
+                    ('office',): {
+
+                        'EMPTY': '',
+                        'H': 'H',
+                        'S': 'S',
+                        'P': 'P'
+                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'federal_funds_flag':
-                        (bool,),
-                    'max_first_file_date':
-                        (date,),
-                    'is_active_candidate':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'q':
-                        ([str],),
-                    'election_year':
-                        ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'office':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
                     'year':
                         (str,),
-                    'cycle':
-                        ([int],),
-                    'has_raised_funds':
-                        (bool,),
-                    'party':
+                    'max_first_file_date':
+                        (date,),
+                    'sort':
+                        (str,),
+                    'q':
                         ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'district':
+                    'candidate_id':
                         ([str],),
                     'name':
                         ([str],),
+                    'is_active_candidate':
+                        (bool,),
+                    'district':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'election_year':
+                        ([int],),
+                    'incumbent_challenge':
+                        ([str],),
+                    'state':
+                        ([str],),
                     'candidate_status':
                         ([str],),
+                    'per_page':
+                        (int,),
+                    'federal_funds_flag':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'party':
+                        ([str],),
+                    'has_raised_funds':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
                     'min_first_file_date':
                         (date,),
-                    'state':
+                    'office':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'max_first_file_date': 'max_first_file_date',
-                    'is_active_candidate': 'is_active_candidate',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'q': 'q',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_id': 'candidate_id',
                     'year': 'year',
-                    'cycle': 'cycle',
-                    'has_raised_funds': 'has_raised_funds',
-                    'party': 'party',
-                    'sort_null_only': 'sort_null_only',
-                    'district': 'district',
+                    'max_first_file_date': 'max_first_file_date',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'candidate_id': 'candidate_id',
                     'name': 'name',
-                    'candidate_status': 'candidate_status',
-                    'min_first_file_date': 'min_first_file_date',
+                    'is_active_candidate': 'is_active_candidate',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'election_year': 'election_year',
+                    'incumbent_challenge': 'incumbent_challenge',
                     'state': 'state',
+                    'candidate_status': 'candidate_status',
+                    'per_page': 'per_page',
+                    'federal_funds_flag': 'federal_funds_flag',
+                    'sort_hide_null': 'sort_hide_null',
+                    'party': 'party',
+                    'has_raised_funds': 'has_raised_funds',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'min_first_file_date': 'min_first_file_date',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'incumbent_challenge': 'query',
-                    'federal_funds_flag': 'query',
-                    'max_first_file_date': 'query',
-                    'is_active_candidate': 'query',
-                    'sort_nulls_last': 'query',
-                    'q': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'office': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_id': 'query',
                     'year': 'query',
-                    'cycle': 'query',
-                    'has_raised_funds': 'query',
-                    'party': 'query',
-                    'sort_null_only': 'query',
-                    'district': 'query',
+                    'max_first_file_date': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'candidate_id': 'query',
                     'name': 'query',
-                    'candidate_status': 'query',
-                    'min_first_file_date': 'query',
+                    'is_active_candidate': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'election_year': 'query',
+                    'incumbent_challenge': 'query',
                     'state': 'query',
+                    'candidate_status': 'query',
+                    'per_page': 'query',
+                    'federal_funds_flag': 'query',
+                    'sort_hide_null': 'query',
+                    'party': 'query',
+                    'has_raised_funds': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'min_first_file_date': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'incumbent_challenge': 'multi',
                     'q': 'multi',
-                    'election_year': 'multi',
-                    'office': 'multi',
                     'candidate_id': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
-                    'district': 'multi',
                     'name': 'multi',
-                    'candidate_status': 'multi',
+                    'district': 'multi',
+                    'election_year': 'multi',
+                    'incumbent_challenge': 'multi',
                     'state': 'multi',
+                    'candidate_status': 'multi',
+                    'party': 'multi',
+                    'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -1177,29 +1177,29 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                q ([str]): Name of candidate running for office. [optional]
-                election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
+                q ([str]): Name of candidate running for office. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
+                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
+                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                election_year ([int]): Year of election. [optional]
+                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
                 state ([str]): US state or territory where a candidate runs for office. [optional]
+                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
+                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
+                office ([str]): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1264,29 +1264,29 @@ class CandidateApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'incumbent_challenge',
-                    'federal_funds_flag',
-                    'max_first_file_date',
-                    'is_active_candidate',
-                    'sort_nulls_last',
-                    'q',
-                    'election_year',
-                    'per_page',
-                    'sort',
-                    'office',
-                    'sort_hide_null',
-                    'candidate_id',
                     'year',
-                    'cycle',
-                    'has_raised_funds',
-                    'party',
-                    'sort_null_only',
-                    'district',
+                    'max_first_file_date',
+                    'sort',
+                    'q',
+                    'candidate_id',
                     'name',
-                    'candidate_status',
-                    'min_first_file_date',
+                    'is_active_candidate',
+                    'district',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'election_year',
+                    'incumbent_challenge',
                     'state',
+                    'candidate_status',
+                    'per_page',
+                    'federal_funds_flag',
+                    'sort_hide_null',
+                    'party',
+                    'has_raised_funds',
+                    'cycle',
+                    'page',
+                    'min_first_file_date',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -1295,8 +1295,8 @@ class CandidateApi(object):
                 ],
                 'enum': [
                     'incumbent_challenge',
-                    'office',
                     'candidate_status',
+                    'office',
                 ],
                 'validation': [
                 ]
@@ -1312,13 +1312,6 @@ class CandidateApi(object):
                         'C': 'C',
                         'O': 'O'
                     },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
                     ('candidate_status',): {
 
                         'EMPTY': '',
@@ -1327,121 +1320,128 @@ class CandidateApi(object):
                         'N': 'N',
                         'P': 'P'
                     },
+                    ('office',): {
+
+                        'EMPTY': '',
+                        'H': 'H',
+                        'S': 'S',
+                        'P': 'P'
+                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'federal_funds_flag':
-                        (bool,),
-                    'max_first_file_date':
-                        (date,),
-                    'is_active_candidate':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'q':
-                        ([str],),
-                    'election_year':
-                        ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'office':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
                     'year':
                         (str,),
-                    'cycle':
-                        ([int],),
-                    'has_raised_funds':
-                        (bool,),
-                    'party':
+                    'max_first_file_date':
+                        (date,),
+                    'sort':
+                        (str,),
+                    'q':
                         ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'district':
+                    'candidate_id':
                         ([str],),
                     'name':
                         ([str],),
+                    'is_active_candidate':
+                        (bool,),
+                    'district':
+                        ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'election_year':
+                        ([int],),
+                    'incumbent_challenge':
+                        ([str],),
+                    'state':
+                        ([str],),
                     'candidate_status':
                         ([str],),
+                    'per_page':
+                        (int,),
+                    'federal_funds_flag':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'party':
+                        ([str],),
+                    'has_raised_funds':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
                     'min_first_file_date':
                         (date,),
-                    'state':
+                    'office':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'max_first_file_date': 'max_first_file_date',
-                    'is_active_candidate': 'is_active_candidate',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'q': 'q',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_id': 'candidate_id',
                     'year': 'year',
-                    'cycle': 'cycle',
-                    'has_raised_funds': 'has_raised_funds',
-                    'party': 'party',
-                    'sort_null_only': 'sort_null_only',
-                    'district': 'district',
+                    'max_first_file_date': 'max_first_file_date',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'candidate_id': 'candidate_id',
                     'name': 'name',
-                    'candidate_status': 'candidate_status',
-                    'min_first_file_date': 'min_first_file_date',
+                    'is_active_candidate': 'is_active_candidate',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'election_year': 'election_year',
+                    'incumbent_challenge': 'incumbent_challenge',
                     'state': 'state',
+                    'candidate_status': 'candidate_status',
+                    'per_page': 'per_page',
+                    'federal_funds_flag': 'federal_funds_flag',
+                    'sort_hide_null': 'sort_hide_null',
+                    'party': 'party',
+                    'has_raised_funds': 'has_raised_funds',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'min_first_file_date': 'min_first_file_date',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'incumbent_challenge': 'query',
-                    'federal_funds_flag': 'query',
-                    'max_first_file_date': 'query',
-                    'is_active_candidate': 'query',
-                    'sort_nulls_last': 'query',
-                    'q': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'office': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_id': 'query',
                     'year': 'query',
-                    'cycle': 'query',
-                    'has_raised_funds': 'query',
-                    'party': 'query',
-                    'sort_null_only': 'query',
-                    'district': 'query',
+                    'max_first_file_date': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'candidate_id': 'query',
                     'name': 'query',
-                    'candidate_status': 'query',
-                    'min_first_file_date': 'query',
+                    'is_active_candidate': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'election_year': 'query',
+                    'incumbent_challenge': 'query',
                     'state': 'query',
+                    'candidate_status': 'query',
+                    'per_page': 'query',
+                    'federal_funds_flag': 'query',
+                    'sort_hide_null': 'query',
+                    'party': 'query',
+                    'has_raised_funds': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'min_first_file_date': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'incumbent_challenge': 'multi',
                     'q': 'multi',
-                    'election_year': 'multi',
-                    'office': 'multi',
                     'candidate_id': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
-                    'district': 'multi',
                     'name': 'multi',
-                    'candidate_status': 'multi',
+                    'district': 'multi',
+                    'election_year': 'multi',
+                    'incumbent_challenge': 'multi',
                     'state': 'multi',
+                    'candidate_status': 'multi',
+                    'party': 'multi',
+                    'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -1471,15 +1471,15 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 office (str): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1544,15 +1544,15 @@ class CandidateApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
+                    'election_year',
+                    'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'is_active_candidate',
                     'sort_nulls_last',
+                    'page',
                     'sort_null_only',
-                    'election_year',
-                    'per_page',
-                    'sort',
                     'office',
-                    'sort_hide_null',
                 ],
                 'required': [
                     'api_key',
@@ -1581,48 +1581,48 @@ class CandidateApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
+                    'election_year':
+                        ([int],),
+                    'sort':
+                        (str, none_type,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
                         (int,),
                     'is_active_candidate':
                         (bool,),
                     'sort_nulls_last':
                         (bool,),
+                    'page':
+                        (int,),
                     'sort_null_only':
                         (bool,),
-                    'election_year':
-                        ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
                     'office':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
+                    'election_year': 'election_year',
+                    'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'is_active_candidate': 'is_active_candidate',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
                     'sort_null_only': 'sort_null_only',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
                     'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
+                    'election_year': 'query',
+                    'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'is_active_candidate': 'query',
                     'sort_nulls_last': 'query',
+                    'page': 'query',
                     'sort_null_only': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
                     'office': 'query',
-                    'sort_hide_null': 'query',
                 },
                 'collection_format_map': {
                     'election_year': 'multi',
@@ -1655,15 +1655,15 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 office (str): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1728,15 +1728,15 @@ class CandidateApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
+                    'election_year',
+                    'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'is_active_candidate',
                     'sort_nulls_last',
+                    'page',
                     'sort_null_only',
-                    'election_year',
-                    'per_page',
-                    'sort',
                     'office',
-                    'sort_hide_null',
                 ],
                 'required': [
                     'api_key',
@@ -1765,48 +1765,48 @@ class CandidateApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
+                    'election_year':
+                        ([int],),
+                    'sort':
+                        (str, none_type,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
                         (int,),
                     'is_active_candidate':
                         (bool,),
                     'sort_nulls_last':
                         (bool,),
+                    'page':
+                        (int,),
                     'sort_null_only':
                         (bool,),
-                    'election_year':
-                        ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
                     'office':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
+                    'election_year': 'election_year',
+                    'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'is_active_candidate': 'is_active_candidate',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
                     'sort_null_only': 'sort_null_only',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
                     'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
+                    'election_year': 'query',
+                    'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'is_active_candidate': 'query',
                     'sort_nulls_last': 'query',
+                    'page': 'query',
                     'sort_null_only': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
                     'office': 'query',
-                    'sort_hide_null': 'query',
                 },
                 'collection_format_map': {
                     'election_year': 'multi',
@@ -1839,32 +1839,32 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                min_cash_on_hand_end_period (str): Minimum cash on hand. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                max_cash_on_hand_end_period (str): Maximum cash on hand. [optional]
-                min_receipts (str): Minimum aggregated receipts. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                max_receipts (str): Maximum aggregated receipts. [optional]
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                min_debts_owed_by_committee (str): Minimum debt. [optional]
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                max_debts_owed_by_committee (str): Maximum debt. [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                min_disbursements (str): Minimum aggregated disbursements. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                party ([str]): Three-letter party code. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                district ([str]): District of candidate. [optional]
-                max_disbursements (str): Maximum aggregated disbursements. [optional]
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 q ([str]): Name of candidate running for office. [optional]
+                min_debts_owed_by_committee (str): Minimum debt. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                max_receipts (str): Maximum aggregated receipts. [optional]
+                min_receipts (str): Minimum aggregated receipts. [optional]
+                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
+                district ([str]): District of candidate. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_debts_owed_by_committee (str): Maximum debt. [optional]
+                min_cash_on_hand_end_period (str): Minimum cash on hand. [optional]
+                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                max_disbursements (str): Maximum aggregated disbursements. [optional]
                 state ([str]): State of candidate. [optional]
+                max_cash_on_hand_end_period (str): Maximum cash on hand. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
+                party ([str]): Three-letter party code. [optional]
+                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_disbursements (str): Minimum aggregated disbursements. [optional]
+                office ([str]): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1929,32 +1929,32 @@ class CandidateApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'min_cash_on_hand_end_period',
-                    'page',
-                    'federal_funds_flag',
-                    'is_active_candidate',
-                    'max_cash_on_hand_end_period',
-                    'min_receipts',
-                    'sort_nulls_last',
-                    'max_receipts',
-                    'election_year',
-                    'per_page',
-                    'min_debts_owed_by_committee',
-                    'sort',
-                    'office',
-                    'sort_hide_null',
-                    'candidate_id',
-                    'max_debts_owed_by_committee',
-                    'cycle',
-                    'min_disbursements',
-                    'has_raised_funds',
-                    'party',
-                    'sort_null_only',
                     'election_full',
-                    'district',
-                    'max_disbursements',
+                    'sort',
                     'q',
+                    'min_debts_owed_by_committee',
+                    'candidate_id',
+                    'max_receipts',
+                    'min_receipts',
+                    'is_active_candidate',
+                    'district',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'max_debts_owed_by_committee',
+                    'min_cash_on_hand_end_period',
+                    'election_year',
+                    'max_disbursements',
                     'state',
+                    'max_cash_on_hand_end_period',
+                    'sort_hide_null',
+                    'per_page',
+                    'federal_funds_flag',
+                    'party',
+                    'has_raised_funds',
+                    'cycle',
+                    'page',
+                    'min_disbursements',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -1983,126 +1983,126 @@ class CandidateApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'min_cash_on_hand_end_period':
+                    'election_full':
+                        (bool,),
+                    'sort':
+                        (str, none_type,),
+                    'q':
+                        ([str],),
+                    'min_debts_owed_by_committee':
                         (str,),
-                    'page':
-                        (int,),
-                    'federal_funds_flag':
-                        (bool,),
-                    'is_active_candidate':
-                        (bool,),
-                    'max_cash_on_hand_end_period':
+                    'candidate_id':
+                        ([str],),
+                    'max_receipts':
                         (str,),
                     'min_receipts':
                         (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'max_receipts':
-                        (str,),
-                    'election_year':
-                        ([int],),
-                    'per_page':
-                        (int,),
-                    'min_debts_owed_by_committee':
-                        (str,),
-                    'sort':
-                        (str, none_type,),
-                    'office':
-                        ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
-                    'max_debts_owed_by_committee':
-                        (str,),
-                    'cycle':
-                        ([int],),
-                    'min_disbursements':
-                        (str,),
-                    'has_raised_funds':
-                        (bool,),
-                    'party':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'election_full':
+                    'is_active_candidate':
                         (bool,),
                     'district':
                         ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'max_debts_owed_by_committee':
+                        (str,),
+                    'min_cash_on_hand_end_period':
+                        (str,),
+                    'election_year':
+                        ([int],),
                     'max_disbursements':
                         (str,),
-                    'q':
-                        ([str],),
                     'state':
+                        ([str],),
+                    'max_cash_on_hand_end_period':
+                        (str,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'federal_funds_flag':
+                        (bool,),
+                    'party':
+                        ([str],),
+                    'has_raised_funds':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'min_disbursements':
+                        (str,),
+                    'office':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'min_cash_on_hand_end_period': 'min_cash_on_hand_end_period',
-                    'page': 'page',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'is_active_candidate': 'is_active_candidate',
-                    'max_cash_on_hand_end_period': 'max_cash_on_hand_end_period',
-                    'min_receipts': 'min_receipts',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'max_receipts': 'max_receipts',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'min_debts_owed_by_committee': 'min_debts_owed_by_committee',
-                    'sort': 'sort',
-                    'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_id': 'candidate_id',
-                    'max_debts_owed_by_committee': 'max_debts_owed_by_committee',
-                    'cycle': 'cycle',
-                    'min_disbursements': 'min_disbursements',
-                    'has_raised_funds': 'has_raised_funds',
-                    'party': 'party',
-                    'sort_null_only': 'sort_null_only',
                     'election_full': 'election_full',
-                    'district': 'district',
-                    'max_disbursements': 'max_disbursements',
+                    'sort': 'sort',
                     'q': 'q',
+                    'min_debts_owed_by_committee': 'min_debts_owed_by_committee',
+                    'candidate_id': 'candidate_id',
+                    'max_receipts': 'max_receipts',
+                    'min_receipts': 'min_receipts',
+                    'is_active_candidate': 'is_active_candidate',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'max_debts_owed_by_committee': 'max_debts_owed_by_committee',
+                    'min_cash_on_hand_end_period': 'min_cash_on_hand_end_period',
+                    'election_year': 'election_year',
+                    'max_disbursements': 'max_disbursements',
                     'state': 'state',
+                    'max_cash_on_hand_end_period': 'max_cash_on_hand_end_period',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'federal_funds_flag': 'federal_funds_flag',
+                    'party': 'party',
+                    'has_raised_funds': 'has_raised_funds',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'min_disbursements': 'min_disbursements',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'min_cash_on_hand_end_period': 'query',
-                    'page': 'query',
-                    'federal_funds_flag': 'query',
-                    'is_active_candidate': 'query',
-                    'max_cash_on_hand_end_period': 'query',
-                    'min_receipts': 'query',
-                    'sort_nulls_last': 'query',
-                    'max_receipts': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'min_debts_owed_by_committee': 'query',
-                    'sort': 'query',
-                    'office': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_id': 'query',
-                    'max_debts_owed_by_committee': 'query',
-                    'cycle': 'query',
-                    'min_disbursements': 'query',
-                    'has_raised_funds': 'query',
-                    'party': 'query',
-                    'sort_null_only': 'query',
                     'election_full': 'query',
-                    'district': 'query',
-                    'max_disbursements': 'query',
+                    'sort': 'query',
                     'q': 'query',
+                    'min_debts_owed_by_committee': 'query',
+                    'candidate_id': 'query',
+                    'max_receipts': 'query',
+                    'min_receipts': 'query',
+                    'is_active_candidate': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'max_debts_owed_by_committee': 'query',
+                    'min_cash_on_hand_end_period': 'query',
+                    'election_year': 'query',
+                    'max_disbursements': 'query',
                     'state': 'query',
+                    'max_cash_on_hand_end_period': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'federal_funds_flag': 'query',
+                    'party': 'query',
+                    'has_raised_funds': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'min_disbursements': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'election_year': 'multi',
-                    'office': 'multi',
-                    'candidate_id': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
-                    'district': 'multi',
                     'q': 'multi',
+                    'candidate_id': 'multi',
+                    'district': 'multi',
+                    'election_year': 'multi',
                     'state': 'multi',
+                    'party': 'multi',
+                    'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -2134,24 +2134,24 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_year ([int]): Year of election. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
                 name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                election_year ([int]): Year of election. [optional]
+                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
                 state ([str]): US state or territory where a candidate runs for office. [optional]
+                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
+                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
+                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                office ([str]): Federal office candidate runs for: H, S or P. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -2219,24 +2219,24 @@ class CandidateApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'page',
-                    'incumbent_challenge',
-                    'federal_funds_flag',
-                    'sort_nulls_last',
-                    'election_year',
-                    'per_page',
-                    'sort',
-                    'office',
-                    'sort_hide_null',
                     'year',
-                    'cycle',
-                    'has_raised_funds',
-                    'party',
-                    'sort_null_only',
-                    'district',
+                    'sort',
                     'name',
-                    'candidate_status',
+                    'district',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'election_year',
+                    'incumbent_challenge',
                     'state',
+                    'candidate_status',
+                    'per_page',
+                    'federal_funds_flag',
+                    'sort_hide_null',
+                    'party',
+                    'has_raised_funds',
+                    'cycle',
+                    'page',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -2246,8 +2246,8 @@ class CandidateApi(object):
                 ],
                 'enum': [
                     'incumbent_challenge',
-                    'office',
                     'candidate_status',
+                    'office',
                 ],
                 'validation': [
                 ]
@@ -2263,13 +2263,6 @@ class CandidateApi(object):
                         'C': 'C',
                         'O': 'O'
                     },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
                     ('candidate_status',): {
 
                         'EMPTY': '',
@@ -2278,103 +2271,110 @@ class CandidateApi(object):
                         'N': 'N',
                         'P': 'P'
                     },
+                    ('office',): {
+
+                        'EMPTY': '',
+                        'H': 'H',
+                        'S': 'S',
+                        'P': 'P'
+                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
                     'committee_id':
                         (str,),
-                    'page':
-                        (int,),
-                    'incumbent_challenge':
+                    'year':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'name':
                         ([str],),
-                    'federal_funds_flag':
-                        (bool,),
+                    'district':
+                        ([str],),
                     'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
                         (bool,),
                     'election_year':
                         ([int],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'office':
+                    'incumbent_challenge':
                         ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'year':
-                        (str,),
-                    'cycle':
-                        ([int],),
-                    'has_raised_funds':
-                        (bool,),
-                    'party':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'district':
-                        ([str],),
-                    'name':
+                    'state':
                         ([str],),
                     'candidate_status':
                         ([str],),
-                    'state':
+                    'per_page':
+                        (int,),
+                    'federal_funds_flag':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'party':
+                        ([str],),
+                    'has_raised_funds':
+                        (bool,),
+                    'cycle':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'office':
                         ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'page': 'page',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_year': 'election_year',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'office': 'office',
-                    'sort_hide_null': 'sort_hide_null',
                     'year': 'year',
-                    'cycle': 'cycle',
-                    'has_raised_funds': 'has_raised_funds',
-                    'party': 'party',
-                    'sort_null_only': 'sort_null_only',
-                    'district': 'district',
+                    'sort': 'sort',
                     'name': 'name',
-                    'candidate_status': 'candidate_status',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'election_year': 'election_year',
+                    'incumbent_challenge': 'incumbent_challenge',
                     'state': 'state',
+                    'candidate_status': 'candidate_status',
+                    'per_page': 'per_page',
+                    'federal_funds_flag': 'federal_funds_flag',
+                    'sort_hide_null': 'sort_hide_null',
+                    'party': 'party',
+                    'has_raised_funds': 'has_raised_funds',
+                    'cycle': 'cycle',
+                    'page': 'page',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'page': 'query',
-                    'incumbent_challenge': 'query',
-                    'federal_funds_flag': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_year': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'office': 'query',
-                    'sort_hide_null': 'query',
                     'year': 'query',
-                    'cycle': 'query',
-                    'has_raised_funds': 'query',
-                    'party': 'query',
-                    'sort_null_only': 'query',
-                    'district': 'query',
+                    'sort': 'query',
                     'name': 'query',
-                    'candidate_status': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'election_year': 'query',
+                    'incumbent_challenge': 'query',
                     'state': 'query',
+                    'candidate_status': 'query',
+                    'per_page': 'query',
+                    'federal_funds_flag': 'query',
+                    'sort_hide_null': 'query',
+                    'party': 'query',
+                    'has_raised_funds': 'query',
+                    'cycle': 'query',
+                    'page': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'election_year': 'multi',
-                    'office': 'multi',
-                    'cycle': 'multi',
-                    'party': 'multi',
-                    'district': 'multi',
                     'name': 'multi',
-                    'candidate_status': 'multi',
+                    'district': 'multi',
+                    'election_year': 'multi',
+                    'incumbent_challenge': 'multi',
                     'state': 'multi',
+                    'candidate_status': 'multi',
+                    'party': 'multi',
+                    'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -2408,13 +2408,13 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -2485,13 +2485,13 @@ class CandidateApi(object):
                     'api_key',
                     'committee_id',
                     'cycle',
-                    'per_page',
-                    'page',
                     'sort_nulls_last',
-                    'sort',
-                    'sort_hide_null',
-                    'sort_null_only',
                     'election_full',
+                    'page',
+                    'sort',
+                    'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -2517,44 +2517,44 @@ class CandidateApi(object):
                         (str,),
                     'cycle':
                         (int,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
                     'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'election_full':
                         (bool,),
+                    'page':
+                        (int,),
+                    'sort':
+                        (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
                     'cycle': 'cycle',
-                    'per_page': 'per_page',
-                    'page': 'page',
                     'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
                     'election_full': 'election_full',
+                    'page': 'page',
+                    'sort': 'sort',
+                    'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
                     'cycle': 'path',
-                    'per_page': 'query',
-                    'page': 'query',
                     'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
                     'election_full': 'query',
+                    'page': 'query',
+                    'sort': 'query',
+                    'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -2588,13 +2588,13 @@ class CandidateApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -2662,13 +2662,13 @@ class CandidateApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'per_page',
-                    'page',
                     'sort_nulls_last',
-                    'sort',
-                    'sort_hide_null',
-                    'sort_null_only',
                     'election_full',
+                    'page',
+                    'sort',
+                    'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -2691,42 +2691,42 @@ class CandidateApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
                     'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'election_full':
                         (bool,),
+                    'page':
+                        (int,),
+                    'sort':
+                        (str,),
+                    'sort_null_only':
+                        (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'per_page': 'per_page',
-                    'page': 'page',
                     'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
                     'election_full': 'election_full',
+                    'page': 'page',
+                    'sort': 'sort',
+                    'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'per_page': 'query',
-                    'page': 'query',
                     'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
                     'election_full': 'query',
+                    'page': 'query',
+                    'sort': 'query',
+                    'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }

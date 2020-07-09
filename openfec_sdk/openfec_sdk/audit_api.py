@@ -70,25 +70,25 @@ class AuditApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                audit_case_id ([str]):  Primary/foreign key for audit tables . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sub_category_id (str):  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID. . [optional] if omitted the server will use the default value of 'all'
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-cycle","committee_name"]
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                committee_designation (str): Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC  . [optional]
-                min_election_cycle (int):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                cycle ([int]):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                qq ([str]): Name of candidate running for office. [optional]
+                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
                 committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 primary_category_id (str):  Audit category ID (table PK) . [optional] if omitted the server will use the default value of 'all'
+                sub_category_id (str):  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID. . [optional] if omitted the server will use the default value of 'all'
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                audit_case_id ([str]):  Primary/foreign key for audit tables . [optional]
+                committee_designation (str): Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC  . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                min_election_cycle (int):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 audit_id ([int]):  The audit issue. Each subcategory has an unique ID . [optional]
                 max_election_cycle (int):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                cycle ([int]):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                qq ([str]): Name of candidate running for office. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -153,25 +153,25 @@ class AuditApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'audit_case_id',
-                    'page',
-                    'sub_category_id',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'per_page',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
-                    'committee_designation',
-                    'min_election_cycle',
-                    'cycle',
-                    'qq',
+                    'q',
                     'committee_type',
-                    'sort_null_only',
                     'primary_category_id',
+                    'sub_category_id',
+                    'sort_nulls_last',
+                    'audit_case_id',
+                    'committee_designation',
+                    'sort_null_only',
+                    'min_election_cycle',
+                    'sort_hide_null',
+                    'per_page',
                     'audit_id',
                     'max_election_cycle',
-                    'q',
+                    'committee_id',
+                    'page',
+                    'cycle',
+                    'qq',
                 ],
                 'required': [
                     'api_key',
@@ -192,99 +192,99 @@ class AuditApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'audit_case_id':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sub_category_id':
-                        (str,),
-                    'committee_id':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         ([str], none_type,),
                     'candidate_id':
                         ([str],),
-                    'sort_hide_null':
+                    'q':
+                        ([str],),
+                    'committee_type':
+                        ([str],),
+                    'primary_category_id':
+                        (str,),
+                    'sub_category_id':
+                        (str,),
+                    'sort_nulls_last':
                         (bool,),
+                    'audit_case_id':
+                        ([str],),
                     'committee_designation':
                         (str,),
+                    'sort_null_only':
+                        (bool,),
                     'min_election_cycle':
+                        (int,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'audit_id':
+                        ([int],),
+                    'max_election_cycle':
+                        (int,),
+                    'committee_id':
+                        ([str],),
+                    'page':
                         (int,),
                     'cycle':
                         ([int],),
                     'qq':
                         ([str],),
-                    'committee_type':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'primary_category_id':
-                        (str,),
-                    'audit_id':
-                        ([int],),
-                    'max_election_cycle':
-                        (int,),
-                    'q':
-                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'audit_case_id': 'audit_case_id',
-                    'page': 'page',
-                    'sub_category_id': 'sub_category_id',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'committee_designation': 'committee_designation',
-                    'min_election_cycle': 'min_election_cycle',
-                    'cycle': 'cycle',
-                    'qq': 'qq',
+                    'q': 'q',
                     'committee_type': 'committee_type',
-                    'sort_null_only': 'sort_null_only',
                     'primary_category_id': 'primary_category_id',
+                    'sub_category_id': 'sub_category_id',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'audit_case_id': 'audit_case_id',
+                    'committee_designation': 'committee_designation',
+                    'sort_null_only': 'sort_null_only',
+                    'min_election_cycle': 'min_election_cycle',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'audit_id': 'audit_id',
                     'max_election_cycle': 'max_election_cycle',
-                    'q': 'q',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'cycle': 'cycle',
+                    'qq': 'qq',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'audit_case_id': 'query',
-                    'page': 'query',
-                    'sub_category_id': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
-                    'committee_designation': 'query',
-                    'min_election_cycle': 'query',
-                    'cycle': 'query',
-                    'qq': 'query',
+                    'q': 'query',
                     'committee_type': 'query',
-                    'sort_null_only': 'query',
                     'primary_category_id': 'query',
+                    'sub_category_id': 'query',
+                    'sort_nulls_last': 'query',
+                    'audit_case_id': 'query',
+                    'committee_designation': 'query',
+                    'sort_null_only': 'query',
+                    'min_election_cycle': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'audit_id': 'query',
                     'max_election_cycle': 'query',
-                    'q': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'cycle': 'query',
+                    'qq': 'query',
                 },
                 'collection_format_map': {
-                    'audit_case_id': 'multi',
-                    'committee_id': 'multi',
                     'sort': 'multi',
                     'candidate_id': 'multi',
+                    'q': 'multi',
+                    'committee_type': 'multi',
+                    'audit_case_id': 'multi',
+                    'audit_id': 'multi',
+                    'committee_id': 'multi',
                     'cycle': 'multi',
                     'qq': 'multi',
-                    'committee_type': 'multi',
-                    'audit_id': 'multi',
-                    'q': 'multi',
                 }
             },
             headers_map={
@@ -314,14 +314,14 @@ class AuditApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'primary_category_name'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
                 primary_category_name ([str]): Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -386,14 +386,14 @@ class AuditApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'primary_category_id',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'primary_category_id',
                     'primary_category_name',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -413,44 +413,44 @@ class AuditApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'primary_category_id':
-                        ([str],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'primary_category_id':
+                        ([str],),
                     'primary_category_name':
                         ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'primary_category_id': 'primary_category_id',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'primary_category_id': 'primary_category_id',
                     'primary_category_name': 'primary_category_name',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'primary_category_id': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'primary_category_id': 'query',
                     'primary_category_name': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'primary_category_id': 'multi',
@@ -484,14 +484,14 @@ class AuditApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'primary_category_name'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
                 primary_category_name ([str]): Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -556,14 +556,14 @@ class AuditApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_null_only',
-                    'sort_nulls_last',
-                    'primary_category_id',
-                    'per_page',
                     'sort',
                     'sort_hide_null',
+                    'per_page',
+                    'primary_category_id',
                     'primary_category_name',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -583,44 +583,44 @@ class AuditApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'primary_category_id':
-                        ([str],),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'primary_category_id':
+                        ([str],),
                     'primary_category_name':
                         ([str],),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'primary_category_id': 'primary_category_id',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'primary_category_id': 'primary_category_id',
                     'primary_category_name': 'primary_category_name',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'primary_category_id': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'primary_category_id': 'query',
                     'primary_category_name': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'primary_category_id': 'multi',

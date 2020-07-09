@@ -73,33 +73,33 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                max_receipts_amount (str):  Filter for all amounts less than a value. . [optional]
-                max_debts_owed_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                max_independent_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                min_party_coordinated_expenditures (str):  Filter for all amounts greater than a value. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-coverage_end_date"]
-                min_receipts_amount (str):  Filter for all amounts greater than a value. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
-                max_cash_on_hand_end_period_amount (str):  Filter for all amounts less than a value. . [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                max_party_coordinated_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                max_total_contributions (str):  Filter for all amounts less than a value. . [optional]
-                is_amended (bool):  False indicates that a report is the most recent. True indicates that the report has been superseded by an amendment. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                min_independent_expenditures (str):  Filter for all amounts greater than a value. . [optional]
-                min_total_contributions (str):  Filter for all amounts greater than a value. . [optional]
-                beginning_image_number ([str]):  Unique identifier for the electronic or paper report. This number is used to construct PDF URLs to the original document. . [optional]
-                max_disbursements_amount (str):  Filter for all amounts less than a value. . [optional]
                 min_cash_on_hand_end_period_amount (str):  Filter for all amounts greater than a value. . [optional]
-                min_disbursements_amount (str):  Filter for all amounts greater than a value. . [optional]
+                beginning_image_number ([str]):  Unique identifier for the electronic or paper report. This number is used to construct PDF URLs to the original document. . [optional]
                 min_debts_owed_amount (str):  Filter for all amounts greater than a value. . [optional]
+                year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
+                min_disbursements_amount (str):  Filter for all amounts greater than a value. . [optional]
+                sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-coverage_end_date"]
+                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                max_receipts_amount (str):  Filter for all amounts less than a value. . [optional]
+                min_receipts_amount (str):  Filter for all amounts greater than a value. . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_disbursements_amount (str):  Filter for all amounts less than a value. . [optional]
+                min_independent_expenditures (str):  Filter for all amounts greater than a value. . [optional]
+                max_independent_expenditures (str):  Filter for all amounts less than a value. . [optional]
+                min_total_contributions (str):  Filter for all amounts greater than a value. . [optional]
                 report_type ([str]): Report type; prefix with \&quot;-\&quot; to exclude. Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND . [optional]
+                type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                max_debts_owed_expenditures (str):  Filter for all amounts less than a value. . [optional]
+                max_total_contributions (str):  Filter for all amounts less than a value. . [optional]
+                min_party_coordinated_expenditures (str):  Filter for all amounts greater than a value. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                is_amended (bool):  False indicates that a report is the most recent. True indicates that the report has been superseded by an amendment. . [optional]
+                max_cash_on_hand_end_period_amount (str):  Filter for all amounts less than a value. . [optional]
+                max_party_coordinated_expenditures (str):  Filter for all amounts less than a value. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -167,33 +167,33 @@ class FinancialApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'max_receipts_amount',
-                    'max_debts_owed_expenditures',
-                    'type',
-                    'page',
-                    'sort_nulls_last',
-                    'max_independent_expenditures',
-                    'min_party_coordinated_expenditures',
-                    'per_page',
-                    'sort',
-                    'min_receipts_amount',
-                    'sort_hide_null',
-                    'candidate_id',
-                    'year',
-                    'max_cash_on_hand_end_period_amount',
-                    'cycle',
-                    'max_party_coordinated_expenditures',
-                    'max_total_contributions',
-                    'is_amended',
-                    'sort_null_only',
-                    'min_independent_expenditures',
-                    'min_total_contributions',
-                    'beginning_image_number',
-                    'max_disbursements_amount',
                     'min_cash_on_hand_end_period_amount',
-                    'min_disbursements_amount',
+                    'beginning_image_number',
                     'min_debts_owed_amount',
+                    'year',
+                    'min_disbursements_amount',
+                    'sort',
+                    'candidate_id',
+                    'max_receipts_amount',
+                    'min_receipts_amount',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'max_disbursements_amount',
+                    'min_independent_expenditures',
+                    'max_independent_expenditures',
+                    'min_total_contributions',
                     'report_type',
+                    'type',
+                    'sort_hide_null',
+                    'per_page',
+                    'max_debts_owed_expenditures',
+                    'max_total_contributions',
+                    'min_party_coordinated_expenditures',
+                    'page',
+                    'cycle',
+                    'is_amended',
+                    'max_cash_on_hand_end_period_amount',
+                    'max_party_coordinated_expenditures',
                 ],
                 'required': [
                     'api_key',
@@ -217,130 +217,130 @@ class FinancialApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'max_receipts_amount':
-                        (str,),
-                    'max_debts_owed_expenditures':
-                        (str,),
-                    'type':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'max_independent_expenditures':
-                        (str,),
-                    'min_party_coordinated_expenditures':
-                        (str,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        ([str], none_type,),
-                    'min_receipts_amount':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'candidate_id':
-                        (str,),
-                    'year':
-                        ([int],),
-                    'max_cash_on_hand_end_period_amount':
-                        (str,),
-                    'cycle':
-                        ([int],),
-                    'max_party_coordinated_expenditures':
-                        (str,),
-                    'max_total_contributions':
-                        (str,),
-                    'is_amended':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'min_independent_expenditures':
-                        (str,),
-                    'min_total_contributions':
+                    'min_cash_on_hand_end_period_amount':
                         (str,),
                     'beginning_image_number':
                         ([str],),
-                    'max_disbursements_amount':
+                    'min_debts_owed_amount':
                         (str,),
-                    'min_cash_on_hand_end_period_amount':
-                        (str,),
+                    'year':
+                        ([int],),
                     'min_disbursements_amount':
                         (str,),
-                    'min_debts_owed_amount':
+                    'sort':
+                        ([str], none_type,),
+                    'candidate_id':
+                        (str,),
+                    'max_receipts_amount':
+                        (str,),
+                    'min_receipts_amount':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'max_disbursements_amount':
+                        (str,),
+                    'min_independent_expenditures':
+                        (str,),
+                    'max_independent_expenditures':
+                        (str,),
+                    'min_total_contributions':
                         (str,),
                     'report_type':
                         ([str],),
+                    'type':
+                        ([str],),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'max_debts_owed_expenditures':
+                        (str,),
+                    'max_total_contributions':
+                        (str,),
+                    'min_party_coordinated_expenditures':
+                        (str,),
+                    'page':
+                        (int,),
+                    'cycle':
+                        ([int],),
+                    'is_amended':
+                        (bool,),
+                    'max_cash_on_hand_end_period_amount':
+                        (str,),
+                    'max_party_coordinated_expenditures':
+                        (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'max_receipts_amount': 'max_receipts_amount',
-                    'max_debts_owed_expenditures': 'max_debts_owed_expenditures',
-                    'type': 'type',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'max_independent_expenditures': 'max_independent_expenditures',
-                    'min_party_coordinated_expenditures': 'min_party_coordinated_expenditures',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'min_receipts_amount': 'min_receipts_amount',
-                    'sort_hide_null': 'sort_hide_null',
-                    'candidate_id': 'candidate_id',
-                    'year': 'year',
-                    'max_cash_on_hand_end_period_amount': 'max_cash_on_hand_end_period_amount',
-                    'cycle': 'cycle',
-                    'max_party_coordinated_expenditures': 'max_party_coordinated_expenditures',
-                    'max_total_contributions': 'max_total_contributions',
-                    'is_amended': 'is_amended',
-                    'sort_null_only': 'sort_null_only',
-                    'min_independent_expenditures': 'min_independent_expenditures',
-                    'min_total_contributions': 'min_total_contributions',
-                    'beginning_image_number': 'beginning_image_number',
-                    'max_disbursements_amount': 'max_disbursements_amount',
                     'min_cash_on_hand_end_period_amount': 'min_cash_on_hand_end_period_amount',
-                    'min_disbursements_amount': 'min_disbursements_amount',
+                    'beginning_image_number': 'beginning_image_number',
                     'min_debts_owed_amount': 'min_debts_owed_amount',
+                    'year': 'year',
+                    'min_disbursements_amount': 'min_disbursements_amount',
+                    'sort': 'sort',
+                    'candidate_id': 'candidate_id',
+                    'max_receipts_amount': 'max_receipts_amount',
+                    'min_receipts_amount': 'min_receipts_amount',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'max_disbursements_amount': 'max_disbursements_amount',
+                    'min_independent_expenditures': 'min_independent_expenditures',
+                    'max_independent_expenditures': 'max_independent_expenditures',
+                    'min_total_contributions': 'min_total_contributions',
                     'report_type': 'report_type',
+                    'type': 'type',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'max_debts_owed_expenditures': 'max_debts_owed_expenditures',
+                    'max_total_contributions': 'max_total_contributions',
+                    'min_party_coordinated_expenditures': 'min_party_coordinated_expenditures',
+                    'page': 'page',
+                    'cycle': 'cycle',
+                    'is_amended': 'is_amended',
+                    'max_cash_on_hand_end_period_amount': 'max_cash_on_hand_end_period_amount',
+                    'max_party_coordinated_expenditures': 'max_party_coordinated_expenditures',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'max_receipts_amount': 'query',
-                    'max_debts_owed_expenditures': 'query',
-                    'type': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'max_independent_expenditures': 'query',
-                    'min_party_coordinated_expenditures': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'min_receipts_amount': 'query',
-                    'sort_hide_null': 'query',
-                    'candidate_id': 'query',
-                    'year': 'query',
-                    'max_cash_on_hand_end_period_amount': 'query',
-                    'cycle': 'query',
-                    'max_party_coordinated_expenditures': 'query',
-                    'max_total_contributions': 'query',
-                    'is_amended': 'query',
-                    'sort_null_only': 'query',
-                    'min_independent_expenditures': 'query',
-                    'min_total_contributions': 'query',
-                    'beginning_image_number': 'query',
-                    'max_disbursements_amount': 'query',
                     'min_cash_on_hand_end_period_amount': 'query',
-                    'min_disbursements_amount': 'query',
+                    'beginning_image_number': 'query',
                     'min_debts_owed_amount': 'query',
+                    'year': 'query',
+                    'min_disbursements_amount': 'query',
+                    'sort': 'query',
+                    'candidate_id': 'query',
+                    'max_receipts_amount': 'query',
+                    'min_receipts_amount': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'max_disbursements_amount': 'query',
+                    'min_independent_expenditures': 'query',
+                    'max_independent_expenditures': 'query',
+                    'min_total_contributions': 'query',
                     'report_type': 'query',
+                    'type': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'max_debts_owed_expenditures': 'query',
+                    'max_total_contributions': 'query',
+                    'min_party_coordinated_expenditures': 'query',
+                    'page': 'query',
+                    'cycle': 'query',
+                    'is_amended': 'query',
+                    'max_cash_on_hand_end_period_amount': 'query',
+                    'max_party_coordinated_expenditures': 'query',
                 },
                 'collection_format_map': {
-                    'type': 'multi',
-                    'sort': 'multi',
-                    'year': 'multi',
-                    'cycle': 'multi',
                     'beginning_image_number': 'multi',
+                    'year': 'multi',
+                    'sort': 'multi',
                     'report_type': 'multi',
+                    'type': 'multi',
+                    'cycle': 'multi',
                 }
             },
             headers_map={
@@ -372,15 +372,15 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                type (str): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                designation (str): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
+                type (str): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                designation (str): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -448,15 +448,15 @@ class FinancialApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'type',
-                    'page',
-                    'sort_nulls_last',
-                    'designation',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
+                    'type',
                     'sort_hide_null',
+                    'per_page',
+                    'designation',
+                    'sort_nulls_last',
                     'cycle',
+                    'page',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -479,50 +479,50 @@ class FinancialApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'type':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'designation':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
+                        (str,),
+                    'type':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'designation':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'type': 'type',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'type': 'type',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'designation': 'designation',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'type': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'type': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'designation': 'query',
+                    'sort_nulls_last': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'cycle': 'multi',
@@ -559,15 +559,15 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
+                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-total_receipts'
+                state (str): US state or territory where a candidate runs for office. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-total_receipts'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                state (str): US state or territory where a candidate runs for office. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -612,10 +612,10 @@ class FinancialApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['cycle'] = \
-                cycle
             kwargs['api_key'] = \
                 api_key
+            kwargs['cycle'] = \
+                cycle
             kwargs['office'] = \
                 office
             return self.call_with_http_info(**kwargs)
@@ -635,22 +635,22 @@ class FinancialApi(object):
             },
             params_map={
                 'all': [
-                    'cycle',
                     'api_key',
+                    'cycle',
                     'office',
+                    'election_full',
+                    'sort',
+                    'state',
+                    'sort_hide_null',
+                    'per_page',
+                    'district',
+                    'sort_nulls_last',
                     'page',
                     'sort_null_only',
-                    'sort_nulls_last',
-                    'election_full',
-                    'district',
-                    'per_page',
-                    'sort',
-                    'sort_hide_null',
-                    'state',
                 ],
                 'required': [
-                    'cycle',
                     'api_key',
+                    'cycle',
                     'office',
                 ],
                 'nullable': [
@@ -673,58 +673,58 @@ class FinancialApi(object):
                     },
                 },
                 'openapi_types': {
-                    'cycle':
-                        (int,),
                     'api_key':
                         (str,),
+                    'cycle':
+                        (int,),
                     'office':
                         (str,),
+                    'election_full':
+                        (bool,),
+                    'sort':
+                        (str,),
+                    'state':
+                        (str,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'district':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
                     'page':
                         (int,),
                     'sort_null_only':
                         (bool,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'district':
-                        (str,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'state':
-                        (str,),
                 },
                 'attribute_map': {
-                    'cycle': 'cycle',
                     'api_key': 'api_key',
+                    'cycle': 'cycle',
                     'office': 'office',
+                    'election_full': 'election_full',
+                    'sort': 'sort',
+                    'state': 'state',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'district': 'district',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'page': 'page',
                     'sort_null_only': 'sort_null_only',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                    'district': 'district',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'state': 'state',
                 },
                 'location_map': {
-                    'cycle': 'query',
                     'api_key': 'query',
+                    'cycle': 'query',
                     'office': 'query',
+                    'election_full': 'query',
+                    'sort': 'query',
+                    'state': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'district': 'query',
+                    'sort_nulls_last': 'query',
                     'page': 'query',
                     'sort_null_only': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                    'district': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'state': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -756,17 +756,17 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                state ([str]): US state or territory where a candidate runs for office. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 zip ([int]): Zip code. [optional]
                 sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["sort_order","district"]
-                office ([str]): [optional]
+                state ([str]): US state or territory where a candidate runs for office. [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
                 cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                office ([str]): [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -831,17 +831,17 @@ class FinancialApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'page',
-                    'sort_nulls_last',
-                    'sort_null_only',
-                    'district',
-                    'state',
-                    'per_page',
                     'zip',
                     'sort',
-                    'office',
+                    'state',
                     'sort_hide_null',
+                    'per_page',
+                    'sort_nulls_last',
+                    'district',
                     'cycle',
+                    'page',
+                    'sort_null_only',
+                    'office',
                 ],
                 'required': [
                     'api_key',
@@ -869,64 +869,64 @@ class FinancialApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'district':
-                        ([str],),
-                    'state':
-                        ([str],),
-                    'per_page':
-                        (int,),
                     'zip':
                         ([int],),
                     'sort':
                         ([str], none_type,),
-                    'office':
+                    'state':
                         ([str],),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'district':
+                        ([str],),
                     'cycle':
                         ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
+                    'office':
+                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'sort_null_only': 'sort_null_only',
-                    'district': 'district',
-                    'state': 'state',
-                    'per_page': 'per_page',
                     'zip': 'zip',
                     'sort': 'sort',
-                    'office': 'office',
+                    'state': 'state',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'district': 'district',
                     'cycle': 'cycle',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
+                    'office': 'office',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'sort_null_only': 'query',
-                    'district': 'query',
-                    'state': 'query',
-                    'per_page': 'query',
                     'zip': 'query',
                     'sort': 'query',
-                    'office': 'query',
+                    'state': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'district': 'query',
                     'cycle': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
+                    'office': 'query',
                 },
                 'collection_format_map': {
-                    'district': 'multi',
-                    'state': 'multi',
                     'zip': 'multi',
                     'sort': 'multi',
-                    'office': 'multi',
+                    'state': 'multi',
+                    'district': 'multi',
                     'cycle': 'multi',
+                    'office': 'multi',
                 }
             },
             headers_map={
@@ -960,8 +960,8 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
                 district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
                 state (str): US state or territory where a candidate runs for office. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
@@ -1033,8 +1033,8 @@ class FinancialApi(object):
                     'cycle',
                     'api_key',
                     'office',
-                    'election_full',
                     'district',
+                    'election_full',
                     'state',
                 ],
                 'required': [
@@ -1068,10 +1068,10 @@ class FinancialApi(object):
                         (str,),
                     'office':
                         (str,),
-                    'election_full':
-                        (bool,),
                     'district':
                         (str,),
+                    'election_full':
+                        (bool,),
                     'state':
                         (str,),
                 },
@@ -1079,16 +1079,16 @@ class FinancialApi(object):
                     'cycle': 'cycle',
                     'api_key': 'api_key',
                     'office': 'office',
-                    'election_full': 'election_full',
                     'district': 'district',
+                    'election_full': 'election_full',
                     'state': 'state',
                 },
                 'location_map': {
                     'cycle': 'query',
                     'api_key': 'query',
                     'office': 'query',
-                    'election_full': 'query',
                     'district': 'query',
+                    'election_full': 'query',
                     'state': 'query',
                 },
                 'collection_format_map': {
@@ -1123,39 +1123,39 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                max_receipts_amount (str):  Filter for all amounts less than a value. . [optional]
-                max_debts_owed_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                max_independent_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                filer_type (str): The method used to file with the FEC, either electronic or on paper.. [optional]
-                sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-coverage_end_date"]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                max_total_contributions (str):  Filter for all amounts less than a value. . [optional]
-                is_amended (bool):  False indicates that a report is the most recent. True indicates that the report has been superseded by an amendment. . [optional]
-                min_independent_expenditures (str):  Filter for all amounts greater than a value. . [optional]
-                min_total_contributions (str):  Filter for all amounts greater than a value. . [optional]
-                beginning_image_number ([str]):  Unique identifier for the electronic or paper report. This number is used to construct PDF URLs to the original document. . [optional]
-                max_disbursements_amount (str):  Filter for all amounts less than a value. . [optional]
-                min_disbursements_amount (str):  Filter for all amounts greater than a value. . [optional]
                 min_cash_on_hand_end_period_amount (str):  Filter for all amounts greater than a value. . [optional]
-                report_type ([str]): Report type; prefix with \&quot;-\&quot; to exclude. Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND . [optional]
-                type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                min_party_coordinated_expenditures (str):  Filter for all amounts greater than a value. . [optional]
-                amendment_indicator ([str]): Amendent types:     -N   new     -A   amendment     -T   terminated     -C   consolidated     -M   multi-candidate     -S   secondary  NULL might be new or amendment. If amendment indicator is null and the filings is the first or first in a chain treat it as if it was a new. If it is not the first or first in a chain then treat the filing as an amendment. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                most_recent (bool):  Report is either new or is the most-recently filed amendment . [optional]
-                min_receipts_amount (str):  Filter for all amounts greater than a value. . [optional]
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                max_cash_on_hand_end_period_amount (str):  Filter for all amounts less than a value. . [optional]
-                max_party_coordinated_expenditures (str):  Filter for all amounts less than a value. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                beginning_image_number ([str]):  Unique identifier for the electronic or paper report. This number is used to construct PDF URLs to the original document. . [optional]
                 min_debts_owed_amount (str):  Filter for all amounts greater than a value. . [optional]
+                sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-coverage_end_date"]
+                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                max_receipts_amount (str):  Filter for all amounts less than a value. . [optional]
+                max_party_coordinated_expenditures (str):  Filter for all amounts less than a value. . [optional]
+                filer_type (str): The method used to file with the FEC, either electronic or on paper.. [optional]
+                max_disbursements_amount (str):  Filter for all amounts less than a value. . [optional]
+                max_independent_expenditures (str):  Filter for all amounts less than a value. . [optional]
+                most_recent (bool):  Report is either new or is the most-recently filed amendment . [optional]
                 max_receipt_date (date):  Selects all items received by FEC before this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 min_receipt_date (date):  Selects all items received by FEC after this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                max_debts_owed_expenditures (str):  Filter for all amounts less than a value. . [optional]
+                max_total_contributions (str):  Filter for all amounts less than a value. . [optional]
+                min_party_coordinated_expenditures (str):  Filter for all amounts greater than a value. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                max_cash_on_hand_end_period_amount (str):  Filter for all amounts less than a value. . [optional]
+                year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
+                min_disbursements_amount (str):  Filter for all amounts greater than a value. . [optional]
+                amendment_indicator ([str]): Amendent types:     -N   new     -A   amendment     -T   terminated     -C   consolidated     -M   multi-candidate     -S   secondary  NULL might be new or amendment. If amendment indicator is null and the filings is the first or first in a chain treat it as if it was a new. If it is not the first or first in a chain then treat the filing as an amendment. . [optional]
+                min_receipts_amount (str):  Filter for all amounts greater than a value. . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                min_independent_expenditures (str):  Filter for all amounts greater than a value. . [optional]
+                min_total_contributions (str):  Filter for all amounts greater than a value. . [optional]
+                type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                is_amended (bool):  False indicates that a report is the most recent. True indicates that the report has been superseded by an amendment. . [optional]
+                report_type ([str]): Report type; prefix with \&quot;-\&quot; to exclude. Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1223,39 +1223,39 @@ class FinancialApi(object):
                 'all': [
                     'api_key',
                     'committee_type',
-                    'max_receipts_amount',
-                    'max_debts_owed_expenditures',
-                    'committee_id',
-                    'max_independent_expenditures',
-                    'filer_type',
-                    'sort',
-                    'sort_hide_null',
-                    'year',
-                    'cycle',
-                    'max_total_contributions',
-                    'is_amended',
-                    'min_independent_expenditures',
-                    'min_total_contributions',
-                    'beginning_image_number',
-                    'max_disbursements_amount',
-                    'min_disbursements_amount',
                     'min_cash_on_hand_end_period_amount',
-                    'report_type',
-                    'type',
-                    'page',
-                    'sort_nulls_last',
-                    'min_party_coordinated_expenditures',
-                    'amendment_indicator',
-                    'per_page',
-                    'most_recent',
-                    'min_receipts_amount',
-                    'candidate_id',
-                    'max_cash_on_hand_end_period_amount',
-                    'max_party_coordinated_expenditures',
-                    'sort_null_only',
+                    'beginning_image_number',
                     'min_debts_owed_amount',
+                    'sort',
+                    'candidate_id',
+                    'max_receipts_amount',
+                    'max_party_coordinated_expenditures',
+                    'filer_type',
+                    'max_disbursements_amount',
+                    'max_independent_expenditures',
+                    'most_recent',
                     'max_receipt_date',
                     'min_receipt_date',
+                    'max_debts_owed_expenditures',
+                    'max_total_contributions',
+                    'min_party_coordinated_expenditures',
+                    'page',
+                    'committee_id',
+                    'max_cash_on_hand_end_period_amount',
+                    'year',
+                    'min_disbursements_amount',
+                    'amendment_indicator',
+                    'min_receipts_amount',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'min_independent_expenditures',
+                    'min_total_contributions',
+                    'type',
+                    'sort_hide_null',
+                    'per_page',
+                    'cycle',
+                    'is_amended',
+                    'report_type',
                 ],
                 'required': [
                     'api_key',
@@ -1304,156 +1304,156 @@ class FinancialApi(object):
                         (str,),
                     'committee_type':
                         (str,),
-                    'max_receipts_amount':
+                    'min_cash_on_hand_end_period_amount':
                         (str,),
-                    'max_debts_owed_expenditures':
-                        (str,),
-                    'committee_id':
+                    'beginning_image_number':
                         ([str],),
-                    'max_independent_expenditures':
-                        (str,),
-                    'filer_type':
+                    'min_debts_owed_amount':
                         (str,),
                     'sort':
                         ([str], none_type,),
-                    'sort_hide_null':
+                    'candidate_id':
+                        (str,),
+                    'max_receipts_amount':
+                        (str,),
+                    'max_party_coordinated_expenditures':
+                        (str,),
+                    'filer_type':
+                        (str,),
+                    'max_disbursements_amount':
+                        (str,),
+                    'max_independent_expenditures':
+                        (str,),
+                    'most_recent':
                         (bool,),
-                    'year':
-                        ([int],),
-                    'cycle':
-                        ([int],),
+                    'max_receipt_date':
+                        (date,),
+                    'min_receipt_date':
+                        (date,),
+                    'max_debts_owed_expenditures':
+                        (str,),
                     'max_total_contributions':
                         (str,),
-                    'is_amended':
+                    'min_party_coordinated_expenditures':
+                        (str,),
+                    'page':
+                        (int,),
+                    'committee_id':
+                        ([str],),
+                    'max_cash_on_hand_end_period_amount':
+                        (str,),
+                    'year':
+                        ([int],),
+                    'min_disbursements_amount':
+                        (str,),
+                    'amendment_indicator':
+                        ([str],),
+                    'min_receipts_amount':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
                         (bool,),
                     'min_independent_expenditures':
                         (str,),
                     'min_total_contributions':
                         (str,),
-                    'beginning_image_number':
-                        ([str],),
-                    'max_disbursements_amount':
-                        (str,),
-                    'min_disbursements_amount':
-                        (str,),
-                    'min_cash_on_hand_end_period_amount':
-                        (str,),
-                    'report_type':
-                        ([str],),
                     'type':
                         ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
+                    'sort_hide_null':
                         (bool,),
-                    'min_party_coordinated_expenditures':
-                        (str,),
-                    'amendment_indicator':
-                        ([str],),
                     'per_page':
                         (int,),
-                    'most_recent':
+                    'cycle':
+                        ([int],),
+                    'is_amended':
                         (bool,),
-                    'min_receipts_amount':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'max_cash_on_hand_end_period_amount':
-                        (str,),
-                    'max_party_coordinated_expenditures':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'min_debts_owed_amount':
-                        (str,),
-                    'max_receipt_date':
-                        (date,),
-                    'min_receipt_date':
-                        (date,),
+                    'report_type':
+                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_type': 'committee_type',
-                    'max_receipts_amount': 'max_receipts_amount',
-                    'max_debts_owed_expenditures': 'max_debts_owed_expenditures',
-                    'committee_id': 'committee_id',
-                    'max_independent_expenditures': 'max_independent_expenditures',
-                    'filer_type': 'filer_type',
-                    'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
-                    'year': 'year',
-                    'cycle': 'cycle',
-                    'max_total_contributions': 'max_total_contributions',
-                    'is_amended': 'is_amended',
-                    'min_independent_expenditures': 'min_independent_expenditures',
-                    'min_total_contributions': 'min_total_contributions',
-                    'beginning_image_number': 'beginning_image_number',
-                    'max_disbursements_amount': 'max_disbursements_amount',
-                    'min_disbursements_amount': 'min_disbursements_amount',
                     'min_cash_on_hand_end_period_amount': 'min_cash_on_hand_end_period_amount',
-                    'report_type': 'report_type',
-                    'type': 'type',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'min_party_coordinated_expenditures': 'min_party_coordinated_expenditures',
-                    'amendment_indicator': 'amendment_indicator',
-                    'per_page': 'per_page',
-                    'most_recent': 'most_recent',
-                    'min_receipts_amount': 'min_receipts_amount',
-                    'candidate_id': 'candidate_id',
-                    'max_cash_on_hand_end_period_amount': 'max_cash_on_hand_end_period_amount',
-                    'max_party_coordinated_expenditures': 'max_party_coordinated_expenditures',
-                    'sort_null_only': 'sort_null_only',
+                    'beginning_image_number': 'beginning_image_number',
                     'min_debts_owed_amount': 'min_debts_owed_amount',
+                    'sort': 'sort',
+                    'candidate_id': 'candidate_id',
+                    'max_receipts_amount': 'max_receipts_amount',
+                    'max_party_coordinated_expenditures': 'max_party_coordinated_expenditures',
+                    'filer_type': 'filer_type',
+                    'max_disbursements_amount': 'max_disbursements_amount',
+                    'max_independent_expenditures': 'max_independent_expenditures',
+                    'most_recent': 'most_recent',
                     'max_receipt_date': 'max_receipt_date',
                     'min_receipt_date': 'min_receipt_date',
+                    'max_debts_owed_expenditures': 'max_debts_owed_expenditures',
+                    'max_total_contributions': 'max_total_contributions',
+                    'min_party_coordinated_expenditures': 'min_party_coordinated_expenditures',
+                    'page': 'page',
+                    'committee_id': 'committee_id',
+                    'max_cash_on_hand_end_period_amount': 'max_cash_on_hand_end_period_amount',
+                    'year': 'year',
+                    'min_disbursements_amount': 'min_disbursements_amount',
+                    'amendment_indicator': 'amendment_indicator',
+                    'min_receipts_amount': 'min_receipts_amount',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'min_independent_expenditures': 'min_independent_expenditures',
+                    'min_total_contributions': 'min_total_contributions',
+                    'type': 'type',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'cycle': 'cycle',
+                    'is_amended': 'is_amended',
+                    'report_type': 'report_type',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_type': 'path',
-                    'max_receipts_amount': 'query',
-                    'max_debts_owed_expenditures': 'query',
-                    'committee_id': 'query',
-                    'max_independent_expenditures': 'query',
-                    'filer_type': 'query',
-                    'sort': 'query',
-                    'sort_hide_null': 'query',
-                    'year': 'query',
-                    'cycle': 'query',
-                    'max_total_contributions': 'query',
-                    'is_amended': 'query',
-                    'min_independent_expenditures': 'query',
-                    'min_total_contributions': 'query',
-                    'beginning_image_number': 'query',
-                    'max_disbursements_amount': 'query',
-                    'min_disbursements_amount': 'query',
                     'min_cash_on_hand_end_period_amount': 'query',
-                    'report_type': 'query',
-                    'type': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'min_party_coordinated_expenditures': 'query',
-                    'amendment_indicator': 'query',
-                    'per_page': 'query',
-                    'most_recent': 'query',
-                    'min_receipts_amount': 'query',
-                    'candidate_id': 'query',
-                    'max_cash_on_hand_end_period_amount': 'query',
-                    'max_party_coordinated_expenditures': 'query',
-                    'sort_null_only': 'query',
+                    'beginning_image_number': 'query',
                     'min_debts_owed_amount': 'query',
+                    'sort': 'query',
+                    'candidate_id': 'query',
+                    'max_receipts_amount': 'query',
+                    'max_party_coordinated_expenditures': 'query',
+                    'filer_type': 'query',
+                    'max_disbursements_amount': 'query',
+                    'max_independent_expenditures': 'query',
+                    'most_recent': 'query',
                     'max_receipt_date': 'query',
                     'min_receipt_date': 'query',
+                    'max_debts_owed_expenditures': 'query',
+                    'max_total_contributions': 'query',
+                    'min_party_coordinated_expenditures': 'query',
+                    'page': 'query',
+                    'committee_id': 'query',
+                    'max_cash_on_hand_end_period_amount': 'query',
+                    'year': 'query',
+                    'min_disbursements_amount': 'query',
+                    'amendment_indicator': 'query',
+                    'min_receipts_amount': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'min_independent_expenditures': 'query',
+                    'min_total_contributions': 'query',
+                    'type': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'cycle': 'query',
+                    'is_amended': 'query',
+                    'report_type': 'query',
                 },
                 'collection_format_map': {
-                    'committee_id': 'multi',
-                    'sort': 'multi',
-                    'year': 'multi',
-                    'cycle': 'multi',
                     'beginning_image_number': 'multi',
-                    'report_type': 'multi',
-                    'type': 'multi',
+                    'sort': 'multi',
+                    'committee_id': 'multi',
+                    'year': 'multi',
                     'amendment_indicator': 'multi',
+                    'type': 'multi',
+                    'cycle': 'multi',
+                    'report_type': 'multi',
                 }
             },
             headers_map={
@@ -1485,12 +1485,12 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'end_date'
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1535,10 +1535,10 @@ class FinancialApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
             kwargs['cycle'] = \
                 cycle
+            kwargs['api_key'] = \
+                api_key
             return self.call_with_http_info(**kwargs)
 
         self.totals_by_entity_get = Endpoint(
@@ -1556,18 +1556,18 @@ class FinancialApi(object):
             },
             params_map={
                 'all': [
-                    'api_key',
                     'cycle',
-                    'per_page',
-                    'page',
+                    'api_key',
                     'sort_nulls_last',
+                    'page',
                     'sort',
-                    'sort_hide_null',
                     'sort_null_only',
+                    'sort_hide_null',
+                    'per_page',
                 ],
                 'required': [
-                    'api_key',
                     'cycle',
+                    'api_key',
                 ],
                 'nullable': [
                 ],
@@ -1582,42 +1582,42 @@ class FinancialApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'api_key':
-                        (str,),
                     'cycle':
                         (int,),
-                    'per_page':
-                        (int,),
-                    'page':
-                        (int,),
+                    'api_key':
+                        (str,),
                     'sort_nulls_last':
                         (bool,),
+                    'page':
+                        (int,),
                     'sort':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
                     'sort_null_only':
                         (bool,),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
                 },
                 'attribute_map': {
-                    'api_key': 'api_key',
                     'cycle': 'cycle',
-                    'per_page': 'per_page',
-                    'page': 'page',
+                    'api_key': 'api_key',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
                     'sort': 'sort',
-                    'sort_hide_null': 'sort_hide_null',
                     'sort_null_only': 'sort_null_only',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
-                    'api_key': 'query',
                     'cycle': 'query',
-                    'per_page': 'query',
-                    'page': 'query',
+                    'api_key': 'query',
                     'sort_nulls_last': 'query',
+                    'page': 'query',
                     'sort': 'query',
-                    'sort_hide_null': 'query',
                     'sort_null_only': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -1651,16 +1651,16 @@ class FinancialApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_designation_full (str): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                committee_type_full (str): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                committee_designation_full (str): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                committee_type_full (str): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1728,16 +1728,16 @@ class FinancialApi(object):
                 'all': [
                     'api_key',
                     'committee_type',
-                    'page',
-                    'committee_id',
-                    'sort_nulls_last',
-                    'committee_designation_full',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
-                    'committee_type_full',
                     'sort_hide_null',
+                    'per_page',
+                    'committee_designation_full',
+                    'sort_nulls_last',
+                    'committee_id',
+                    'page',
                     'cycle',
+                    'committee_type_full',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -1770,54 +1770,54 @@ class FinancialApi(object):
                         (str,),
                     'committee_type':
                         (str,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'committee_designation_full':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
-                        (str,),
-                    'committee_type_full':
                         (str,),
                     'sort_hide_null':
                         (bool,),
+                    'per_page':
+                        (int,),
+                    'committee_designation_full':
+                        (str,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'committee_id':
+                        (str,),
+                    'page':
+                        (int,),
                     'cycle':
                         ([int],),
+                    'committee_type_full':
+                        (str,),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_type': 'committee_type',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_designation_full': 'committee_designation_full',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
-                    'committee_type_full': 'committee_type_full',
                     'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'committee_designation_full': 'committee_designation_full',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
                     'cycle': 'cycle',
+                    'committee_type_full': 'committee_type_full',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_type': 'path',
-                    'page': 'query',
-                    'committee_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_designation_full': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
-                    'committee_type_full': 'query',
                     'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'committee_designation_full': 'query',
+                    'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
                     'cycle': 'query',
+                    'committee_type_full': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
                     'cycle': 'multi',
