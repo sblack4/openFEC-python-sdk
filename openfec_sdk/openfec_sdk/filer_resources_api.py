@@ -67,21 +67,21 @@ class FilerResourcesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                min_assignment_update_date (date): Filter results for assignment updates made after this date. [optional]
-                name ([str]): Name of RAD analyst. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                analyst_short_id ([int]): Short ID of RAD analyst. [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                telephone_ext ([int]): Telephone extension of RAD analyst. [optional]
+                name ([str]): Name of RAD analyst. [optional]
                 title ([str]): Title of RAD analyst. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                max_assignment_update_date (date): Filter results for assignment updates made before this date. [optional]
-                email ([str]): Email of RAD analyst. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 analyst_id ([int]): ID of RAD analyst. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                max_assignment_update_date (date): Filter results for assignment updates made before this date. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                telephone_ext ([int]): Telephone extension of RAD analyst. [optional]
+                email ([str]): Email of RAD analyst. [optional]
+                analyst_short_id ([int]): Short ID of RAD analyst. [optional]
+                min_assignment_update_date (date): Filter results for assignment updates made after this date. [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -146,21 +146,21 @@ class FilerResourcesApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'sort',
-                    'min_assignment_update_date',
-                    'name',
-                    'per_page',
-                    'analyst_short_id',
                     'sort_hide_null',
-                    'telephone_ext',
+                    'name',
                     'title',
-                    'sort_nulls_last',
-                    'committee_id',
-                    'page',
-                    'max_assignment_update_date',
-                    'email',
-                    'sort_null_only',
                     'analyst_id',
+                    'sort_null_only',
+                    'per_page',
+                    'sort',
+                    'max_assignment_update_date',
+                    'committee_id',
+                    'telephone_ext',
+                    'email',
+                    'analyst_short_id',
+                    'min_assignment_update_date',
+                    'page',
+                    'sort_nulls_last',
                 ],
                 'required': [
                     'api_key',
@@ -181,81 +181,81 @@ class FilerResourcesApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'sort':
-                        (str, none_type,),
-                    'min_assignment_update_date':
-                        (date,),
-                    'name':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'analyst_short_id':
-                        ([int],),
                     'sort_hide_null':
                         (bool,),
-                    'telephone_ext':
-                        ([int],),
+                    'name':
+                        ([str],),
                     'title':
                         ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'committee_id':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'max_assignment_update_date':
-                        (date,),
-                    'email':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
                     'analyst_id':
                         ([int],),
+                    'sort_null_only':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'sort':
+                        (str, none_type,),
+                    'max_assignment_update_date':
+                        (date,),
+                    'committee_id':
+                        ([str],),
+                    'telephone_ext':
+                        ([int],),
+                    'email':
+                        ([str],),
+                    'analyst_short_id':
+                        ([int],),
+                    'min_assignment_update_date':
+                        (date,),
+                    'page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'sort': 'sort',
-                    'min_assignment_update_date': 'min_assignment_update_date',
-                    'name': 'name',
-                    'per_page': 'per_page',
-                    'analyst_short_id': 'analyst_short_id',
                     'sort_hide_null': 'sort_hide_null',
-                    'telephone_ext': 'telephone_ext',
+                    'name': 'name',
                     'title': 'title',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_id': 'committee_id',
-                    'page': 'page',
-                    'max_assignment_update_date': 'max_assignment_update_date',
-                    'email': 'email',
-                    'sort_null_only': 'sort_null_only',
                     'analyst_id': 'analyst_id',
+                    'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'sort': 'sort',
+                    'max_assignment_update_date': 'max_assignment_update_date',
+                    'committee_id': 'committee_id',
+                    'telephone_ext': 'telephone_ext',
+                    'email': 'email',
+                    'analyst_short_id': 'analyst_short_id',
+                    'min_assignment_update_date': 'min_assignment_update_date',
+                    'page': 'page',
+                    'sort_nulls_last': 'sort_nulls_last',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'sort': 'query',
-                    'min_assignment_update_date': 'query',
-                    'name': 'query',
-                    'per_page': 'query',
-                    'analyst_short_id': 'query',
                     'sort_hide_null': 'query',
-                    'telephone_ext': 'query',
+                    'name': 'query',
                     'title': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_id': 'query',
-                    'page': 'query',
-                    'max_assignment_update_date': 'query',
-                    'email': 'query',
-                    'sort_null_only': 'query',
                     'analyst_id': 'query',
+                    'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'sort': 'query',
+                    'max_assignment_update_date': 'query',
+                    'committee_id': 'query',
+                    'telephone_ext': 'query',
+                    'email': 'query',
+                    'analyst_short_id': 'query',
+                    'min_assignment_update_date': 'query',
+                    'page': 'query',
+                    'sort_nulls_last': 'query',
                 },
                 'collection_format_map': {
                     'name': 'multi',
-                    'analyst_short_id': 'multi',
-                    'telephone_ext': 'multi',
                     'title': 'multi',
-                    'committee_id': 'multi',
-                    'email': 'multi',
                     'analyst_id': 'multi',
+                    'committee_id': 'multi',
+                    'telephone_ext': 'multi',
+                    'email': 'multi',
+                    'analyst_short_id': 'multi',
                 }
             },
             headers_map={
@@ -287,12 +287,12 @@ class FilerResourcesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -360,12 +360,12 @@ class FilerResourcesApi(object):
                 'all': [
                     'api_key',
                     'state',
-                    'sort_nulls_last',
-                    'page',
-                    'sort',
                     'sort_hide_null',
-                    'per_page',
                     'sort_null_only',
+                    'per_page',
+                    'sort_nulls_last',
+                    'sort',
+                    'page',
                 ],
                 'required': [
                     'api_key',
@@ -389,38 +389,38 @@ class FilerResourcesApi(object):
                         (str,),
                     'state':
                         (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
                     'sort_hide_null':
+                        (bool,),
+                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort_null_only':
+                    'sort_nulls_last':
                         (bool,),
+                    'sort':
+                        (str, none_type,),
+                    'page':
+                        (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'state': 'state',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'page': 'page',
-                    'sort': 'sort',
                     'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
                     'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort': 'sort',
+                    'page': 'page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'state': 'query',
-                    'sort_nulls_last': 'query',
-                    'page': 'query',
-                    'sort': 'query',
                     'sort_hide_null': 'query',
-                    'per_page': 'query',
                     'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort': 'query',
+                    'page': 'query',
                 },
                 'collection_format_map': {
                 }

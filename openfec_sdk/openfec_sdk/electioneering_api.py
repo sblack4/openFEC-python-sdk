@@ -70,18 +70,18 @@ class ElectioneeringApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                state (str): US state or territory where a candidate runs for office. [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                state (str): US state or territory where a candidate runs for office. [optional]
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 office (str): Federal office candidate runs for: H, S or P. [optional]
+                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -149,18 +149,18 @@ class ElectioneeringApi(object):
                 'all': [
                     'api_key',
                     'committee_id',
-                    'election_full',
-                    'sort',
-                    'candidate_id',
-                    'state',
                     'sort_hide_null',
-                    'per_page',
-                    'district',
-                    'sort_nulls_last',
-                    'cycle',
-                    'page',
+                    'state',
                     'sort_null_only',
+                    'per_page',
+                    'sort',
+                    'district',
+                    'candidate_id',
+                    'page',
+                    'sort_nulls_last',
                     'office',
+                    'election_full',
+                    'cycle',
                 ],
                 'required': [
                     'api_key',
@@ -191,62 +191,62 @@ class ElectioneeringApi(object):
                         (str,),
                     'committee_id':
                         (str,),
-                    'election_full':
+                    'sort_hide_null':
                         (bool,),
-                    'sort':
-                        (str, none_type,),
-                    'candidate_id':
-                        ([str],),
                     'state':
                         (str,),
-                    'sort_hide_null':
+                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
+                    'sort':
+                        (str, none_type,),
                     'district':
                         (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
+                    'candidate_id':
+                        ([str],),
                     'page':
                         (int,),
-                    'sort_null_only':
+                    'sort_nulls_last':
                         (bool,),
                     'office':
                         (str,),
+                    'election_full':
+                        (bool,),
+                    'cycle':
+                        ([int],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'committee_id': 'committee_id',
-                    'election_full': 'election_full',
-                    'sort': 'sort',
-                    'candidate_id': 'candidate_id',
-                    'state': 'state',
                     'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
-                    'district': 'district',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                    'page': 'page',
+                    'state': 'state',
                     'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'sort': 'sort',
+                    'district': 'district',
+                    'candidate_id': 'candidate_id',
+                    'page': 'page',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'office': 'office',
+                    'election_full': 'election_full',
+                    'cycle': 'cycle',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'committee_id': 'path',
-                    'election_full': 'query',
-                    'sort': 'query',
-                    'candidate_id': 'query',
-                    'state': 'query',
                     'sort_hide_null': 'query',
-                    'per_page': 'query',
-                    'district': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                    'page': 'query',
+                    'state': 'query',
                     'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'sort': 'query',
+                    'district': 'query',
+                    'candidate_id': 'query',
+                    'page': 'query',
+                    'sort_nulls_last': 'query',
                     'office': 'query',
+                    'election_full': 'query',
+                    'cycle': 'query',
                 },
                 'collection_format_map': {
                     'candidate_id': 'multi',
@@ -280,15 +280,15 @@ class ElectioneeringApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -353,15 +353,15 @@ class ElectioneeringApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'sort',
-                    'candidate_id',
                     'sort_hide_null',
-                    'per_page',
-                    'sort_nulls_last',
-                    'committee_id',
-                    'cycle',
-                    'page',
                     'sort_null_only',
+                    'per_page',
+                    'sort',
+                    'committee_id',
+                    'candidate_id',
+                    'page',
+                    'sort_nulls_last',
+                    'cycle',
                 ],
                 'required': [
                     'api_key',
@@ -382,52 +382,52 @@ class ElectioneeringApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'sort':
-                        (str, none_type,),
-                    'candidate_id':
-                        ([str],),
                     'sort_hide_null':
+                        (bool,),
+                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort_nulls_last':
-                        (bool,),
+                    'sort':
+                        (str, none_type,),
                     'committee_id':
                         ([str],),
-                    'cycle':
-                        ([int],),
+                    'candidate_id':
+                        ([str],),
                     'page':
                         (int,),
-                    'sort_null_only':
+                    'sort_nulls_last':
                         (bool,),
+                    'cycle':
+                        ([int],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'sort': 'sort',
-                    'candidate_id': 'candidate_id',
                     'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_id': 'committee_id',
-                    'cycle': 'cycle',
-                    'page': 'page',
                     'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'sort': 'sort',
+                    'committee_id': 'committee_id',
+                    'candidate_id': 'candidate_id',
+                    'page': 'page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'cycle': 'cycle',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'sort': 'query',
-                    'candidate_id': 'query',
                     'sort_hide_null': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_id': 'query',
-                    'cycle': 'query',
-                    'page': 'query',
                     'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'sort': 'query',
+                    'committee_id': 'query',
+                    'candidate_id': 'query',
+                    'page': 'query',
+                    'sort_nulls_last': 'query',
+                    'cycle': 'query',
                 },
                 'collection_format_map': {
-                    'candidate_id': 'multi',
                     'committee_id': 'multi',
+                    'candidate_id': 'multi',
                     'cycle': 'multi',
                 }
             },
@@ -458,18 +458,18 @@ class ElectioneeringApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                state (str): US state or territory where a candidate runs for office. [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                state (str): US state or territory where a candidate runs for office. [optional]
                 sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                district (str): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 office (str): Federal office candidate runs for: H, S or P. [optional]
+                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -534,18 +534,18 @@ class ElectioneeringApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'election_full',
-                    'sort',
-                    'candidate_id',
-                    'state',
                     'sort_hide_null',
-                    'per_page',
-                    'district',
-                    'sort_nulls_last',
-                    'cycle',
-                    'page',
+                    'state',
                     'sort_null_only',
+                    'per_page',
+                    'sort',
+                    'district',
+                    'candidate_id',
+                    'page',
+                    'sort_nulls_last',
                     'office',
+                    'election_full',
+                    'cycle',
                 ],
                 'required': [
                     'api_key',
@@ -573,60 +573,60 @@ class ElectioneeringApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'election_full':
+                    'sort_hide_null':
                         (bool,),
-                    'sort':
-                        (str, none_type,),
-                    'candidate_id':
-                        ([str],),
                     'state':
                         (str,),
-                    'sort_hide_null':
+                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
+                    'sort':
+                        (str, none_type,),
                     'district':
                         (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
+                    'candidate_id':
+                        ([str],),
                     'page':
                         (int,),
-                    'sort_null_only':
+                    'sort_nulls_last':
                         (bool,),
                     'office':
                         (str,),
+                    'election_full':
+                        (bool,),
+                    'cycle':
+                        ([int],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'election_full': 'election_full',
-                    'sort': 'sort',
-                    'candidate_id': 'candidate_id',
-                    'state': 'state',
                     'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
-                    'district': 'district',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                    'page': 'page',
+                    'state': 'state',
                     'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'sort': 'sort',
+                    'district': 'district',
+                    'candidate_id': 'candidate_id',
+                    'page': 'page',
+                    'sort_nulls_last': 'sort_nulls_last',
                     'office': 'office',
+                    'election_full': 'election_full',
+                    'cycle': 'cycle',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'election_full': 'query',
-                    'sort': 'query',
-                    'candidate_id': 'query',
-                    'state': 'query',
                     'sort_hide_null': 'query',
-                    'per_page': 'query',
-                    'district': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                    'page': 'query',
+                    'state': 'query',
                     'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'sort': 'query',
+                    'district': 'query',
+                    'candidate_id': 'query',
+                    'page': 'query',
+                    'sort_nulls_last': 'query',
                     'office': 'query',
+                    'election_full': 'query',
+                    'cycle': 'query',
                 },
                 'collection_format_map': {
                     'candidate_id': 'multi',
@@ -660,21 +660,21 @@ class ElectioneeringApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                report_year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                description (str): [optional]
-                min_date (date): Minimum disbursement date. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 max_amount (str): Filter for all amounts less than a value.. [optional]
                 last_index (int, none_type): Index of last result from previous page. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                description (str): [optional]
                 max_date (date): Maximum disbursement date. [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_date (date): Minimum disbursement date. [optional]
+                report_year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -739,28 +739,28 @@ class ElectioneeringApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'report_year',
-                    'sort',
-                    'candidate_id',
-                    'description',
-                    'min_date',
-                    'per_page',
                     'sort_hide_null',
-                    'sort_nulls_last',
-                    'committee_id',
-                    'page',
-                    'min_amount',
+                    'sort_null_only',
+                    'per_page',
                     'max_amount',
                     'last_index',
-                    'sort_null_only',
+                    'sort',
+                    'candidate_id',
+                    'committee_id',
+                    'min_amount',
+                    'description',
                     'max_date',
+                    'page',
+                    'min_date',
+                    'report_year',
+                    'sort_nulls_last',
                 ],
                 'required': [
                     'api_key',
                 ],
                 'nullable': [
-                    'sort',
                     'last_index',
+                    'sort',
                 ],
                 'enum': [
                 ],
@@ -775,77 +775,77 @@ class ElectioneeringApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'report_year':
-                        ([int],),
-                    'sort':
-                        (str, none_type,),
-                    'candidate_id':
-                        ([str],),
-                    'description':
-                        (str,),
-                    'min_date':
-                        (date,),
-                    'per_page':
-                        (int,),
                     'sort_hide_null':
                         (bool,),
-                    'sort_nulls_last':
+                    'sort_null_only':
                         (bool,),
-                    'committee_id':
-                        ([str],),
-                    'page':
+                    'per_page':
                         (int,),
-                    'min_amount':
-                        (str,),
                     'max_amount':
                         (str,),
                     'last_index':
                         (int, none_type,),
-                    'sort_null_only':
-                        (bool,),
+                    'sort':
+                        (str, none_type,),
+                    'candidate_id':
+                        ([str],),
+                    'committee_id':
+                        ([str],),
+                    'min_amount':
+                        (str,),
+                    'description':
+                        (str,),
                     'max_date':
                         (date,),
+                    'page':
+                        (int,),
+                    'min_date':
+                        (date,),
+                    'report_year':
+                        ([int],),
+                    'sort_nulls_last':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'report_year': 'report_year',
-                    'sort': 'sort',
-                    'candidate_id': 'candidate_id',
-                    'description': 'description',
-                    'min_date': 'min_date',
-                    'per_page': 'per_page',
                     'sort_hide_null': 'sort_hide_null',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'committee_id': 'committee_id',
-                    'page': 'page',
-                    'min_amount': 'min_amount',
+                    'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
                     'max_amount': 'max_amount',
                     'last_index': 'last_index',
-                    'sort_null_only': 'sort_null_only',
+                    'sort': 'sort',
+                    'candidate_id': 'candidate_id',
+                    'committee_id': 'committee_id',
+                    'min_amount': 'min_amount',
+                    'description': 'description',
                     'max_date': 'max_date',
+                    'page': 'page',
+                    'min_date': 'min_date',
+                    'report_year': 'report_year',
+                    'sort_nulls_last': 'sort_nulls_last',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'report_year': 'query',
-                    'sort': 'query',
-                    'candidate_id': 'query',
-                    'description': 'query',
-                    'min_date': 'query',
-                    'per_page': 'query',
                     'sort_hide_null': 'query',
-                    'sort_nulls_last': 'query',
-                    'committee_id': 'query',
-                    'page': 'query',
-                    'min_amount': 'query',
+                    'sort_null_only': 'query',
+                    'per_page': 'query',
                     'max_amount': 'query',
                     'last_index': 'query',
-                    'sort_null_only': 'query',
+                    'sort': 'query',
+                    'candidate_id': 'query',
+                    'committee_id': 'query',
+                    'min_amount': 'query',
+                    'description': 'query',
                     'max_date': 'query',
+                    'page': 'query',
+                    'min_date': 'query',
+                    'report_year': 'query',
+                    'sort_nulls_last': 'query',
                 },
                 'collection_format_map': {
-                    'report_year': 'multi',
                     'candidate_id': 'multi',
                     'committee_id': 'multi',
+                    'report_year': 'multi',
                 }
             },
             headers_map={
@@ -875,15 +875,15 @@ class ElectioneeringApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
                 candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -948,15 +948,15 @@ class ElectioneeringApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'election_full',
+                    'sort_hide_null',
+                    'sort_null_only',
+                    'per_page',
                     'sort',
                     'candidate_id',
-                    'sort_hide_null',
-                    'per_page',
-                    'sort_nulls_last',
-                    'cycle',
                     'page',
-                    'sort_null_only',
+                    'sort_nulls_last',
+                    'election_full',
+                    'cycle',
                 ],
                 'required': [
                     'api_key',
@@ -977,48 +977,48 @@ class ElectioneeringApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'election_full':
+                    'sort_hide_null':
                         (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'per_page':
+                        (int,),
                     'sort':
                         (str, none_type,),
                     'candidate_id':
                         ([str],),
-                    'sort_hide_null':
-                        (bool,),
-                    'per_page':
+                    'page':
                         (int,),
                     'sort_nulls_last':
                         (bool,),
+                    'election_full':
+                        (bool,),
                     'cycle':
                         ([int],),
-                    'page':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'election_full': 'election_full',
+                    'sort_hide_null': 'sort_hide_null',
+                    'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
                     'sort': 'sort',
                     'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
                     'page': 'page',
-                    'sort_null_only': 'sort_null_only',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'election_full': 'election_full',
+                    'cycle': 'cycle',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'election_full': 'query',
+                    'sort_hide_null': 'query',
+                    'sort_null_only': 'query',
+                    'per_page': 'query',
                     'sort': 'query',
                     'candidate_id': 'query',
-                    'sort_hide_null': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
                     'page': 'query',
-                    'sort_null_only': 'query',
+                    'sort_nulls_last': 'query',
+                    'election_full': 'query',
+                    'cycle': 'query',
                 },
                 'collection_format_map': {
                     'candidate_id': 'multi',

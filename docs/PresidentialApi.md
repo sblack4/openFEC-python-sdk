@@ -73,14 +73,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.PresidentialApi(api_client)
-    election_year = [56] # [int] | Year of election (optional)
-sort = '-net_receipts' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-net_receipts'
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-contributor_state = ['contributor_state_example'] # [str] | State of contributor (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+election_year = [56] # [int] | Year of election (optional)
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = '-net_receipts' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-net_receipts'
+contributor_state = ['contributor_state_example'] # [str] | State of contributor (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -92,7 +92,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.presidential_contributions_by_candidate_get(election_year=election_year, sort=sort, sort_hide_null=sort_hide_null, per_page=per_page, contributor_state=contributor_state, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.presidential_contributions_by_candidate_get(sort_hide_null=sort_hide_null, election_year=election_year, sort_null_only=sort_null_only, per_page=per_page, sort=sort, contributor_state=contributor_state, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling PresidentialApi->presidential_contributions_by_candidate_get: %s\n" % e)
@@ -103,14 +103,14 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **election_year** | **[int]**| Year of election | [optional]
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-net_receipts'
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **contributor_state** | **[str]**| State of contributor | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **election_year** | **[int]**| Year of election | [optional]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-net_receipts'
+ **contributor_state** | **[str]**| State of contributor | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -194,15 +194,15 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.PresidentialApi(api_client)
-    election_year = [56] # [int] | Year of election (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+election_year = [56] # [int] | Year of election (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = 'size' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'size'
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  (optional)
 size = [56] # [int] |  The total all contributions in the following ranges: ```   -0    $200 and under   -200  $200.01 - $499.99   -500  $500 - $999.99   -1000 $1000 - $1999.99   -2000 $2000 + ``` Unitemized contributions are included in the `0` category.  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -214,7 +214,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.presidential_contributions_by_size_get(election_year=election_year, sort=sort, candidate_id=candidate_id, size=size, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.presidential_contributions_by_size_get(sort_hide_null=sort_hide_null, election_year=election_year, sort_null_only=sort_null_only, per_page=per_page, sort=sort, candidate_id=candidate_id, size=size, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling PresidentialApi->presidential_contributions_by_size_get: %s\n" % e)
@@ -225,15 +225,15 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **election_year** | **[int]**| Year of election | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'size'
  **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  | [optional]
  **size** | **[int]**|  The total all contributions in the following ranges: &#x60;&#x60;&#x60;   -0    $200 and under   -200  $200.01 - $499.99   -500  $500 - $999.99   -1000 $1000 - $1999.99   -2000 $2000 + &#x60;&#x60;&#x60; Unitemized contributions are included in the &#x60;0&#x60; category.  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -317,14 +317,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.PresidentialApi(api_client)
-    election_year = [56] # [int] | Year of election (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+election_year = [56] # [int] | Year of election (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = '-contribution_receipt_amount' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-contribution_receipt_amount'
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -336,7 +336,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.presidential_contributions_by_state_get(election_year=election_year, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.presidential_contributions_by_state_get(sort_hide_null=sort_hide_null, election_year=election_year, sort_null_only=sort_null_only, per_page=per_page, sort=sort, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling PresidentialApi->presidential_contributions_by_state_get: %s\n" % e)
@@ -347,14 +347,14 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **election_year** | **[int]**| Year of election | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-contribution_receipt_amount'
  **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -438,14 +438,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.PresidentialApi(api_client)
-    election_year = [56] # [int] | Year of election (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+election_year = [56] # [int] | Year of election (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = 'candidate_id' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'candidate_id'
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -457,7 +457,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.presidential_coverage_end_date_get(election_year=election_year, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.presidential_coverage_end_date_get(sort_hide_null=sort_hide_null, election_year=election_year, sort_null_only=sort_null_only, per_page=per_page, sort=sort, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling PresidentialApi->presidential_coverage_end_date_get: %s\n" % e)
@@ -468,14 +468,14 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **election_year** | **[int]**| Year of election | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'candidate_id'
  **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -559,14 +559,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.PresidentialApi(api_client)
-    election_year = [56] # [int] | Year of election (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+election_year = [56] # [int] | Year of election (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = '-net_receipts' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-net_receipts'
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -578,7 +578,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.presidential_financial_summary_get(election_year=election_year, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.presidential_financial_summary_get(sort_hide_null=sort_hide_null, election_year=election_year, sort_null_only=sort_null_only, per_page=per_page, sort=sort, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling PresidentialApi->presidential_financial_summary_get: %s\n" % e)
@@ -589,14 +589,14 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **election_year** | **[int]**| Year of election | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-net_receipts'
  **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.   -P00000001    All candidates   -P00000002    Democrasts   -P00000003    Republicans  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 

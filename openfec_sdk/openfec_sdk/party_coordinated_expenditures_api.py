@@ -66,24 +66,24 @@ class PartyCoordinatedExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                min_image_number (str): [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'expenditure_date'
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                max_date (date): Maximum date. [optional]
-                min_date (date): Minimum date. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
                 max_image_number (str): [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
+                min_image_number (str): [optional]
+                min_amount (str): Filter for all amounts greater than a value.. [optional]
+                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
                 payee_name ([str]): [optional]
                 line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                min_date (date): Minimum date. [optional]
+                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                max_amount (str): Filter for all amounts less than a value.. [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'expenditure_date'
+                max_date (date): Maximum date. [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -148,24 +148,24 @@ class PartyCoordinatedExpendituresApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'min_image_number',
-                    'sort',
-                    'candidate_id',
-                    'sort_nulls_last',
-                    'min_amount',
-                    'max_amount',
-                    'sort_null_only',
-                    'max_date',
-                    'min_date',
-                    'per_page',
                     'sort_hide_null',
-                    'image_number',
-                    'committee_id',
-                    'cycle',
                     'max_image_number',
-                    'page',
+                    'image_number',
+                    'min_image_number',
+                    'min_amount',
+                    'candidate_id',
                     'payee_name',
                     'line_number',
+                    'committee_id',
+                    'page',
+                    'min_date',
+                    'cycle',
+                    'sort_null_only',
+                    'per_page',
+                    'max_amount',
+                    'sort',
+                    'max_date',
+                    'sort_nulls_last',
                 ],
                 'required': [
                     'api_key',
@@ -185,91 +185,91 @@ class PartyCoordinatedExpendituresApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
+                    'sort_hide_null':
+                        (bool,),
+                    'max_image_number':
+                        (str,),
+                    'image_number':
+                        ([str],),
                     'min_image_number':
                         (str,),
-                    'sort':
+                    'min_amount':
                         (str,),
                     'candidate_id':
                         ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'min_amount':
-                        (str,),
-                    'max_amount':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'max_date':
-                        (date,),
-                    'min_date':
-                        (date,),
-                    'per_page':
-                        (int,),
-                    'sort_hide_null':
-                        (bool,),
-                    'image_number':
-                        ([str],),
-                    'committee_id':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'max_image_number':
-                        (str,),
-                    'page':
-                        (int,),
                     'payee_name':
                         ([str],),
                     'line_number':
                         (str,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'min_date':
+                        (date,),
+                    'cycle':
+                        ([int],),
+                    'sort_null_only':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'max_amount':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'max_date':
+                        (date,),
+                    'sort_nulls_last':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'min_image_number': 'min_image_number',
-                    'sort': 'sort',
-                    'candidate_id': 'candidate_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'min_amount': 'min_amount',
-                    'max_amount': 'max_amount',
-                    'sort_null_only': 'sort_null_only',
-                    'max_date': 'max_date',
-                    'min_date': 'min_date',
-                    'per_page': 'per_page',
                     'sort_hide_null': 'sort_hide_null',
-                    'image_number': 'image_number',
-                    'committee_id': 'committee_id',
-                    'cycle': 'cycle',
                     'max_image_number': 'max_image_number',
-                    'page': 'page',
+                    'image_number': 'image_number',
+                    'min_image_number': 'min_image_number',
+                    'min_amount': 'min_amount',
+                    'candidate_id': 'candidate_id',
                     'payee_name': 'payee_name',
                     'line_number': 'line_number',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'min_date': 'min_date',
+                    'cycle': 'cycle',
+                    'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'max_amount': 'max_amount',
+                    'sort': 'sort',
+                    'max_date': 'max_date',
+                    'sort_nulls_last': 'sort_nulls_last',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'min_image_number': 'query',
-                    'sort': 'query',
-                    'candidate_id': 'query',
-                    'sort_nulls_last': 'query',
-                    'min_amount': 'query',
-                    'max_amount': 'query',
-                    'sort_null_only': 'query',
-                    'max_date': 'query',
-                    'min_date': 'query',
-                    'per_page': 'query',
                     'sort_hide_null': 'query',
-                    'image_number': 'query',
-                    'committee_id': 'query',
-                    'cycle': 'query',
                     'max_image_number': 'query',
-                    'page': 'query',
+                    'image_number': 'query',
+                    'min_image_number': 'query',
+                    'min_amount': 'query',
+                    'candidate_id': 'query',
                     'payee_name': 'query',
                     'line_number': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'min_date': 'query',
+                    'cycle': 'query',
+                    'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'max_amount': 'query',
+                    'sort': 'query',
+                    'max_date': 'query',
+                    'sort_nulls_last': 'query',
                 },
                 'collection_format_map': {
-                    'candidate_id': 'multi',
                     'image_number': 'multi',
+                    'candidate_id': 'multi',
+                    'payee_name': 'multi',
                     'committee_id': 'multi',
                     'cycle': 'multi',
-                    'payee_name': 'multi',
                 }
             },
             headers_map={
@@ -301,8 +301,8 @@ class PartyCoordinatedExpendituresApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -370,8 +370,8 @@ class PartyCoordinatedExpendituresApi(object):
                 'all': [
                     'api_key',
                     'sub_id',
-                    'per_page',
                     'page',
+                    'per_page',
                 ],
                 'required': [
                     'api_key',
@@ -394,22 +394,22 @@ class PartyCoordinatedExpendituresApi(object):
                         (str,),
                     'sub_id':
                         (str,),
-                    'per_page':
-                        (int,),
                     'page':
+                        (int,),
+                    'per_page':
                         (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'sub_id': 'sub_id',
-                    'per_page': 'per_page',
                     'page': 'page',
+                    'per_page': 'per_page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'sub_id': 'path',
-                    'per_page': 'query',
                     'page': 'query',
+                    'per_page': 'query',
                 },
                 'collection_format_map': {
                 }
