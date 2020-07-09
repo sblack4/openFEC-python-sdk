@@ -69,16 +69,16 @@ class EfilingApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                file_number ([int]): Filing ID number. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-receipt_date'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 max_receipt_date (date):  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 min_receipt_date (date):  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                file_number ([int]): Filing ID number. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -143,16 +143,16 @@ class EfilingApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'file_number',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'max_receipt_date',
-                    'page',
-                    'committee_id',
                     'min_receipt_date',
                     'sort_nulls_last',
+                    'committee_id',
+                    'page',
+                    'file_number',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -172,56 +172,56 @@ class EfilingApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'file_number':
-                        ([int],),
+                    'sort':
+                        (str,),
                     'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort':
-                        (str,),
                     'max_receipt_date':
                         (date,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
                     'min_receipt_date':
                         (date,),
                     'sort_nulls_last':
                         (bool,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'file_number':
+                        ([int],),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'file_number': 'file_number',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'max_receipt_date': 'max_receipt_date',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
                     'min_receipt_date': 'min_receipt_date',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'file_number': 'file_number',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'file_number': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'max_receipt_date': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
                     'min_receipt_date': 'query',
                     'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'file_number': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'file_number': 'multi',
                     'committee_id': 'multi',
+                    'file_number': 'multi',
                 }
             },
             headers_map={
@@ -251,16 +251,16 @@ class EfilingApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                file_number ([int]): Filing ID number. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-receipt_date'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 max_receipt_date (date):  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 min_receipt_date (date):  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                file_number ([int]): Filing ID number. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -325,16 +325,16 @@ class EfilingApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'file_number',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'max_receipt_date',
-                    'page',
-                    'committee_id',
                     'min_receipt_date',
                     'sort_nulls_last',
+                    'committee_id',
+                    'page',
+                    'file_number',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -354,56 +354,56 @@ class EfilingApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'file_number':
-                        ([int],),
+                    'sort':
+                        (str,),
                     'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort':
-                        (str,),
                     'max_receipt_date':
                         (date,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
                     'min_receipt_date':
                         (date,),
                     'sort_nulls_last':
                         (bool,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'file_number':
+                        ([int],),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'file_number': 'file_number',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'max_receipt_date': 'max_receipt_date',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
                     'min_receipt_date': 'min_receipt_date',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'file_number': 'file_number',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'file_number': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'max_receipt_date': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
                     'min_receipt_date': 'query',
                     'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'file_number': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'file_number': 'multi',
                     'committee_id': 'multi',
+                    'file_number': 'multi',
                 }
             },
             headers_map={
@@ -433,16 +433,16 @@ class EfilingApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                file_number ([int]): Filing ID number. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-receipt_date'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 max_receipt_date (date):  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 min_receipt_date (date):  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                file_number ([int]): Filing ID number. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -507,16 +507,16 @@ class EfilingApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'file_number',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'max_receipt_date',
-                    'page',
-                    'committee_id',
                     'min_receipt_date',
                     'sort_nulls_last',
+                    'committee_id',
+                    'page',
+                    'file_number',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -536,56 +536,56 @@ class EfilingApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'file_number':
-                        ([int],),
+                    'sort':
+                        (str,),
                     'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort':
-                        (str,),
                     'max_receipt_date':
                         (date,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
                     'min_receipt_date':
                         (date,),
                     'sort_nulls_last':
                         (bool,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'file_number':
+                        ([int],),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'file_number': 'file_number',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'max_receipt_date': 'max_receipt_date',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
                     'min_receipt_date': 'min_receipt_date',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'file_number': 'file_number',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'file_number': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'max_receipt_date': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
                     'min_receipt_date': 'query',
                     'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'file_number': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'file_number': 'multi',
                     'committee_id': 'multi',
+                    'file_number': 'multi',
                 }
             },
             headers_map={
@@ -615,16 +615,16 @@ class EfilingApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                file_number ([int]): Filing ID number. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-receipt_date'
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 max_receipt_date (date):  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
                 min_receipt_date (date):  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                file_number ([int]): Filing ID number. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -689,16 +689,16 @@ class EfilingApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'file_number',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
+                    'sort_hide_null',
+                    'per_page',
                     'max_receipt_date',
-                    'page',
-                    'committee_id',
                     'min_receipt_date',
                     'sort_nulls_last',
+                    'committee_id',
+                    'page',
+                    'file_number',
+                    'sort_null_only',
                 ],
                 'required': [
                     'api_key',
@@ -718,56 +718,56 @@ class EfilingApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'file_number':
-                        ([int],),
+                    'sort':
+                        (str,),
                     'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
                         (bool,),
                     'per_page':
                         (int,),
-                    'sort':
-                        (str,),
                     'max_receipt_date':
                         (date,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
                     'min_receipt_date':
                         (date,),
                     'sort_nulls_last':
                         (bool,),
+                    'committee_id':
+                        ([str],),
+                    'page':
+                        (int,),
+                    'file_number':
+                        ([int],),
+                    'sort_null_only':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'file_number': 'file_number',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
                     'max_receipt_date': 'max_receipt_date',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
                     'min_receipt_date': 'min_receipt_date',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'committee_id': 'committee_id',
+                    'page': 'page',
+                    'file_number': 'file_number',
+                    'sort_null_only': 'sort_null_only',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'file_number': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
                     'max_receipt_date': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
                     'min_receipt_date': 'query',
                     'sort_nulls_last': 'query',
+                    'committee_id': 'query',
+                    'page': 'query',
+                    'file_number': 'query',
+                    'sort_null_only': 'query',
                 },
                 'collection_format_map': {
-                    'file_number': 'multi',
                     'committee_id': 'multi',
+                    'file_number': 'multi',
                 }
             },
             headers_map={

@@ -68,21 +68,21 @@ class DatesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 summary ([str]): Longer description of event. [optional]
-                min_end_date (date):  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                max_start_date (date):  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-start_date'
                 description ([str]): Brief description of event. [optional]
-                max_end_date (date):  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 event_id (int): An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID.. [optional]
-                renderer (str): [optional] if omitted the server will use the default value of 'ics'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                calendar_category_id ([int]):  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29 . [optional]
-                min_start_date (date):  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
                 sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                max_start_date (date):  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                calendar_category_id ([int]):  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29 . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                min_end_date (date):  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                min_start_date (date):  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                max_end_date (date):  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                renderer (str): [optional] if omitted the server will use the default value of 'ics'
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -147,21 +147,21 @@ class DatesApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'sort_hide_null',
                     'summary',
-                    'min_end_date',
-                    'max_start_date',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
                     'description',
-                    'max_end_date',
                     'event_id',
-                    'renderer',
-                    'page',
-                    'calendar_category_id',
-                    'min_start_date',
+                    'per_page',
+                    'sort_hide_null',
                     'sort_nulls_last',
+                    'max_start_date',
+                    'calendar_category_id',
+                    'page',
+                    'sort_null_only',
+                    'min_end_date',
+                    'min_start_date',
+                    'max_end_date',
+                    'renderer',
                 ],
                 'required': [
                     'api_key',
@@ -187,72 +187,72 @@ class DatesApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
                     'summary':
                         ([str],),
-                    'min_end_date':
-                        (date,),
-                    'max_start_date':
-                        (date,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'description':
                         ([str],),
-                    'max_end_date':
-                        (date,),
                     'event_id':
                         (int,),
-                    'renderer':
-                        (str,),
-                    'page':
+                    'per_page':
                         (int,),
-                    'calendar_category_id':
-                        ([int],),
-                    'min_start_date':
-                        (date,),
+                    'sort_hide_null':
+                        (bool,),
                     'sort_nulls_last':
                         (bool,),
+                    'max_start_date':
+                        (date,),
+                    'calendar_category_id':
+                        ([int],),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
+                    'min_end_date':
+                        (date,),
+                    'min_start_date':
+                        (date,),
+                    'max_end_date':
+                        (date,),
+                    'renderer':
+                        (str,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
                     'summary': 'summary',
-                    'min_end_date': 'min_end_date',
-                    'max_start_date': 'max_start_date',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'description': 'description',
-                    'max_end_date': 'max_end_date',
                     'event_id': 'event_id',
-                    'renderer': 'renderer',
-                    'page': 'page',
-                    'calendar_category_id': 'calendar_category_id',
-                    'min_start_date': 'min_start_date',
+                    'per_page': 'per_page',
+                    'sort_hide_null': 'sort_hide_null',
                     'sort_nulls_last': 'sort_nulls_last',
+                    'max_start_date': 'max_start_date',
+                    'calendar_category_id': 'calendar_category_id',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
+                    'min_end_date': 'min_end_date',
+                    'min_start_date': 'min_start_date',
+                    'max_end_date': 'max_end_date',
+                    'renderer': 'renderer',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'sort_hide_null': 'query',
                     'summary': 'query',
-                    'min_end_date': 'query',
-                    'max_start_date': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'description': 'query',
-                    'max_end_date': 'query',
                     'event_id': 'query',
-                    'renderer': 'query',
-                    'page': 'query',
-                    'calendar_category_id': 'query',
-                    'min_start_date': 'query',
+                    'per_page': 'query',
+                    'sort_hide_null': 'query',
                     'sort_nulls_last': 'query',
+                    'max_start_date': 'query',
+                    'calendar_category_id': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
+                    'min_end_date': 'query',
+                    'min_start_date': 'query',
+                    'max_end_date': 'query',
+                    'renderer': 'query',
                 },
                 'collection_format_map': {
                     'summary': 'multi',
@@ -287,20 +287,20 @@ class DatesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                min_end_date (date):  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 summary ([str]): Longer description of event. [optional]
-                max_start_date (date):  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
                 sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-start_date'
                 description ([str]): Brief description of event. [optional]
-                max_end_date (date):  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 event_id (int): An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID.. [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                max_start_date (date):  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 calendar_category_id ([int]):  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29 . [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                min_end_date (date):  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 min_start_date (date):  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                max_end_date (date):  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -365,20 +365,20 @@ class DatesApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'sort_hide_null',
-                    'min_end_date',
                     'summary',
-                    'max_start_date',
-                    'sort_null_only',
-                    'per_page',
                     'sort',
                     'description',
-                    'max_end_date',
                     'event_id',
+                    'per_page',
+                    'sort_hide_null',
+                    'sort_nulls_last',
+                    'max_start_date',
                     'page',
                     'calendar_category_id',
+                    'sort_null_only',
+                    'min_end_date',
                     'min_start_date',
-                    'sort_nulls_last',
+                    'max_end_date',
                 ],
                 'required': [
                     'api_key',
@@ -398,68 +398,68 @@ class DatesApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'min_end_date':
-                        (date,),
                     'summary':
                         ([str],),
-                    'max_start_date':
-                        (date,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
                     'sort':
                         (str,),
                     'description':
                         ([str],),
-                    'max_end_date':
-                        (date,),
                     'event_id':
                         (int,),
+                    'per_page':
+                        (int,),
+                    'sort_hide_null':
+                        (bool,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'max_start_date':
+                        (date,),
                     'page':
                         (int,),
                     'calendar_category_id':
                         ([int],),
+                    'sort_null_only':
+                        (bool,),
+                    'min_end_date':
+                        (date,),
                     'min_start_date':
                         (date,),
-                    'sort_nulls_last':
-                        (bool,),
+                    'max_end_date':
+                        (date,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'min_end_date': 'min_end_date',
                     'summary': 'summary',
-                    'max_start_date': 'max_start_date',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
                     'sort': 'sort',
                     'description': 'description',
-                    'max_end_date': 'max_end_date',
                     'event_id': 'event_id',
+                    'per_page': 'per_page',
+                    'sort_hide_null': 'sort_hide_null',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'max_start_date': 'max_start_date',
                     'page': 'page',
                     'calendar_category_id': 'calendar_category_id',
+                    'sort_null_only': 'sort_null_only',
+                    'min_end_date': 'min_end_date',
                     'min_start_date': 'min_start_date',
-                    'sort_nulls_last': 'sort_nulls_last',
+                    'max_end_date': 'max_end_date',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'min_end_date': 'query',
                     'summary': 'query',
-                    'max_start_date': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
                     'sort': 'query',
                     'description': 'query',
-                    'max_end_date': 'query',
                     'event_id': 'query',
+                    'per_page': 'query',
+                    'sort_hide_null': 'query',
+                    'sort_nulls_last': 'query',
+                    'max_start_date': 'query',
                     'page': 'query',
                     'calendar_category_id': 'query',
+                    'sort_null_only': 'query',
+                    'min_end_date': 'query',
                     'min_start_date': 'query',
-                    'sort_nulls_last': 'query',
+                    'max_end_date': 'query',
                 },
                 'collection_format_map': {
                     'summary': 'multi',
@@ -494,26 +494,26 @@ class DatesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                min_create_date (date):  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                min_election_date (date):  The minimum date of election. . [optional]
                 election_state ([str]):  State or territory of the office sought. . [optional]
+                min_election_date (date):  The minimum date of election. . [optional]
+                office_sought ([str]):  House, Senate or presidential office. . [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-election_date'
+                max_create_date (date):  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                max_election_date (date):  The maximum date of election. . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                max_update_date (date):  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                election_type_id ([str]):  Election type id . [optional]
+                election_party ([str]):  Party, if applicable. . [optional]
+                election_year ([str]): Year of election. [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                election_district ([str]):  House district of the office sought, if applicable. . [optional]
                 min_primary_general_date (date):  The minimum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                max_election_date (date):  The maximum date of election. . [optional]
                 max_primary_general_date (date):  The maximum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                max_create_date (date):  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                min_create_date (date):  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 min_update_date (date):  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                election_year ([str]): Year of election. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                election_party ([str]):  Party, if applicable. . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-election_date'
-                office_sought ([str]):  House, Senate or presidential office. . [optional]
-                election_district ([str]):  House district of the office sought, if applicable. . [optional]
-                election_type_id ([str]):  Election type id . [optional]
-                max_update_date (date):  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -578,26 +578,26 @@ class DatesApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'sort_hide_null',
-                    'min_create_date',
-                    'min_election_date',
                     'election_state',
+                    'min_election_date',
+                    'office_sought',
+                    'sort',
+                    'max_create_date',
+                    'max_election_date',
+                    'sort_nulls_last',
+                    'sort_null_only',
+                    'max_update_date',
+                    'election_type_id',
+                    'election_party',
+                    'election_year',
+                    'sort_hide_null',
+                    'per_page',
+                    'election_district',
                     'min_primary_general_date',
                     'page',
-                    'max_election_date',
                     'max_primary_general_date',
-                    'max_create_date',
+                    'min_create_date',
                     'min_update_date',
-                    'election_year',
-                    'sort_null_only',
-                    'election_party',
-                    'per_page',
-                    'sort',
-                    'office_sought',
-                    'election_district',
-                    'election_type_id',
-                    'max_update_date',
-                    'sort_nulls_last',
                 ],
                 'required': [
                     'api_key',
@@ -624,100 +624,100 @@ class DatesApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'min_create_date':
-                        (date,),
+                    'election_state':
+                        ([str],),
                     'min_election_date':
                         (date,),
-                    'election_state':
+                    'office_sought':
+                        ([str],),
+                    'sort':
+                        (str,),
+                    'max_create_date':
+                        (date,),
+                    'max_election_date':
+                        (date,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort_null_only':
+                        (bool,),
+                    'max_update_date':
+                        (date,),
+                    'election_type_id':
+                        ([str],),
+                    'election_party':
+                        ([str],),
+                    'election_year':
+                        ([str],),
+                    'sort_hide_null':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'election_district':
                         ([str],),
                     'min_primary_general_date':
                         (date,),
                     'page':
                         (int,),
-                    'max_election_date':
-                        (date,),
                     'max_primary_general_date':
                         (date,),
-                    'max_create_date':
+                    'min_create_date':
                         (date,),
                     'min_update_date':
                         (date,),
-                    'election_year':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'election_party':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'office_sought':
-                        ([str],),
-                    'election_district':
-                        ([str],),
-                    'election_type_id':
-                        ([str],),
-                    'max_update_date':
-                        (date,),
-                    'sort_nulls_last':
-                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'min_create_date': 'min_create_date',
-                    'min_election_date': 'min_election_date',
                     'election_state': 'election_state',
+                    'min_election_date': 'min_election_date',
+                    'office_sought': 'office_sought',
+                    'sort': 'sort',
+                    'max_create_date': 'max_create_date',
+                    'max_election_date': 'max_election_date',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort_null_only': 'sort_null_only',
+                    'max_update_date': 'max_update_date',
+                    'election_type_id': 'election_type_id',
+                    'election_party': 'election_party',
+                    'election_year': 'election_year',
+                    'sort_hide_null': 'sort_hide_null',
+                    'per_page': 'per_page',
+                    'election_district': 'election_district',
                     'min_primary_general_date': 'min_primary_general_date',
                     'page': 'page',
-                    'max_election_date': 'max_election_date',
                     'max_primary_general_date': 'max_primary_general_date',
-                    'max_create_date': 'max_create_date',
+                    'min_create_date': 'min_create_date',
                     'min_update_date': 'min_update_date',
-                    'election_year': 'election_year',
-                    'sort_null_only': 'sort_null_only',
-                    'election_party': 'election_party',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'office_sought': 'office_sought',
-                    'election_district': 'election_district',
-                    'election_type_id': 'election_type_id',
-                    'max_update_date': 'max_update_date',
-                    'sort_nulls_last': 'sort_nulls_last',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'min_create_date': 'query',
-                    'min_election_date': 'query',
                     'election_state': 'query',
+                    'min_election_date': 'query',
+                    'office_sought': 'query',
+                    'sort': 'query',
+                    'max_create_date': 'query',
+                    'max_election_date': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort_null_only': 'query',
+                    'max_update_date': 'query',
+                    'election_type_id': 'query',
+                    'election_party': 'query',
+                    'election_year': 'query',
+                    'sort_hide_null': 'query',
+                    'per_page': 'query',
+                    'election_district': 'query',
                     'min_primary_general_date': 'query',
                     'page': 'query',
-                    'max_election_date': 'query',
                     'max_primary_general_date': 'query',
-                    'max_create_date': 'query',
+                    'min_create_date': 'query',
                     'min_update_date': 'query',
-                    'election_year': 'query',
-                    'sort_null_only': 'query',
-                    'election_party': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'office_sought': 'query',
-                    'election_district': 'query',
-                    'election_type_id': 'query',
-                    'max_update_date': 'query',
-                    'sort_nulls_last': 'query',
                 },
                 'collection_format_map': {
                     'election_state': 'multi',
-                    'election_year': 'multi',
-                    'election_party': 'multi',
                     'office_sought': 'multi',
-                    'election_district': 'multi',
                     'election_type_id': 'multi',
+                    'election_party': 'multi',
+                    'election_year': 'multi',
+                    'election_district': 'multi',
                 }
             },
             headers_map={
@@ -747,20 +747,20 @@ class DatesApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                min_create_date (date):  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                min_due_date (date):  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                report_type ([str]): Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND     - 90S Post Inaugural Supplement     - 90D Post Inaugural     - 48  48 Hour Notification     - 24  24 Hour Notification     - M7S July Monthly/Semi-Annual     - MSA Monthly Semi-Annual (MY)     - MYS Monthly Year End/Semi-Annual     - Q2S July Quarterly/Semi-Annual     - QSA Quarterly Semi-Annual (MY)     - QYS Quarterly Year End/Semi-Annual     - QYE Quarterly Semi-Annual (YE)     - QMS Quarterly Mid-Year/ Semi-Annual     - MSY Monthly Semi-Annual (YE) . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-due_date'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 report_year ([int]):  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date. . [optional]
-                max_create_date (date):  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-due_date'
                 max_due_date (date):  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                max_update_date (date):  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                min_due_date (date):  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                max_create_date (date):  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
                 min_update_date (date):  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                min_create_date (date):  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                max_update_date (date):  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD) . [optional]
+                report_type ([str]): Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND     - 90S Post Inaugural Supplement     - 90D Post Inaugural     - 48  48 Hour Notification     - 24  24 Hour Notification     - M7S July Monthly/Semi-Annual     - MSA Monthly Semi-Annual (MY)     - MYS Monthly Year End/Semi-Annual     - Q2S July Quarterly/Semi-Annual     - QSA Quarterly Semi-Annual (MY)     - QYS Quarterly Year End/Semi-Annual     - QYE Quarterly Semi-Annual (YE)     - QMS Quarterly Mid-Year/ Semi-Annual     - MSY Monthly Semi-Annual (YE) . [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -825,20 +825,20 @@ class DatesApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'min_create_date',
-                    'min_due_date',
-                    'sort_hide_null',
-                    'report_type',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
                     'report_year',
-                    'max_create_date',
+                    'sort',
                     'max_due_date',
-                    'sort_nulls_last',
-                    'max_update_date',
+                    'sort_hide_null',
+                    'min_due_date',
+                    'per_page',
+                    'max_create_date',
                     'min_update_date',
+                    'sort_nulls_last',
+                    'page',
+                    'sort_null_only',
+                    'min_create_date',
+                    'max_update_date',
+                    'report_type',
                 ],
                 'required': [
                     'api_key',
@@ -858,72 +858,72 @@ class DatesApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'min_create_date':
-                        (date,),
-                    'min_due_date':
+                    'report_year':
+                        ([int],),
+                    'sort':
+                        (str,),
+                    'max_due_date':
                         (date,),
                     'sort_hide_null':
                         (bool,),
-                    'report_type':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
+                    'min_due_date':
+                        (date,),
                     'per_page':
                         (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'report_year':
-                        ([int],),
                     'max_create_date':
-                        (date,),
-                    'max_due_date':
-                        (date,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'max_update_date':
                         (date,),
                     'min_update_date':
                         (date,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'sort_null_only':
+                        (bool,),
+                    'min_create_date':
+                        (date,),
+                    'max_update_date':
+                        (date,),
+                    'report_type':
+                        ([str],),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'min_create_date': 'min_create_date',
-                    'min_due_date': 'min_due_date',
-                    'sort_hide_null': 'sort_hide_null',
-                    'report_type': 'report_type',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
                     'report_year': 'report_year',
-                    'max_create_date': 'max_create_date',
+                    'sort': 'sort',
                     'max_due_date': 'max_due_date',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'max_update_date': 'max_update_date',
+                    'sort_hide_null': 'sort_hide_null',
+                    'min_due_date': 'min_due_date',
+                    'per_page': 'per_page',
+                    'max_create_date': 'max_create_date',
                     'min_update_date': 'min_update_date',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'page': 'page',
+                    'sort_null_only': 'sort_null_only',
+                    'min_create_date': 'min_create_date',
+                    'max_update_date': 'max_update_date',
+                    'report_type': 'report_type',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'min_create_date': 'query',
-                    'min_due_date': 'query',
-                    'sort_hide_null': 'query',
-                    'report_type': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
                     'report_year': 'query',
-                    'max_create_date': 'query',
+                    'sort': 'query',
                     'max_due_date': 'query',
-                    'sort_nulls_last': 'query',
-                    'max_update_date': 'query',
+                    'sort_hide_null': 'query',
+                    'min_due_date': 'query',
+                    'per_page': 'query',
+                    'max_create_date': 'query',
                     'min_update_date': 'query',
+                    'sort_nulls_last': 'query',
+                    'page': 'query',
+                    'sort_null_only': 'query',
+                    'min_create_date': 'query',
+                    'max_update_date': 'query',
+                    'report_type': 'query',
                 },
                 'collection_format_map': {
-                    'report_type': 'multi',
                     'report_year': 'multi',
+                    'report_type': 'multi',
                 }
             },
             headers_map={

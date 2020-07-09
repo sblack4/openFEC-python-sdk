@@ -73,25 +73,25 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.AuditApi(api_client)
-    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+    sort = ["-cycle","committee_name"] # [str], none_type | Provide a field to sort by. Use - for descending order. (optional) if omitted the server will use the default value of ["-cycle","committee_name"]
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
-min_election_cycle = 56 # int |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
-committee_designation = 'committee_designation_example' # str | Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC   (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-audit_id = [56] # [int] |  The audit issue. Each subcategory has an unique ID  (optional)
-primary_category_id = 'all' # str |  Audit category ID (table PK)  (optional) if omitted the server will use the default value of 'all'
-qq = ['qq_example'] # [str] | Name of candidate running for office (optional)
-audit_case_id = ['audit_case_id_example'] # [str] |  Primary/foreign key for audit tables  (optional)
-cycle = [56] # [int] |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
-max_election_cycle = 56 # int |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = ["-cycle","committee_name"] # [str], none_type | Provide a field to sort by. Use - for descending order. (optional) if omitted the server will use the default value of ["-cycle","committee_name"]
-sub_category_id = 'all' # str |  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.  (optional) if omitted the server will use the default value of 'all'
-committee_type = ['committee_type_example'] # [str] | The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 q = ['q_example'] # [str] | The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records. (optional)
+committee_type = ['committee_type_example'] # [str] | The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account  (optional)
+primary_category_id = 'all' # str |  Audit category ID (table PK)  (optional) if omitted the server will use the default value of 'all'
+sub_category_id = 'all' # str |  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.  (optional) if omitted the server will use the default value of 'all'
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+audit_case_id = ['audit_case_id_example'] # [str] |  Primary/foreign key for audit tables  (optional)
+committee_designation = 'committee_designation_example' # str | Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC   (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+min_election_cycle = 56 # int |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+audit_id = [56] # [int] |  The audit issue. Each subcategory has an unique ID  (optional)
+max_election_cycle = 56 # int |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
+committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+cycle = [56] # [int] |  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  (optional)
+qq = ['qq_example'] # [str] | Name of candidate running for office (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -103,7 +103,7 @@ q = ['q_example'] # [str] | The name of the committee. If a committee changes it
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.audit_case_get(sort_hide_null=sort_hide_null, committee_id=committee_id, candidate_id=candidate_id, min_election_cycle=min_election_cycle, committee_designation=committee_designation, page=page, audit_id=audit_id, primary_category_id=primary_category_id, qq=qq, audit_case_id=audit_case_id, cycle=cycle, max_election_cycle=max_election_cycle, sort_null_only=sort_null_only, per_page=per_page, sort=sort, sub_category_id=sub_category_id, committee_type=committee_type, sort_nulls_last=sort_nulls_last, q=q)
+        api_response = api_instance.audit_case_get(sort=sort, candidate_id=candidate_id, q=q, committee_type=committee_type, primary_category_id=primary_category_id, sub_category_id=sub_category_id, sort_nulls_last=sort_nulls_last, audit_case_id=audit_case_id, committee_designation=committee_designation, sort_null_only=sort_null_only, min_election_cycle=min_election_cycle, sort_hide_null=sort_hide_null, per_page=per_page, audit_id=audit_id, max_election_cycle=max_election_cycle, committee_id=committee_id, page=page, cycle=cycle, qq=qq)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling AuditApi->audit_case_get: %s\n" % e)
@@ -114,25 +114,25 @@ q = ['q_example'] # [str] | The name of the committee. If a committee changes it
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
- **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
- **min_election_cycle** | **int**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **committee_designation** | **str**| Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC   | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **audit_id** | **[int]**|  The audit issue. Each subcategory has an unique ID  | [optional]
- **primary_category_id** | **str**|  Audit category ID (table PK)  | [optional] if omitted the server will use the default value of 'all'
- **qq** | **[str]**| Name of candidate running for office | [optional]
- **audit_case_id** | **[str]**|  Primary/foreign key for audit tables  | [optional]
- **cycle** | **[int]**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **max_election_cycle** | **int**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **[str], none_type**| Provide a field to sort by. Use - for descending order. | [optional] if omitted the server will use the default value of ["-cycle","committee_name"]
- **sub_category_id** | **str**|  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.  | [optional] if omitted the server will use the default value of 'all'
- **committee_type** | **[str]**| The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
  **q** | **[str]**| The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records. | [optional]
+ **committee_type** | **[str]**| The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account  | [optional]
+ **primary_category_id** | **str**|  Audit category ID (table PK)  | [optional] if omitted the server will use the default value of 'all'
+ **sub_category_id** | **str**|  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.  | [optional] if omitted the server will use the default value of 'all'
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **audit_case_id** | **[str]**|  Primary/foreign key for audit tables  | [optional]
+ **committee_designation** | **str**| Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC   | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **min_election_cycle** | **int**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **audit_id** | **[int]**|  The audit issue. Each subcategory has an unique ID  | [optional]
+ **max_election_cycle** | **int**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **cycle** | **[int]**|  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.  | [optional]
+ **qq** | **[str]**| Name of candidate running for office | [optional]
 
 ### Return type
 
@@ -216,14 +216,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.AuditApi(api_client)
-    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+    sort = 'primary_category_name' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'primary_category_name'
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = 'primary_category_name' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'primary_category_name'
-primary_category_name = ['primary_category_name_example'] # [str] | Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 primary_category_id = ['primary_category_id_example'] # [str] |  Audit category ID (table PK)  (optional)
+primary_category_name = ['primary_category_name_example'] # [str] | Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -235,7 +235,7 @@ primary_category_id = ['primary_category_id_example'] # [str] |  Audit category 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.audit_category_get(sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, primary_category_name=primary_category_name, page=page, sort_nulls_last=sort_nulls_last, primary_category_id=primary_category_id)
+        api_response = api_instance.audit_category_get(sort=sort, sort_hide_null=sort_hide_null, per_page=per_page, primary_category_id=primary_category_id, primary_category_name=primary_category_name, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling AuditApi->audit_category_get: %s\n" % e)
@@ -246,14 +246,14 @@ primary_category_id = ['primary_category_id_example'] # [str] |  Audit category 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'primary_category_name'
- **primary_category_name** | **[str]**| Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **primary_category_id** | **[str]**|  Audit category ID (table PK)  | [optional]
+ **primary_category_name** | **[str]**| Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -337,14 +337,14 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.AuditApi(api_client)
-    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+    sort = 'primary_category_name' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'primary_category_name'
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = 'primary_category_name' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'primary_category_name'
-primary_category_name = ['primary_category_name_example'] # [str] | Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 primary_category_id = ['primary_category_id_example'] # [str] |  Audit category ID (table PK)  (optional)
+primary_category_name = ['primary_category_name_example'] # [str] | Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -356,7 +356,7 @@ primary_category_id = ['primary_category_id_example'] # [str] |  Audit category 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.audit_primary_category_get(sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, primary_category_name=primary_category_name, page=page, sort_nulls_last=sort_nulls_last, primary_category_id=primary_category_id)
+        api_response = api_instance.audit_primary_category_get(sort=sort, sort_hide_null=sort_hide_null, per_page=per_page, primary_category_id=primary_category_id, primary_category_name=primary_category_name, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling AuditApi->audit_primary_category_get: %s\n" % e)
@@ -367,14 +367,14 @@ primary_category_id = ['primary_category_id_example'] # [str] |  Audit category 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'primary_category_name'
- **primary_category_name** | **[str]**| Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **primary_category_id** | **[str]**|  Audit category ID (table PK)  | [optional]
+ **primary_category_name** | **[str]**| Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
