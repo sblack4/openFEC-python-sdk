@@ -1,4 +1,4 @@
-# InlineResponseDefault1RegulatoryCitations
+# inline_response_default1_regulatory_citations.InlineResponseDefault1RegulatoryCitations
 
 ## Properties
 Name | Type | Description | Notes

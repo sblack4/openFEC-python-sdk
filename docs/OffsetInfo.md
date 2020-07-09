@@ -1,4 +1,4 @@
-# OffsetInfo
+# offset_info.OffsetInfo
 
 ## Properties
 Name | Type | Description | Notes

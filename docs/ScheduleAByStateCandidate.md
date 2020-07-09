@@ -1,4 +1,4 @@
-# ScheduleAByStateCandidate
+# schedule_a_by_state_candidate.ScheduleAByStateCandidate
 
 ## Properties
 Name | Type | Description | Notes

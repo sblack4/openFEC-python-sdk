@@ -1,12 +1,12 @@
-# InlineResponseDefault1Statutes
+# inline_response_default1_statutes.InlineResponseDefault1Statutes
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chapter** | **str** |  | [optional]
 **doc_id** | **str** |  | [optional]
-**document_highlights** | **object** |  | [optional]
-**highlights** | **list[str]** |  | [optional]
+**document_highlights** | **bool, date, datetime, dict, float, int, list, str** |  | [optional]
+**highlights** | **[str]** |  | [optional]
 **name** | **str** |  | [optional]
 **no** | **str** |  | [optional]
 **title** | **str** |  | [optional]

@@ -1,10 +1,10 @@
-# InlineResponseDefault1Documents1
+# inline_response_default1_documents1.InlineResponseDefault1Documents1
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **category** | **str** |  | [optional]
-**_date** | **date** |  | [optional]
+**date** | **date** |  | [optional]
 **description** | **str** |  | [optional]
 **document_id** | **int** |  | [optional]
 **url** | **str** |  | [optional]

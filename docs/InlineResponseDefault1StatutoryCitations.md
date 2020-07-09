@@ -1,4 +1,4 @@
-# InlineResponseDefault1StatutoryCitations
+# inline_response_default1_statutory_citations.InlineResponseDefault1StatutoryCitations
 
 ## Properties
 Name | Type | Description | Notes

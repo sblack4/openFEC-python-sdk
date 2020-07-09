@@ -1,4 +1,4 @@
-# ECTotalsByCandidate
+# ec_totals_by_candidate.ECTotalsByCandidate
 
 ## Properties
 Name | Type | Description | Notes

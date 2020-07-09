@@ -1,4 +1,4 @@
-# CCTotalsByCandidate
+# cc_totals_by_candidate.CCTotalsByCandidate
 
 ## Properties
 Name | Type | Description | Notes
