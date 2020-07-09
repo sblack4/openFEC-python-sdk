@@ -13,3 +13,5 @@ openapi-generator generate \
     --input-spec "${input_spec}"
 
 mv test/test_* test/unit
+
+pre-commit run -a
