@@ -74,7 +74,7 @@ conf = openfec_sdk.Configuration(
 
     _default = None
 
-    def __init__(self, host='https://api.open.fec.gov/v1',
+    def __init__(self, host='http://localhost/v1',
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,

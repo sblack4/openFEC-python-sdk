@@ -74,18 +74,18 @@ with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.ElectioneeringApi(api_client)
     committee_id = 'committee_id_example' # str |
-    election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
-sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 state = 'state_example' # str | US state or territory where a candidate runs for office (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-district = 'district_example' # str | Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+district = 'district_example' # str | Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. (optional)
+candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 office = 'office_example' # str | Federal office candidate runs for: H, S or P (optional)
+election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
+cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -97,7 +97,7 @@ office = 'office_example' # str | Federal office candidate runs for: H, S or P (
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.committee_committee_id_electioneering_by_candidate_get(committee_id, election_full=election_full, sort=sort, candidate_id=candidate_id, state=state, sort_hide_null=sort_hide_null, per_page=per_page, district=district, sort_nulls_last=sort_nulls_last, cycle=cycle, page=page, sort_null_only=sort_null_only, office=office)
+        api_response = api_instance.committee_committee_id_electioneering_by_candidate_get(committee_id, sort_hide_null=sort_hide_null, state=state, sort_null_only=sort_null_only, per_page=per_page, sort=sort, district=district, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last, office=office, election_full=election_full, cycle=cycle)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling ElectioneeringApi->committee_committee_id_electioneering_by_candidate_get: %s\n" % e)
@@ -109,18 +109,18 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **committee_id** | **str**|  |
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
- **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
- **state** | **str**| US state or territory where a candidate runs for office | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **state** | **str**| US state or territory where a candidate runs for office | [optional]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
+ **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **office** | **str**| Federal office candidate runs for: H, S or P | [optional]
+ **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
+ **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
 
 ### Return type
 
@@ -204,15 +204,15 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.ElectioneeringApi(api_client)
-    sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
-cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -224,7 +224,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.electioneering_aggregates_get(sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, committee_id=committee_id, cycle=cycle, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.electioneering_aggregates_get(sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, committee_id=committee_id, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last, cycle=cycle)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling ElectioneeringApi->electioneering_aggregates_get: %s\n" % e)
@@ -235,15 +235,15 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
- **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
- **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
 
 ### Return type
 
@@ -327,18 +327,18 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.ElectioneeringApi(api_client)
-    election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
-sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 state = 'state_example' # str | US state or territory where a candidate runs for office (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-district = 'district_example' # str | Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+district = 'district_example' # str | Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. (optional)
+candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 office = 'office_example' # str | Federal office candidate runs for: H, S or P (optional)
+election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
+cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -350,7 +350,7 @@ office = 'office_example' # str | Federal office candidate runs for: H, S or P (
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.electioneering_by_candidate_get(election_full=election_full, sort=sort, candidate_id=candidate_id, state=state, sort_hide_null=sort_hide_null, per_page=per_page, district=district, sort_nulls_last=sort_nulls_last, cycle=cycle, page=page, sort_null_only=sort_null_only, office=office)
+        api_response = api_instance.electioneering_by_candidate_get(sort_hide_null=sort_hide_null, state=state, sort_null_only=sort_null_only, per_page=per_page, sort=sort, district=district, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last, office=office, election_full=election_full, cycle=cycle)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling ElectioneeringApi->electioneering_by_candidate_get: %s\n" % e)
@@ -361,18 +361,18 @@ office = 'office_example' # str | Federal office candidate runs for: H, S or P (
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
- **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
- **state** | **str**| US state or territory where a candidate runs for office | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **state** | **str**| US state or territory where a candidate runs for office | [optional]
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **district** | **str**| Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00. | [optional]
+ **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
  **office** | **str**| Federal office candidate runs for: H, S or P | [optional]
+ **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
+ **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
 
 ### Return type
 
@@ -456,21 +456,21 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.ElectioneeringApi(api_client)
-    report_year = [56] # [int] |  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  (optional)
-sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
-description = 'description_example' # str |  (optional)
-min_date = '2013-10-20' # date | Minimum disbursement date (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-min_amount = 'min_amount_example' # str | Filter for all amounts greater than a value. (optional)
 max_amount = 'max_amount_example' # str | Filter for all amounts less than a value. (optional)
 last_index = openfec_sdk.int, none_type() # int, none_type | Index of last result from previous page (optional)
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
+committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_amount = 'min_amount_example' # str | Filter for all amounts greater than a value. (optional)
+description = 'description_example' # str |  (optional)
 max_date = '2013-10-20' # date | Maximum disbursement date (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+min_date = '2013-10-20' # date | Minimum disbursement date (optional)
+report_year = [56] # [int] |  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -482,7 +482,7 @@ max_date = '2013-10-20' # date | Maximum disbursement date (optional)
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.electioneering_get(report_year=report_year, sort=sort, candidate_id=candidate_id, description=description, min_date=min_date, per_page=per_page, sort_hide_null=sort_hide_null, sort_nulls_last=sort_nulls_last, committee_id=committee_id, page=page, min_amount=min_amount, max_amount=max_amount, last_index=last_index, sort_null_only=sort_null_only, max_date=max_date)
+        api_response = api_instance.electioneering_get(sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, max_amount=max_amount, last_index=last_index, sort=sort, candidate_id=candidate_id, committee_id=committee_id, min_amount=min_amount, description=description, max_date=max_date, page=page, min_date=min_date, report_year=report_year, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling ElectioneeringApi->electioneering_get: %s\n" % e)
@@ -493,21 +493,21 @@ max_date = '2013-10-20' # date | Maximum disbursement date (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **report_year** | **[int]**|  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  | [optional]
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
- **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
- **description** | **str**|  | [optional]
- **min_date** | **date**| Minimum disbursement date | [optional]
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **min_amount** | **str**| Filter for all amounts greater than a value. | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **max_amount** | **str**| Filter for all amounts less than a value. | [optional]
  **last_index** | **int, none_type**| Index of last result from previous page | [optional]
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
+ **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **min_amount** | **str**| Filter for all amounts greater than a value. | [optional]
+ **description** | **str**|  | [optional]
  **max_date** | **date**| Maximum disbursement date | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **min_date** | **date**| Minimum disbursement date | [optional]
+ **report_year** | **[int]**|  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -591,15 +591,15 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.ElectioneeringApi(api_client)
-    election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
 candidate_id = ['candidate_id_example'] # [str] |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
+cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -611,7 +611,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.electioneering_totals_by_candidate_get(election_full=election_full, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, per_page=per_page, sort_nulls_last=sort_nulls_last, cycle=cycle, page=page, sort_null_only=sort_null_only)
+        api_response = api_instance.electioneering_totals_by_candidate_get(sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, candidate_id=candidate_id, page=page, sort_nulls_last=sort_nulls_last, election_full=election_full, cycle=cycle)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling ElectioneeringApi->electioneering_totals_by_candidate_get: %s\n" % e)
@@ -622,15 +622,15 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
  **candidate_id** | **[str]**|  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **election_full** | **bool**| &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle. | [optional] if omitted the server will use the default value of True
+ **cycle** | **[int]**|  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  | [optional]
 
 ### Return type
 

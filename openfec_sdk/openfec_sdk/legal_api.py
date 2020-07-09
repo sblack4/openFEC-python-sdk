@@ -66,43 +66,43 @@ class LegalApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                af_committee_id (str): Admin fine committee ID. [optional]
-                ao_status (str): Status of AO (pending, withdrawn, or final). [optional]
-                ao_requestor_type ([int]): Code of the advisory opinion requestor type.. [optional]
-                q (str): Text to search legal documents for.. [optional]
-                case_max_open_date (date): Filter cases by latest date opened. [optional]
-                ao_min_issue_date (date): Earliest issue date of advisory opinion. [optional]
-                ao_no ([str]): Force advisory opinion number. [optional]
-                hits_returned (int): Number of results to return (max 10).. [optional]
-                case_document_category ([str]): Filter cases by category of associated documents. [optional]
-                af_fd_fine_amount (int): Filter cases by Final Determination fine amount. [optional]
                 case_no ([str]): Enforcement matter case number. [optional]
-                case_election_cycles (int): Filter cases by election cycles. [optional]
-                ao_is_pending (bool): AO is pending. [optional]
-                ao_requestor (str): The requestor of the advisory opinion. [optional]
-                case_max_close_date (date): Filter cases by latest date closed. [optional]
-                case_respondents (str): Filter cases by respondents. [optional]
-                ao_statutory_citation ([str]): Search for statutory citations. [optional]
-                from_hit (int): Get results starting from this index.. [optional]
                 af_min_rtb_date (date): Filter cases by earliest Reason to Believe date. [optional]
-                ao_max_request_date (date): Latest request date of advisory opinion. [optional]
-                af_max_rtb_date (date): Filter cases by latest Reason to Believe date. [optional]
-                ao_citation_require_all (bool): Require all citations to be in document (default behavior is any). [optional]
-                ao_min_request_date (date): Earliest request date of advisory opinion. [optional]
-                af_name ([str]): Admin fine committee name. [optional]
-                ao_category ([str]): Category of the document. [optional]
-                af_min_fd_date (date): Filter cases by earliest Final Determination date. [optional]
-                ao_entity_name ([str]): Search by name of commenter or representative. [optional]
-                af_report_year (str): Admin fine report year. [optional]
-                type (str): Document type to refine search by. [optional]
-                af_max_fd_date (date): Filter cases by latest Final Determination date. [optional]
-                ao_regulatory_citation ([str]): Search for regulatory citations. [optional]
-                case_min_open_date (date): Filter cases by earliest date opened. [optional]
                 af_rtb_fine_amount (int): Filter cases by Reason to Believe fine amount. [optional]
-                ao_name ([str]): Force advisory opinion name. [optional]
+                case_document_category ([str]): Filter cases by category of associated documents. [optional]
+                case_election_cycles (int): Filter cases by election cycles. [optional]
+                af_name ([str]): Admin fine committee name. [optional]
+                hits_returned (int): Number of results to return (max 10).. [optional]
                 case_min_close_date (date): Filter cases by earliest date closed. [optional]
+                type (str): Document type to refine search by. [optional]
+                case_min_open_date (date): Filter cases by earliest date opened. [optional]
+                ao_min_issue_date (date): Earliest issue date of advisory opinion. [optional]
+                ao_status (str): Status of AO (pending, withdrawn, or final). [optional]
+                af_max_fd_date (date): Filter cases by latest Final Determination date. [optional]
+                ao_requestor (str): The requestor of the advisory opinion. [optional]
+                from_hit (int): Get results starting from this index.. [optional]
+                af_min_fd_date (date): Filter cases by earliest Final Determination date. [optional]
+                ao_citation_require_all (bool): Require all citations to be in document (default behavior is any). [optional]
+                af_max_rtb_date (date): Filter cases by latest Reason to Believe date. [optional]
+                ao_max_request_date (date): Latest request date of advisory opinion. [optional]
+                af_committee_id (str): Admin fine committee ID. [optional]
+                af_report_year (str): Admin fine report year. [optional]
                 case_dispositions ([str]): Filter cases by dispositions. [optional]
+                ao_no ([str]): Force advisory opinion number. [optional]
+                case_max_close_date (date): Filter cases by latest date closed. [optional]
+                ao_name ([str]): Force advisory opinion name. [optional]
+                af_fd_fine_amount (int): Filter cases by Final Determination fine amount. [optional]
+                ao_regulatory_citation ([str]): Search for regulatory citations. [optional]
+                ao_category ([str]): Category of the document. [optional]
+                case_respondents (str): Filter cases by respondents. [optional]
+                case_max_open_date (date): Filter cases by latest date opened. [optional]
+                ao_is_pending (bool): AO is pending. [optional]
+                ao_requestor_type ([int]): Code of the advisory opinion requestor type.. [optional]
+                ao_statutory_citation ([str]): Search for statutory citations. [optional]
+                ao_entity_name ([str]): Search by name of commenter or representative. [optional]
+                q (str): Text to search legal documents for.. [optional]
                 ao_max_issue_date (date): Latest issue date of advisory opinion. [optional]
+                ao_min_request_date (date): Earliest request date of advisory opinion. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -167,43 +167,43 @@ class LegalApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'af_committee_id',
-                    'ao_status',
-                    'ao_requestor_type',
-                    'q',
-                    'case_max_open_date',
-                    'ao_min_issue_date',
-                    'ao_no',
-                    'hits_returned',
-                    'case_document_category',
-                    'af_fd_fine_amount',
                     'case_no',
-                    'case_election_cycles',
-                    'ao_is_pending',
-                    'ao_requestor',
-                    'case_max_close_date',
-                    'case_respondents',
-                    'ao_statutory_citation',
-                    'from_hit',
                     'af_min_rtb_date',
-                    'ao_max_request_date',
-                    'af_max_rtb_date',
-                    'ao_citation_require_all',
-                    'ao_min_request_date',
-                    'af_name',
-                    'ao_category',
-                    'af_min_fd_date',
-                    'ao_entity_name',
-                    'af_report_year',
-                    'type',
-                    'af_max_fd_date',
-                    'ao_regulatory_citation',
-                    'case_min_open_date',
                     'af_rtb_fine_amount',
-                    'ao_name',
+                    'case_document_category',
+                    'case_election_cycles',
+                    'af_name',
+                    'hits_returned',
                     'case_min_close_date',
+                    'type',
+                    'case_min_open_date',
+                    'ao_min_issue_date',
+                    'ao_status',
+                    'af_max_fd_date',
+                    'ao_requestor',
+                    'from_hit',
+                    'af_min_fd_date',
+                    'ao_citation_require_all',
+                    'af_max_rtb_date',
+                    'ao_max_request_date',
+                    'af_committee_id',
+                    'af_report_year',
                     'case_dispositions',
+                    'ao_no',
+                    'case_max_close_date',
+                    'ao_name',
+                    'af_fd_fine_amount',
+                    'ao_regulatory_citation',
+                    'ao_category',
+                    'case_respondents',
+                    'case_max_open_date',
+                    'ao_is_pending',
+                    'ao_requestor_type',
+                    'ao_statutory_citation',
+                    'ao_entity_name',
+                    'q',
                     'ao_max_issue_date',
+                    'ao_min_request_date',
                 ],
                 'required': [
                     'api_key',
@@ -211,8 +211,8 @@ class LegalApi(object):
                 'nullable': [
                 ],
                 'enum': [
-                    'ao_requestor_type',
                     'ao_category',
+                    'ao_requestor_type',
                 ],
                 'validation': [
                 ]
@@ -221,6 +221,16 @@ class LegalApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('ao_category',): {
+
+                        'F': 'F',
+                        'V': 'V',
+                        'D': 'D',
+                        'R': 'R',
+                        'W': 'W',
+                        'C': 'C',
+                        'S': 'S'
+                    },
                     ('ao_requestor_type',): {
 
                         '1': 1,
@@ -240,187 +250,177 @@ class LegalApi(object):
                         '15': 15,
                         '16': 16
                     },
-                    ('ao_category',): {
-
-                        'F': 'F',
-                        'V': 'V',
-                        'D': 'D',
-                        'R': 'R',
-                        'W': 'W',
-                        'C': 'C',
-                        'S': 'S'
-                    },
                 },
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'af_committee_id':
-                        (str,),
-                    'ao_status':
-                        (str,),
-                    'ao_requestor_type':
-                        ([int],),
-                    'q':
-                        (str,),
-                    'case_max_open_date':
-                        (date,),
-                    'ao_min_issue_date':
-                        (date,),
-                    'ao_no':
-                        ([str],),
-                    'hits_returned':
-                        (int,),
-                    'case_document_category':
-                        ([str],),
-                    'af_fd_fine_amount':
-                        (int,),
                     'case_no':
                         ([str],),
-                    'case_election_cycles':
-                        (int,),
-                    'ao_is_pending':
-                        (bool,),
-                    'ao_requestor':
-                        (str,),
-                    'case_max_close_date':
-                        (date,),
-                    'case_respondents':
-                        (str,),
-                    'ao_statutory_citation':
-                        ([str],),
-                    'from_hit':
-                        (int,),
                     'af_min_rtb_date':
-                        (date,),
-                    'ao_max_request_date':
-                        (date,),
-                    'af_max_rtb_date':
-                        (date,),
-                    'ao_citation_require_all':
-                        (bool,),
-                    'ao_min_request_date':
-                        (date,),
-                    'af_name':
-                        ([str],),
-                    'ao_category':
-                        ([str],),
-                    'af_min_fd_date':
-                        (date,),
-                    'ao_entity_name':
-                        ([str],),
-                    'af_report_year':
-                        (str,),
-                    'type':
-                        (str,),
-                    'af_max_fd_date':
-                        (date,),
-                    'ao_regulatory_citation':
-                        ([str],),
-                    'case_min_open_date':
                         (date,),
                     'af_rtb_fine_amount':
                         (int,),
-                    'ao_name':
+                    'case_document_category':
                         ([str],),
+                    'case_election_cycles':
+                        (int,),
+                    'af_name':
+                        ([str],),
+                    'hits_returned':
+                        (int,),
                     'case_min_close_date':
                         (date,),
+                    'type':
+                        (str,),
+                    'case_min_open_date':
+                        (date,),
+                    'ao_min_issue_date':
+                        (date,),
+                    'ao_status':
+                        (str,),
+                    'af_max_fd_date':
+                        (date,),
+                    'ao_requestor':
+                        (str,),
+                    'from_hit':
+                        (int,),
+                    'af_min_fd_date':
+                        (date,),
+                    'ao_citation_require_all':
+                        (bool,),
+                    'af_max_rtb_date':
+                        (date,),
+                    'ao_max_request_date':
+                        (date,),
+                    'af_committee_id':
+                        (str,),
+                    'af_report_year':
+                        (str,),
                     'case_dispositions':
                         ([str],),
+                    'ao_no':
+                        ([str],),
+                    'case_max_close_date':
+                        (date,),
+                    'ao_name':
+                        ([str],),
+                    'af_fd_fine_amount':
+                        (int,),
+                    'ao_regulatory_citation':
+                        ([str],),
+                    'ao_category':
+                        ([str],),
+                    'case_respondents':
+                        (str,),
+                    'case_max_open_date':
+                        (date,),
+                    'ao_is_pending':
+                        (bool,),
+                    'ao_requestor_type':
+                        ([int],),
+                    'ao_statutory_citation':
+                        ([str],),
+                    'ao_entity_name':
+                        ([str],),
+                    'q':
+                        (str,),
                     'ao_max_issue_date':
+                        (date,),
+                    'ao_min_request_date':
                         (date,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'af_committee_id': 'af_committee_id',
-                    'ao_status': 'ao_status',
-                    'ao_requestor_type': 'ao_requestor_type',
-                    'q': 'q',
-                    'case_max_open_date': 'case_max_open_date',
-                    'ao_min_issue_date': 'ao_min_issue_date',
-                    'ao_no': 'ao_no',
-                    'hits_returned': 'hits_returned',
-                    'case_document_category': 'case_document_category',
-                    'af_fd_fine_amount': 'af_fd_fine_amount',
                     'case_no': 'case_no',
-                    'case_election_cycles': 'case_election_cycles',
-                    'ao_is_pending': 'ao_is_pending',
-                    'ao_requestor': 'ao_requestor',
-                    'case_max_close_date': 'case_max_close_date',
-                    'case_respondents': 'case_respondents',
-                    'ao_statutory_citation': 'ao_statutory_citation',
-                    'from_hit': 'from_hit',
                     'af_min_rtb_date': 'af_min_rtb_date',
-                    'ao_max_request_date': 'ao_max_request_date',
-                    'af_max_rtb_date': 'af_max_rtb_date',
-                    'ao_citation_require_all': 'ao_citation_require_all',
-                    'ao_min_request_date': 'ao_min_request_date',
-                    'af_name': 'af_name',
-                    'ao_category': 'ao_category',
-                    'af_min_fd_date': 'af_min_fd_date',
-                    'ao_entity_name': 'ao_entity_name',
-                    'af_report_year': 'af_report_year',
-                    'type': 'type',
-                    'af_max_fd_date': 'af_max_fd_date',
-                    'ao_regulatory_citation': 'ao_regulatory_citation',
-                    'case_min_open_date': 'case_min_open_date',
                     'af_rtb_fine_amount': 'af_rtb_fine_amount',
-                    'ao_name': 'ao_name',
+                    'case_document_category': 'case_document_category',
+                    'case_election_cycles': 'case_election_cycles',
+                    'af_name': 'af_name',
+                    'hits_returned': 'hits_returned',
                     'case_min_close_date': 'case_min_close_date',
+                    'type': 'type',
+                    'case_min_open_date': 'case_min_open_date',
+                    'ao_min_issue_date': 'ao_min_issue_date',
+                    'ao_status': 'ao_status',
+                    'af_max_fd_date': 'af_max_fd_date',
+                    'ao_requestor': 'ao_requestor',
+                    'from_hit': 'from_hit',
+                    'af_min_fd_date': 'af_min_fd_date',
+                    'ao_citation_require_all': 'ao_citation_require_all',
+                    'af_max_rtb_date': 'af_max_rtb_date',
+                    'ao_max_request_date': 'ao_max_request_date',
+                    'af_committee_id': 'af_committee_id',
+                    'af_report_year': 'af_report_year',
                     'case_dispositions': 'case_dispositions',
+                    'ao_no': 'ao_no',
+                    'case_max_close_date': 'case_max_close_date',
+                    'ao_name': 'ao_name',
+                    'af_fd_fine_amount': 'af_fd_fine_amount',
+                    'ao_regulatory_citation': 'ao_regulatory_citation',
+                    'ao_category': 'ao_category',
+                    'case_respondents': 'case_respondents',
+                    'case_max_open_date': 'case_max_open_date',
+                    'ao_is_pending': 'ao_is_pending',
+                    'ao_requestor_type': 'ao_requestor_type',
+                    'ao_statutory_citation': 'ao_statutory_citation',
+                    'ao_entity_name': 'ao_entity_name',
+                    'q': 'q',
                     'ao_max_issue_date': 'ao_max_issue_date',
+                    'ao_min_request_date': 'ao_min_request_date',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'af_committee_id': 'query',
-                    'ao_status': 'query',
-                    'ao_requestor_type': 'query',
-                    'q': 'query',
-                    'case_max_open_date': 'query',
-                    'ao_min_issue_date': 'query',
-                    'ao_no': 'query',
-                    'hits_returned': 'query',
-                    'case_document_category': 'query',
-                    'af_fd_fine_amount': 'query',
                     'case_no': 'query',
-                    'case_election_cycles': 'query',
-                    'ao_is_pending': 'query',
-                    'ao_requestor': 'query',
-                    'case_max_close_date': 'query',
-                    'case_respondents': 'query',
-                    'ao_statutory_citation': 'query',
-                    'from_hit': 'query',
                     'af_min_rtb_date': 'query',
-                    'ao_max_request_date': 'query',
-                    'af_max_rtb_date': 'query',
-                    'ao_citation_require_all': 'query',
-                    'ao_min_request_date': 'query',
-                    'af_name': 'query',
-                    'ao_category': 'query',
-                    'af_min_fd_date': 'query',
-                    'ao_entity_name': 'query',
-                    'af_report_year': 'query',
-                    'type': 'query',
-                    'af_max_fd_date': 'query',
-                    'ao_regulatory_citation': 'query',
-                    'case_min_open_date': 'query',
                     'af_rtb_fine_amount': 'query',
-                    'ao_name': 'query',
+                    'case_document_category': 'query',
+                    'case_election_cycles': 'query',
+                    'af_name': 'query',
+                    'hits_returned': 'query',
                     'case_min_close_date': 'query',
+                    'type': 'query',
+                    'case_min_open_date': 'query',
+                    'ao_min_issue_date': 'query',
+                    'ao_status': 'query',
+                    'af_max_fd_date': 'query',
+                    'ao_requestor': 'query',
+                    'from_hit': 'query',
+                    'af_min_fd_date': 'query',
+                    'ao_citation_require_all': 'query',
+                    'af_max_rtb_date': 'query',
+                    'ao_max_request_date': 'query',
+                    'af_committee_id': 'query',
+                    'af_report_year': 'query',
                     'case_dispositions': 'query',
+                    'ao_no': 'query',
+                    'case_max_close_date': 'query',
+                    'ao_name': 'query',
+                    'af_fd_fine_amount': 'query',
+                    'ao_regulatory_citation': 'query',
+                    'ao_category': 'query',
+                    'case_respondents': 'query',
+                    'case_max_open_date': 'query',
+                    'ao_is_pending': 'query',
+                    'ao_requestor_type': 'query',
+                    'ao_statutory_citation': 'query',
+                    'ao_entity_name': 'query',
+                    'q': 'query',
                     'ao_max_issue_date': 'query',
+                    'ao_min_request_date': 'query',
                 },
                 'collection_format_map': {
-                    'ao_requestor_type': 'multi',
-                    'ao_no': 'multi',
-                    'case_document_category': 'multi',
                     'case_no': 'multi',
-                    'ao_statutory_citation': 'multi',
+                    'case_document_category': 'multi',
                     'af_name': 'multi',
-                    'ao_category': 'multi',
-                    'ao_entity_name': 'multi',
-                    'ao_regulatory_citation': 'multi',
-                    'ao_name': 'multi',
                     'case_dispositions': 'multi',
+                    'ao_no': 'multi',
+                    'ao_name': 'multi',
+                    'ao_regulatory_citation': 'multi',
+                    'ao_category': 'multi',
+                    'ao_requestor_type': 'multi',
+                    'ao_statutory_citation': 'multi',
+                    'ao_entity_name': 'multi',
                 }
             },
             headers_map={

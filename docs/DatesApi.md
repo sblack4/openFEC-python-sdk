@@ -72,21 +72,21 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.DatesApi(api_client)
-    summary = ['summary_example'] # [str] | Longer description of event (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+summary = ['summary_example'] # [str] | Longer description of event (optional)
+min_end_date = '2013-10-20' # date |  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = '-start_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-start_date'
 description = ['description_example'] # [str] | Brief description of event (optional)
-event_id = 56 # int | An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. (optional)
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-calendar_category_id = [56] # [int] |  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-min_end_date = '2013-10-20' # date |  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-min_start_date = '2013-10-20' # date |  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 max_end_date = '2013-10-20' # date |  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+event_id = 56 # int | An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. (optional)
 renderer = 'ics' # str |  (optional) if omitted the server will use the default value of 'ics'
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+calendar_category_id = [56] # [int] |  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  (optional)
+min_start_date = '2013-10-20' # date |  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -98,7 +98,7 @@ renderer = 'ics' # str |  (optional) if omitted the server will use the default 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.calendar_dates_export_get(summary=summary, sort=sort, description=description, event_id=event_id, per_page=per_page, sort_hide_null=sort_hide_null, sort_nulls_last=sort_nulls_last, max_start_date=max_start_date, calendar_category_id=calendar_category_id, page=page, sort_null_only=sort_null_only, min_end_date=min_end_date, min_start_date=min_start_date, max_end_date=max_end_date, renderer=renderer)
+        api_response = api_instance.calendar_dates_export_get(sort_hide_null=sort_hide_null, summary=summary, min_end_date=min_end_date, max_start_date=max_start_date, sort_null_only=sort_null_only, per_page=per_page, sort=sort, description=description, max_end_date=max_end_date, event_id=event_id, renderer=renderer, page=page, calendar_category_id=calendar_category_id, min_start_date=min_start_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_export_get: %s\n" % e)
@@ -109,21 +109,21 @@ renderer = 'ics' # str |  (optional) if omitted the server will use the default 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **summary** | **[str]**| Longer description of event | [optional]
+ **min_end_date** | **date**|  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **max_start_date** | **date**|  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-start_date'
  **description** | **[str]**| Brief description of event | [optional]
- **event_id** | **int**| An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. | [optional]
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **max_start_date** | **date**|  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **calendar_category_id** | **[int]**|  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **min_end_date** | **date**|  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **min_start_date** | **date**|  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **max_end_date** | **date**|  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **event_id** | **int**| An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. | [optional]
  **renderer** | **str**|  | [optional] if omitted the server will use the default value of 'ics'
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **calendar_category_id** | **[int]**|  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  | [optional]
+ **min_start_date** | **date**|  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -207,20 +207,20 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.DatesApi(api_client)
-    summary = ['summary_example'] # [str] | Longer description of event (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+min_end_date = '2013-10-20' # date |  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+summary = ['summary_example'] # [str] | Longer description of event (optional)
+max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = '-start_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-start_date'
 description = ['description_example'] # [str] | Brief description of event (optional)
+max_end_date = '2013-10-20' # date |  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 event_id = 56 # int | An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. (optional)
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 calendar_category_id = [56] # [int] |  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  (optional)
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-min_end_date = '2013-10-20' # date |  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 min_start_date = '2013-10-20' # date |  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-max_end_date = '2013-10-20' # date |  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -232,7 +232,7 @@ max_end_date = '2013-10-20' # date |  The maximum end date.(MM/DD/YYYY or YYYY-M
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.calendar_dates_get(summary=summary, sort=sort, description=description, event_id=event_id, per_page=per_page, sort_hide_null=sort_hide_null, sort_nulls_last=sort_nulls_last, max_start_date=max_start_date, page=page, calendar_category_id=calendar_category_id, sort_null_only=sort_null_only, min_end_date=min_end_date, min_start_date=min_start_date, max_end_date=max_end_date)
+        api_response = api_instance.calendar_dates_get(sort_hide_null=sort_hide_null, min_end_date=min_end_date, summary=summary, max_start_date=max_start_date, sort_null_only=sort_null_only, per_page=per_page, sort=sort, description=description, max_end_date=max_end_date, event_id=event_id, page=page, calendar_category_id=calendar_category_id, min_start_date=min_start_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_get: %s\n" % e)
@@ -243,20 +243,20 @@ max_end_date = '2013-10-20' # date |  The maximum end date.(MM/DD/YYYY or YYYY-M
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
+ **min_end_date** | **date**|  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **summary** | **[str]**| Longer description of event | [optional]
+ **max_start_date** | **date**|  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-start_date'
  **description** | **[str]**| Brief description of event | [optional]
+ **max_end_date** | **date**|  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **event_id** | **int**| An unique ID for an event. Useful for downloading a single event to your calendar. This ID is not a permanent, persistent ID. | [optional]
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **max_start_date** | **date**|  The maximum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
  **calendar_category_id** | **[int]**|  Each type of event has a calendar category with an integer id. Options are: Open Meetings: 32, Executive Sessions: 39, Public Hearings: 40, Conferences: 33, Roundtables: 34, Election Dates: 36, Federal Holidays: 37, FEA Periods: 38, Commission Meetings: 20, Reporting Deadlines: 21, Conferences and Outreach: 22, AOs and Rules: 23, Other: 24, Quarterly: 25, Monthly: 26, Pre and Post-Elections: 27, EC Periods:28, and IE Periods: 29  | [optional]
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **min_end_date** | **date**|  The minimum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **min_start_date** | **date**|  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **max_end_date** | **date**|  The maximum end date.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -340,26 +340,26 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.DatesApi(api_client)
-    election_state = ['election_state_example'] # [str] |  State or territory of the office sought.  (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+min_create_date = '2013-10-20' # date |  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 min_election_date = '2013-10-20' # date |  The minimum date of election.  (optional)
-office_sought = ['office_sought_example'] # [str] |  House, Senate or presidential office.  (optional)
-sort = '-election_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-election_date'
-max_create_date = '2013-10-20' # date |  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-max_election_date = '2013-10-20' # date |  The maximum date of election.  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-max_update_date = '2013-10-20' # date |  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-election_type_id = ['election_type_id_example'] # [str] |  Election type id  (optional)
-election_party = ['election_party_example'] # [str] |  Party, if applicable.  (optional)
-election_year = ['election_year_example'] # [str] | Year of election (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-election_district = ['election_district_example'] # [str] |  House district of the office sought, if applicable.  (optional)
+election_state = ['election_state_example'] # [str] |  State or territory of the office sought.  (optional)
 min_primary_general_date = '2013-10-20' # date |  The minimum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+max_election_date = '2013-10-20' # date |  The maximum date of election.  (optional)
 max_primary_general_date = '2013-10-20' # date |  The maximum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-min_create_date = '2013-10-20' # date |  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+max_create_date = '2013-10-20' # date |  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 min_update_date = '2013-10-20' # date |  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+election_year = ['election_year_example'] # [str] | Year of election (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+election_party = ['election_party_example'] # [str] |  Party, if applicable.  (optional)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = '-election_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-election_date'
+office_sought = ['office_sought_example'] # [str] |  House, Senate or presidential office.  (optional)
+election_district = ['election_district_example'] # [str] |  House district of the office sought, if applicable.  (optional)
+election_type_id = ['election_type_id_example'] # [str] |  Election type id  (optional)
+max_update_date = '2013-10-20' # date |  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -371,7 +371,7 @@ min_update_date = '2013-10-20' # date |  The minimum date this record was last u
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.election_dates_get(election_state=election_state, min_election_date=min_election_date, office_sought=office_sought, sort=sort, max_create_date=max_create_date, max_election_date=max_election_date, sort_nulls_last=sort_nulls_last, sort_null_only=sort_null_only, max_update_date=max_update_date, election_type_id=election_type_id, election_party=election_party, election_year=election_year, sort_hide_null=sort_hide_null, per_page=per_page, election_district=election_district, min_primary_general_date=min_primary_general_date, page=page, max_primary_general_date=max_primary_general_date, min_create_date=min_create_date, min_update_date=min_update_date)
+        api_response = api_instance.election_dates_get(sort_hide_null=sort_hide_null, min_create_date=min_create_date, min_election_date=min_election_date, election_state=election_state, min_primary_general_date=min_primary_general_date, page=page, max_election_date=max_election_date, max_primary_general_date=max_primary_general_date, max_create_date=max_create_date, min_update_date=min_update_date, election_year=election_year, sort_null_only=sort_null_only, election_party=election_party, per_page=per_page, sort=sort, office_sought=office_sought, election_district=election_district, election_type_id=election_type_id, max_update_date=max_update_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->election_dates_get: %s\n" % e)
@@ -382,26 +382,26 @@ min_update_date = '2013-10-20' # date |  The minimum date this record was last u
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **election_state** | **[str]**|  State or territory of the office sought.  | [optional]
- **min_election_date** | **date**|  The minimum date of election.  | [optional]
- **office_sought** | **[str]**|  House, Senate or presidential office.  | [optional]
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-election_date'
- **max_create_date** | **date**|  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **max_election_date** | **date**|  The maximum date of election.  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **max_update_date** | **date**|  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **election_type_id** | **[str]**|  Election type id  | [optional]
- **election_party** | **[str]**|  Party, if applicable.  | [optional]
- **election_year** | **[str]**| Year of election | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **election_district** | **[str]**|  House district of the office sought, if applicable.  | [optional]
+ **min_create_date** | **date**|  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **min_election_date** | **date**|  The minimum date of election.  | [optional]
+ **election_state** | **[str]**|  State or territory of the office sought.  | [optional]
  **min_primary_general_date** | **date**|  The minimum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **max_election_date** | **date**|  The maximum date of election.  | [optional]
  **max_primary_general_date** | **date**|  The maximum date of primary or general election.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **min_create_date** | **date**|  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **max_create_date** | **date**|  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
  **min_update_date** | **date**|  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **election_year** | **[str]**| Year of election | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **election_party** | **[str]**|  Party, if applicable.  | [optional]
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-election_date'
+ **office_sought** | **[str]**|  House, Senate or presidential office.  | [optional]
+ **election_district** | **[str]**|  House district of the office sought, if applicable.  | [optional]
+ **election_type_id** | **[str]**|  Election type id  | [optional]
+ **max_update_date** | **date**|  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -485,20 +485,20 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.DatesApi(api_client)
-    report_year = [56] # [int] |  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  (optional)
-sort = '-due_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-due_date'
-max_due_date = '2013-10-20' # date |  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
+    min_create_date = '2013-10-20' # date |  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 min_due_date = '2013-10-20' # date |  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-max_create_date = '2013-10-20' # date |  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-min_update_date = '2013-10-20' # date |  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-min_create_date = '2013-10-20' # date |  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-max_update_date = '2013-10-20' # date |  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 report_type = ['report_type_example'] # [str] | Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND     - 90S Post Inaugural Supplement     - 90D Post Inaugural     - 48  48 Hour Notification     - 24  24 Hour Notification     - M7S July Monthly/Semi-Annual     - MSA Monthly Semi-Annual (MY)     - MYS Monthly Year End/Semi-Annual     - Q2S July Quarterly/Semi-Annual     - QSA Quarterly Semi-Annual (MY)     - QYS Quarterly Year End/Semi-Annual     - QYE Quarterly Semi-Annual (YE)     - QMS Quarterly Mid-Year/ Semi-Annual     - MSY Monthly Semi-Annual (YE)  (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = '-due_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-due_date'
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+report_year = [56] # [int] |  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  (optional)
+max_create_date = '2013-10-20' # date |  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+max_due_date = '2013-10-20' # date |  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+max_update_date = '2013-10-20' # date |  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+min_update_date = '2013-10-20' # date |  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -510,7 +510,7 @@ report_type = ['report_type_example'] # [str] | Name of report where the underly
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.reporting_dates_get(report_year=report_year, sort=sort, max_due_date=max_due_date, sort_hide_null=sort_hide_null, min_due_date=min_due_date, per_page=per_page, max_create_date=max_create_date, min_update_date=min_update_date, sort_nulls_last=sort_nulls_last, page=page, sort_null_only=sort_null_only, min_create_date=min_create_date, max_update_date=max_update_date, report_type=report_type)
+        api_response = api_instance.reporting_dates_get(min_create_date=min_create_date, min_due_date=min_due_date, sort_hide_null=sort_hide_null, report_type=report_type, sort_null_only=sort_null_only, per_page=per_page, sort=sort, page=page, report_year=report_year, max_create_date=max_create_date, max_due_date=max_due_date, sort_nulls_last=sort_nulls_last, max_update_date=max_update_date, min_update_date=min_update_date)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->reporting_dates_get: %s\n" % e)
@@ -521,20 +521,20 @@ report_type = ['report_type_example'] # [str] | Name of report where the underly
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **report_year** | **[int]**|  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  | [optional]
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-due_date'
- **max_due_date** | **date**|  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **min_due_date** | **date**|  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **max_create_date** | **date**|  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **min_update_date** | **date**|  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
  **min_create_date** | **date**|  The minimum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **max_update_date** | **date**|  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **min_due_date** | **date**|  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
  **report_type** | **[str]**| Name of report where the underlying data comes from:     - 10D Pre-Election     - 10G Pre-General     - 10P Pre-Primary     - 10R Pre-Run-Off     - 10S Pre-Special     - 12C Pre-Convention     - 12G Pre-General     - 12P Pre-Primary     - 12R Pre-Run-Off     - 12S Pre-Special     - 30D Post-Election     - 30G Post-General     - 30P Post-Primary     - 30R Post-Run-Off     - 30S Post-Special     - 60D Post-Convention     - M1  January Monthly     - M10 October Monthly     - M11 November Monthly     - M12 December Monthly     - M2  February Monthly     - M3  March Monthly     - M4  April Monthly     - M5  May Monthly     - M6  June Monthly     - M7  July Monthly     - M8  August Monthly     - M9  September Monthly     - MY  Mid-Year Report     - Q1  April Quarterly     - Q2  July Quarterly     - Q3  October Quarterly     - TER Termination Report     - YE  Year-End     - ADJ COMP ADJUST AMEND     - CA  COMPREHENSIVE AMEND     - 90S Post Inaugural Supplement     - 90D Post Inaugural     - 48  48 Hour Notification     - 24  24 Hour Notification     - M7S July Monthly/Semi-Annual     - MSA Monthly Semi-Annual (MY)     - MYS Monthly Year End/Semi-Annual     - Q2S July Quarterly/Semi-Annual     - QSA Quarterly Semi-Annual (MY)     - QYS Quarterly Year End/Semi-Annual     - QYE Quarterly Semi-Annual (YE)     - QMS Quarterly Mid-Year/ Semi-Annual     - MSY Monthly Semi-Annual (YE)  | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-due_date'
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **report_year** | **[int]**|  Forms with coverage date -      year from the coverage ending date. Forms without coverage date -      year from the receipt date.  | [optional]
+ **max_create_date** | **date**|  The maximum date this record was added to the system.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **max_due_date** | **date**|  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **max_update_date** | **date**|  The maximum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
+ **min_update_date** | **date**|  The minimum date this record was last updated.(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
 
 ### Return type
 

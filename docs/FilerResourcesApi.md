@@ -70,21 +70,21 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.FilerResourcesApi(api_client)
-    sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-min_assignment_update_date = '2013-10-20' # date | Filter results for assignment updates made after this date (optional)
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 name = ['name_example'] # [str] | Name of RAD analyst (optional)
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-analyst_short_id = [56] # [int] | Short ID of RAD analyst (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-telephone_ext = [56] # [int] | Telephone extension of RAD analyst (optional)
 title = ['title_example'] # [str] | Title of RAD analyst (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-max_assignment_update_date = '2013-10-20' # date | Filter results for assignment updates made before this date (optional)
-email = ['email_example'] # [str] | Email of RAD analyst (optional)
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 analyst_id = [56] # [int] | ID of RAD analyst (optional)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+max_assignment_update_date = '2013-10-20' # date | Filter results for assignment updates made before this date (optional)
+committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+telephone_ext = [56] # [int] | Telephone extension of RAD analyst (optional)
+email = ['email_example'] # [str] | Email of RAD analyst (optional)
+analyst_short_id = [56] # [int] | Short ID of RAD analyst (optional)
+min_assignment_update_date = '2013-10-20' # date | Filter results for assignment updates made after this date (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 
     # example passing only required values which don't have defaults set
     try:
@@ -96,7 +96,7 @@ analyst_id = [56] # [int] | ID of RAD analyst (optional)
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.rad_analyst_get(sort=sort, min_assignment_update_date=min_assignment_update_date, name=name, per_page=per_page, analyst_short_id=analyst_short_id, sort_hide_null=sort_hide_null, telephone_ext=telephone_ext, title=title, sort_nulls_last=sort_nulls_last, committee_id=committee_id, page=page, max_assignment_update_date=max_assignment_update_date, email=email, sort_null_only=sort_null_only, analyst_id=analyst_id)
+        api_response = api_instance.rad_analyst_get(sort_hide_null=sort_hide_null, name=name, title=title, analyst_id=analyst_id, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_assignment_update_date=max_assignment_update_date, committee_id=committee_id, telephone_ext=telephone_ext, email=email, analyst_short_id=analyst_short_id, min_assignment_update_date=min_assignment_update_date, page=page, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->rad_analyst_get: %s\n" % e)
@@ -107,21 +107,21 @@ analyst_id = [56] # [int] | ID of RAD analyst (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
- **min_assignment_update_date** | **date**| Filter results for assignment updates made after this date | [optional]
- **name** | **[str]**| Name of RAD analyst | [optional]
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **analyst_short_id** | **[int]**| Short ID of RAD analyst | [optional]
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **telephone_ext** | **[int]**| Telephone extension of RAD analyst | [optional]
+ **name** | **[str]**| Name of RAD analyst | [optional]
  **title** | **[str]**| Title of RAD analyst | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **max_assignment_update_date** | **date**| Filter results for assignment updates made before this date | [optional]
- **email** | **[str]**| Email of RAD analyst | [optional]
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
  **analyst_id** | **[int]**| ID of RAD analyst | [optional]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **max_assignment_update_date** | **date**| Filter results for assignment updates made before this date | [optional]
+ **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **telephone_ext** | **[int]**| Telephone extension of RAD analyst | [optional]
+ **email** | **[str]**| Email of RAD analyst | [optional]
+ **analyst_short_id** | **[int]**| Short ID of RAD analyst | [optional]
+ **min_assignment_update_date** | **date**| Filter results for assignment updates made after this date | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
 
 ### Return type
 
@@ -206,12 +206,12 @@ with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.FilerResourcesApi(api_client)
     state = 'state_example' # str |  Enter a state (Ex: AK, TX, VA etc..) to find the local election offices contact information.
-    sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+    sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+sort = 'null' # str, none_type | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of 'null'
+page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 
     # example passing only required values which don't have defaults set
     try:
@@ -223,7 +223,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.state_election_office_get(state, sort_nulls_last=sort_nulls_last, page=page, sort=sort, sort_hide_null=sort_hide_null, per_page=per_page, sort_null_only=sort_null_only)
+        api_response = api_instance.state_election_office_get(state, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort_nulls_last=sort_nulls_last, sort=sort, page=page)
         pprint(api_response)
     except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->state_election_office_get: %s\n" % e)
@@ -235,12 +235,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **state** | **str**|  Enter a state (Ex: AK, TX, VA etc..) to find the local election offices contact information.   |
  **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
  **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
  **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort** | **str, none_type**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of 'null'
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
 
 ### Return type
 

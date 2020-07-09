@@ -66,26 +66,26 @@ class LoansApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                min_image_number (str): [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-incurred_date'
-                min_payment_to_date (int):  Minimum payment to date . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of True
-                min_amount (str):  Filter for all amounts greater than a value. . [optional]
-                max_amount (str):  Filter for all amounts less than a value. . [optional]
-                last_index (int, none_type): Index of last result from previous page. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                candidate_name ([str]): Name of candidate running for office. [optional]
-                min_incurred_date (date, none_type):  Minimum incurred date . [optional]
-                loan_source_name ([str]): Source of the loan (i.e., bank loan, brokerage account, credit card, home equity line of credit,               other line of credit, or personal funds of the candidate. [optional]
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                max_payment_to_date (int):  Maximum payment to date . [optional]
+                max_image_number (str): [optional]
+                loan_source_name ([str]): Source of the loan (i.e., bank loan, brokerage account, credit card, home equity line of credit,               other line of credit, or personal funds of the candidate. [optional]
                 image_number ([str]):  An unique identifier for each page where the electronic or paper filing is reported. . [optional]
                 max_incurred_date (date, none_type):  Maximum incurred date . [optional]
+                min_image_number (str): [optional]
                 committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                max_image_number (str): [optional]
+                min_amount (str):  Filter for all amounts greater than a value. . [optional]
                 line_number (str):  Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;. . [optional]
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
+                max_payment_to_date (int):  Maximum payment to date . [optional]
+                min_payment_to_date (int):  Minimum payment to date . [optional]
+                candidate_name ([str]): Name of candidate running for office. [optional]
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
+                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                max_amount (str):  Filter for all amounts less than a value. . [optional]
+                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-incurred_date'
+                last_index (int, none_type): Index of last result from previous page. [optional]
+                min_incurred_date (date, none_type):  Minimum incurred date . [optional]
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of True
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -150,34 +150,34 @@ class LoansApi(object):
             params_map={
                 'all': [
                     'api_key',
-                    'min_image_number',
-                    'sort',
-                    'min_payment_to_date',
-                    'sort_nulls_last',
-                    'min_amount',
-                    'max_amount',
-                    'last_index',
-                    'sort_null_only',
-                    'candidate_name',
-                    'min_incurred_date',
-                    'loan_source_name',
                     'sort_hide_null',
-                    'per_page',
-                    'max_payment_to_date',
+                    'max_image_number',
+                    'loan_source_name',
                     'image_number',
                     'max_incurred_date',
+                    'min_image_number',
                     'committee_id',
-                    'page',
-                    'max_image_number',
+                    'min_amount',
                     'line_number',
+                    'page',
+                    'max_payment_to_date',
+                    'min_payment_to_date',
+                    'candidate_name',
+                    'sort_null_only',
+                    'per_page',
+                    'max_amount',
+                    'sort',
+                    'last_index',
+                    'min_incurred_date',
+                    'sort_nulls_last',
                 ],
                 'required': [
                     'api_key',
                 ],
                 'nullable': [
+                    'max_incurred_date',
                     'last_index',
                     'min_incurred_date',
-                    'max_incurred_date',
                 ],
                 'enum': [
                 ],
@@ -192,98 +192,98 @@ class LoansApi(object):
                 'openapi_types': {
                     'api_key':
                         (str,),
-                    'min_image_number':
-                        (str,),
-                    'sort':
-                        (str,),
-                    'min_payment_to_date':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'min_amount':
-                        (str,),
-                    'max_amount':
-                        (str,),
-                    'last_index':
-                        (int, none_type,),
-                    'sort_null_only':
-                        (bool,),
-                    'candidate_name':
-                        ([str],),
-                    'min_incurred_date':
-                        (date, none_type,),
-                    'loan_source_name':
-                        ([str],),
                     'sort_hide_null':
                         (bool,),
-                    'per_page':
-                        (int,),
-                    'max_payment_to_date':
-                        (int,),
+                    'max_image_number':
+                        (str,),
+                    'loan_source_name':
+                        ([str],),
                     'image_number':
                         ([str],),
                     'max_incurred_date':
                         (date, none_type,),
+                    'min_image_number':
+                        (str,),
                     'committee_id':
                         ([str],),
-                    'page':
-                        (int,),
-                    'max_image_number':
+                    'min_amount':
                         (str,),
                     'line_number':
                         (str,),
+                    'page':
+                        (int,),
+                    'max_payment_to_date':
+                        (int,),
+                    'min_payment_to_date':
+                        (int,),
+                    'candidate_name':
+                        ([str],),
+                    'sort_null_only':
+                        (bool,),
+                    'per_page':
+                        (int,),
+                    'max_amount':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'last_index':
+                        (int, none_type,),
+                    'min_incurred_date':
+                        (date, none_type,),
+                    'sort_nulls_last':
+                        (bool,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
-                    'min_image_number': 'min_image_number',
-                    'sort': 'sort',
-                    'min_payment_to_date': 'min_payment_to_date',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'min_amount': 'min_amount',
-                    'max_amount': 'max_amount',
-                    'last_index': 'last_index',
-                    'sort_null_only': 'sort_null_only',
-                    'candidate_name': 'candidate_name',
-                    'min_incurred_date': 'min_incurred_date',
-                    'loan_source_name': 'loan_source_name',
                     'sort_hide_null': 'sort_hide_null',
-                    'per_page': 'per_page',
-                    'max_payment_to_date': 'max_payment_to_date',
+                    'max_image_number': 'max_image_number',
+                    'loan_source_name': 'loan_source_name',
                     'image_number': 'image_number',
                     'max_incurred_date': 'max_incurred_date',
+                    'min_image_number': 'min_image_number',
                     'committee_id': 'committee_id',
-                    'page': 'page',
-                    'max_image_number': 'max_image_number',
+                    'min_amount': 'min_amount',
                     'line_number': 'line_number',
+                    'page': 'page',
+                    'max_payment_to_date': 'max_payment_to_date',
+                    'min_payment_to_date': 'min_payment_to_date',
+                    'candidate_name': 'candidate_name',
+                    'sort_null_only': 'sort_null_only',
+                    'per_page': 'per_page',
+                    'max_amount': 'max_amount',
+                    'sort': 'sort',
+                    'last_index': 'last_index',
+                    'min_incurred_date': 'min_incurred_date',
+                    'sort_nulls_last': 'sort_nulls_last',
                 },
                 'location_map': {
                     'api_key': 'query',
-                    'min_image_number': 'query',
-                    'sort': 'query',
-                    'min_payment_to_date': 'query',
-                    'sort_nulls_last': 'query',
-                    'min_amount': 'query',
-                    'max_amount': 'query',
-                    'last_index': 'query',
-                    'sort_null_only': 'query',
-                    'candidate_name': 'query',
-                    'min_incurred_date': 'query',
-                    'loan_source_name': 'query',
                     'sort_hide_null': 'query',
-                    'per_page': 'query',
-                    'max_payment_to_date': 'query',
+                    'max_image_number': 'query',
+                    'loan_source_name': 'query',
                     'image_number': 'query',
                     'max_incurred_date': 'query',
+                    'min_image_number': 'query',
                     'committee_id': 'query',
-                    'page': 'query',
-                    'max_image_number': 'query',
+                    'min_amount': 'query',
                     'line_number': 'query',
+                    'page': 'query',
+                    'max_payment_to_date': 'query',
+                    'min_payment_to_date': 'query',
+                    'candidate_name': 'query',
+                    'sort_null_only': 'query',
+                    'per_page': 'query',
+                    'max_amount': 'query',
+                    'sort': 'query',
+                    'last_index': 'query',
+                    'min_incurred_date': 'query',
+                    'sort_nulls_last': 'query',
                 },
                 'collection_format_map': {
-                    'candidate_name': 'multi',
                     'loan_source_name': 'multi',
                     'image_number': 'multi',
                     'committee_id': 'multi',
+                    'candidate_name': 'multi',
                 }
             },
             headers_map={
@@ -315,12 +315,12 @@ class LoansApi(object):
                 api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
 
             Keyword Args:
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
+                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
                 per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
+                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
+                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
+                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -388,12 +388,12 @@ class LoansApi(object):
                 'all': [
                     'api_key',
                     'sub_id',
-                    'sort_nulls_last',
-                    'page',
-                    'sort',
-                    'sort_null_only',
                     'sort_hide_null',
+                    'sort_null_only',
                     'per_page',
+                    'sort_nulls_last',
+                    'sort',
+                    'page',
                 ],
                 'required': [
                     'api_key',
@@ -417,38 +417,38 @@ class LoansApi(object):
                         (str,),
                     'sub_id':
                         (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'sort_null_only':
-                        (bool,),
                     'sort_hide_null':
                         (bool,),
+                    'sort_null_only':
+                        (bool,),
                     'per_page':
+                        (int,),
+                    'sort_nulls_last':
+                        (bool,),
+                    'sort':
+                        (str, none_type,),
+                    'page':
                         (int,),
                 },
                 'attribute_map': {
                     'api_key': 'api_key',
                     'sub_id': 'sub_id',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'page': 'page',
-                    'sort': 'sort',
-                    'sort_null_only': 'sort_null_only',
                     'sort_hide_null': 'sort_hide_null',
+                    'sort_null_only': 'sort_null_only',
                     'per_page': 'per_page',
+                    'sort_nulls_last': 'sort_nulls_last',
+                    'sort': 'sort',
+                    'page': 'page',
                 },
                 'location_map': {
                     'api_key': 'query',
                     'sub_id': 'path',
-                    'sort_nulls_last': 'query',
-                    'page': 'query',
-                    'sort': 'query',
-                    'sort_null_only': 'query',
                     'sort_hide_null': 'query',
+                    'sort_null_only': 'query',
                     'per_page': 'query',
+                    'sort_nulls_last': 'query',
+                    'sort': 'query',
+                    'page': 'query',
                 },
                 'collection_format_map': {
                 }
