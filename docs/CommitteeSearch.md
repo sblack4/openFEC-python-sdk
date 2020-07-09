@@ -1,4 +1,4 @@
-# committee_search.CommitteeSearch
+# CommitteeSearch
 
 ## Properties
 Name | Type | Description | Notes

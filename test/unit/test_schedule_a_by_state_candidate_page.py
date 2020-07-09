@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_a_by_state_candidate_page import ScheduleAByStateCandidatePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleAByStateCandidatePage(unittest.TestCase):
     """ScheduleAByStateCandidatePage unit test stubs"""
@@ -26,11 +28,37 @@ class TestScheduleAByStateCandidatePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleAByStateCandidatePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_a_by_state_candidate_page.ScheduleAByStateCandidatePage()  # noqa: E501
+        if include_optional :
+            return ScheduleAByStateCandidatePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.schedule_a_by_state_candidate.ScheduleAByStateCandidate(
+                        candidate_id = '0',
+                        count = 56,
+                        cycle = 56,
+                        state = '0',
+                        state_full = '0',
+                        total = 1.337, )
+                    ]
+            )
+        else :
+            return ScheduleAByStateCandidatePage(
+        )
+
     def testScheduleAByStateCandidatePage(self):
         """Test ScheduleAByStateCandidatePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleAByStateCandidatePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

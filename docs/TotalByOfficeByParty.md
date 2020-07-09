@@ -1,4 +1,4 @@
-# total_by_office_by_party.TotalByOfficeByParty
+# TotalByOfficeByParty
 
 ## Properties
 Name | Type | Description | Notes

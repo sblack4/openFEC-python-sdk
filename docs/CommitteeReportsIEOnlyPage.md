@@ -1,9 +1,9 @@
-# committee_reports_ie_only_page.CommitteeReportsIEOnlyPage
+# CommitteeReportsIEOnlyPage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pagination** | [**offset_info.OffsetInfo**](OffsetInfo.md) |  | [optional]
-**results** | [**[committee_reports_ie_only.CommitteeReportsIEOnly]**](CommitteeReportsIEOnly.md) |  | [optional]
+**pagination** | [**OffsetInfo**](OffsetInfo.md) |  | [optional]
+**results** | [**list[CommitteeReportsIEOnly]**](CommitteeReportsIEOnly.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

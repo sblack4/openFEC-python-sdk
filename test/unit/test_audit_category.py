@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.audit_category import AuditCategory  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestAuditCategory(unittest.TestCase):
     """AuditCategory unit test stubs"""
@@ -26,11 +28,30 @@ class TestAuditCategory(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test AuditCategory
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.audit_category.AuditCategory()  # noqa: E501
+        if include_optional :
+            return AuditCategory(
+                primary_category_id = '0',
+                primary_category_name = '0',
+                sub_category_list = [
+                    openfec_sdk.models.audit_category_relation.AuditCategoryRelation(
+                        sub_category_id = '0',
+                        sub_category_name = '0', )
+                    ]
+            )
+        else :
+            return AuditCategory(
+        )
+
     def testAuditCategory(self):
         """Test AuditCategory"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.AuditCategory()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

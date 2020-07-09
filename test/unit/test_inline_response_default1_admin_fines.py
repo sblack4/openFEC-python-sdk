@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default1_admin_fines import InlineResponseDefault1AdminFines  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault1AdminFines(unittest.TestCase):
     """InlineResponseDefault1AdminFines unit test stubs"""
@@ -26,11 +28,59 @@ class TestInlineResponseDefault1AdminFines(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault1AdminFines
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default1_admin_fines.InlineResponseDefault1AdminFines()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault1AdminFines(
+                challenge_outcome = '0',
+                challenge_receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                check_amount = 1.337,
+                commission_votes = [
+                    openfec_sdk.models.inline_response_default_1_commission_votes.inline_response_default_1_commission_votes(
+                        action = '0',
+                        vote_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), )
+                    ],
+                committee_id = '0',
+                doc_id = '0',
+                document_highlights = None,
+                documents = [
+                    openfec_sdk.models.inline_response_default_1_documents.inline_response_default_1_documents(
+                        category = '0',
+                        description = '0',
+                        document_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        document_id = 56,
+                        length = 56,
+                        url = '0', )
+                    ],
+                final_determination_amount = 1.337,
+                final_determination_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                highlights = [
+                    '0'
+                    ],
+                name = '0',
+                no = '0',
+                petition_court_decision_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                petition_court_filing_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                reason_to_believe_action_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                reason_to_believe_fine_amount = 1.337,
+                report_type = '0',
+                report_year = '0',
+                treasury_referral_amount = 1.337,
+                treasury_referral_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                url = '0'
+            )
+        else :
+            return InlineResponseDefault1AdminFines(
+        )
+
     def testInlineResponseDefault1AdminFines(self):
         """Test InlineResponseDefault1AdminFines"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault1AdminFines()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default1_advisory_opinions import InlineResponseDefault1AdvisoryOpinions  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault1AdvisoryOpinions(unittest.TestCase):
     """InlineResponseDefault1AdvisoryOpinions unit test stubs"""
@@ -26,11 +28,81 @@ class TestInlineResponseDefault1AdvisoryOpinions(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault1AdvisoryOpinions
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default1_advisory_opinions.InlineResponseDefault1AdvisoryOpinions()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault1AdvisoryOpinions(
+                ao_citations = [
+                    openfec_sdk.models.inline_response_default_1_ao_citations.inline_response_default_1_ao_citations(
+                        name = '0',
+                        no = '0', )
+                    ],
+                aos_cited_by = [
+                    openfec_sdk.models.inline_response_default_1_ao_citations.inline_response_default_1_ao_citations(
+                        name = '0',
+                        no = '0', )
+                    ],
+                commenter_names = [
+                    '0'
+                    ],
+                document_highlights = None,
+                documents = [
+                    openfec_sdk.models.inline_response_default_1_documents_1.inline_response_default_1_documents_1(
+                        category = '0',
+                        date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        description = '0',
+                        document_id = 56,
+                        url = '0', )
+                    ],
+                entities = [
+                    openfec_sdk.models.inline_response_default_1_entities.inline_response_default_1_entities(
+                        name = '0',
+                        role = '0',
+                        type = '0', )
+                    ],
+                highlights = [
+                    '0'
+                    ],
+                is_pending = True,
+                issue_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                name = '0',
+                no = '0',
+                regulatory_citations = [
+                    openfec_sdk.models.inline_response_default_1_regulatory_citations.inline_response_default_1_regulatory_citations(
+                        part = 56,
+                        section = 56,
+                        title = 56, )
+                    ],
+                representative_names = [
+                    '0'
+                    ],
+                request_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                requestor_names = [
+                    '0'
+                    ],
+                requestor_types = [
+                    '0'
+                    ],
+                status = '0',
+                statutory_citations = [
+                    openfec_sdk.models.inline_response_default_1_statutory_citations.inline_response_default_1_statutory_citations(
+                        section = '0',
+                        title = 56, )
+                    ],
+                summary = '0'
+            )
+        else :
+            return InlineResponseDefault1AdvisoryOpinions(
+        )
+
     def testInlineResponseDefault1AdvisoryOpinions(self):
         """Test InlineResponseDefault1AdvisoryOpinions"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault1AdvisoryOpinions()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

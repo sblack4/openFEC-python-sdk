@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.candidate_committee_totals_house_senate_page import CandidateCommitteeTotalsHouseSenatePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCandidateCommitteeTotalsHouseSenatePage(unittest.TestCase):
     """CandidateCommitteeTotalsHouseSenatePage unit test stubs"""
@@ -26,11 +28,79 @@ class TestCandidateCommitteeTotalsHouseSenatePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CandidateCommitteeTotalsHouseSenatePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.candidate_committee_totals_house_senate_page.CandidateCommitteeTotalsHouseSenatePage()  # noqa: E501
+        if include_optional :
+            return CandidateCommitteeTotalsHouseSenatePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.candidate_committee_totals_house_senate.CandidateCommitteeTotalsHouseSenate(
+                        all_other_loans = 1.337,
+                        candidate_contribution = 1.337,
+                        candidate_election_year = 56,
+                        candidate_id = '0',
+                        contribution_refunds = 1.337,
+                        contributions = 1.337,
+                        coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        cycle = 56,
+                        disbursements = 1.337,
+                        election_full = True,
+                        exempt_legal_accounting_disbursement = 1.337,
+                        federal_funds = 1.337,
+                        fundraising_disbursements = 1.337,
+                        individual_contributions = 1.337,
+                        individual_itemized_contributions = 1.337,
+                        individual_unitemized_contributions = 1.337,
+                        last_beginning_image_number = '0',
+                        last_cash_on_hand_end_period = 1.337,
+                        last_debts_owed_by_committee = 1.337,
+                        last_debts_owed_to_committee = 1.337,
+                        last_net_contributions = 1.337,
+                        last_net_operating_expenditures = 1.337,
+                        last_report_type_full = '0',
+                        last_report_year = 56,
+                        loan_repayments = 1.337,
+                        loan_repayments_candidate_loans = 1.337,
+                        loan_repayments_other_loans = 1.337,
+                        loans = 1.337,
+                        loans_made_by_candidate = 1.337,
+                        net_contributions = 1.337,
+                        net_operating_expenditures = 1.337,
+                        offsets_to_fundraising_expenditures = 1.337,
+                        offsets_to_legal_accounting = 1.337,
+                        offsets_to_operating_expenditures = 1.337,
+                        operating_expenditures = 1.337,
+                        other_disbursements = 1.337,
+                        other_political_committee_contributions = 1.337,
+                        other_receipts = 1.337,
+                        political_party_committee_contributions = 1.337,
+                        receipts = 1.337,
+                        refunded_individual_contributions = 1.337,
+                        refunded_other_political_committee_contributions = 1.337,
+                        refunded_political_party_committee_contributions = 1.337,
+                        total_offsets_to_operating_expenditures = 1.337,
+                        transaction_coverage_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        transfers_from_other_authorized_committee = 1.337,
+                        transfers_to_other_authorized_committee = 1.337, )
+                    ]
+            )
+        else :
+            return CandidateCommitteeTotalsHouseSenatePage(
+        )
+
     def testCandidateCommitteeTotalsHouseSenatePage(self):
         """Test CandidateCommitteeTotalsHouseSenatePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CandidateCommitteeTotalsHouseSenatePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

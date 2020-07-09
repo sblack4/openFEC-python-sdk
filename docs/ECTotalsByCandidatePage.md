@@ -1,9 +1,9 @@
-# ec_totals_by_candidate_page.ECTotalsByCandidatePage
+# ECTotalsByCandidatePage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pagination** | [**offset_info.OffsetInfo**](OffsetInfo.md) |  | [optional]
-**results** | [**[ec_totals_by_candidate.ECTotalsByCandidate]**](ECTotalsByCandidate.md) |  | [optional]
+**pagination** | [**OffsetInfo**](OffsetInfo.md) |  | [optional]
+**results** | [**list[ECTotalsByCandidate]**](ECTotalsByCandidate.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

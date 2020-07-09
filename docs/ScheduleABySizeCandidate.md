@@ -1,4 +1,4 @@
-# schedule_a_by_size_candidate.ScheduleABySizeCandidate
+# ScheduleABySizeCandidate
 
 ## Properties
 Name | Type | Description | Notes

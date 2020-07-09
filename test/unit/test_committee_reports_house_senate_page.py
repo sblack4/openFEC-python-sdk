@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee_reports_house_senate_page import CommitteeReportsHouseSenatePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommitteeReportsHouseSenatePage(unittest.TestCase):
     """CommitteeReportsHouseSenatePage unit test stubs"""
@@ -26,11 +28,133 @@ class TestCommitteeReportsHouseSenatePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommitteeReportsHouseSenatePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee_reports_house_senate_page.CommitteeReportsHouseSenatePage()  # noqa: E501
+        if include_optional :
+            return CommitteeReportsHouseSenatePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.committee_reports_house_senate.CommitteeReportsHouseSenate(
+                        aggregate_amount_personal_contributions_general = 1.337,
+                        aggregate_contributions_personal_funds_primary = 1.337,
+                        all_other_loans_period = 1.337,
+                        all_other_loans_ytd = 1.337,
+                        amendment_chain = [
+                            1.337
+                            ],
+                        amendment_indicator = '0',
+                        amendment_indicator_full = '0',
+                        beginning_image_number = '0',
+                        candidate_contribution_period = 1.337,
+                        candidate_contribution_ytd = 1.337,
+                        cash_on_hand_beginning_period = 1.337,
+                        cash_on_hand_end_period = 1.337,
+                        committee_id = '0',
+                        committee_name = '0',
+                        committee_type = '0',
+                        coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        csv_url = '0',
+                        cycle = 56,
+                        debts_owed_by_committee = 1.337,
+                        debts_owed_to_committee = 1.337,
+                        document_description = '0',
+                        end_image_number = '0',
+                        fec_file_id = '0',
+                        fec_url = '0',
+                        file_number = 56,
+                        gross_receipt_authorized_committee_general = 1.337,
+                        gross_receipt_authorized_committee_primary = 1.337,
+                        gross_receipt_minus_personal_contribution_general = 1.337,
+                        gross_receipt_minus_personal_contributions_primary = 1.337,
+                        html_url = '0',
+                        individual_itemized_contributions_period = 1.337,
+                        individual_itemized_contributions_ytd = 1.337,
+                        individual_unitemized_contributions_period = 1.337,
+                        individual_unitemized_contributions_ytd = 1.337,
+                        is_amended = True,
+                        loan_repayments_candidate_loans_period = 1.337,
+                        loan_repayments_candidate_loans_ytd = 1.337,
+                        loan_repayments_other_loans_period = 1.337,
+                        loan_repayments_other_loans_ytd = 1.337,
+                        loans_made_by_candidate_period = 1.337,
+                        loans_made_by_candidate_ytd = 1.337,
+                        means_filed = '0',
+                        most_recent = True,
+                        most_recent_file_number = 1.337,
+                        net_contributions_period = 1.337,
+                        net_contributions_ytd = 1.337,
+                        net_operating_expenditures_period = 1.337,
+                        net_operating_expenditures_ytd = 1.337,
+                        offsets_to_operating_expenditures_period = 1.337,
+                        offsets_to_operating_expenditures_ytd = 1.337,
+                        operating_expenditures_period = 1.337,
+                        operating_expenditures_ytd = 1.337,
+                        other_disbursements_period = 1.337,
+                        other_disbursements_ytd = 1.337,
+                        other_political_committee_contributions_period = 1.337,
+                        other_political_committee_contributions_ytd = 1.337,
+                        other_receipts_period = 1.337,
+                        other_receipts_ytd = 1.337,
+                        pdf_url = '0',
+                        political_party_committee_contributions_period = 1.337,
+                        political_party_committee_contributions_ytd = 1.337,
+                        previous_file_number = 1.337,
+                        receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        refunded_individual_contributions_period = 1.337,
+                        refunded_individual_contributions_ytd = 1.337,
+                        refunded_other_political_committee_contributions_period = 1.337,
+                        refunded_other_political_committee_contributions_ytd = 1.337,
+                        refunded_political_party_committee_contributions_period = 1.337,
+                        refunded_political_party_committee_contributions_ytd = 1.337,
+                        refunds_total_contributions_col_total_ytd = 1.337,
+                        report_form = '0',
+                        report_type = '0',
+                        report_type_full = '0',
+                        report_year = 56,
+                        subtotal_period = 1.337,
+                        total_contribution_refunds_col_total_period = 1.337,
+                        total_contribution_refunds_period = 1.337,
+                        total_contribution_refunds_ytd = 1.337,
+                        total_contributions_column_total_period = 1.337,
+                        total_contributions_period = 1.337,
+                        total_contributions_ytd = 1.337,
+                        total_disbursements_period = 1.337,
+                        total_disbursements_ytd = 1.337,
+                        total_individual_contributions_period = 1.337,
+                        total_individual_contributions_ytd = 1.337,
+                        total_loan_repayments_made_period = 1.337,
+                        total_loan_repayments_made_ytd = 1.337,
+                        total_loans_received_period = 1.337,
+                        total_loans_received_ytd = 1.337,
+                        total_offsets_to_operating_expenditures_period = 1.337,
+                        total_offsets_to_operating_expenditures_ytd = 1.337,
+                        total_operating_expenditures_period = 1.337,
+                        total_operating_expenditures_ytd = 1.337,
+                        total_receipts_period = 1.337,
+                        total_receipts_ytd = 1.337,
+                        transfers_from_other_authorized_committee_period = 1.337,
+                        transfers_from_other_authorized_committee_ytd = 1.337,
+                        transfers_to_other_authorized_committee_period = 1.337,
+                        transfers_to_other_authorized_committee_ytd = 1.337, )
+                    ]
+            )
+        else :
+            return CommitteeReportsHouseSenatePage(
+        )
+
     def testCommitteeReportsHouseSenatePage(self):
         """Test CommitteeReportsHouseSenatePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommitteeReportsHouseSenatePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

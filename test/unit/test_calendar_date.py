@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.calendar_date import CalendarDate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCalendarDate(unittest.TestCase):
     """CalendarDate unit test stubs"""
@@ -26,11 +28,36 @@ class TestCalendarDate(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CalendarDate
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.calendar_date.CalendarDate()  # noqa: E501
+        if include_optional :
+            return CalendarDate(
+                all_day = True,
+                calendar_category_id = 56,
+                category = '0',
+                description = '0',
+                end_date = '0',
+                event_id = 56,
+                location = '0',
+                start_date = '0',
+                state = [
+                    '0'
+                    ],
+                summary = '0',
+                url = '0'
+            )
+        else :
+            return CalendarDate(
+        )
+
     def testCalendarDate(self):
         """Test CalendarDate"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CalendarDate()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

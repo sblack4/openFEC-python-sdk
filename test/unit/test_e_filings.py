@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.e_filings import EFilings  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestEFilings(unittest.TestCase):
     """EFilings unit test stubs"""
@@ -26,11 +28,49 @@ class TestEFilings(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test EFilings
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.e_filings.EFilings()  # noqa: E501
+        if include_optional :
+            return EFilings(
+                amended_by = 56,
+                amendment_chain = [
+                    56
+                    ],
+                amendment_number = 56,
+                amends_file = 56,
+                beginning_image_number = '0',
+                committee_id = '0',
+                committee_name = '0',
+                coverage_end_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                coverage_start_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                csv_url = '0',
+                document_description = '0',
+                ending_image_number = '0',
+                fec_file_id = '0',
+                fec_url = '0',
+                file_number = 56,
+                filed_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                form_type = '0',
+                html_url = '0',
+                is_amended = True,
+                load_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                most_recent = True,
+                most_recent_filing = 56,
+                pdf_url = '0',
+                receipt_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            )
+        else :
+            return EFilings(
+        )
+
     def testEFilings(self):
         """Test EFilings"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.EFilings()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

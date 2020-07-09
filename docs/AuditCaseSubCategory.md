@@ -1,4 +1,4 @@
-# audit_case_sub_category.AuditCaseSubCategory
+# AuditCaseSubCategory
 
 ## Properties
 Name | Type | Description | Notes

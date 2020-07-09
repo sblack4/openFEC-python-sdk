@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee_totals_presidential import CommitteeTotalsPresidential  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommitteeTotalsPresidential(unittest.TestCase):
     """CommitteeTotalsPresidential unit test stubs"""
@@ -26,11 +28,77 @@ class TestCommitteeTotalsPresidential(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommitteeTotalsPresidential
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee_totals_presidential.CommitteeTotalsPresidential()  # noqa: E501
+        if include_optional :
+            return CommitteeTotalsPresidential(
+                candidate_contribution = 1.337,
+                cash_on_hand_beginning_period = 1.337,
+                committee_designation = '0',
+                committee_designation_full = '0',
+                committee_id = '0',
+                committee_name = '0',
+                committee_type = '0',
+                committee_type_full = '0',
+                contribution_refunds = 1.337,
+                contributions = 1.337,
+                coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                cycle = 56,
+                disbursements = 1.337,
+                exempt_legal_accounting_disbursement = 1.337,
+                federal_funds = 1.337,
+                fundraising_disbursements = 1.337,
+                individual_contributions = 1.337,
+                individual_itemized_contributions = 1.337,
+                individual_unitemized_contributions = 1.337,
+                last_beginning_image_number = '0',
+                last_cash_on_hand_end_period = 1.337,
+                last_debts_owed_by_committee = 1.337,
+                last_debts_owed_to_committee = 1.337,
+                last_report_type_full = '0',
+                last_report_year = 56,
+                loan_repayments_made = 1.337,
+                loans_received = 1.337,
+                loans_received_from_candidate = 1.337,
+                net_contributions = 1.337,
+                net_operating_expenditures = 1.337,
+                offsets_to_fundraising_expenditures = 1.337,
+                offsets_to_legal_accounting = 1.337,
+                offsets_to_operating_expenditures = 1.337,
+                operating_expenditures = 1.337,
+                other_disbursements = 1.337,
+                other_loans_received = 1.337,
+                other_political_committee_contributions = 1.337,
+                other_receipts = 1.337,
+                party_full = '0',
+                pdf_url = '0',
+                political_party_committee_contributions = 1.337,
+                receipts = 1.337,
+                refunded_individual_contributions = 1.337,
+                refunded_other_political_committee_contributions = 1.337,
+                refunded_political_party_committee_contributions = 1.337,
+                repayments_loans_made_by_candidate = 1.337,
+                repayments_other_loans = 1.337,
+                report_form = '0',
+                total_offsets_to_operating_expenditures = 1.337,
+                transaction_coverage_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                transfers_from_affiliated_committee = 1.337,
+                transfers_to_other_authorized_committee = 1.337
+            )
+        else :
+            return CommitteeTotalsPresidential(
+                cycle = 56,
+        )
+
     def testCommitteeTotalsPresidential(self):
         """Test CommitteeTotalsPresidential"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommitteeTotalsPresidential()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

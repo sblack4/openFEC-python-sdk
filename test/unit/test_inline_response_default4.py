@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default4 import InlineResponseDefault4  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault4(unittest.TestCase):
     """InlineResponseDefault4 unit test stubs"""
@@ -26,11 +28,118 @@ class TestInlineResponseDefault4(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault4
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default4.InlineResponseDefault4()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault4(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.inline_response_default_4_results.inline_response_default_4_results(
+                        action_code = '0',
+                        action_code_full = '0',
+                        amount_incurred_period = 1.337,
+                        candidate_first_name = '0',
+                        candidate_id = '0',
+                        candidate_last_name = '0',
+                        candidate_office = '0',
+                        candidate_office_district = '0',
+                        candidate_office_state = '0',
+                        candidate_office_state_full = '0',
+                        canidate_name = '0',
+                        committee = openfec_sdk.models.committee_history.CommitteeHistory(
+                            affiliated_committee_name = '0',
+                            candidate_ids = [
+                                '0'
+                                ],
+                            city = '0',
+                            committee_id = '0',
+                            committee_type = '0',
+                            committee_type_full = '0',
+                            cycle = 56,
+                            cycles = [
+                                56
+                                ],
+                            cycles_has_activity = [
+                                56
+                                ],
+                            cycles_has_financial = [
+                                56
+                                ],
+                            designation = '0',
+                            designation_full = '0',
+                            filing_frequency = '0',
+                            is_active = True,
+                            last_cycle_has_activity = 56,
+                            last_cycle_has_financial = 56,
+                            name = '0',
+                            organization_type = '0',
+                            organization_type_full = '0',
+                            party = '0',
+                            party_full = '0',
+                            state = '0',
+                            state_full = '0',
+                            street_1 = '0',
+                            street_2 = '0',
+                            treasurer_name = '0',
+                            zip = '0', ),
+                        committee_id = '0',
+                        committee_name = '0',
+                        conduit_committee_city = '0',
+                        conduit_committee_id = '0',
+                        conduit_committee_name = '0',
+                        conduit_committee_state = '0',
+                        conduit_committee_street1 = '0',
+                        conduit_committee_street2 = '0',
+                        conduit_committee_zip = 56,
+                        creditor_debtor_city = '0',
+                        creditor_debtor_first_name = '0',
+                        creditor_debtor_id = '0',
+                        creditor_debtor_last_name = '0',
+                        creditor_debtor_middle_name = '0',
+                        creditor_debtor_name = '0',
+                        creditor_debtor_prefix = '0',
+                        creditor_debtor_state = '0',
+                        creditor_debtor_street1 = '0',
+                        creditor_debtor_street2 = '0',
+                        creditor_debtor_suffix = '0',
+                        election_cycle = 56,
+                        entity_type = '0',
+                        file_number = 56,
+                        filing_form = '0',
+                        image_number = '0',
+                        line_number = '0',
+                        link_id = 56,
+                        load_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        nature_of_debt = '0',
+                        original_sub_id = 56,
+                        outstanding_balance_beginning_of_period = 1.337,
+                        outstanding_balance_close_of_period = 1.337,
+                        payment_period = 1.337,
+                        pdf_url = '0',
+                        report_type = '0',
+                        report_year = 56,
+                        schedule_type = '0',
+                        schedule_type_full = '0',
+                        sub_id = '0',
+                        transaction_id = '0', )
+                    ]
+            )
+        else :
+            return InlineResponseDefault4(
+        )
+
     def testInlineResponseDefault4(self):
         """Test InlineResponseDefault4"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault4()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -1,9 +1,9 @@
-# schedule_a_by_size_candidate_page.ScheduleABySizeCandidatePage
+# ScheduleABySizeCandidatePage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pagination** | [**offset_info.OffsetInfo**](OffsetInfo.md) |  | [optional]
-**results** | [**[schedule_a_by_size_candidate.ScheduleABySizeCandidate]**](ScheduleABySizeCandidate.md) |  | [optional]
+**pagination** | [**OffsetInfo**](OffsetInfo.md) |  | [optional]
+**results** | [**list[ScheduleABySizeCandidate]**](ScheduleABySizeCandidate.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

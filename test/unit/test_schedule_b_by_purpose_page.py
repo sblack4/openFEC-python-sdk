@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_b_by_purpose_page import ScheduleBByPurposePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleBByPurposePage(unittest.TestCase):
     """ScheduleBByPurposePage unit test stubs"""
@@ -26,11 +28,38 @@ class TestScheduleBByPurposePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleBByPurposePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_b_by_purpose_page.ScheduleBByPurposePage()  # noqa: E501
+        if include_optional :
+            return ScheduleBByPurposePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.schedule_b_by_purpose.ScheduleBByPurpose(
+                        committee_id = '0',
+                        count = 56,
+                        cycle = 56,
+                        memo_count = 56,
+                        memo_total = 1.337,
+                        purpose = '0',
+                        total = 1.337, )
+                    ]
+            )
+        else :
+            return ScheduleBByPurposePage(
+        )
+
     def testScheduleBByPurposePage(self):
         """Test ScheduleBByPurposePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleBByPurposePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

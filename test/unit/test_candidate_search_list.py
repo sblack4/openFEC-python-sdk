@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.candidate_search_list import CandidateSearchList  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCandidateSearchList(unittest.TestCase):
     """CandidateSearchList unit test stubs"""
@@ -26,11 +28,29 @@ class TestCandidateSearchList(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CandidateSearchList
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.candidate_search_list.CandidateSearchList()  # noqa: E501
+        if include_optional :
+            return CandidateSearchList(
+                results = [
+                    openfec_sdk.models.candidate_search.CandidateSearch(
+                        id = '0',
+                        name = '0',
+                        office_sought = '0', )
+                    ]
+            )
+        else :
+            return CandidateSearchList(
+        )
+
     def testCandidateSearchList(self):
         """Test CandidateSearchList"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CandidateSearchList()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.electioneering import Electioneering  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestElectioneering(unittest.TestCase):
     """Electioneering unit test stubs"""
@@ -26,11 +28,50 @@ class TestElectioneering(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Electioneering
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.electioneering.Electioneering()  # noqa: E501
+        if include_optional :
+            return Electioneering(
+                amendment_indicator = '0',
+                beginning_image_number = '0',
+                calculated_candidate_share = 1.337,
+                candidate_district = '0',
+                candidate_id = '0',
+                candidate_name = '0',
+                candidate_office = '0',
+                candidate_state = '0',
+                committee_id = '0',
+                committee_name = '0',
+                communication_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                disbursement_amount = 1.337,
+                disbursement_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                election_type = '0',
+                file_number = 56,
+                link_id = 56,
+                number_of_candidates = 1.337,
+                payee_name = '0',
+                payee_state = '0',
+                pdf_url = '0',
+                public_distribution_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                purpose_description = '0',
+                receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                report_year = 56,
+                sb_image_num = '0',
+                sb_link_id = '0',
+                sub_id = 56
+            )
+        else :
+            return Electioneering(
+        )
+
     def testElectioneering(self):
         """Test Electioneering"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.Electioneering()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee_detail import CommitteeDetail  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommitteeDetail(unittest.TestCase):
     """CommitteeDetail unit test stubs"""
@@ -26,11 +28,84 @@ class TestCommitteeDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommitteeDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee_detail.CommitteeDetail()  # noqa: E501
+        if include_optional :
+            return CommitteeDetail(
+                affiliated_committee_name = '0',
+                candidate_ids = [
+                    '0'
+                    ],
+                city = '0',
+                committee_id = '0',
+                committee_type = '0',
+                committee_type_full = '0',
+                custodian_city = '0',
+                custodian_name_1 = '0',
+                custodian_name_2 = '0',
+                custodian_name_full = '0',
+                custodian_name_middle = '0',
+                custodian_name_prefix = '0',
+                custodian_name_suffix = '0',
+                custodian_name_title = '0',
+                custodian_phone = '0',
+                custodian_state = '0',
+                custodian_street_1 = '0',
+                custodian_street_2 = '0',
+                custodian_zip = '0',
+                cycles = [
+                    56
+                    ],
+                designation = '0',
+                designation_full = '0',
+                email = '0',
+                fax = '0',
+                filing_frequency = '0',
+                first_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                form_type = '0',
+                last_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                leadership_pac = '0',
+                lobbyist_registrant_pac = '0',
+                name = '0',
+                organization_type = '0',
+                organization_type_full = '0',
+                party = '0',
+                party_full = '0',
+                party_type = '0',
+                party_type_full = '0',
+                state = '0',
+                state_full = '0',
+                street_1 = '0',
+                street_2 = '0',
+                treasurer_city = '0',
+                treasurer_name = '0',
+                treasurer_name_1 = '0',
+                treasurer_name_2 = '0',
+                treasurer_name_middle = '0',
+                treasurer_name_prefix = '0',
+                treasurer_name_suffix = '0',
+                treasurer_name_title = '0',
+                treasurer_phone = '0',
+                treasurer_state = '0',
+                treasurer_street_1 = '0',
+                treasurer_street_2 = '0',
+                treasurer_zip = '0',
+                website = '0',
+                zip = '0'
+            )
+        else :
+            return CommitteeDetail(
+                committee_id = '0',
+        )
+
     def testCommitteeDetail(self):
         """Test CommitteeDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommitteeDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

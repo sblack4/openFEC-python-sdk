@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default1_regulations import InlineResponseDefault1Regulations  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault1Regulations(unittest.TestCase):
     """InlineResponseDefault1Regulations unit test stubs"""
@@ -26,11 +28,31 @@ class TestInlineResponseDefault1Regulations(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault1Regulations
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default1_regulations.InlineResponseDefault1Regulations()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault1Regulations(
+                doc_id = '0',
+                document_highlights = None,
+                highlights = [
+                    '0'
+                    ],
+                name = '0',
+                no = '0',
+                url = '0'
+            )
+        else :
+            return InlineResponseDefault1Regulations(
+        )
+
     def testInlineResponseDefault1Regulations(self):
         """Test InlineResponseDefault1Regulations"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault1Regulations()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

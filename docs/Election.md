@@ -1,4 +1,4 @@
-# election.Election
+# Election
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **candidate_pcc_id** | **str** |  | [optional]
 **candidate_pcc_name** | **str** |  | [optional]
 **cash_on_hand_end_period** | **float** |  | [optional]
-**committee_ids** | **[str]** |  | [optional]
+**committee_ids** | **list[str]** |  | [optional]
 **coverage_end_date** | **date** |  | [optional]
 **incumbent_challenge_full** | **str** |  | [optional]
 **party_full** | **str** |  | [optional]

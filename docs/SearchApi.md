@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **names_candidates_get**
-> candidate_search_list.CandidateSearchList names_candidates_get(q)
+> CandidateSearchList names_candidates_get(api_key, q)
 
 
 
@@ -18,12 +18,11 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -70,13 +69,137 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.SearchApi(api_client)
-    q = ['q_example'] # [str] | Name (candidate or committee) to search for
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.names_candidates_get(q)
+        api_response = api_instance.names_candidates_get(api_key, q)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling SearchApi->names_candidates_get: %s\n" % e)
+```
+
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.SearchApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
+
+    try:
+        api_response = api_instance.names_candidates_get(api_key, q)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SearchApi->names_candidates_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.SearchApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
+
+    try:
+        api_response = api_instance.names_candidates_get(api_key, q)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling SearchApi->names_candidates_get: %s\n" % e)
 ```
 
@@ -84,12 +207,12 @@ with openfec_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **[str]**| Name (candidate or committee) to search for |
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for |
 
 ### Return type
 
-[**candidate_search_list.CandidateSearchList**](CandidateSearchList.md)
+[**CandidateSearchList**](CandidateSearchList.md)
 
 ### Authorization
 
@@ -108,7 +231,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **names_committees_get**
-> committee_search_list.CommitteeSearchList names_committees_get(q)
+> CommitteeSearchList names_committees_get(api_key, q)
 
 
 
@@ -117,12 +240,11 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -169,13 +291,137 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.SearchApi(api_client)
-    q = ['q_example'] # [str] | Name (candidate or committee) to search for
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.names_committees_get(q)
+        api_response = api_instance.names_committees_get(api_key, q)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling SearchApi->names_committees_get: %s\n" % e)
+```
+
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.SearchApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
+
+    try:
+        api_response = api_instance.names_committees_get(api_key, q)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SearchApi->names_committees_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.SearchApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+q = ['q_example'] # list[str] | Name (candidate or committee) to search for
+
+    try:
+        api_response = api_instance.names_committees_get(api_key, q)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling SearchApi->names_committees_get: %s\n" % e)
 ```
 
@@ -183,12 +429,12 @@ with openfec_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **[str]**| Name (candidate or committee) to search for |
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **q** | [**list[str]**](str.md)| Name (candidate or committee) to search for |
 
 ### Return type
 
-[**committee_search_list.CommitteeSearchList**](CommitteeSearchList.md)
+[**CommitteeSearchList**](CommitteeSearchList.md)
 
 ### Authorization
 

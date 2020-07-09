@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default1_murs import InlineResponseDefault1Murs  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault1Murs(unittest.TestCase):
     """InlineResponseDefault1Murs unit test stubs"""
@@ -26,11 +28,74 @@ class TestInlineResponseDefault1Murs(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault1Murs
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default1_murs.InlineResponseDefault1Murs()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault1Murs(
+                close_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                commission_votes = [
+                    openfec_sdk.models.inline_response_default_1_commission_votes.inline_response_default_1_commission_votes(
+                        action = '0',
+                        vote_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), )
+                    ],
+                dispositions = [
+                    openfec_sdk.models.inline_response_default_1_dispositions.inline_response_default_1_dispositions(
+                        citations = [
+                            openfec_sdk.models.inline_response_default_1_citations.inline_response_default_1_citations(
+                                text = '0',
+                                title = '0',
+                                type = '0',
+                                url = '0', )
+                            ],
+                        disposition = '0',
+                        penalty = 1.337,
+                        respondent = '0', )
+                    ],
+                doc_id = '0',
+                document_highlights = None,
+                documents = [
+                    openfec_sdk.models.inline_response_default_1_documents.inline_response_default_1_documents(
+                        category = '0',
+                        description = '0',
+                        document_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        document_id = 56,
+                        length = 56,
+                        url = '0', )
+                    ],
+                election_cycles = 56,
+                highlights = [
+                    '0'
+                    ],
+                mur_type = 'current',
+                name = '0',
+                no = '0',
+                open_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                participants = [
+                    openfec_sdk.models.inline_response_default_1_participants.inline_response_default_1_participants(
+                        citations = openfec_sdk.models.citations.citations(),
+                        name = '0',
+                        role = '0', )
+                    ],
+                respondents = [
+                    '0'
+                    ],
+                subjects = [
+                    '0'
+                    ],
+                url = '0'
+            )
+        else :
+            return InlineResponseDefault1Murs(
+        )
+
     def testInlineResponseDefault1Murs(self):
         """Test InlineResponseDefault1Murs"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault1Murs()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

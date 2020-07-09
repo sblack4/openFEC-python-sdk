@@ -1,9 +1,9 @@
-# inline_response_default1_participants.InlineResponseDefault1Participants
+# InlineResponseDefault1Participants
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**citations** | **bool, date, datetime, dict, float, int, list, str** |  | [optional]
+**citations** | [**object**](.md) |  | [optional]
 **name** | **str** |  | [optional]
 **role** | **str** |  | [optional]
 

@@ -1,4 +1,4 @@
-# inline_response_default1_documents.InlineResponseDefault1Documents
+# InlineResponseDefault1Documents
 
 ## Properties
 Name | Type | Description | Notes

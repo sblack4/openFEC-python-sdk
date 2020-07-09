@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_a_by_zip_page import ScheduleAByZipPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleAByZipPage(unittest.TestCase):
     """ScheduleAByZipPage unit test stubs"""
@@ -26,11 +28,38 @@ class TestScheduleAByZipPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleAByZipPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_a_by_zip_page.ScheduleAByZipPage()  # noqa: E501
+        if include_optional :
+            return ScheduleAByZipPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.schedule_a_by_zip.ScheduleAByZip(
+                        committee_id = '0',
+                        count = 56,
+                        cycle = 56,
+                        state = '0',
+                        state_full = '0',
+                        total = 1.337,
+                        zip = '0', )
+                    ]
+            )
+        else :
+            return ScheduleAByZipPage(
+        )
+
     def testScheduleAByZipPage(self):
         """Test ScheduleAByZipPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleAByZipPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

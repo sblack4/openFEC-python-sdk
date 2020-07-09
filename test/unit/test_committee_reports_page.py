@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee_reports_page import CommitteeReportsPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommitteeReportsPage(unittest.TestCase):
     """CommitteeReportsPage unit test stubs"""
@@ -26,11 +28,215 @@ class TestCommitteeReportsPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommitteeReportsPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee_reports_page.CommitteeReportsPage()  # noqa: E501
+        if include_optional :
+            return CommitteeReportsPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.committee_reports.CommitteeReports(
+                        aggregate_amount_personal_contributions_general = 1.337,
+                        aggregate_contributions_personal_funds_primary = 1.337,
+                        all_loans_received_period = 1.337,
+                        all_loans_received_ytd = 1.337,
+                        all_other_loans_period = 1.337,
+                        all_other_loans_ytd = 1.337,
+                        allocated_federal_election_levin_share_period = 1.337,
+                        amendment_chain = [
+                            1.337
+                            ],
+                        amendment_indicator = '0',
+                        amendment_indicator_full = '0',
+                        beginning_image_number = '0',
+                        calendar_ytd = 56,
+                        candidate_contribution_period = 1.337,
+                        candidate_contribution_ytd = 1.337,
+                        cash_on_hand_beginning_calendar_ytd = 1.337,
+                        cash_on_hand_beginning_period = 1.337,
+                        cash_on_hand_close_ytd = 1.337,
+                        cash_on_hand_end_period = 1.337,
+                        committee_id = '0',
+                        committee_name = '0',
+                        committee_type = '0',
+                        coordinated_expenditures_by_party_committee_period = 1.337,
+                        coordinated_expenditures_by_party_committee_ytd = 1.337,
+                        coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        csv_url = '0',
+                        cycle = 56,
+                        debts_owed_by_committee = 1.337,
+                        debts_owed_to_committee = 1.337,
+                        document_description = '0',
+                        end_image_number = '0',
+                        exempt_legal_accounting_disbursement_period = 1.337,
+                        exempt_legal_accounting_disbursement_ytd = 1.337,
+                        expenditure_subject_to_limits = 1.337,
+                        fec_file_id = '0',
+                        fec_url = '0',
+                        fed_candidate_committee_contribution_refunds_ytd = 1.337,
+                        fed_candidate_committee_contributions_period = 1.337,
+                        fed_candidate_committee_contributions_ytd = 1.337,
+                        fed_candidate_contribution_refunds_period = 1.337,
+                        federal_funds_period = 1.337,
+                        federal_funds_ytd = 1.337,
+                        file_number = 56,
+                        fundraising_disbursements_period = 1.337,
+                        fundraising_disbursements_ytd = 1.337,
+                        gross_receipt_authorized_committee_general = 1.337,
+                        gross_receipt_authorized_committee_primary = 1.337,
+                        gross_receipt_minus_personal_contribution_general = 1.337,
+                        gross_receipt_minus_personal_contributions_primary = 1.337,
+                        html_url = '0',
+                        independent_contributions_period = 1.337,
+                        independent_expenditures_period = 1.337,
+                        independent_expenditures_ytd = 1.337,
+                        individual_itemized_contributions_period = 1.337,
+                        individual_itemized_contributions_ytd = 1.337,
+                        individual_unitemized_contributions_period = 1.337,
+                        individual_unitemized_contributions_ytd = 1.337,
+                        is_amended = True,
+                        items_on_hand_liquidated = 1.337,
+                        loan_repayments_candidate_loans_period = 1.337,
+                        loan_repayments_candidate_loans_ytd = 1.337,
+                        loan_repayments_made_period = 1.337,
+                        loan_repayments_made_ytd = 1.337,
+                        loan_repayments_other_loans_period = 1.337,
+                        loan_repayments_other_loans_ytd = 1.337,
+                        loan_repayments_received_period = 1.337,
+                        loan_repayments_received_ytd = 1.337,
+                        loans_made_by_candidate_period = 1.337,
+                        loans_made_by_candidate_ytd = 1.337,
+                        loans_made_period = 1.337,
+                        loans_made_ytd = 1.337,
+                        loans_received_from_candidate_period = 1.337,
+                        loans_received_from_candidate_ytd = 1.337,
+                        means_filed = '0',
+                        most_recent = True,
+                        most_recent_file_number = 1.337,
+                        net_contributions_cycle_to_date = 1.337,
+                        net_contributions_period = 1.337,
+                        net_contributions_ytd = 1.337,
+                        net_operating_expenditures_cycle_to_date = 1.337,
+                        net_operating_expenditures_period = 1.337,
+                        net_operating_expenditures_ytd = 1.337,
+                        non_allocated_fed_election_activity_period = 1.337,
+                        non_allocated_fed_election_activity_ytd = 1.337,
+                        nonfed_share_allocated_disbursements_period = 1.337,
+                        offsets_to_fundraising_expenditures_period = 1.337,
+                        offsets_to_fundraising_expenditures_ytd = 1.337,
+                        offsets_to_legal_accounting_period = 1.337,
+                        offsets_to_legal_accounting_ytd = 1.337,
+                        offsets_to_operating_expenditures_period = 1.337,
+                        offsets_to_operating_expenditures_ytd = 1.337,
+                        operating_expenditures_period = 1.337,
+                        operating_expenditures_ytd = 1.337,
+                        other_disbursements_period = 1.337,
+                        other_disbursements_ytd = 1.337,
+                        other_fed_operating_expenditures_period = 1.337,
+                        other_fed_operating_expenditures_ytd = 1.337,
+                        other_fed_receipts_period = 1.337,
+                        other_fed_receipts_ytd = 1.337,
+                        other_loans_received_period = 1.337,
+                        other_loans_received_ytd = 1.337,
+                        other_political_committee_contributions_period = 1.337,
+                        other_political_committee_contributions_ytd = 1.337,
+                        other_receipts_period = 1.337,
+                        other_receipts_ytd = 1.337,
+                        pdf_url = '0',
+                        political_party_committee_contributions_period = 1.337,
+                        political_party_committee_contributions_ytd = 1.337,
+                        previous_file_number = 1.337,
+                        receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        refunded_individual_contributions_period = 1.337,
+                        refunded_individual_contributions_ytd = 1.337,
+                        refunded_other_political_committee_contributions_period = 1.337,
+                        refunded_other_political_committee_contributions_ytd = 1.337,
+                        refunded_political_party_committee_contributions_period = 1.337,
+                        refunded_political_party_committee_contributions_ytd = 1.337,
+                        refunds_total_contributions_col_total_ytd = 1.337,
+                        repayments_loans_made_by_candidate_period = 1.337,
+                        repayments_loans_made_candidate_ytd = 1.337,
+                        repayments_other_loans_period = 1.337,
+                        repayments_other_loans_ytd = 1.337,
+                        report_form = '0',
+                        report_type = '0',
+                        report_type_full = '0',
+                        report_year = 56,
+                        shared_fed_activity_nonfed_ytd = 1.337,
+                        shared_fed_activity_period = 1.337,
+                        shared_fed_activity_ytd = 1.337,
+                        shared_fed_operating_expenditures_period = 1.337,
+                        shared_fed_operating_expenditures_ytd = 1.337,
+                        shared_nonfed_operating_expenditures_period = 1.337,
+                        shared_nonfed_operating_expenditures_ytd = 1.337,
+                        subtotal_period = 1.337,
+                        subtotal_summary_page_period = 1.337,
+                        subtotal_summary_period = 1.337,
+                        subtotal_summary_ytd = 1.337,
+                        total_contribution_refunds_col_total_period = 1.337,
+                        total_contribution_refunds_period = 1.337,
+                        total_contribution_refunds_ytd = 1.337,
+                        total_contributions_column_total_period = 1.337,
+                        total_contributions_period = 1.337,
+                        total_contributions_ytd = 1.337,
+                        total_disbursements_period = 1.337,
+                        total_disbursements_ytd = 1.337,
+                        total_fed_disbursements_period = 1.337,
+                        total_fed_disbursements_ytd = 1.337,
+                        total_fed_election_activity_period = 1.337,
+                        total_fed_election_activity_ytd = 1.337,
+                        total_fed_operating_expenditures_period = 1.337,
+                        total_fed_operating_expenditures_ytd = 1.337,
+                        total_fed_receipts_period = 1.337,
+                        total_fed_receipts_ytd = 1.337,
+                        total_individual_contributions_period = 1.337,
+                        total_individual_contributions_ytd = 1.337,
+                        total_loan_repayments_made_period = 1.337,
+                        total_loan_repayments_made_ytd = 1.337,
+                        total_loans_received_period = 1.337,
+                        total_loans_received_ytd = 1.337,
+                        total_nonfed_transfers_period = 1.337,
+                        total_nonfed_transfers_ytd = 1.337,
+                        total_offsets_to_operating_expenditures_period = 1.337,
+                        total_offsets_to_operating_expenditures_ytd = 1.337,
+                        total_operating_expenditures_period = 1.337,
+                        total_operating_expenditures_ytd = 1.337,
+                        total_period = 1.337,
+                        total_receipts_period = 1.337,
+                        total_receipts_ytd = 1.337,
+                        total_ytd = 1.337,
+                        transfers_from_affiliated_committee_period = 1.337,
+                        transfers_from_affiliated_committee_ytd = 1.337,
+                        transfers_from_affiliated_party_period = 1.337,
+                        transfers_from_affiliated_party_ytd = 1.337,
+                        transfers_from_nonfed_account_period = 1.337,
+                        transfers_from_nonfed_account_ytd = 1.337,
+                        transfers_from_nonfed_levin_period = 1.337,
+                        transfers_from_nonfed_levin_ytd = 1.337,
+                        transfers_from_other_authorized_committee_period = 1.337,
+                        transfers_from_other_authorized_committee_ytd = 1.337,
+                        transfers_to_affiliated_committee_period = 1.337,
+                        transfers_to_affilitated_committees_ytd = 1.337,
+                        transfers_to_other_authorized_committee_period = 1.337,
+                        transfers_to_other_authorized_committee_ytd = 1.337, )
+                    ]
+            )
+        else :
+            return CommitteeReportsPage(
+        )
+
     def testCommitteeReportsPage(self):
         """Test CommitteeReportsPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommitteeReportsPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

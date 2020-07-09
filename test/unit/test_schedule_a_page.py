@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_a_page import ScheduleAPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleAPage(unittest.TestCase):
     """ScheduleAPage unit test stubs"""
@@ -26,11 +28,170 @@ class TestScheduleAPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleAPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_a_page.ScheduleAPage()  # noqa: E501
+        if include_optional :
+            return ScheduleAPage(
+                pagination = openfec_sdk.models.seek_info.SeekInfo(
+                    count = 56,
+                    last_indexes = '0',
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.schedule_a.ScheduleA(
+                        amendment_indicator = '0',
+                        amendment_indicator_desc = '0',
+                        back_reference_schedule_name = '0',
+                        back_reference_transaction_id = '0',
+                        candidate_first_name = '0',
+                        candidate_id = '0',
+                        candidate_last_name = '0',
+                        candidate_middle_name = '0',
+                        candidate_name = '0',
+                        candidate_office = '0',
+                        candidate_office_district = '0',
+                        candidate_office_full = '0',
+                        candidate_office_state = '0',
+                        candidate_office_state_full = '0',
+                        candidate_prefix = '0',
+                        candidate_suffix = '0',
+                        committee = openfec_sdk.models.committee_history.CommitteeHistory(
+                            affiliated_committee_name = '0',
+                            candidate_ids = [
+                                '0'
+                                ],
+                            city = '0',
+                            committee_id = '0',
+                            committee_type = '0',
+                            committee_type_full = '0',
+                            cycle = 56,
+                            cycles = [
+                                56
+                                ],
+                            cycles_has_activity = [
+                                56
+                                ],
+                            cycles_has_financial = [
+                                56
+                                ],
+                            designation = '0',
+                            designation_full = '0',
+                            filing_frequency = '0',
+                            is_active = True,
+                            last_cycle_has_activity = 56,
+                            last_cycle_has_financial = 56,
+                            name = '0',
+                            organization_type = '0',
+                            organization_type_full = '0',
+                            party = '0',
+                            party_full = '0',
+                            state = '0',
+                            state_full = '0',
+                            street_1 = '0',
+                            street_2 = '0',
+                            treasurer_name = '0',
+                            zip = '0', ),
+                        committee_id = '0',
+                        committee_name = '0',
+                        conduit_committee_city = '0',
+                        conduit_committee_id = '0',
+                        conduit_committee_name = '0',
+                        conduit_committee_state = '0',
+                        conduit_committee_street1 = '0',
+                        conduit_committee_street2 = '0',
+                        conduit_committee_zip = 56,
+                        contribution_receipt_amount = 1.337,
+                        contribution_receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        contributor = openfec_sdk.models.committee_history.CommitteeHistory(
+                            affiliated_committee_name = '0',
+                            city = '0',
+                            committee_id = '0',
+                            committee_type = '0',
+                            committee_type_full = '0',
+                            cycle = 56,
+                            designation = '0',
+                            designation_full = '0',
+                            filing_frequency = '0',
+                            is_active = True,
+                            last_cycle_has_activity = 56,
+                            last_cycle_has_financial = 56,
+                            name = '0',
+                            organization_type = '0',
+                            organization_type_full = '0',
+                            party = '0',
+                            party_full = '0',
+                            state = '0',
+                            state_full = '0',
+                            street_1 = '0',
+                            street_2 = '0',
+                            treasurer_name = '0',
+                            zip = '0', ),
+                        contributor_aggregate_ytd = 1.337,
+                        contributor_city = '0',
+                        contributor_employer = '0',
+                        contributor_first_name = '0',
+                        contributor_id = '0',
+                        contributor_last_name = '0',
+                        contributor_middle_name = '0',
+                        contributor_name = '0',
+                        contributor_occupation = '0',
+                        contributor_prefix = '0',
+                        contributor_state = '0',
+                        contributor_street_1 = '0',
+                        contributor_street_2 = '0',
+                        contributor_suffix = '0',
+                        contributor_zip = '0',
+                        donor_committee_name = '0',
+                        election_type = '0',
+                        election_type_full = '0',
+                        entity_type = '0',
+                        entity_type_desc = '0',
+                        fec_election_type_desc = '0',
+                        fec_election_year = '0',
+                        file_number = 56,
+                        filing_form = '0',
+                        image_number = '0',
+                        increased_limit = '0',
+                        is_individual = True,
+                        line_number = '0',
+                        line_number_label = '0',
+                        link_id = 56,
+                        load_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        memo_code = '0',
+                        memo_code_full = '0',
+                        memo_text = '0',
+                        memoed_subtotal = True,
+                        national_committee_nonfederal_account = '0',
+                        original_sub_id = '0',
+                        pdf_url = '0',
+                        receipt_type = '0',
+                        receipt_type_desc = '0',
+                        receipt_type_full = '0',
+                        recipient_committee_designation = '0',
+                        recipient_committee_org_type = '0',
+                        recipient_committee_type = '0',
+                        report_type = '0',
+                        report_year = 56,
+                        schedule_type = '0',
+                        schedule_type_full = '0',
+                        sub_id = '0',
+                        transaction_id = '0',
+                        two_year_transaction_period = 56,
+                        unused_contbr_id = '0', )
+                    ]
+            )
+        else :
+            return ScheduleAPage(
+        )
+
     def testScheduleAPage(self):
         """Test ScheduleAPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleAPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

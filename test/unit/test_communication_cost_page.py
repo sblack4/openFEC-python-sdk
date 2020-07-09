@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.communication_cost_page import CommunicationCostPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommunicationCostPage(unittest.TestCase):
     """CommunicationCostPage unit test stubs"""
@@ -26,11 +28,67 @@ class TestCommunicationCostPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommunicationCostPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.communication_cost_page.CommunicationCostPage()  # noqa: E501
+        if include_optional :
+            return CommunicationCostPage(
+                pagination = openfec_sdk.models.seek_info.SeekInfo(
+                    count = 56,
+                    last_indexes = '0',
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.communication_cost.CommunicationCost(
+                        action_code = '0',
+                        action_code_full = '0',
+                        candidate_first_name = '0',
+                        candidate_id = '0',
+                        candidate_last_name = '0',
+                        candidate_middle_name = '0',
+                        candidate_name = '0',
+                        candidate_office = '0',
+                        candidate_office_district = '0',
+                        candidate_office_full = '0',
+                        candidate_office_state = '0',
+                        committee_id = '0',
+                        committee_name = '0',
+                        communication_class = '0',
+                        communication_type = '0',
+                        communication_type_full = '0',
+                        cycle = 56,
+                        file_number = 56,
+                        form_type_code = '0',
+                        image_number = '0',
+                        original_sub_id = 56,
+                        pdf_url = '0',
+                        primary_general_indicator = '0',
+                        primary_general_indicator_description = '0',
+                        purpose = '0',
+                        report_type = '0',
+                        report_year = 56,
+                        schedule_type = '0',
+                        schedule_type_full = '0',
+                        state_full = '0',
+                        sub_id = 56,
+                        support_oppose_indicator = '0',
+                        tran_id = '0',
+                        transaction_amount = 1.337,
+                        transaction_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        transaction_type = '0', )
+                    ]
+            )
+        else :
+            return CommunicationCostPage(
+        )
+
     def testCommunicationCostPage(self):
         """Test CommunicationCostPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommunicationCostPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

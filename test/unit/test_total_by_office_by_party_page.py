@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.total_by_office_by_party_page import TotalByOfficeByPartyPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestTotalByOfficeByPartyPage(unittest.TestCase):
     """TotalByOfficeByPartyPage unit test stubs"""
@@ -26,11 +28,36 @@ class TestTotalByOfficeByPartyPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TotalByOfficeByPartyPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.total_by_office_by_party_page.TotalByOfficeByPartyPage()  # noqa: E501
+        if include_optional :
+            return TotalByOfficeByPartyPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.total_by_office_by_party.TotalByOfficeByParty(
+                        election_year = 56,
+                        office = '0',
+                        party = '0',
+                        total_disbursements = 1.337,
+                        total_receipts = 1.337, )
+                    ]
+            )
+        else :
+            return TotalByOfficeByPartyPage(
+        )
+
     def testTotalByOfficeByPartyPage(self):
         """Test TotalByOfficeByPartyPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.TotalByOfficeByPartyPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

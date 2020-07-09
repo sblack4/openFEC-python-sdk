@@ -1,4 +1,4 @@
-# candidate_search.CandidateSearch
+# CandidateSearch
 
 ## Properties
 Name | Type | Description | Notes

@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_e_by_candidate import ScheduleEByCandidate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleEByCandidate(unittest.TestCase):
     """ScheduleEByCandidate unit test stubs"""
@@ -26,11 +28,33 @@ class TestScheduleEByCandidate(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleEByCandidate
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_e_by_candidate.ScheduleEByCandidate()  # noqa: E501
+        if include_optional :
+            return ScheduleEByCandidate(
+                candidate_id = '0',
+                candidate_name = '0',
+                committee_id = '0',
+                committee_name = '0',
+                count = 56,
+                cycle = 56,
+                support_oppose_indicator = '0',
+                total = 1.337
+            )
+        else :
+            return ScheduleEByCandidate(
+                cycle = 56,
+                support_oppose_indicator = '0',
+        )
+
     def testScheduleEByCandidate(self):
         """Test ScheduleEByCandidate"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleEByCandidate()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

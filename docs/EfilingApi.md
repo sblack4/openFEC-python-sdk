@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **efile_filings_get**
-> e_filings_page.EFilingsPage efile_filings_get()
+> EFilingsPage efile_filings_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
 
 
 
@@ -20,12 +20,11 @@ Basic information about electronic files coming into the FEC, posted as they are
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -72,30 +71,164 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.EfilingApi(api_client)
-    file_number = [56] # [int] | Filing ID number (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-receipt_date'
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
 max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.efile_filings_get()
+        api_response = api_instance.efile_filings_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_filings_get: %s\n" % e)
+```
 
-    # example passing only required values which don't have defaults set
-    # and optional values
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
     try:
-        api_response = api_instance.efile_filings_get(file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        api_response = api_instance.efile_filings_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling EfilingApi->efile_filings_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
+    try:
+        api_response = api_instance.efile_filings_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_filings_get: %s\n" % e)
 ```
 
@@ -103,21 +236,21 @@ sort_nulls_last = False # bool | Toggle that sorts null values last (optional) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **file_number** | **[int]**| Filing ID number | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-receipt_date'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **file_number** | [**list[int]**](int.md)| Filing ID number | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to False]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to False]
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] [default to &#39;-receipt_date&#39;]
  **max_receipt_date** | **date**|  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **min_receipt_date** | **date**|  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to False]
 
 ### Return type
 
-[**e_filings_page.EFilingsPage**](EFilingsPage.md)
+[**EFilingsPage**](EFilingsPage.md)
 
 ### Authorization
 
@@ -136,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **efile_reports_house_senate_get**
-> base_f3_filing_page.BaseF3FilingPage efile_reports_house_senate_get()
+> BaseF3FilingPage efile_reports_house_senate_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
 
 
 
@@ -145,12 +278,11 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -197,30 +329,164 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.EfilingApi(api_client)
-    file_number = [56] # [int] | Filing ID number (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-receipt_date'
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
 max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.efile_reports_house_senate_get()
+        api_response = api_instance.efile_reports_house_senate_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_house_senate_get: %s\n" % e)
+```
 
-    # example passing only required values which don't have defaults set
-    # and optional values
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
     try:
-        api_response = api_instance.efile_reports_house_senate_get(file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        api_response = api_instance.efile_reports_house_senate_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling EfilingApi->efile_reports_house_senate_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
+    try:
+        api_response = api_instance.efile_reports_house_senate_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_house_senate_get: %s\n" % e)
 ```
 
@@ -228,21 +494,21 @@ sort_nulls_last = False # bool | Toggle that sorts null values last (optional) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **file_number** | **[int]**| Filing ID number | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-receipt_date'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **file_number** | [**list[int]**](int.md)| Filing ID number | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to False]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to False]
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] [default to &#39;-receipt_date&#39;]
  **max_receipt_date** | **date**|  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **min_receipt_date** | **date**|  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to False]
 
 ### Return type
 
-[**base_f3_filing_page.BaseF3FilingPage**](BaseF3FilingPage.md)
+[**BaseF3FilingPage**](BaseF3FilingPage.md)
 
 ### Authorization
 
@@ -261,7 +527,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **efile_reports_pac_party_get**
-> base_f3_x_filing_page.BaseF3XFilingPage efile_reports_pac_party_get()
+> BaseF3XFilingPage efile_reports_pac_party_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
 
 
 
@@ -270,12 +536,11 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -322,30 +587,164 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.EfilingApi(api_client)
-    file_number = [56] # [int] | Filing ID number (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-receipt_date'
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
 max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.efile_reports_pac_party_get()
+        api_response = api_instance.efile_reports_pac_party_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_pac_party_get: %s\n" % e)
+```
 
-    # example passing only required values which don't have defaults set
-    # and optional values
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
     try:
-        api_response = api_instance.efile_reports_pac_party_get(file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        api_response = api_instance.efile_reports_pac_party_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling EfilingApi->efile_reports_pac_party_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
+    try:
+        api_response = api_instance.efile_reports_pac_party_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_pac_party_get: %s\n" % e)
 ```
 
@@ -353,21 +752,21 @@ sort_nulls_last = False # bool | Toggle that sorts null values last (optional) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **file_number** | **[int]**| Filing ID number | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-receipt_date'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **file_number** | [**list[int]**](int.md)| Filing ID number | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to False]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to False]
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] [default to &#39;-receipt_date&#39;]
  **max_receipt_date** | **date**|  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **min_receipt_date** | **date**|  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to False]
 
 ### Return type
 
-[**base_f3_x_filing_page.BaseF3XFilingPage**](BaseF3XFilingPage.md)
+[**BaseF3XFilingPage**](BaseF3XFilingPage.md)
 
 ### Authorization
 
@@ -386,7 +785,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **efile_reports_presidential_get**
-> base_f3_p_filing_page.BaseF3PFilingPage efile_reports_presidential_get()
+> BaseF3PFilingPage efile_reports_presidential_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
 
 
 
@@ -395,12 +794,11 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (ApiKeyHeaderAuth):
-* Api Key Authentication (ApiKeyQueryAuth):
-* Api Key Authentication (apiKey):
 ```python
 from __future__ import print_function
 import time
 import openfec_sdk
+from openfec_sdk.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -447,30 +845,164 @@ configuration = openfec_sdk.Configuration(
 with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openfec_sdk.EfilingApi(api_client)
-    file_number = [56] # [int] | Filing ID number (optional)
-sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
-per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
-sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-receipt_date'
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
 max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
-committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
-sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.efile_reports_presidential_get()
+        api_response = api_instance.efile_reports_presidential_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_presidential_get: %s\n" % e)
+```
 
-    # example passing only required values which don't have defaults set
-    # and optional values
+* Api Key Authentication (ApiKeyQueryAuth):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
     try:
-        api_response = api_instance.efile_reports_presidential_get(file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        api_response = api_instance.efile_reports_presidential_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
         pprint(api_response)
-    except openfec_sdk.ApiException as e:
+    except ApiException as e:
+        print("Exception when calling EfilingApi->efile_reports_presidential_get: %s\n" % e)
+```
+
+* Api Key Authentication (apiKey):
+```python
+from __future__ import print_function
+import time
+import openfec_sdk
+from openfec_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyHeaderAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'X-Api-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyQueryAuth
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Configure API key authorization: apiKey
+configuration = openfec_sdk.Configuration(
+    host = "http://localhost/v1",
+    api_key = {
+        'api_key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with openfec_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openfec_sdk.EfilingApi(api_client)
+    api_key = 'DEMO_KEY' # str |  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (default to 'DEMO_KEY')
+file_number = [56] # list[int] | Filing ID number (optional)
+sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) (default to False)
+sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) (default to False)
+per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) (default to 20)
+sort = '-receipt_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) (default to '-receipt_date')
+max_receipt_date = '2013-10-20' # date |  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+page = 1 # int | For paginating through results, starting at page 1 (optional) (default to 1)
+committee_id = ['committee_id_example'] # list[str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
+min_receipt_date = '2013-10-20' # date |  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  (optional)
+sort_nulls_last = False # bool | Toggle that sorts null values last (optional) (default to False)
+
+    try:
+        api_response = api_instance.efile_reports_presidential_get(api_key, file_number=file_number, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only, per_page=per_page, sort=sort, max_receipt_date=max_receipt_date, page=page, committee_id=committee_id, min_receipt_date=min_receipt_date, sort_nulls_last=sort_nulls_last)
+        pprint(api_response)
+    except ApiException as e:
         print("Exception when calling EfilingApi->efile_reports_presidential_get: %s\n" % e)
 ```
 
@@ -478,21 +1010,21 @@ sort_nulls_last = False # bool | Toggle that sorts null values last (optional) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | defaults to 'DEMO_KEY'
- **file_number** | **[int]**| Filing ID number | [optional]
- **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] if omitted the server will use the default value of False
- **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] if omitted the server will use the default value of False
- **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] if omitted the server will use the default value of 20
- **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] if omitted the server will use the default value of '-receipt_date'
+ **api_key** | **str**|  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  | [default to &#39;DEMO_KEY&#39;]
+ **file_number** | [**list[int]**](int.md)| Filing ID number | [optional]
+ **sort_hide_null** | **bool**| Hide null values on sorted column(s). | [optional] [default to False]
+ **sort_null_only** | **bool**| Toggle that filters out all rows having sort column that is non-null | [optional] [default to False]
+ **per_page** | **int**| The number of results returned per page. Defaults to 20. | [optional] [default to 20]
+ **sort** | **str**| Provide a field to sort by. Use &#x60;-&#x60; for descending order.  | [optional] [default to &#39;-receipt_date&#39;]
  **max_receipt_date** | **date**|  Selects all filings received before this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **page** | **int**| For paginating through results, starting at page 1 | [optional] if omitted the server will use the default value of 1
- **committee_id** | **[str]**|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
+ **page** | **int**| For paginating through results, starting at page 1 | [optional] [default to 1]
+ **committee_id** | [**list[str]**](str.md)|  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.  | [optional]
  **min_receipt_date** | **date**|  Selects all filings received after this date(MM/DD/YYYY or YYYY-MM-DD)  | [optional]
- **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] if omitted the server will use the default value of False
+ **sort_nulls_last** | **bool**| Toggle that sorts null values last | [optional] [default to False]
 
 ### Return type
 
-[**base_f3_p_filing_page.BaseF3PFilingPage**](BaseF3PFilingPage.md)
+[**BaseF3PFilingPage**](BaseF3PFilingPage.md)
 
 ### Authorization
 

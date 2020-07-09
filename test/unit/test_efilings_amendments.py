@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.efilings_amendments import EfilingsAmendments  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestEfilingsAmendments(unittest.TestCase):
     """EfilingsAmendments unit test stubs"""
@@ -26,11 +28,34 @@ class TestEfilingsAmendments(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test EfilingsAmendments
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.efilings_amendments.EfilingsAmendments()  # noqa: E501
+        if include_optional :
+            return EfilingsAmendments(
+                amendment_chain = [
+                    1.337
+                    ],
+                depth = 1.337,
+                file_number = 56,
+                last = 1.337,
+                longest_chain = [
+                    1.337
+                    ],
+                most_recent_filing = 1.337,
+                previous_file_number = 1.337
+            )
+        else :
+            return EfilingsAmendments(
+        )
+
     def testEfilingsAmendments(self):
         """Test EfilingsAmendments"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.EfilingsAmendments()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

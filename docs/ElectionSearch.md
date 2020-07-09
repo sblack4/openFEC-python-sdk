@@ -1,4 +1,4 @@
-# election_search.ElectionSearch
+# ElectionSearch
 
 ## Properties
 Name | Type | Description | Notes

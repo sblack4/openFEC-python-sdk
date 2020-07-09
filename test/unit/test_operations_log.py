@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.operations_log import OperationsLog  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestOperationsLog(unittest.TestCase):
     """OperationsLog unit test stubs"""
@@ -26,11 +28,38 @@ class TestOperationsLog(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test OperationsLog
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.operations_log.OperationsLog()  # noqa: E501
+        if include_optional :
+            return OperationsLog(
+                amendment_indicator = '0',
+                beginning_image_number = '0',
+                candidate_committee_id = '0',
+                coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                ending_image_number = '0',
+                form_type = '0',
+                receipt_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                report_type = '0',
+                report_year = 56,
+                status_num = 56,
+                sub_id = 56,
+                summary_data_complete_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                summary_data_verification_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                transaction_data_complete_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date()
+            )
+        else :
+            return OperationsLog(
+        )
+
     def testOperationsLog(self):
         """Test OperationsLog"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.OperationsLog()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

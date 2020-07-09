@@ -1,4 +1,4 @@
-# audit_case.AuditCase
+# AuditCase
 
 ## Properties
 Name | Type | Description | Notes
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **committee_type** | **str** |  | [optional]
 **cycle** | **int** |  | [optional]
 **far_release_date** | **date** |  | [optional]
-**link_to_report** | **str, none_type** |  URL for retrieving the PDF document  | [optional]
-**primary_category_list** | [**[audit_case_category_relation.AuditCaseCategoryRelation]**](AuditCaseCategoryRelation.md) |  | [optional]
+**link_to_report** | **str** |  URL for retrieving the PDF document  | [optional]
+**primary_category_list** | [**list[AuditCaseCategoryRelation]**](AuditCaseCategoryRelation.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
