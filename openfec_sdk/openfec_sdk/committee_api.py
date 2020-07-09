@@ -13,30 +13,15 @@
 from __future__ import absolute_import
 
 import re  # noqa: F401
-import sys  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
 
 from openfec_sdk.api_client import ApiClient
-from openfec_sdk.exceptions import (
+from openfec_sdk.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
-from openfec_sdk.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    int,
-    none_type,
-    str,
-    validate_and_convert_types
-)
-from openfec_sdk.models import committee_detail_page
-from openfec_sdk.models import committee_history_page
-from openfec_sdk.models import committee_page
 
 
 class CommitteeApi(object):
@@ -51,1849 +36,1290 @@ class CommitteeApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __candidate_candidate_id_committees_get(
-            self,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_committees_get  # noqa: E501
+    def candidate_candidate_id_committees_get(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_get  # noqa: E501
 
-             This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_committees_get(candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
+         This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_get(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
 
-            Args:
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_detail_page.CommitteeDetailPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_committees_get = Endpoint(
-            settings={
-                'response_type': (committee_detail_page.CommitteeDetailPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/committees/',
-                'operation_id': 'candidate_candidate_id_committees_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'designation',
-                    'organization_type',
-                    'sort_null_only',
-                    'filing_frequency',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'year',
-                    'committee_type',
-                    'sort_nulls_last',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                    'organization_type',
-                    'filing_frequency',
-                    'committee_type',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                    ('organization_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
-                    },
-                    ('filing_frequency',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'M': 'M',
-                        'N': 'N',
-                        'Q': 'Q',
-                        'T': 'T',
-                        'W': 'W',
-                        '-A': '-A',
-                        '-T': '-T'
-                    },
-                    ('committee_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'D': 'D',
-                        'E': 'E',
-                        'H': 'H',
-                        'I': 'I',
-                        'N': 'N',
-                        'O': 'O',
-                        'P': 'P',
-                        'Q': 'Q',
-                        'S': 'S',
-                        'U': 'U',
-                        'V': 'V',
-                        'W': 'W',
-                        'X': 'X',
-                        'Y': 'Y',
-                        'Z': 'Z'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'organization_type':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'filing_frequency':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'year':
-                        ([int],),
-                    'committee_type':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'organization_type': 'organization_type',
-                    'sort_null_only': 'sort_null_only',
-                    'filing_frequency': 'filing_frequency',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'year': 'year',
-                    'committee_type': 'committee_type',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'organization_type': 'query',
-                    'sort_null_only': 'query',
-                    'filing_frequency': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'year': 'query',
-                    'committee_type': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                    'organization_type': 'multi',
-                    'filing_frequency': 'multi',
-                    'year': 'multi',
-                    'committee_type': 'multi',
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_committees_get
-        )
-
-        def __candidate_candidate_id_committees_history_cycle_get(
-            self,
-            cycle,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_committees_history_cycle_get  # noqa: E501
-
-             Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_committees_history_cycle_get(cycle, candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                cycle (int):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_history_page.CommitteeHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['cycle'] = \
-                cycle
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_committees_history_cycle_get = Endpoint(
-            settings={
-                'response_type': (committee_history_page.CommitteeHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/committees/history/{cycle}/',
-                'operation_id': 'candidate_candidate_id_committees_history_cycle_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'cycle',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'designation',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'election_full',
-                ],
-                'required': [
-                    'api_key',
-                    'cycle',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'cycle':
-                        (int,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'cycle': 'cycle',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'cycle': 'path',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_committees_history_cycle_get
-        )
-
-        def __candidate_candidate_id_committees_history_get(
-            self,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_committees_history_get  # noqa: E501
-
-             Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_committees_history_get(candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_history_page.CommitteeHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_committees_history_get = Endpoint(
-            settings={
-                'response_type': (committee_history_page.CommitteeHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/committees/history/',
-                'operation_id': 'candidate_candidate_id_committees_history_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'designation',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'election_full',
-                ],
-                'required': [
-                    'api_key',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_committees_history_get
-        )
-
-        def __committee_committee_id_get(
-            self,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_get  # noqa: E501
-
-             This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_get(committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_detail_page.CommitteeDetailPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_get = Endpoint(
-            settings={
-                'response_type': (committee_detail_page.CommitteeDetailPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/',
-                'operation_id': 'committee_committee_id_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'committee_id',
-                    'sort_hide_null',
-                    'designation',
-                    'organization_type',
-                    'sort_null_only',
-                    'filing_frequency',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'year',
-                    'committee_type',
-                    'sort_nulls_last',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                    'organization_type',
-                    'filing_frequency',
-                    'committee_type',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                    ('organization_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
-                    },
-                    ('filing_frequency',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'M': 'M',
-                        'N': 'N',
-                        'Q': 'Q',
-                        'T': 'T',
-                        'W': 'W',
-                        '-A': '-A',
-                        '-T': '-T'
-                    },
-                    ('committee_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'D': 'D',
-                        'E': 'E',
-                        'H': 'H',
-                        'I': 'I',
-                        'N': 'N',
-                        'O': 'O',
-                        'P': 'P',
-                        'Q': 'Q',
-                        'S': 'S',
-                        'U': 'U',
-                        'V': 'V',
-                        'W': 'W',
-                        'X': 'X',
-                        'Y': 'Y',
-                        'Z': 'Z'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'organization_type':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'filing_frequency':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'year':
-                        ([int],),
-                    'committee_type':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'organization_type': 'organization_type',
-                    'sort_null_only': 'sort_null_only',
-                    'filing_frequency': 'filing_frequency',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'year': 'year',
-                    'committee_type': 'committee_type',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'organization_type': 'query',
-                    'sort_null_only': 'query',
-                    'filing_frequency': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'year': 'query',
-                    'committee_type': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                    'organization_type': 'multi',
-                    'filing_frequency': 'multi',
-                    'year': 'multi',
-                    'committee_type': 'multi',
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_get
-        )
-
-        def __committee_committee_id_history_cycle_get(
-            self,
-            cycle,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_history_cycle_get  # noqa: E501
-
-             Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_history_cycle_get(cycle, committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                cycle (int):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_history_page.CommitteeHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['cycle'] = \
-                cycle
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_history_cycle_get = Endpoint(
-            settings={
-                'response_type': (committee_history_page.CommitteeHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/history/{cycle}/',
-                'operation_id': 'committee_committee_id_history_cycle_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'cycle',
-                    'committee_id',
-                    'sort_hide_null',
-                    'designation',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'election_full',
-                ],
-                'required': [
-                    'api_key',
-                    'cycle',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'cycle':
-                        (int,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'cycle': 'cycle',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'cycle': 'path',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_history_cycle_get
-        )
-
-        def __committee_committee_id_history_get(
-            self,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_history_get  # noqa: E501
-
-             Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_history_get(committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_history_page.CommitteeHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_history_get = Endpoint(
-            settings={
-                'response_type': (committee_history_page.CommitteeHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/history/',
-                'operation_id': 'committee_committee_id_history_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'committee_id',
-                    'sort_hide_null',
-                    'designation',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'election_full',
-                ],
-                'required': [
-                    'api_key',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'designation',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'designation':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                },
-                'collection_format_map': {
-                    'designation': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_history_get
-        )
-
-        def __committees_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committees_get  # noqa: E501
-
-             Fetch basic information about committees and filers. Use parameters to filter for particular characteristics.    # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committees_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                organization_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                min_first_file_date (date): Filter for committees whose first filing was received on or after this date.. [optional]
-                max_last_f1_date (date): Filter for committees whose latest Form 1 was received on or before this date.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): US state or territory. [optional]
-                cycle ([int]):  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                max_first_file_date (date): Filter for committees whose first filing was received on or before this date.. [optional]
-                designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                filing_frequency ([str]): The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived . [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                year ([int]): A year that the committee was active— (after original registration date     or filing but before expiration date). [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                min_last_f1_date (date): Filter for committees whose latest Form 1 was received on or after this date.. [optional]
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
-                treasurer_name ([str]): Name of the Committee&#39;s treasurer. If multiple treasurers for the committee, the most recent treasurer will be shown.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_page.CommitteePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.committees_get = Endpoint(
-            settings={
-                'response_type': (committee_page.CommitteePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committees/',
-                'operation_id': 'committees_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'organization_type',
-                    'committee_id',
-                    'candidate_id',
-                    'min_first_file_date',
-                    'max_last_f1_date',
-                    'page',
-                    'state',
-                    'cycle',
-                    'max_first_file_date',
-                    'designation',
-                    'sort_null_only',
-                    'filing_frequency',
-                    'per_page',
-                    'sort',
-                    'year',
-                    'party',
-                    'min_last_f1_date',
-                    'committee_type',
-                    'sort_nulls_last',
-                    'q',
-                    'treasurer_name',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'organization_type',
-                    'designation',
-                    'filing_frequency',
-                    'committee_type',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('organization_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
-                    },
-                    ('designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                    ('filing_frequency',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'M': 'M',
-                        'N': 'N',
-                        'Q': 'Q',
-                        'T': 'T',
-                        'W': 'W',
-                        '-A': '-A',
-                        '-T': '-T'
-                    },
-                    ('committee_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'D': 'D',
-                        'E': 'E',
-                        'H': 'H',
-                        'I': 'I',
-                        'N': 'N',
-                        'O': 'O',
-                        'P': 'P',
-                        'Q': 'Q',
-                        'S': 'S',
-                        'U': 'U',
-                        'V': 'V',
-                        'W': 'W',
-                        'X': 'X',
-                        'Y': 'Y',
-                        'Z': 'Z'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'organization_type':
-                        ([str],),
-                    'committee_id':
-                        ([str],),
-                    'candidate_id':
-                        ([str],),
-                    'min_first_file_date':
-                        (date,),
-                    'max_last_f1_date':
-                        (date,),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'max_first_file_date':
-                        (date,),
-                    'designation':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'filing_frequency':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'year':
-                        ([int],),
-                    'party':
-                        ([str],),
-                    'min_last_f1_date':
-                        (date,),
-                    'committee_type':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'q':
-                        ([str],),
-                    'treasurer_name':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'organization_type': 'organization_type',
-                    'committee_id': 'committee_id',
-                    'candidate_id': 'candidate_id',
-                    'min_first_file_date': 'min_first_file_date',
-                    'max_last_f1_date': 'max_last_f1_date',
-                    'page': 'page',
-                    'state': 'state',
-                    'cycle': 'cycle',
-                    'max_first_file_date': 'max_first_file_date',
-                    'designation': 'designation',
-                    'sort_null_only': 'sort_null_only',
-                    'filing_frequency': 'filing_frequency',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'year': 'year',
-                    'party': 'party',
-                    'min_last_f1_date': 'min_last_f1_date',
-                    'committee_type': 'committee_type',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'q': 'q',
-                    'treasurer_name': 'treasurer_name',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'organization_type': 'query',
-                    'committee_id': 'query',
-                    'candidate_id': 'query',
-                    'min_first_file_date': 'query',
-                    'max_last_f1_date': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'cycle': 'query',
-                    'max_first_file_date': 'query',
-                    'designation': 'query',
-                    'sort_null_only': 'query',
-                    'filing_frequency': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'year': 'query',
-                    'party': 'query',
-                    'min_last_f1_date': 'query',
-                    'committee_type': 'query',
-                    'sort_nulls_last': 'query',
-                    'q': 'query',
-                    'treasurer_name': 'query',
-                },
-                'collection_format_map': {
-                    'organization_type': 'multi',
-                    'committee_id': 'multi',
-                    'candidate_id': 'multi',
-                    'state': 'multi',
-                    'cycle': 'multi',
-                    'designation': 'multi',
-                    'filing_frequency': 'multi',
-                    'year': 'multi',
-                    'party': 'multi',
-                    'committee_type': 'multi',
-                    'q': 'multi',
-                    'treasurer_name': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committees_get
-        )
-
-
-class Endpoint(object):
-    def __init__(self, settings=None, params_map=None, root_map=None,
-                 headers_map=None, api_client=None, callable=None):
-        """Creates an endpoint
-
-        Args:
-            settings (dict): see below key value pairs
-                'response_type' (tuple/None): response type
-                'auth' (list): a list of auth type keys
-                'endpoint_path' (str): the endpoint path
-                'operation_id' (str): endpoint string identifier
-                'http_method' (str): POST/PUT/PATCH/GET etc
-                'servers' (list): list of str servers that this endpoint is at
-            params_map (dict): see below key value pairs
-                'all' (list): list of str endpoint parameter names
-                'required' (list): list of required parameter names
-                'nullable' (list): list of nullable parameter names
-                'enum' (list): list of parameters with enum values
-                'validation' (list): list of parameters with validations
-            root_map
-                'validations' (dict): the dict mapping endpoint parameter tuple
-                    paths to their validation dictionaries
-                'allowed_values' (dict): the dict mapping endpoint parameter
-                    tuple paths to their allowed_values (enum) dictionaries
-                'openapi_types' (dict): param_name to openapi type
-                'attribute_map' (dict): param_name to camelCase name
-                'location_map' (dict): param_name to  'body', 'file', 'form',
-                    'header', 'path', 'query'
-                collection_format_map (dict): param_name to `csv` etc.
-            headers_map (dict): see below key value pairs
-                'accept' (list): list of Accept header strings
-                'content_type' (list): list of Content-Type header strings
-            api_client (ApiClient) api client instance
-            callable (function): the function which is invoked when the
-                Endpoint is called
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeDetailPage
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        self.settings = settings
-        self.params_map = params_map
-        self.params_map['all'].extend([
-            'async_req',
-            '_host_index',
-            '_preload_content',
-            '_request_timeout',
-            '_return_http_data_only',
-            '_check_input_type',
-            '_check_return_type'
-        ])
-        self.params_map['nullable'].extend(['_request_timeout'])
-        self.validations = root_map['validations']
-        self.allowed_values = root_map['allowed_values']
-        self.openapi_types = root_map['openapi_types']
-        extra_types = {
-            'async_req': (bool,),
-            '_host_index': (int,),
-            '_preload_content': (bool,),
-            '_request_timeout': (none_type, int, (int,), [int]),
-            '_return_http_data_only': (bool,),
-            '_check_input_type': (bool,),
-            '_check_return_type': (bool,)
-        }
-        self.openapi_types.update(extra_types)
-        self.attribute_map = root_map['attribute_map']
-        self.location_map = root_map['location_map']
-        self.collection_format_map = root_map['collection_format_map']
-        self.headers_map = headers_map
-        self.api_client = api_client
-        self.callable = callable
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_committees_get_with_http_info(api_key, candidate_id, **kwargs)  # noqa: E501
 
-    def __validate_inputs(self, kwargs):
-        for param in self.params_map['enum']:
-            if param in kwargs:
-                check_allowed_values(
-                    self.allowed_values,
-                    (param,),
-                    kwargs[param]
-                )
+    def candidate_candidate_id_committees_get_with_http_info(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_get  # noqa: E501
 
-        for param in self.params_map['validation']:
-            if param in kwargs:
-                check_validations(
-                    self.validations,
-                    (param,),
-                    kwargs[param]
-                )
+         This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_get_with_http_info(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
 
-        if kwargs['_check_input_type'] is False:
-            return
-
-        for key, value in six.iteritems(kwargs):
-            fixed_val = validate_and_convert_types(
-                value,
-                self.openapi_types[key],
-                [key],
-                False,
-                kwargs['_check_input_type'],
-                configuration=self.api_client.configuration
-            )
-            kwargs[key] = fixed_val
-
-    def __gather_params(self, kwargs):
-        params = {
-            'body': None,
-            'collection_format': {},
-            'file': {},
-            'form': [],
-            'header': {},
-            'path': {},
-            'query': []
-        }
-
-        for param_name, param_value in six.iteritems(kwargs):
-            param_location = self.location_map.get(param_name)
-            if param_location is None:
-                continue
-            if param_location:
-                if param_location == 'body':
-                    params['body'] = param_value
-                    continue
-                base_name = self.attribute_map[param_name]
-                if (param_location == 'form' and
-                        self.openapi_types[param_name] == (file_type,)):
-                    params['file'][param_name] = [param_value]
-                elif (param_location == 'form' and
-                        self.openapi_types[param_name] == ([file_type],)):
-                    # param_value is already a list
-                    params['file'][param_name] = param_value
-                elif param_location in {'form', 'query'}:
-                    param_value_full = (base_name, param_value)
-                    params[param_location].append(param_value_full)
-                if param_location not in {'form', 'query'}:
-                    params[param_location][base_name] = param_value
-                collection_format = self.collection_format_map.get(param_name)
-                if collection_format:
-                    params['collection_format'][base_name] = collection_format
-
-        return params
-
-    def __call__(self, *args, **kwargs):
-        """ This method is invoked when endpoints are called
-        Example:
-        pet_api = PetApi()
-        pet_api.add_pet  # this is an instance of the class Endpoint
-        pet_api.add_pet()  # this invokes pet_api.add_pet.__call__()
-        which then invokes the callable functions stored in that endpoint at
-        pet_api.add_pet.callable or self.callable in this class
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeDetailPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        return self.callable(self, *args, **kwargs)
 
-    def call_with_http_info(self, **kwargs):
+        local_var_params = locals()
 
-        try:
-            _host = self.settings['servers'][kwargs['_host_index']]
-        except IndexError:
-            if self.settings['servers']:
-                raise ApiValueError(
-                    'Invalid host index. Must be 0 <= index < %s' %
-                    len(self.settings['servers'])
-                )
-            _host = None
+        all_params = [
+            'api_key',
+            'candidate_id',
+            'sort_hide_null',
+            'designation',
+            'organization_type',
+            'sort_null_only',
+            'filing_frequency',
+            'per_page',
+            'sort',
+            'page',
+            'year',
+            'committee_type',
+            'sort_nulls_last',
+            'cycle'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, value in six.iteritems(kwargs):
-            if key not in self.params_map['all']:
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected parameter '%s'"
-                    ' to method `%s`' %
-                    (key, self.settings['operation_id'])
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_committees_get' % key
                 )
-            # only throw this nullable ApiValueError if _check_input_type
-            # is False, if _check_input_type==True we catch this case
-            # in self.__validate_inputs
-            if (key not in self.params_map['nullable'] and value is None
-                    and kwargs['_check_input_type'] is False):
-                raise ApiValueError(
-                    'Value may not be None for non-nullable parameter `%s`'
-                    ' when calling `%s`' %
-                    (key, self.settings['operation_id'])
-                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_committees_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_committees_get`')  # noqa: E501
 
-        for key in self.params_map['required']:
-            if key not in kwargs.keys():
-                raise ApiValueError(
-                    'Missing the required parameter `%s` when calling '
-                    '`%s`' % (key, self.settings['operation_id'])
-                )
+        collection_formats = {}
 
-        self.__validate_inputs(kwargs)
+        path_params = {}
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
 
-        params = self.__gather_params(kwargs)
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'organization_type' in local_var_params and local_var_params['organization_type'] is not None:  # noqa: E501
+            query_params.append(('organization_type', local_var_params['organization_type']))  # noqa: E501
+            collection_formats['organization_type'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'filing_frequency' in local_var_params and local_var_params['filing_frequency'] is not None:  # noqa: E501
+            query_params.append(('filing_frequency', local_var_params['filing_frequency']))  # noqa: E501
+            collection_formats['filing_frequency'] = 'multi'  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+            collection_formats['year'] = 'multi'  # noqa: E501
+        if 'committee_type' in local_var_params and local_var_params['committee_type'] is not None:  # noqa: E501
+            query_params.append(('committee_type', local_var_params['committee_type']))  # noqa: E501
+            collection_formats['committee_type'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
 
-        accept_headers_list = self.headers_map['accept']
-        if accept_headers_list:
-            params['header']['Accept'] = self.api_client.select_header_accept(
-                accept_headers_list)
+        header_params = {}
 
-        content_type_headers_list = self.headers_map['content_type']
-        if content_type_headers_list:
-            header_list = self.api_client.select_header_content_type(
-                content_type_headers_list)
-            params['header']['Content-Type'] = header_list
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
 
         return self.api_client.call_api(
-            self.settings['endpoint_path'], self.settings['http_method'],
-            params['path'],
-            params['query'],
-            params['header'],
-            body=params['body'],
-            post_params=params['form'],
-            files=params['file'],
-            response_type=self.settings['response_type'],
-            auth_settings=self.settings['auth'],
-            async_req=kwargs['async_req'],
-            _check_type=kwargs['_check_return_type'],
-            _return_http_data_only=kwargs['_return_http_data_only'],
-            _preload_content=kwargs['_preload_content'],
-            _request_timeout=kwargs['_request_timeout'],
-            _host=_host,
-            collection_formats=params['collection_format'])
+            '/candidate/{candidate_id}/committees/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeDetailPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidate_candidate_id_committees_history_cycle_get(self, api_key, cycle, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_history_cycle_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_history_cycle_get(api_key, cycle, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_committees_history_cycle_get_with_http_info(api_key, cycle, candidate_id, **kwargs)  # noqa: E501
+
+    def candidate_candidate_id_committees_history_cycle_get_with_http_info(self, api_key, cycle, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_history_cycle_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_history_cycle_get_with_http_info(api_key, cycle, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'cycle',
+            'candidate_id',
+            'sort_hide_null',
+            'designation',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'election_full'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_committees_history_cycle_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_committees_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'cycle' is set
+        if self.api_client.client_side_validation and ('cycle' not in local_var_params or  # noqa: E501
+                                                        local_var_params['cycle'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `cycle` when calling `candidate_candidate_id_committees_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_committees_history_cycle_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'cycle' in local_var_params:
+            path_params['cycle'] = local_var_params['cycle']  # noqa: E501
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidate/{candidate_id}/committees/history/{cycle}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidate_candidate_id_committees_history_get(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_history_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_history_get(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_committees_history_get_with_http_info(api_key, candidate_id, **kwargs)  # noqa: E501
+
+    def candidate_candidate_id_committees_history_get_with_http_info(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_committees_history_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_committees_history_get_with_http_info(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'candidate_id',
+            'sort_hide_null',
+            'designation',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'election_full'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_committees_history_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_committees_history_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_committees_history_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidate/{candidate_id}/committees/history/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_get(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_get  # noqa: E501
+
+         This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_get(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeDetailPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_get_with_http_info(api_key, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_get_with_http_info(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_get  # noqa: E501
+
+         This endpoint is useful for finding detailed information about a particular committee or filer. Use the `committee_id` to find the most recent information about the committee.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_get_with_http_info(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeDetailPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'committee_id',
+            'sort_hide_null',
+            'designation',
+            'organization_type',
+            'sort_null_only',
+            'filing_frequency',
+            'per_page',
+            'sort',
+            'page',
+            'year',
+            'committee_type',
+            'sort_nulls_last',
+            'cycle'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'organization_type' in local_var_params and local_var_params['organization_type'] is not None:  # noqa: E501
+            query_params.append(('organization_type', local_var_params['organization_type']))  # noqa: E501
+            collection_formats['organization_type'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'filing_frequency' in local_var_params and local_var_params['filing_frequency'] is not None:  # noqa: E501
+            query_params.append(('filing_frequency', local_var_params['filing_frequency']))  # noqa: E501
+            collection_formats['filing_frequency'] = 'multi'  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+            collection_formats['year'] = 'multi'  # noqa: E501
+        if 'committee_type' in local_var_params and local_var_params['committee_type'] is not None:  # noqa: E501
+            query_params.append(('committee_type', local_var_params['committee_type']))  # noqa: E501
+            collection_formats['committee_type'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeDetailPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_history_cycle_get(self, api_key, cycle, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_history_cycle_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_history_cycle_get(api_key, cycle, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_history_cycle_get_with_http_info(api_key, cycle, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_history_cycle_get_with_http_info(self, api_key, cycle, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_history_cycle_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_history_cycle_get_with_http_info(api_key, cycle, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'cycle',
+            'committee_id',
+            'sort_hide_null',
+            'designation',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'election_full'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_history_cycle_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'cycle' is set
+        if self.api_client.client_side_validation and ('cycle' not in local_var_params or  # noqa: E501
+                                                        local_var_params['cycle'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `cycle` when calling `committee_committee_id_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_history_cycle_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'cycle' in local_var_params:
+            path_params['cycle'] = local_var_params['cycle']  # noqa: E501
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/history/{cycle}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_history_get(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_history_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_history_get(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_history_get_with_http_info(api_key, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_history_get_with_http_info(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_history_get  # noqa: E501
+
+         Explore a filer's characteristics over time. This can be particularly useful if the committees change treasurers, designation, or `committee_type`.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_history_get_with_http_info(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'committee_id',
+            'sort_hide_null',
+            'designation',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'election_full'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_history_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_history_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_history_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/history/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committees_get(self, api_key, **kwargs):  # noqa: E501
+        """committees_get  # noqa: E501
+
+         Fetch basic information about committees and filers. Use parameters to filter for particular characteristics.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committees_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Filter for committees whose first filing was received on or after this date.
+        :param date max_last_f1_date: Filter for committees whose latest Form 1 was received on or before this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param date max_first_file_date: Filter for committees whose first filing was received on or before this date.
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param date min_last_f1_date: Filter for committees whose latest Form 1 was received on or after this date.
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] q: The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.
+        :param list[str] treasurer_name: Name of the Committee's treasurer. If multiple treasurers for the committee, the most recent treasurer will be shown.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteePage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committees_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def committees_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """committees_get  # noqa: E501
+
+         Fetch basic information about committees and filers. Use parameters to filter for particular characteristics.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committees_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] organization_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Filter for committees whose first filing was received on or after this date.
+        :param date max_last_f1_date: Filter for committees whose latest Form 1 was received on or before this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory
+        :param list[int] cycle:  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
+        :param date max_first_file_date: Filter for committees whose first filing was received on or before this date.
+        :param list[str] designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] filing_frequency: The one-letter      code of the filing frequency:          - A Administratively terminated          - D Debt          - M Monthly filer          - Q Quarterly filer          - T Terminated          - W Waived
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[int] year: A year that the committee was active— (after original registration date     or filing but before expiration date)
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param date min_last_f1_date: Filter for committees whose latest Form 1 was received on or after this date.
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] q: The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.
+        :param list[str] treasurer_name: Name of the Committee's treasurer. If multiple treasurers for the committee, the most recent treasurer will be shown.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'organization_type',
+            'committee_id',
+            'candidate_id',
+            'min_first_file_date',
+            'max_last_f1_date',
+            'page',
+            'state',
+            'cycle',
+            'max_first_file_date',
+            'designation',
+            'sort_null_only',
+            'filing_frequency',
+            'per_page',
+            'sort',
+            'year',
+            'party',
+            'min_last_f1_date',
+            'committee_type',
+            'sort_nulls_last',
+            'q',
+            'treasurer_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committees_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committees_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'organization_type' in local_var_params and local_var_params['organization_type'] is not None:  # noqa: E501
+            query_params.append(('organization_type', local_var_params['organization_type']))  # noqa: E501
+            collection_formats['organization_type'] = 'multi'  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'candidate_id' in local_var_params and local_var_params['candidate_id'] is not None:  # noqa: E501
+            query_params.append(('candidate_id', local_var_params['candidate_id']))  # noqa: E501
+            collection_formats['candidate_id'] = 'multi'  # noqa: E501
+        if 'min_first_file_date' in local_var_params and local_var_params['min_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('min_first_file_date', local_var_params['min_first_file_date']))  # noqa: E501
+        if 'max_last_f1_date' in local_var_params and local_var_params['max_last_f1_date'] is not None:  # noqa: E501
+            query_params.append(('max_last_f1_date', local_var_params['max_last_f1_date']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'max_first_file_date' in local_var_params and local_var_params['max_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('max_first_file_date', local_var_params['max_first_file_date']))  # noqa: E501
+        if 'designation' in local_var_params and local_var_params['designation'] is not None:  # noqa: E501
+            query_params.append(('designation', local_var_params['designation']))  # noqa: E501
+            collection_formats['designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'filing_frequency' in local_var_params and local_var_params['filing_frequency'] is not None:  # noqa: E501
+            query_params.append(('filing_frequency', local_var_params['filing_frequency']))  # noqa: E501
+            collection_formats['filing_frequency'] = 'multi'  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+            collection_formats['year'] = 'multi'  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'min_last_f1_date' in local_var_params and local_var_params['min_last_f1_date'] is not None:  # noqa: E501
+            query_params.append(('min_last_f1_date', local_var_params['min_last_f1_date']))  # noqa: E501
+        if 'committee_type' in local_var_params and local_var_params['committee_type'] is not None:  # noqa: E501
+            query_params.append(('committee_type', local_var_params['committee_type']))  # noqa: E501
+            collection_formats['committee_type'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+        if 'treasurer_name' in local_var_params and local_var_params['treasurer_name'] is not None:  # noqa: E501
+            query_params.append(('treasurer_name', local_var_params['treasurer_name']))  # noqa: E501
+            collection_formats['treasurer_name'] = 'multi'  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committees/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

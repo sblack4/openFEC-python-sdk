@@ -13,34 +13,15 @@
 from __future__ import absolute_import
 
 import re  # noqa: F401
-import sys  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
 
 from openfec_sdk.api_client import ApiClient
-from openfec_sdk.exceptions import (
+from openfec_sdk.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
-from openfec_sdk.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    int,
-    none_type,
-    str,
-    validate_and_convert_types
-)
-from openfec_sdk.models import candidate_detail_page
-from openfec_sdk.models import candidate_history_page
-from openfec_sdk.models import committee_totals_page
-from openfec_sdk.models import candidate_page
-from openfec_sdk.models import total_by_office_by_party_page
-from openfec_sdk.models import total_by_office_page
-from openfec_sdk.models import candidate_history_total_page
 
 
 class CandidateApi(object):
@@ -55,2907 +36,2317 @@ class CandidateApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __candidate_candidate_id_get(
-            self,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_get  # noqa: E501
-
-             This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_get(candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): US state or territory where a candidate runs for office. [optional]
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                election_year ([int]): Year of election. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_detail_page.CandidateDetailPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_get = Endpoint(
-            settings={
-                'response_type': (candidate_detail_page.CandidateDetailPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/',
-                'operation_id': 'candidate_candidate_id_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'incumbent_challenge',
-                    'name',
-                    'page',
-                    'state',
-                    'district',
-                    'cycle',
-                    'federal_funds_flag',
-                    'election_year',
-                    'candidate_status',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'year',
-                    'party',
-                    'sort_nulls_last',
-                    'office',
-                    'has_raised_funds',
-                ],
-                'required': [
-                    'api_key',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'incumbent_challenge',
-                    'candidate_status',
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('incumbent_challenge',): {
-
-                        'EMPTY': '',
-                        'I': 'I',
-                        'C': 'C',
-                        'O': 'O'
-                    },
-                    ('candidate_status',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'F': 'F',
-                        'N': 'N',
-                        'P': 'P'
-                    },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'name':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'district':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'federal_funds_flag':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'candidate_status':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'year':
-                        (str,),
-                    'party':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        ([str],),
-                    'has_raised_funds':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'name': 'name',
-                    'page': 'page',
-                    'state': 'state',
-                    'district': 'district',
-                    'cycle': 'cycle',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'election_year': 'election_year',
-                    'candidate_status': 'candidate_status',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'year': 'year',
-                    'party': 'party',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                    'has_raised_funds': 'has_raised_funds',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'incumbent_challenge': 'query',
-                    'name': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'district': 'query',
-                    'cycle': 'query',
-                    'federal_funds_flag': 'query',
-                    'election_year': 'query',
-                    'candidate_status': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'year': 'query',
-                    'party': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                    'has_raised_funds': 'query',
-                },
-                'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'name': 'multi',
-                    'state': 'multi',
-                    'district': 'multi',
-                    'cycle': 'multi',
-                    'election_year': 'multi',
-                    'candidate_status': 'multi',
-                    'party': 'multi',
-                    'office': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_get
-        )
-
-        def __candidate_candidate_id_history_cycle_get(
-            self,
-            cycle,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_history_cycle_get  # noqa: E501
-
-             Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_history_cycle_get(cycle, candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                cycle (int):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag.
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_history_page.CandidateHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['cycle'] = \
-                cycle
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_history_cycle_get = Endpoint(
-            settings={
-                'response_type': (candidate_history_page.CandidateHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/history/{cycle}/',
-                'operation_id': 'candidate_candidate_id_history_cycle_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'cycle',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'election_full',
-                    'sort_null_only',
-                    'per_page',
-                    'sort_nulls_last',
-                    'sort',
-                    'page',
-                ],
-                'required': [
-                    'api_key',
-                    'cycle',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'cycle':
-                        (int,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'cycle': 'cycle',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'election_full': 'election_full',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'page': 'page',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'cycle': 'path',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'election_full': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_history_cycle_get
-        )
-
-        def __candidate_candidate_id_history_get(
-            self,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_history_get  # noqa: E501
-
-             Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_history_get(candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_history_page.CandidateHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_history_get = Endpoint(
-            settings={
-                'response_type': (candidate_history_page.CandidateHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/history/',
-                'operation_id': 'candidate_candidate_id_history_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'election_full',
-                    'sort_null_only',
-                    'per_page',
-                    'sort_nulls_last',
-                    'sort',
-                    'page',
-                ],
-                'required': [
-                    'api_key',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'election_full': 'election_full',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'page': 'page',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'election_full': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_history_get
-        )
-
-        def __candidate_candidate_id_totals_get(
-            self,
-            candidate_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidate_candidate_id_totals_get  # noqa: E501
-
-             This endpoint provides information about a committee's Form 3, Form 3X, or Form 3P financial reports, which are aggregated by two-year period. We refer to two-year periods as a `cycle`.  The cycle is named after the even-numbered year and includes the year before it. To see totals from 2013 and 2014, you would use 2014. In odd-numbered years, the current cycle is the next year — for example, in 2015, the current cycle is 2016.  For presidential and Senate candidates, multiple two-year cycles exist between elections.  Parameter `full_election` is replaced by `election_full`. Please use `election_full` instead.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidate_candidate_id_totals_get(candidate_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                candidate_id (str):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                full_election (bool): Parameter &#x60;full_election&#x60; is replaced by &#x60;election_full&#x60;. Please use &#x60;election_full&#x60; instead.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-cycle'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional]
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                committee_totals_page.CommitteeTotalsPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['candidate_id'] = \
-                candidate_id
-            return self.call_with_http_info(**kwargs)
-
-        self.candidate_candidate_id_totals_get = Endpoint(
-            settings={
-                'response_type': (committee_totals_page.CommitteeTotalsPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidate/{candidate_id}/totals/',
-                'operation_id': 'candidate_candidate_id_totals_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'candidate_id',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
-                    'full_election',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'election_full',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                    'candidate_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'candidate_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'full_election':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'candidate_id': 'candidate_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'full_election': 'full_election',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'election_full': 'election_full',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'candidate_id': 'path',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'full_election': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'election_full': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidate_candidate_id_totals_get
-        )
-
-        def __candidates_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidates_get  # noqa: E501
-
-             Fetch basic information about candidates, and use parameters to filter results to the candidates you're looking for.  Each result reflects a unique FEC candidate ID. That ID is particular to the candidate for a particular office sought. If a candidate runs for the same office multiple times, the ID stays the same. If the same person runs for another office — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidates_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): US state or territory where a candidate runs for office. [optional]
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                election_year ([int]): Year of election. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                q ([str]): Name of candidate running for office. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_page.CandidatePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.candidates_get = Endpoint(
-            settings={
-                'response_type': (candidate_page.CandidatePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidates/',
-                'operation_id': 'candidates_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'incumbent_challenge',
-                    'name',
-                    'is_active_candidate',
-                    'candidate_id',
-                    'min_first_file_date',
-                    'page',
-                    'state',
-                    'district',
-                    'cycle',
-                    'max_first_file_date',
-                    'federal_funds_flag',
-                    'election_year',
-                    'candidate_status',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'year',
-                    'party',
-                    'q',
-                    'sort_nulls_last',
-                    'office',
-                    'has_raised_funds',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'incumbent_challenge',
-                    'candidate_status',
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('incumbent_challenge',): {
-
-                        'EMPTY': '',
-                        'I': 'I',
-                        'C': 'C',
-                        'O': 'O'
-                    },
-                    ('candidate_status',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'F': 'F',
-                        'N': 'N',
-                        'P': 'P'
-                    },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'name':
-                        ([str],),
-                    'is_active_candidate':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
-                    'min_first_file_date':
-                        (date,),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'district':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'max_first_file_date':
-                        (date,),
-                    'federal_funds_flag':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'candidate_status':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'year':
-                        (str,),
-                    'party':
-                        ([str],),
-                    'q':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        ([str],),
-                    'has_raised_funds':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'name': 'name',
-                    'is_active_candidate': 'is_active_candidate',
-                    'candidate_id': 'candidate_id',
-                    'min_first_file_date': 'min_first_file_date',
-                    'page': 'page',
-                    'state': 'state',
-                    'district': 'district',
-                    'cycle': 'cycle',
-                    'max_first_file_date': 'max_first_file_date',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'election_year': 'election_year',
-                    'candidate_status': 'candidate_status',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'year': 'year',
-                    'party': 'party',
-                    'q': 'q',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                    'has_raised_funds': 'has_raised_funds',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'incumbent_challenge': 'query',
-                    'name': 'query',
-                    'is_active_candidate': 'query',
-                    'candidate_id': 'query',
-                    'min_first_file_date': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'district': 'query',
-                    'cycle': 'query',
-                    'max_first_file_date': 'query',
-                    'federal_funds_flag': 'query',
-                    'election_year': 'query',
-                    'candidate_status': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'year': 'query',
-                    'party': 'query',
-                    'q': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                    'has_raised_funds': 'query',
-                },
-                'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'name': 'multi',
-                    'candidate_id': 'multi',
-                    'state': 'multi',
-                    'district': 'multi',
-                    'cycle': 'multi',
-                    'election_year': 'multi',
-                    'candidate_status': 'multi',
-                    'party': 'multi',
-                    'q': 'multi',
-                    'office': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidates_get
-        )
-
-        def __candidates_search_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidates_search_get  # noqa: E501
-
-             Fetch basic information about candidates and their principal committees.  Each result reflects a unique FEC candidate ID. That ID is assigned to the candidate for a particular office sought. If a candidate runs for the same office over time, that ID stays the same. If the same person runs for multiple offices — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.  The candidate endpoints primarily use data from FEC registration [Form 1](http://www.fec.gov/pdf/forms/fecfrm1.pdf), for candidate information, and [Form 2](http://www.fec.gov/pdf/forms/fecfrm2.pdf), for committees information, with additional information to provide context.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidates_search_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                min_first_file_date (date): Selects all candidates whose first filing was received by the FEC after this date.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): US state or territory where a candidate runs for office. [optional]
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                max_first_file_date (date): Selects all candidates whose first filing was received by the FEC before this date.. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                election_year ([int]): Year of election. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                q ([str]): Name of candidate running for office. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_page.CandidatePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.candidates_search_get = Endpoint(
-            settings={
-                'response_type': (candidate_page.CandidatePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidates/search/',
-                'operation_id': 'candidates_search_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'incumbent_challenge',
-                    'name',
-                    'is_active_candidate',
-                    'candidate_id',
-                    'min_first_file_date',
-                    'page',
-                    'state',
-                    'district',
-                    'cycle',
-                    'max_first_file_date',
-                    'federal_funds_flag',
-                    'election_year',
-                    'candidate_status',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'year',
-                    'party',
-                    'q',
-                    'sort_nulls_last',
-                    'office',
-                    'has_raised_funds',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'incumbent_challenge',
-                    'candidate_status',
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('incumbent_challenge',): {
-
-                        'EMPTY': '',
-                        'I': 'I',
-                        'C': 'C',
-                        'O': 'O'
-                    },
-                    ('candidate_status',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'F': 'F',
-                        'N': 'N',
-                        'P': 'P'
-                    },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'name':
-                        ([str],),
-                    'is_active_candidate':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
-                    'min_first_file_date':
-                        (date,),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'district':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'max_first_file_date':
-                        (date,),
-                    'federal_funds_flag':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'candidate_status':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'year':
-                        (str,),
-                    'party':
-                        ([str],),
-                    'q':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        ([str],),
-                    'has_raised_funds':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'name': 'name',
-                    'is_active_candidate': 'is_active_candidate',
-                    'candidate_id': 'candidate_id',
-                    'min_first_file_date': 'min_first_file_date',
-                    'page': 'page',
-                    'state': 'state',
-                    'district': 'district',
-                    'cycle': 'cycle',
-                    'max_first_file_date': 'max_first_file_date',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'election_year': 'election_year',
-                    'candidate_status': 'candidate_status',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'year': 'year',
-                    'party': 'party',
-                    'q': 'q',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                    'has_raised_funds': 'has_raised_funds',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'incumbent_challenge': 'query',
-                    'name': 'query',
-                    'is_active_candidate': 'query',
-                    'candidate_id': 'query',
-                    'min_first_file_date': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'district': 'query',
-                    'cycle': 'query',
-                    'max_first_file_date': 'query',
-                    'federal_funds_flag': 'query',
-                    'election_year': 'query',
-                    'candidate_status': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'year': 'query',
-                    'party': 'query',
-                    'q': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                    'has_raised_funds': 'query',
-                },
-                'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'name': 'multi',
-                    'candidate_id': 'multi',
-                    'state': 'multi',
-                    'district': 'multi',
-                    'cycle': 'multi',
-                    'election_year': 'multi',
-                    'candidate_status': 'multi',
-                    'party': 'multi',
-                    'q': 'multi',
-                    'office': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidates_search_get
-        )
-
-        def __candidates_totals_by_office_by_party_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidates_totals_by_office_by_party_get  # noqa: E501
-
-             Aggregated candidate receipts and disbursements grouped by office by party by cycle.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidates_totals_by_office_by_party_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office (str): Federal office candidate runs for: H, S or P. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                total_by_office_by_party_page.TotalByOfficeByPartyPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.candidates_totals_by_office_by_party_get = Endpoint(
-            settings={
-                'response_type': (total_by_office_by_party_page.TotalByOfficeByPartyPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidates/totals/by_office/by_party/',
-                'operation_id': 'candidates_totals_by_office_by_party_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'is_active_candidate',
-                    'election_year',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'office',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'is_active_candidate':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        (str,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'is_active_candidate': 'is_active_candidate',
-                    'election_year': 'election_year',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'is_active_candidate': 'query',
-                    'election_year': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                },
-                'collection_format_map': {
-                    'election_year': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidates_totals_by_office_by_party_get
-        )
-
-        def __candidates_totals_by_office_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidates_totals_by_office_get  # noqa: E501
-
-             Aggregated candidate receipts and disbursements grouped by office by cycle.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidates_totals_by_office_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office (str): Federal office candidate runs for: H, S or P. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                total_by_office_page.TotalByOfficePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.candidates_totals_by_office_get = Endpoint(
-            settings={
-                'response_type': (total_by_office_page.TotalByOfficePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidates/totals/by_office/',
-                'operation_id': 'candidates_totals_by_office_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'is_active_candidate',
-                    'election_year',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'page',
-                    'sort_nulls_last',
-                    'office',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'is_active_candidate':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        (str,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'is_active_candidate': 'is_active_candidate',
-                    'election_year': 'election_year',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'is_active_candidate': 'query',
-                    'election_year': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                },
-                'collection_format_map': {
-                    'election_year': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidates_totals_by_office_get
-        )
-
-        def __candidates_totals_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """candidates_totals_get  # noqa: E501
-
-             Aggregated candidate receipts and disbursements grouped by cycle.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.candidates_totals_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                is_active_candidate (bool):  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                max_cash_on_hand_end_period (str): Maximum cash on hand. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): State of candidate. [optional]
-                district ([str]): District of candidate. [optional]
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                min_receipts (str): Minimum aggregated receipts. [optional]
-                max_debts_owed_by_committee (str): Maximum debt. [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                election_year ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                min_disbursements (str): Minimum aggregated disbursements. [optional]
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                q ([str]): Name of candidate running for office. [optional]
-                max_disbursements (str): Maximum aggregated disbursements. [optional]
-                max_receipts (str): Maximum aggregated receipts. [optional]
-                party ([str]): Three-letter party code. [optional]
-                min_cash_on_hand_end_period (str): Minimum cash on hand. [optional]
-                min_debts_owed_by_committee (str): Minimum debt. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_history_total_page.CandidateHistoryTotalPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.candidates_totals_get = Endpoint(
-            settings={
-                'response_type': (candidate_history_total_page.CandidateHistoryTotalPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/candidates/totals/',
-                'operation_id': 'candidates_totals_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'is_active_candidate',
-                    'candidate_id',
-                    'max_cash_on_hand_end_period',
-                    'page',
-                    'state',
-                    'district',
-                    'election_full',
-                    'cycle',
-                    'min_receipts',
-                    'max_debts_owed_by_committee',
-                    'federal_funds_flag',
-                    'election_year',
-                    'sort_null_only',
-                    'per_page',
-                    'min_disbursements',
-                    'sort',
-                    'q',
-                    'max_disbursements',
-                    'max_receipts',
-                    'party',
-                    'min_cash_on_hand_end_period',
-                    'min_debts_owed_by_committee',
-                    'sort_nulls_last',
-                    'office',
-                    'has_raised_funds',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'is_active_candidate':
-                        (bool,),
-                    'candidate_id':
-                        ([str],),
-                    'max_cash_on_hand_end_period':
-                        (str,),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'district':
-                        ([str],),
-                    'election_full':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                    'min_receipts':
-                        (str,),
-                    'max_debts_owed_by_committee':
-                        (str,),
-                    'federal_funds_flag':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'min_disbursements':
-                        (str,),
-                    'sort':
-                        (str, none_type,),
-                    'q':
-                        ([str],),
-                    'max_disbursements':
-                        (str,),
-                    'max_receipts':
-                        (str,),
-                    'party':
-                        ([str],),
-                    'min_cash_on_hand_end_period':
-                        (str,),
-                    'min_debts_owed_by_committee':
-                        (str,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        ([str],),
-                    'has_raised_funds':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'is_active_candidate': 'is_active_candidate',
-                    'candidate_id': 'candidate_id',
-                    'max_cash_on_hand_end_period': 'max_cash_on_hand_end_period',
-                    'page': 'page',
-                    'state': 'state',
-                    'district': 'district',
-                    'election_full': 'election_full',
-                    'cycle': 'cycle',
-                    'min_receipts': 'min_receipts',
-                    'max_debts_owed_by_committee': 'max_debts_owed_by_committee',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'election_year': 'election_year',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'min_disbursements': 'min_disbursements',
-                    'sort': 'sort',
-                    'q': 'q',
-                    'max_disbursements': 'max_disbursements',
-                    'max_receipts': 'max_receipts',
-                    'party': 'party',
-                    'min_cash_on_hand_end_period': 'min_cash_on_hand_end_period',
-                    'min_debts_owed_by_committee': 'min_debts_owed_by_committee',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                    'has_raised_funds': 'has_raised_funds',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'is_active_candidate': 'query',
-                    'candidate_id': 'query',
-                    'max_cash_on_hand_end_period': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'district': 'query',
-                    'election_full': 'query',
-                    'cycle': 'query',
-                    'min_receipts': 'query',
-                    'max_debts_owed_by_committee': 'query',
-                    'federal_funds_flag': 'query',
-                    'election_year': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'min_disbursements': 'query',
-                    'sort': 'query',
-                    'q': 'query',
-                    'max_disbursements': 'query',
-                    'max_receipts': 'query',
-                    'party': 'query',
-                    'min_cash_on_hand_end_period': 'query',
-                    'min_debts_owed_by_committee': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                    'has_raised_funds': 'query',
-                },
-                'collection_format_map': {
-                    'candidate_id': 'multi',
-                    'state': 'multi',
-                    'district': 'multi',
-                    'cycle': 'multi',
-                    'election_year': 'multi',
-                    'q': 'multi',
-                    'party': 'multi',
-                    'office': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__candidates_totals_get
-        )
-
-        def __committee_committee_id_candidates_get(
-            self,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_candidates_get  # noqa: E501
-
-             This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_candidates_get(committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                incumbent_challenge ([str]): One-letter code (&#39;I&#39;, &#39;C&#39;, &#39;O&#39;) explaining if the candidate is an incumbent, a challenger, or if the seat is open.. [optional]
-                name ([str]): Name (candidate or committee) to search for. Alias for &#39;q&#39;.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                state ([str]): US state or territory where a candidate runs for office. [optional]
-                district ([str]): Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.. [optional]
-                cycle ([int]):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag. . [optional]
-                federal_funds_flag (bool): A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.. [optional]
-                election_year ([int]): Year of election. [optional]
-                candidate_status ([str]): One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'name'
-                year (str): See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.. [optional]
-                party ([str]): Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                office ([str]): Federal office candidate runs for: H, S or P. [optional]
-                has_raised_funds (bool): A boolean that describes if a candidate&#39;s committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.). [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_detail_page.CandidateDetailPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_candidates_get = Endpoint(
-            settings={
-                'response_type': (candidate_detail_page.CandidateDetailPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/candidates/',
-                'operation_id': 'committee_committee_id_candidates_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'committee_id',
-                    'sort_hide_null',
-                    'incumbent_challenge',
-                    'name',
-                    'page',
-                    'state',
-                    'district',
-                    'cycle',
-                    'federal_funds_flag',
-                    'election_year',
-                    'candidate_status',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'year',
-                    'party',
-                    'sort_nulls_last',
-                    'office',
-                    'has_raised_funds',
-                ],
-                'required': [
-                    'api_key',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                    'incumbent_challenge',
-                    'candidate_status',
-                    'office',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('incumbent_challenge',): {
-
-                        'EMPTY': '',
-                        'I': 'I',
-                        'C': 'C',
-                        'O': 'O'
-                    },
-                    ('candidate_status',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'F': 'F',
-                        'N': 'N',
-                        'P': 'P'
-                    },
-                    ('office',): {
-
-                        'EMPTY': '',
-                        'H': 'H',
-                        'S': 'S',
-                        'P': 'P'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'incumbent_challenge':
-                        ([str],),
-                    'name':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'state':
-                        ([str],),
-                    'district':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'federal_funds_flag':
-                        (bool,),
-                    'election_year':
-                        ([int],),
-                    'candidate_status':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'year':
-                        (str,),
-                    'party':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'office':
-                        ([str],),
-                    'has_raised_funds':
-                        (bool,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'incumbent_challenge': 'incumbent_challenge',
-                    'name': 'name',
-                    'page': 'page',
-                    'state': 'state',
-                    'district': 'district',
-                    'cycle': 'cycle',
-                    'federal_funds_flag': 'federal_funds_flag',
-                    'election_year': 'election_year',
-                    'candidate_status': 'candidate_status',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'year': 'year',
-                    'party': 'party',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'office': 'office',
-                    'has_raised_funds': 'has_raised_funds',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'incumbent_challenge': 'query',
-                    'name': 'query',
-                    'page': 'query',
-                    'state': 'query',
-                    'district': 'query',
-                    'cycle': 'query',
-                    'federal_funds_flag': 'query',
-                    'election_year': 'query',
-                    'candidate_status': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'year': 'query',
-                    'party': 'query',
-                    'sort_nulls_last': 'query',
-                    'office': 'query',
-                    'has_raised_funds': 'query',
-                },
-                'collection_format_map': {
-                    'incumbent_challenge': 'multi',
-                    'name': 'multi',
-                    'state': 'multi',
-                    'district': 'multi',
-                    'cycle': 'multi',
-                    'election_year': 'multi',
-                    'candidate_status': 'multi',
-                    'party': 'multi',
-                    'office': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_candidates_get
-        )
-
-        def __committee_committee_id_candidates_history_cycle_get(
-            self,
-            cycle,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_candidates_history_cycle_get  # noqa: E501
-
-             Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_candidates_history_cycle_get(cycle, committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                cycle (int):  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the &#x60;election_full&#x60; flag.
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_history_page.CandidateHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['cycle'] = \
-                cycle
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_candidates_history_cycle_get = Endpoint(
-            settings={
-                'response_type': (candidate_history_page.CandidateHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/candidates/history/{cycle}/',
-                'operation_id': 'committee_committee_id_candidates_history_cycle_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'cycle',
-                    'committee_id',
-                    'sort_hide_null',
-                    'election_full',
-                    'sort_null_only',
-                    'per_page',
-                    'sort_nulls_last',
-                    'sort',
-                    'page',
-                ],
-                'required': [
-                    'api_key',
-                    'cycle',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'cycle':
-                        (int,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'cycle': 'cycle',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'election_full': 'election_full',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'page': 'page',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'cycle': 'path',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'election_full': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_candidates_history_cycle_get
-        )
-
-        def __committee_committee_id_candidates_history_get(
-            self,
-            committee_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """committee_committee_id_candidates_history_get  # noqa: E501
-
-             Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.committee_committee_id_candidates_history_get(committee_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                committee_id (str):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits.
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                election_full (bool): &#x60;True&#x60; indicates that full election period of a candidate. &#x60;False&#x60; indicates that two year election cycle.. [optional] if omitted the server will use the default value of True
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-two_year_period'
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                candidate_history_page.CandidateHistoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['committee_id'] = \
-                committee_id
-            return self.call_with_http_info(**kwargs)
-
-        self.committee_committee_id_candidates_history_get = Endpoint(
-            settings={
-                'response_type': (candidate_history_page.CandidateHistoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/committee/{committee_id}/candidates/history/',
-                'operation_id': 'committee_committee_id_candidates_history_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'committee_id',
-                    'sort_hide_null',
-                    'election_full',
-                    'sort_null_only',
-                    'per_page',
-                    'sort_nulls_last',
-                    'sort',
-                    'page',
-                ],
-                'required': [
-                    'api_key',
-                    'committee_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'committee_id':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'election_full':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'sort':
-                        (str,),
-                    'page':
-                        (int,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'committee_id': 'committee_id',
-                    'sort_hide_null': 'sort_hide_null',
-                    'election_full': 'election_full',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'sort': 'sort',
-                    'page': 'page',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'committee_id': 'path',
-                    'sort_hide_null': 'query',
-                    'election_full': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort_nulls_last': 'query',
-                    'sort': 'query',
-                    'page': 'query',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__committee_committee_id_candidates_history_get
-        )
-
-
-class Endpoint(object):
-    def __init__(self, settings=None, params_map=None, root_map=None,
-                 headers_map=None, api_client=None, callable=None):
-        """Creates an endpoint
-
-        Args:
-            settings (dict): see below key value pairs
-                'response_type' (tuple/None): response type
-                'auth' (list): a list of auth type keys
-                'endpoint_path' (str): the endpoint path
-                'operation_id' (str): endpoint string identifier
-                'http_method' (str): POST/PUT/PATCH/GET etc
-                'servers' (list): list of str servers that this endpoint is at
-            params_map (dict): see below key value pairs
-                'all' (list): list of str endpoint parameter names
-                'required' (list): list of required parameter names
-                'nullable' (list): list of nullable parameter names
-                'enum' (list): list of parameters with enum values
-                'validation' (list): list of parameters with validations
-            root_map
-                'validations' (dict): the dict mapping endpoint parameter tuple
-                    paths to their validation dictionaries
-                'allowed_values' (dict): the dict mapping endpoint parameter
-                    tuple paths to their allowed_values (enum) dictionaries
-                'openapi_types' (dict): param_name to openapi type
-                'attribute_map' (dict): param_name to camelCase name
-                'location_map' (dict): param_name to  'body', 'file', 'form',
-                    'header', 'path', 'query'
-                collection_format_map (dict): param_name to `csv` etc.
-            headers_map (dict): see below key value pairs
-                'accept' (list): list of Accept header strings
-                'content_type' (list): list of Content-Type header strings
-            api_client (ApiClient) api client instance
-            callable (function): the function which is invoked when the
-                Endpoint is called
+    def candidate_candidate_id_get(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_get  # noqa: E501
+
+         This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_get(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateDetailPage
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        self.settings = settings
-        self.params_map = params_map
-        self.params_map['all'].extend([
-            'async_req',
-            '_host_index',
-            '_preload_content',
-            '_request_timeout',
-            '_return_http_data_only',
-            '_check_input_type',
-            '_check_return_type'
-        ])
-        self.params_map['nullable'].extend(['_request_timeout'])
-        self.validations = root_map['validations']
-        self.allowed_values = root_map['allowed_values']
-        self.openapi_types = root_map['openapi_types']
-        extra_types = {
-            'async_req': (bool,),
-            '_host_index': (int,),
-            '_preload_content': (bool,),
-            '_request_timeout': (none_type, int, (int,), [int]),
-            '_return_http_data_only': (bool,),
-            '_check_input_type': (bool,),
-            '_check_return_type': (bool,)
-        }
-        self.openapi_types.update(extra_types)
-        self.attribute_map = root_map['attribute_map']
-        self.location_map = root_map['location_map']
-        self.collection_format_map = root_map['collection_format_map']
-        self.headers_map = headers_map
-        self.api_client = api_client
-        self.callable = callable
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_get_with_http_info(api_key, candidate_id, **kwargs)  # noqa: E501
 
-    def __validate_inputs(self, kwargs):
-        for param in self.params_map['enum']:
-            if param in kwargs:
-                check_allowed_values(
-                    self.allowed_values,
-                    (param,),
-                    kwargs[param]
-                )
+    def candidate_candidate_id_get_with_http_info(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_get  # noqa: E501
 
-        for param in self.params_map['validation']:
-            if param in kwargs:
-                check_validations(
-                    self.validations,
-                    (param,),
-                    kwargs[param]
-                )
+         This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_get_with_http_info(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
 
-        if kwargs['_check_input_type'] is False:
-            return
-
-        for key, value in six.iteritems(kwargs):
-            fixed_val = validate_and_convert_types(
-                value,
-                self.openapi_types[key],
-                [key],
-                False,
-                kwargs['_check_input_type'],
-                configuration=self.api_client.configuration
-            )
-            kwargs[key] = fixed_val
-
-    def __gather_params(self, kwargs):
-        params = {
-            'body': None,
-            'collection_format': {},
-            'file': {},
-            'form': [],
-            'header': {},
-            'path': {},
-            'query': []
-        }
-
-        for param_name, param_value in six.iteritems(kwargs):
-            param_location = self.location_map.get(param_name)
-            if param_location is None:
-                continue
-            if param_location:
-                if param_location == 'body':
-                    params['body'] = param_value
-                    continue
-                base_name = self.attribute_map[param_name]
-                if (param_location == 'form' and
-                        self.openapi_types[param_name] == (file_type,)):
-                    params['file'][param_name] = [param_value]
-                elif (param_location == 'form' and
-                        self.openapi_types[param_name] == ([file_type],)):
-                    # param_value is already a list
-                    params['file'][param_name] = param_value
-                elif param_location in {'form', 'query'}:
-                    param_value_full = (base_name, param_value)
-                    params[param_location].append(param_value_full)
-                if param_location not in {'form', 'query'}:
-                    params[param_location][base_name] = param_value
-                collection_format = self.collection_format_map.get(param_name)
-                if collection_format:
-                    params['collection_format'][base_name] = collection_format
-
-        return params
-
-    def __call__(self, *args, **kwargs):
-        """ This method is invoked when endpoints are called
-        Example:
-        pet_api = PetApi()
-        pet_api.add_pet  # this is an instance of the class Endpoint
-        pet_api.add_pet()  # this invokes pet_api.add_pet.__call__()
-        which then invokes the callable functions stored in that endpoint at
-        pet_api.add_pet.callable or self.callable in this class
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateDetailPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        return self.callable(self, *args, **kwargs)
 
-    def call_with_http_info(self, **kwargs):
+        local_var_params = locals()
 
-        try:
-            _host = self.settings['servers'][kwargs['_host_index']]
-        except IndexError:
-            if self.settings['servers']:
-                raise ApiValueError(
-                    'Invalid host index. Must be 0 <= index < %s' %
-                    len(self.settings['servers'])
-                )
-            _host = None
+        all_params = [
+            'api_key',
+            'candidate_id',
+            'sort_hide_null',
+            'incumbent_challenge',
+            'name',
+            'page',
+            'state',
+            'district',
+            'cycle',
+            'federal_funds_flag',
+            'election_year',
+            'candidate_status',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'year',
+            'party',
+            'sort_nulls_last',
+            'office',
+            'has_raised_funds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, value in six.iteritems(kwargs):
-            if key not in self.params_map['all']:
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected parameter '%s'"
-                    ' to method `%s`' %
-                    (key, self.settings['operation_id'])
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_get' % key
                 )
-            # only throw this nullable ApiValueError if _check_input_type
-            # is False, if _check_input_type==True we catch this case
-            # in self.__validate_inputs
-            if (key not in self.params_map['nullable'] and value is None
-                    and kwargs['_check_input_type'] is False):
-                raise ApiValueError(
-                    'Value may not be None for non-nullable parameter `%s`'
-                    ' when calling `%s`' %
-                    (key, self.settings['operation_id'])
-                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_get`')  # noqa: E501
 
-        for key in self.params_map['required']:
-            if key not in kwargs.keys():
-                raise ApiValueError(
-                    'Missing the required parameter `%s` when calling '
-                    '`%s`' % (key, self.settings['operation_id'])
-                )
+        collection_formats = {}
 
-        self.__validate_inputs(kwargs)
+        path_params = {}
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
 
-        params = self.__gather_params(kwargs)
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'incumbent_challenge' in local_var_params and local_var_params['incumbent_challenge'] is not None:  # noqa: E501
+            query_params.append(('incumbent_challenge', local_var_params['incumbent_challenge']))  # noqa: E501
+            collection_formats['incumbent_challenge'] = 'multi'  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+            collection_formats['name'] = 'multi'  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'district' in local_var_params and local_var_params['district'] is not None:  # noqa: E501
+            query_params.append(('district', local_var_params['district']))  # noqa: E501
+            collection_formats['district'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'federal_funds_flag' in local_var_params and local_var_params['federal_funds_flag'] is not None:  # noqa: E501
+            query_params.append(('federal_funds_flag', local_var_params['federal_funds_flag']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'candidate_status' in local_var_params and local_var_params['candidate_status'] is not None:  # noqa: E501
+            query_params.append(('candidate_status', local_var_params['candidate_status']))  # noqa: E501
+            collection_formats['candidate_status'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+            collection_formats['office'] = 'multi'  # noqa: E501
+        if 'has_raised_funds' in local_var_params and local_var_params['has_raised_funds'] is not None:  # noqa: E501
+            query_params.append(('has_raised_funds', local_var_params['has_raised_funds']))  # noqa: E501
 
-        accept_headers_list = self.headers_map['accept']
-        if accept_headers_list:
-            params['header']['Accept'] = self.api_client.select_header_accept(
-                accept_headers_list)
+        header_params = {}
 
-        content_type_headers_list = self.headers_map['content_type']
-        if content_type_headers_list:
-            header_list = self.api_client.select_header_content_type(
-                content_type_headers_list)
-            params['header']['Content-Type'] = header_list
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
 
         return self.api_client.call_api(
-            self.settings['endpoint_path'], self.settings['http_method'],
-            params['path'],
-            params['query'],
-            params['header'],
-            body=params['body'],
-            post_params=params['form'],
-            files=params['file'],
-            response_type=self.settings['response_type'],
-            auth_settings=self.settings['auth'],
-            async_req=kwargs['async_req'],
-            _check_type=kwargs['_check_return_type'],
-            _return_http_data_only=kwargs['_return_http_data_only'],
-            _preload_content=kwargs['_preload_content'],
-            _request_timeout=kwargs['_request_timeout'],
-            _host=_host,
-            collection_formats=params['collection_format'])
+            '/candidate/{candidate_id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateDetailPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidate_candidate_id_history_cycle_get(self, api_key, cycle, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_history_cycle_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_history_cycle_get(api_key, cycle, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_history_cycle_get_with_http_info(api_key, cycle, candidate_id, **kwargs)  # noqa: E501
+
+    def candidate_candidate_id_history_cycle_get_with_http_info(self, api_key, cycle, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_history_cycle_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_history_cycle_get_with_http_info(api_key, cycle, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'cycle',
+            'candidate_id',
+            'sort_hide_null',
+            'election_full',
+            'sort_null_only',
+            'per_page',
+            'sort_nulls_last',
+            'sort',
+            'page'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_history_cycle_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'cycle' is set
+        if self.api_client.client_side_validation and ('cycle' not in local_var_params or  # noqa: E501
+                                                        local_var_params['cycle'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `cycle` when calling `candidate_candidate_id_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_history_cycle_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'cycle' in local_var_params:
+            path_params['cycle'] = local_var_params['cycle']  # noqa: E501
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidate/{candidate_id}/history/{cycle}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidate_candidate_id_history_get(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_history_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_history_get(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_history_get_with_http_info(api_key, candidate_id, **kwargs)  # noqa: E501
+
+    def candidate_candidate_id_history_get_with_http_info(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_history_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_history_get_with_http_info(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'candidate_id',
+            'sort_hide_null',
+            'election_full',
+            'sort_null_only',
+            'per_page',
+            'sort_nulls_last',
+            'sort',
+            'page'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_history_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_history_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_history_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidate/{candidate_id}/history/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidate_candidate_id_totals_get(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_totals_get  # noqa: E501
+
+         This endpoint provides information about a committee's Form 3, Form 3X, or Form 3P financial reports, which are aggregated by two-year period. We refer to two-year periods as a `cycle`.  The cycle is named after the even-numbered year and includes the year before it. To see totals from 2013 and 2014, you would use 2014. In odd-numbered years, the current cycle is the next year — for example, in 2015, the current cycle is 2016.  For presidential and Senate candidates, multiple two-year cycles exist between elections.  Parameter `full_election` is replaced by `election_full`. Please use `election_full` instead.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_totals_get(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool full_election: Parameter `full_election` is replaced by `election_full`. Please use `election_full` instead.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CommitteeTotalsPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidate_candidate_id_totals_get_with_http_info(api_key, candidate_id, **kwargs)  # noqa: E501
+
+    def candidate_candidate_id_totals_get_with_http_info(self, api_key, candidate_id, **kwargs):  # noqa: E501
+        """candidate_candidate_id_totals_get  # noqa: E501
+
+         This endpoint provides information about a committee's Form 3, Form 3X, or Form 3P financial reports, which are aggregated by two-year period. We refer to two-year periods as a `cycle`.  The cycle is named after the even-numbered year and includes the year before it. To see totals from 2013 and 2014, you would use 2014. In odd-numbered years, the current cycle is the next year — for example, in 2015, the current cycle is 2016.  For presidential and Senate candidates, multiple two-year cycles exist between elections.  Parameter `full_election` is replaced by `election_full`. Please use `election_full` instead.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidate_candidate_id_totals_get_with_http_info(api_key, candidate_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool full_election: Parameter `full_election` is replaced by `election_full`. Please use `election_full` instead.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CommitteeTotalsPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'candidate_id',
+            'sort_hide_null',
+            'sort_null_only',
+            'per_page',
+            'full_election',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'election_full',
+            'cycle'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidate_candidate_id_totals_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidate_candidate_id_totals_get`')  # noqa: E501
+        # verify the required parameter 'candidate_id' is set
+        if self.api_client.client_side_validation and ('candidate_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['candidate_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `candidate_id` when calling `candidate_candidate_id_totals_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'candidate_id' in local_var_params:
+            path_params['candidate_id'] = local_var_params['candidate_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'full_election' in local_var_params and local_var_params['full_election'] is not None:  # noqa: E501
+            query_params.append(('full_election', local_var_params['full_election']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidate/{candidate_id}/totals/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CommitteeTotalsPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidates_get(self, api_key, **kwargs):  # noqa: E501
+        """candidates_get  # noqa: E501
+
+         Fetch basic information about candidates, and use parameters to filter results to the candidates you're looking for.  Each result reflects a unique FEC candidate ID. That ID is particular to the candidate for a particular office sought. If a candidate runs for the same office multiple times, the ID stays the same. If the same person runs for another office — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Selects all candidates whose first filing was received by the FEC after this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param date max_first_file_date: Selects all candidates whose first filing was received by the FEC before this date.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param list[str] q: Name of candidate running for office
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidatePage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidates_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def candidates_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """candidates_get  # noqa: E501
+
+         Fetch basic information about candidates, and use parameters to filter results to the candidates you're looking for.  Each result reflects a unique FEC candidate ID. That ID is particular to the candidate for a particular office sought. If a candidate runs for the same office multiple times, the ID stays the same. If the same person runs for another office — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Selects all candidates whose first filing was received by the FEC after this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param date max_first_file_date: Selects all candidates whose first filing was received by the FEC before this date.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param list[str] q: Name of candidate running for office
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidatePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'incumbent_challenge',
+            'name',
+            'is_active_candidate',
+            'candidate_id',
+            'min_first_file_date',
+            'page',
+            'state',
+            'district',
+            'cycle',
+            'max_first_file_date',
+            'federal_funds_flag',
+            'election_year',
+            'candidate_status',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'year',
+            'party',
+            'q',
+            'sort_nulls_last',
+            'office',
+            'has_raised_funds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidates_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidates_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'incumbent_challenge' in local_var_params and local_var_params['incumbent_challenge'] is not None:  # noqa: E501
+            query_params.append(('incumbent_challenge', local_var_params['incumbent_challenge']))  # noqa: E501
+            collection_formats['incumbent_challenge'] = 'multi'  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+            collection_formats['name'] = 'multi'  # noqa: E501
+        if 'is_active_candidate' in local_var_params and local_var_params['is_active_candidate'] is not None:  # noqa: E501
+            query_params.append(('is_active_candidate', local_var_params['is_active_candidate']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'candidate_id' in local_var_params and local_var_params['candidate_id'] is not None:  # noqa: E501
+            query_params.append(('candidate_id', local_var_params['candidate_id']))  # noqa: E501
+            collection_formats['candidate_id'] = 'multi'  # noqa: E501
+        if 'min_first_file_date' in local_var_params and local_var_params['min_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('min_first_file_date', local_var_params['min_first_file_date']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'district' in local_var_params and local_var_params['district'] is not None:  # noqa: E501
+            query_params.append(('district', local_var_params['district']))  # noqa: E501
+            collection_formats['district'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'max_first_file_date' in local_var_params and local_var_params['max_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('max_first_file_date', local_var_params['max_first_file_date']))  # noqa: E501
+        if 'federal_funds_flag' in local_var_params and local_var_params['federal_funds_flag'] is not None:  # noqa: E501
+            query_params.append(('federal_funds_flag', local_var_params['federal_funds_flag']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'candidate_status' in local_var_params and local_var_params['candidate_status'] is not None:  # noqa: E501
+            query_params.append(('candidate_status', local_var_params['candidate_status']))  # noqa: E501
+            collection_formats['candidate_status'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+            collection_formats['office'] = 'multi'  # noqa: E501
+        if 'has_raised_funds' in local_var_params and local_var_params['has_raised_funds'] is not None:  # noqa: E501
+            query_params.append(('has_raised_funds', local_var_params['has_raised_funds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidates/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidatePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidates_search_get(self, api_key, **kwargs):  # noqa: E501
+        """candidates_search_get  # noqa: E501
+
+         Fetch basic information about candidates and their principal committees.  Each result reflects a unique FEC candidate ID. That ID is assigned to the candidate for a particular office sought. If a candidate runs for the same office over time, that ID stays the same. If the same person runs for multiple offices — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.  The candidate endpoints primarily use data from FEC registration [Form 1](http://www.fec.gov/pdf/forms/fecfrm1.pdf), for candidate information, and [Form 2](http://www.fec.gov/pdf/forms/fecfrm2.pdf), for committees information, with additional information to provide context.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_search_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Selects all candidates whose first filing was received by the FEC after this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param date max_first_file_date: Selects all candidates whose first filing was received by the FEC before this date.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param list[str] q: Name of candidate running for office
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidatePage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidates_search_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def candidates_search_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """candidates_search_get  # noqa: E501
+
+         Fetch basic information about candidates and their principal committees.  Each result reflects a unique FEC candidate ID. That ID is assigned to the candidate for a particular office sought. If a candidate runs for the same office over time, that ID stays the same. If the same person runs for multiple offices — for example, a House candidate runs for a Senate office — that candidate will get a unique ID for each office.  The candidate endpoints primarily use data from FEC registration [Form 1](http://www.fec.gov/pdf/forms/fecfrm1.pdf), for candidate information, and [Form 2](http://www.fec.gov/pdf/forms/fecfrm2.pdf), for committees information, with additional information to provide context.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_search_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param date min_first_file_date: Selects all candidates whose first filing was received by the FEC after this date.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param date max_first_file_date: Selects all candidates whose first filing was received by the FEC before this date.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param list[str] q: Name of candidate running for office
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidatePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'incumbent_challenge',
+            'name',
+            'is_active_candidate',
+            'candidate_id',
+            'min_first_file_date',
+            'page',
+            'state',
+            'district',
+            'cycle',
+            'max_first_file_date',
+            'federal_funds_flag',
+            'election_year',
+            'candidate_status',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'year',
+            'party',
+            'q',
+            'sort_nulls_last',
+            'office',
+            'has_raised_funds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidates_search_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidates_search_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'incumbent_challenge' in local_var_params and local_var_params['incumbent_challenge'] is not None:  # noqa: E501
+            query_params.append(('incumbent_challenge', local_var_params['incumbent_challenge']))  # noqa: E501
+            collection_formats['incumbent_challenge'] = 'multi'  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+            collection_formats['name'] = 'multi'  # noqa: E501
+        if 'is_active_candidate' in local_var_params and local_var_params['is_active_candidate'] is not None:  # noqa: E501
+            query_params.append(('is_active_candidate', local_var_params['is_active_candidate']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'candidate_id' in local_var_params and local_var_params['candidate_id'] is not None:  # noqa: E501
+            query_params.append(('candidate_id', local_var_params['candidate_id']))  # noqa: E501
+            collection_formats['candidate_id'] = 'multi'  # noqa: E501
+        if 'min_first_file_date' in local_var_params and local_var_params['min_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('min_first_file_date', local_var_params['min_first_file_date']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'district' in local_var_params and local_var_params['district'] is not None:  # noqa: E501
+            query_params.append(('district', local_var_params['district']))  # noqa: E501
+            collection_formats['district'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'max_first_file_date' in local_var_params and local_var_params['max_first_file_date'] is not None:  # noqa: E501
+            query_params.append(('max_first_file_date', local_var_params['max_first_file_date']))  # noqa: E501
+        if 'federal_funds_flag' in local_var_params and local_var_params['federal_funds_flag'] is not None:  # noqa: E501
+            query_params.append(('federal_funds_flag', local_var_params['federal_funds_flag']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'candidate_status' in local_var_params and local_var_params['candidate_status'] is not None:  # noqa: E501
+            query_params.append(('candidate_status', local_var_params['candidate_status']))  # noqa: E501
+            collection_formats['candidate_status'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+            collection_formats['office'] = 'multi'  # noqa: E501
+        if 'has_raised_funds' in local_var_params and local_var_params['has_raised_funds'] is not None:  # noqa: E501
+            query_params.append(('has_raised_funds', local_var_params['has_raised_funds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidates/search/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidatePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidates_totals_by_office_by_party_get(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_by_office_by_party_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by office by party by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_by_office_by_party_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str office: Federal office candidate runs for: H, S or P
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TotalByOfficeByPartyPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidates_totals_by_office_by_party_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def candidates_totals_by_office_by_party_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_by_office_by_party_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by office by party by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_by_office_by_party_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str office: Federal office candidate runs for: H, S or P
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TotalByOfficeByPartyPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'is_active_candidate',
+            'election_year',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'office'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidates_totals_by_office_by_party_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidates_totals_by_office_by_party_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'is_active_candidate' in local_var_params and local_var_params['is_active_candidate'] is not None:  # noqa: E501
+            query_params.append(('is_active_candidate', local_var_params['is_active_candidate']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidates/totals/by_office/by_party/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TotalByOfficeByPartyPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidates_totals_by_office_get(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_by_office_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by office by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_by_office_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str office: Federal office candidate runs for: H, S or P
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TotalByOfficePage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidates_totals_by_office_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def candidates_totals_by_office_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_by_office_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by office by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_by_office_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str office: Federal office candidate runs for: H, S or P
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TotalByOfficePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'is_active_candidate',
+            'election_year',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'page',
+            'sort_nulls_last',
+            'office'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidates_totals_by_office_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidates_totals_by_office_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'is_active_candidate' in local_var_params and local_var_params['is_active_candidate'] is not None:  # noqa: E501
+            query_params.append(('is_active_candidate', local_var_params['is_active_candidate']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidates/totals/by_office/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TotalByOfficePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def candidates_totals_get(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param str max_cash_on_hand_end_period: Maximum cash on hand
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: State of candidate
+        :param list[str] district: District of candidate
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param str min_receipts: Minimum aggregated receipts
+        :param str max_debts_owed_by_committee: Maximum debt
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str min_disbursements: Minimum aggregated disbursements
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[str] q: Name of candidate running for office
+        :param str max_disbursements: Maximum aggregated disbursements
+        :param str max_receipts: Maximum aggregated receipts
+        :param list[str] party: Three-letter party code
+        :param str min_cash_on_hand_end_period: Minimum cash on hand
+        :param str min_debts_owed_by_committee: Minimum debt
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateHistoryTotalPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.candidates_totals_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def candidates_totals_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """candidates_totals_get  # noqa: E501
+
+         Aggregated candidate receipts and disbursements grouped by cycle.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.candidates_totals_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool is_active_candidate:  Candidates who are actively seeking office. If no value is specified, all candidates are returned. When True is specified, only active candidates are returned. When False is specified, only inactive candidates are returned.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param str max_cash_on_hand_end_period: Maximum cash on hand
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: State of candidate
+        :param list[str] district: District of candidate
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param str min_receipts: Minimum aggregated receipts
+        :param str max_debts_owed_by_committee: Maximum debt
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str min_disbursements: Minimum aggregated disbursements
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[str] q: Name of candidate running for office
+        :param str max_disbursements: Maximum aggregated disbursements
+        :param str max_receipts: Maximum aggregated receipts
+        :param list[str] party: Three-letter party code
+        :param str min_cash_on_hand_end_period: Minimum cash on hand
+        :param str min_debts_owed_by_committee: Minimum debt
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateHistoryTotalPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort_hide_null',
+            'is_active_candidate',
+            'candidate_id',
+            'max_cash_on_hand_end_period',
+            'page',
+            'state',
+            'district',
+            'election_full',
+            'cycle',
+            'min_receipts',
+            'max_debts_owed_by_committee',
+            'federal_funds_flag',
+            'election_year',
+            'sort_null_only',
+            'per_page',
+            'min_disbursements',
+            'sort',
+            'q',
+            'max_disbursements',
+            'max_receipts',
+            'party',
+            'min_cash_on_hand_end_period',
+            'min_debts_owed_by_committee',
+            'sort_nulls_last',
+            'office',
+            'has_raised_funds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method candidates_totals_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `candidates_totals_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'is_active_candidate' in local_var_params and local_var_params['is_active_candidate'] is not None:  # noqa: E501
+            query_params.append(('is_active_candidate', local_var_params['is_active_candidate']))  # noqa: E501
+        if 'candidate_id' in local_var_params and local_var_params['candidate_id'] is not None:  # noqa: E501
+            query_params.append(('candidate_id', local_var_params['candidate_id']))  # noqa: E501
+            collection_formats['candidate_id'] = 'multi'  # noqa: E501
+        if 'max_cash_on_hand_end_period' in local_var_params and local_var_params['max_cash_on_hand_end_period'] is not None:  # noqa: E501
+            query_params.append(('max_cash_on_hand_end_period', local_var_params['max_cash_on_hand_end_period']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'district' in local_var_params and local_var_params['district'] is not None:  # noqa: E501
+            query_params.append(('district', local_var_params['district']))  # noqa: E501
+            collection_formats['district'] = 'multi'  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'min_receipts' in local_var_params and local_var_params['min_receipts'] is not None:  # noqa: E501
+            query_params.append(('min_receipts', local_var_params['min_receipts']))  # noqa: E501
+        if 'max_debts_owed_by_committee' in local_var_params and local_var_params['max_debts_owed_by_committee'] is not None:  # noqa: E501
+            query_params.append(('max_debts_owed_by_committee', local_var_params['max_debts_owed_by_committee']))  # noqa: E501
+        if 'federal_funds_flag' in local_var_params and local_var_params['federal_funds_flag'] is not None:  # noqa: E501
+            query_params.append(('federal_funds_flag', local_var_params['federal_funds_flag']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'min_disbursements' in local_var_params and local_var_params['min_disbursements'] is not None:  # noqa: E501
+            query_params.append(('min_disbursements', local_var_params['min_disbursements']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+        if 'max_disbursements' in local_var_params and local_var_params['max_disbursements'] is not None:  # noqa: E501
+            query_params.append(('max_disbursements', local_var_params['max_disbursements']))  # noqa: E501
+        if 'max_receipts' in local_var_params and local_var_params['max_receipts'] is not None:  # noqa: E501
+            query_params.append(('max_receipts', local_var_params['max_receipts']))  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'min_cash_on_hand_end_period' in local_var_params and local_var_params['min_cash_on_hand_end_period'] is not None:  # noqa: E501
+            query_params.append(('min_cash_on_hand_end_period', local_var_params['min_cash_on_hand_end_period']))  # noqa: E501
+        if 'min_debts_owed_by_committee' in local_var_params and local_var_params['min_debts_owed_by_committee'] is not None:  # noqa: E501
+            query_params.append(('min_debts_owed_by_committee', local_var_params['min_debts_owed_by_committee']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+            collection_formats['office'] = 'multi'  # noqa: E501
+        if 'has_raised_funds' in local_var_params and local_var_params['has_raised_funds'] is not None:  # noqa: E501
+            query_params.append(('has_raised_funds', local_var_params['has_raised_funds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/candidates/totals/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateHistoryTotalPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_candidates_get(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_get  # noqa: E501
+
+         This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_get(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateDetailPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_candidates_get_with_http_info(api_key, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_candidates_get_with_http_info(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_get  # noqa: E501
+
+         This endpoint is useful for finding detailed information about a particular candidate. Use the `candidate_id` to find the most recent information about that candidate.    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_get_with_http_info(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] incumbent_challenge: One-letter code ('I', 'C', 'O') explaining if the candidate is an incumbent, a challenger, or if the seat is open.
+        :param list[str] name: Name (candidate or committee) to search for. Alias for 'q'.
+        :param int page: For paginating through results, starting at page 1
+        :param list[str] state: US state or territory where a candidate runs for office
+        :param list[str] district: Two-digit US House distirict of the office the candidate is running for. Presidential, Senate and House at-large candidates will have District 00.
+        :param list[int] cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
+        :param bool federal_funds_flag: A boolean the describes if a presidential candidate has accepted federal funds. The flag will be false for House and Senate candidates.
+        :param list[int] election_year: Year of election
+        :param list[str] candidate_status: One-letter code explaining if the candidate is:         - C present candidate         - F future candidate         - N not yet a candidate         - P prior candidate
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param str year: See records pertaining to a particular election year. The list of election years is based on a candidate filing a statement of candidacy (F2) for that year.
+        :param list[str] party: Three-letter code for the party affiliated with a candidate or committee. For example, DEM for Democratic Party and REP for Republican Party.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] office: Federal office candidate runs for: H, S or P
+        :param bool has_raised_funds: A boolean that describes if a candidate's committee has ever received any receipts for their campaign for this particular office. (Candidates have separate candidate IDs for each office.)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateDetailPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'committee_id',
+            'sort_hide_null',
+            'incumbent_challenge',
+            'name',
+            'page',
+            'state',
+            'district',
+            'cycle',
+            'federal_funds_flag',
+            'election_year',
+            'candidate_status',
+            'sort_null_only',
+            'per_page',
+            'sort',
+            'year',
+            'party',
+            'sort_nulls_last',
+            'office',
+            'has_raised_funds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_candidates_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_candidates_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_candidates_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'incumbent_challenge' in local_var_params and local_var_params['incumbent_challenge'] is not None:  # noqa: E501
+            query_params.append(('incumbent_challenge', local_var_params['incumbent_challenge']))  # noqa: E501
+            collection_formats['incumbent_challenge'] = 'multi'  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+            collection_formats['name'] = 'multi'  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'state' in local_var_params and local_var_params['state'] is not None:  # noqa: E501
+            query_params.append(('state', local_var_params['state']))  # noqa: E501
+            collection_formats['state'] = 'multi'  # noqa: E501
+        if 'district' in local_var_params and local_var_params['district'] is not None:  # noqa: E501
+            query_params.append(('district', local_var_params['district']))  # noqa: E501
+            collection_formats['district'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'federal_funds_flag' in local_var_params and local_var_params['federal_funds_flag'] is not None:  # noqa: E501
+            query_params.append(('federal_funds_flag', local_var_params['federal_funds_flag']))  # noqa: E501
+        if 'election_year' in local_var_params and local_var_params['election_year'] is not None:  # noqa: E501
+            query_params.append(('election_year', local_var_params['election_year']))  # noqa: E501
+            collection_formats['election_year'] = 'multi'  # noqa: E501
+        if 'candidate_status' in local_var_params and local_var_params['candidate_status'] is not None:  # noqa: E501
+            query_params.append(('candidate_status', local_var_params['candidate_status']))  # noqa: E501
+            collection_formats['candidate_status'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'year' in local_var_params and local_var_params['year'] is not None:  # noqa: E501
+            query_params.append(('year', local_var_params['year']))  # noqa: E501
+        if 'party' in local_var_params and local_var_params['party'] is not None:  # noqa: E501
+            query_params.append(('party', local_var_params['party']))  # noqa: E501
+            collection_formats['party'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'office' in local_var_params and local_var_params['office'] is not None:  # noqa: E501
+            query_params.append(('office', local_var_params['office']))  # noqa: E501
+            collection_formats['office'] = 'multi'  # noqa: E501
+        if 'has_raised_funds' in local_var_params and local_var_params['has_raised_funds'] is not None:  # noqa: E501
+            query_params.append(('has_raised_funds', local_var_params['has_raised_funds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/candidates/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateDetailPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_candidates_history_cycle_get(self, api_key, cycle, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_history_cycle_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_history_cycle_get(api_key, cycle, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_candidates_history_cycle_get_with_http_info(api_key, cycle, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_candidates_history_cycle_get_with_http_info(self, api_key, cycle, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_history_cycle_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_history_cycle_get_with_http_info(api_key, cycle, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param int cycle:  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'cycle',
+            'committee_id',
+            'sort_hide_null',
+            'election_full',
+            'sort_null_only',
+            'per_page',
+            'sort_nulls_last',
+            'sort',
+            'page'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_candidates_history_cycle_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_candidates_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'cycle' is set
+        if self.api_client.client_side_validation and ('cycle' not in local_var_params or  # noqa: E501
+                                                        local_var_params['cycle'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `cycle` when calling `committee_committee_id_candidates_history_cycle_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_candidates_history_cycle_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'cycle' in local_var_params:
+            path_params['cycle'] = local_var_params['cycle']  # noqa: E501
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/candidates/history/{cycle}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def committee_committee_id_candidates_history_get(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_history_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_history_get(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: CandidateHistoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.committee_committee_id_candidates_history_get_with_http_info(api_key, committee_id, **kwargs)  # noqa: E501
+
+    def committee_committee_id_candidates_history_get_with_http_info(self, api_key, committee_id, **kwargs):  # noqa: E501
+        """committee_committee_id_candidates_history_get  # noqa: E501
+
+         Find out a candidate's characteristics over time. This is particularly useful if the candidate runs for the same office in different districts or you want to know more about a candidate's previous races.  This information is organized by `candidate_id`, so it won't help you find a candidate who ran for different offices over time; candidates get a new ID for each office.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.committee_committee_id_candidates_history_get_with_http_info(api_key, committee_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (required)
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool election_full: `True` indicates that full election period of a candidate. `False` indicates that two year election cycle.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param int page: For paginating through results, starting at page 1
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(CandidateHistoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'committee_id',
+            'sort_hide_null',
+            'election_full',
+            'sort_null_only',
+            'per_page',
+            'sort_nulls_last',
+            'sort',
+            'page'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method committee_committee_id_candidates_history_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `committee_committee_id_candidates_history_get`')  # noqa: E501
+        # verify the required parameter 'committee_id' is set
+        if self.api_client.client_side_validation and ('committee_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['committee_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `committee_id` when calling `committee_committee_id_candidates_history_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'committee_id' in local_var_params:
+            path_params['committee_id'] = local_var_params['committee_id']  # noqa: E501
+
+        query_params = []
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'election_full' in local_var_params and local_var_params['election_full'] is not None:  # noqa: E501
+            query_params.append(('election_full', local_var_params['election_full']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/committee/{committee_id}/candidates/history/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CandidateHistoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
