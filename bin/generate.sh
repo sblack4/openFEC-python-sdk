@@ -9,7 +9,7 @@ input_spec="https://api.open.fec.gov/swagger/"
 openapi-generator generate \
     --api-package openfec_sdk \
     --config config.json \
-    --generator-name python-experimental \
+    --generator-name python \
     --input-spec "${input_spec}" \
     --minimal-update
 
