@@ -10,7 +10,8 @@ openapi-generator generate \
     --api-package openfec_sdk \
     --config config.json \
     --generator-name python-experimental \
-    --input-spec "${input_spec}"
+    --input-spec "${input_spec}" \
+    --minimal-update
 
 mv test/test_* test/unit
 mv README.md docs/
