@@ -1,4 +1,4 @@
-# InlineResponseDefault1CommissionVotes
+# inline_response_default1_commission_votes.InlineResponseDefault1CommissionVotes
 
 ## Properties
 Name | Type | Description | Notes

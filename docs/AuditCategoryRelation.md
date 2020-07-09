@@ -1,4 +1,4 @@
-# AuditCategoryRelation
+# audit_category_relation.AuditCategoryRelation
 
 ## Properties
 Name | Type | Description | Notes

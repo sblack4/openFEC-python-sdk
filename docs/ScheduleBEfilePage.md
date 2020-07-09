@@ -1,9 +1,9 @@
-# ScheduleBEfilePage
+# schedule_b_efile_page.ScheduleBEfilePage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pagination** | [**OffsetInfo**](OffsetInfo.md) |  | [optional]
-**results** | [**list[ScheduleBEfile]**](ScheduleBEfile.md) |  | [optional]
+**pagination** | [**offset_info.OffsetInfo**](OffsetInfo.md) |  | [optional]
+**results** | [**[schedule_b_efile.ScheduleBEfile]**](ScheduleBEfile.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

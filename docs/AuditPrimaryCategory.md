@@ -1,4 +1,4 @@
-# AuditPrimaryCategory
+# audit_primary_category.AuditPrimaryCategory
 
 ## Properties
 Name | Type | Description | Notes

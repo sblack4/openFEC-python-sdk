@@ -1,4 +1,4 @@
-# InlineResponseDefault1AdminFines
+# inline_response_default1_admin_fines.InlineResponseDefault1AdminFines
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 **challenge_outcome** | **str** |  | [optional]
 **challenge_receipt_date** | **date** |  | [optional]
 **check_amount** | **float** |  | [optional]
-**commission_votes** | [**list[InlineResponseDefault1CommissionVotes]**](InlineResponseDefault1CommissionVotes.md) |  | [optional]
+**commission_votes** | [**[inline_response_default1_commission_votes.InlineResponseDefault1CommissionVotes]**](InlineResponseDefault1CommissionVotes.md) |  | [optional]
 **committee_id** | **str** |  | [optional]
 **doc_id** | **str** |  | [optional]
-**document_highlights** | **object** |  | [optional]
-**documents** | [**list[InlineResponseDefault1Documents]**](InlineResponseDefault1Documents.md) |  | [optional]
+**document_highlights** | **bool, date, datetime, dict, float, int, list, str** |  | [optional]
+**documents** | [**[inline_response_default1_documents.InlineResponseDefault1Documents]**](InlineResponseDefault1Documents.md) |  | [optional]
 **final_determination_amount** | **float** |  | [optional]
 **final_determination_date** | **date** |  | [optional]
-**highlights** | **list[str]** |  | [optional]
+**highlights** | **[str]** |  | [optional]
 **name** | **str** |  | [optional]
 **no** | **str** |  | [optional]
 **petition_court_decision_date** | **date** |  | [optional]

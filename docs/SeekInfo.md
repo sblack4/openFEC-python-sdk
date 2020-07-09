@@ -1,4 +1,4 @@
-# SeekInfo
+# seek_info.SeekInfo
 
 ## Properties
 Name | Type | Description | Notes
