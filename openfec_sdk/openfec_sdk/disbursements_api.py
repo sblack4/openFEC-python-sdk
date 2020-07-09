@@ -13,32 +13,15 @@
 from __future__ import absolute_import
 
 import re  # noqa: F401
-import sys  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
 
 from openfec_sdk.api_client import ApiClient
-from openfec_sdk.exceptions import (
+from openfec_sdk.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
-from openfec_sdk.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    int,
-    none_type,
-    str,
-    validate_and_convert_types
-)
-from openfec_sdk.models import schedule_b_by_purpose_page
-from openfec_sdk.models import schedule_b_by_recipient_page
-from openfec_sdk.models import schedule_b_by_recipient_id_page
-from openfec_sdk.models import schedule_b_efile_page
-from openfec_sdk.models import schedule_b_page
 
 
 class DisbursementsApi(object):
@@ -53,1650 +36,1203 @@ class DisbursementsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __schedules_schedule_b_by_purpose_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_by_purpose_get  # noqa: E501
+    def schedules_schedule_b_by_purpose_get(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_purpose_get  # noqa: E501
 
-             Schedule B disbursements aggregated by disbursement purpose category. To avoid double counting, memoed items are not included. Purpose is a combination of transaction codes, category codes and disbursement description. See the `disbursement_purpose` sql function within the migrations for more details.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_by_purpose_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
+         Schedule B disbursements aggregated by disbursement purpose category. To avoid double counting, memoed items are not included. Purpose is a combination of transaction codes, category codes and disbursement description. See the `disbursement_purpose` sql function within the migrations for more details.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_purpose_get(api_key, async_req=True)
+        >>> result = thread.get()
 
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                purpose ([str]): Disbursement purpose category. [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_by_purpose_page.ScheduleBByPurposePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_by_purpose_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_by_purpose_page.ScheduleBByPurposePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/by_purpose/',
-                'operation_id': 'schedules_schedule_b_by_purpose_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'purpose',
-                    'committee_id',
-                    'page',
-                    'sort_nulls_last',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'purpose':
-                        ([str],),
-                    'committee_id':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'purpose': 'purpose',
-                    'committee_id': 'committee_id',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'purpose': 'query',
-                    'committee_id': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'purpose': 'multi',
-                    'committee_id': 'multi',
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_by_purpose_get
-        )
-
-        def __schedules_schedule_b_by_recipient_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_by_recipient_get  # noqa: E501
-
-             Schedule B disbursements aggregated by recipient name. To avoid double counting, memoed items are not included.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_by_recipient_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_by_recipient_page.ScheduleBByRecipientPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_by_recipient_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_by_recipient_page.ScheduleBByRecipientPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/by_recipient/',
-                'operation_id': 'schedules_schedule_b_by_recipient_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'recipient_name',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'committee_id',
-                    'page',
-                    'sort_nulls_last',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'recipient_name':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'committee_id':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'recipient_name': 'recipient_name',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'committee_id': 'committee_id',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'recipient_name': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'committee_id': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'recipient_name': 'multi',
-                    'committee_id': 'multi',
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_by_recipient_get
-        )
-
-        def __schedules_schedule_b_by_recipient_id_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_by_recipient_id_get  # noqa: E501
-
-             Schedule B disbursements aggregated by recipient committee ID, if applicable. To avoid double counting, memoed items are not included.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_by_recipient_id_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str, none_type): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'null'
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                recipient_id ([str]): The FEC identifier should be represented here if the entity receiving the disbursement is registered with the FEC.. [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                cycle ([int]):  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_by_recipient_id_page.ScheduleBByRecipientIDPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_by_recipient_id_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_by_recipient_id_page.ScheduleBByRecipientIDPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/by_recipient_id/',
-                'operation_id': 'schedules_schedule_b_by_recipient_id_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'committee_id',
-                    'recipient_id',
-                    'page',
-                    'sort_nulls_last',
-                    'cycle',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str, none_type,),
-                    'committee_id':
-                        ([str],),
-                    'recipient_id':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'cycle':
-                        ([int],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'committee_id': 'committee_id',
-                    'recipient_id': 'recipient_id',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'cycle': 'cycle',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'committee_id': 'query',
-                    'recipient_id': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'cycle': 'query',
-                },
-                'collection_format_map': {
-                    'committee_id': 'multi',
-                    'recipient_id': 'multi',
-                    'cycle': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_by_recipient_id_get
-        )
-
-        def __schedules_schedule_b_efile_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_efile_get  # noqa: E501
-
-             Efiling endpoints provide real-time campaign finance data received from electronic filers. Efiling endpoints only contain the most recent four months of data and don't contain the processed and coded data that you can find on other endpoints.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_efile_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                min_amount (str): Filter for all amounts less than a value.. [optional]
-                max_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the         &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index         of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                min_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the         &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index         of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                recipient_state ([str]): State of recipient. [optional]
-                disbursement_description ([str]): Description of disbursement. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_efile_page.ScheduleBEfilePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_efile_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_efile_page.ScheduleBEfilePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/efile/',
-                'operation_id': 'schedules_schedule_b_efile_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'image_number',
-                    'per_page',
-                    'max_amount',
-                    'sort',
-                    'sort_null_only',
-                    'page',
-                    'committee_id',
-                    'min_amount',
-                    'max_date',
-                    'recipient_city',
-                    'sort_nulls_last',
-                    'min_date',
-                    'recipient_state',
-                    'disbursement_description',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'max_date',
-                    'min_date',
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'image_number':
-                        ([str],),
-                    'per_page':
-                        (int,),
-                    'max_amount':
-                        (str,),
-                    'sort':
-                        (str,),
-                    'sort_null_only':
-                        (bool,),
-                    'page':
-                        (int,),
-                    'committee_id':
-                        ([str],),
-                    'min_amount':
-                        (str,),
-                    'max_date':
-                        (date, none_type,),
-                    'recipient_city':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'min_date':
-                        (date, none_type,),
-                    'recipient_state':
-                        ([str],),
-                    'disbursement_description':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'image_number': 'image_number',
-                    'per_page': 'per_page',
-                    'max_amount': 'max_amount',
-                    'sort': 'sort',
-                    'sort_null_only': 'sort_null_only',
-                    'page': 'page',
-                    'committee_id': 'committee_id',
-                    'min_amount': 'min_amount',
-                    'max_date': 'max_date',
-                    'recipient_city': 'recipient_city',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'min_date': 'min_date',
-                    'recipient_state': 'recipient_state',
-                    'disbursement_description': 'disbursement_description',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'image_number': 'query',
-                    'per_page': 'query',
-                    'max_amount': 'query',
-                    'sort': 'query',
-                    'sort_null_only': 'query',
-                    'page': 'query',
-                    'committee_id': 'query',
-                    'min_amount': 'query',
-                    'max_date': 'query',
-                    'recipient_city': 'query',
-                    'sort_nulls_last': 'query',
-                    'min_date': 'query',
-                    'recipient_state': 'query',
-                    'disbursement_description': 'query',
-                },
-                'collection_format_map': {
-                    'image_number': 'multi',
-                    'committee_id': 'multi',
-                    'recipient_city': 'multi',
-                    'recipient_state': 'multi',
-                    'disbursement_description': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_efile_get
-        )
-
-        def __schedules_schedule_b_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_get  # noqa: E501
-
-             Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                max_image_number (str): [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
-                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                min_image_number (str): [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                min_date (date): Minimum date. [optional]
-                recipient_state ([str]): State of recipient. [optional]
-                disbursement_description ([str]): Description of disbursement. [optional]
-                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
-                last_index (int, none_type): Index of last result from previous page. [optional]
-                max_date (date): Maximum date. [optional]
-                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
-                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_page.ScheduleBPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_page.ScheduleBPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/',
-                'operation_id': 'schedules_schedule_b_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'last_disbursement_amount',
-                    'sort_hide_null',
-                    'spender_committee_designation',
-                    'max_image_number',
-                    'image_number',
-                    'disbursement_purpose_category',
-                    'spender_committee_org_type',
-                    'min_image_number',
-                    'committee_id',
-                    'spender_committee_type',
-                    'line_number',
-                    'min_amount',
-                    'recipient_city',
-                    'min_date',
-                    'recipient_state',
-                    'disbursement_description',
-                    'two_year_transaction_period',
-                    'recipient_name',
-                    'sort_null_only',
-                    'per_page',
-                    'max_amount',
-                    'sort',
-                    'last_index',
-                    'max_date',
-                    'recipient_committee_id',
-                    'last_disbursement_date',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'last_disbursement_amount',
-                    'last_index',
-                    'last_disbursement_date',
-                ],
-                'enum': [
-                    'spender_committee_designation',
-                    'spender_committee_org_type',
-                    'spender_committee_type',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('spender_committee_designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                    ('spender_committee_org_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
-                    },
-                    ('spender_committee_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'D': 'D',
-                        'E': 'E',
-                        'H': 'H',
-                        'I': 'I',
-                        'N': 'N',
-                        'O': 'O',
-                        'P': 'P',
-                        'Q': 'Q',
-                        'S': 'S',
-                        'U': 'U',
-                        'V': 'V',
-                        'W': 'W',
-                        'X': 'X',
-                        'Y': 'Y',
-                        'Z': 'Z'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'last_disbursement_amount':
-                        (float, none_type,),
-                    'sort_hide_null':
-                        (bool,),
-                    'spender_committee_designation':
-                        ([str],),
-                    'max_image_number':
-                        (str,),
-                    'image_number':
-                        ([str],),
-                    'disbursement_purpose_category':
-                        ([str],),
-                    'spender_committee_org_type':
-                        ([str],),
-                    'min_image_number':
-                        (str,),
-                    'committee_id':
-                        ([str],),
-                    'spender_committee_type':
-                        ([str],),
-                    'line_number':
-                        (str,),
-                    'min_amount':
-                        (str,),
-                    'recipient_city':
-                        ([str],),
-                    'min_date':
-                        (date,),
-                    'recipient_state':
-                        ([str],),
-                    'disbursement_description':
-                        ([str],),
-                    'two_year_transaction_period':
-                        ([int],),
-                    'recipient_name':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'max_amount':
-                        (str,),
-                    'sort':
-                        (str,),
-                    'last_index':
-                        (int, none_type,),
-                    'max_date':
-                        (date,),
-                    'recipient_committee_id':
-                        ([str],),
-                    'last_disbursement_date':
-                        (date, none_type,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'last_disbursement_amount': 'last_disbursement_amount',
-                    'sort_hide_null': 'sort_hide_null',
-                    'spender_committee_designation': 'spender_committee_designation',
-                    'max_image_number': 'max_image_number',
-                    'image_number': 'image_number',
-                    'disbursement_purpose_category': 'disbursement_purpose_category',
-                    'spender_committee_org_type': 'spender_committee_org_type',
-                    'min_image_number': 'min_image_number',
-                    'committee_id': 'committee_id',
-                    'spender_committee_type': 'spender_committee_type',
-                    'line_number': 'line_number',
-                    'min_amount': 'min_amount',
-                    'recipient_city': 'recipient_city',
-                    'min_date': 'min_date',
-                    'recipient_state': 'recipient_state',
-                    'disbursement_description': 'disbursement_description',
-                    'two_year_transaction_period': 'two_year_transaction_period',
-                    'recipient_name': 'recipient_name',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'max_amount': 'max_amount',
-                    'sort': 'sort',
-                    'last_index': 'last_index',
-                    'max_date': 'max_date',
-                    'recipient_committee_id': 'recipient_committee_id',
-                    'last_disbursement_date': 'last_disbursement_date',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'last_disbursement_amount': 'query',
-                    'sort_hide_null': 'query',
-                    'spender_committee_designation': 'query',
-                    'max_image_number': 'query',
-                    'image_number': 'query',
-                    'disbursement_purpose_category': 'query',
-                    'spender_committee_org_type': 'query',
-                    'min_image_number': 'query',
-                    'committee_id': 'query',
-                    'spender_committee_type': 'query',
-                    'line_number': 'query',
-                    'min_amount': 'query',
-                    'recipient_city': 'query',
-                    'min_date': 'query',
-                    'recipient_state': 'query',
-                    'disbursement_description': 'query',
-                    'two_year_transaction_period': 'query',
-                    'recipient_name': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'max_amount': 'query',
-                    'sort': 'query',
-                    'last_index': 'query',
-                    'max_date': 'query',
-                    'recipient_committee_id': 'query',
-                    'last_disbursement_date': 'query',
-                },
-                'collection_format_map': {
-                    'spender_committee_designation': 'multi',
-                    'image_number': 'multi',
-                    'disbursement_purpose_category': 'multi',
-                    'spender_committee_org_type': 'multi',
-                    'committee_id': 'multi',
-                    'spender_committee_type': 'multi',
-                    'recipient_city': 'multi',
-                    'recipient_state': 'multi',
-                    'disbursement_description': 'multi',
-                    'two_year_transaction_period': 'multi',
-                    'recipient_name': 'multi',
-                    'recipient_committee_id': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_get
-        )
-
-        def __schedules_schedule_b_sub_id_get(
-            self,
-            sub_id,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """schedules_schedule_b_sub_id_get  # noqa: E501
-
-             Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.schedules_schedule_b_sub_id_get(sub_id, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                sub_id (str):
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                last_disbursement_amount (float, none_type): When sorting by &#x60;disbursement_amount&#x60;, this is populated with the &#x60;disbursement_amount&#x60; of the last result.  However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                spender_committee_designation ([str]): The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC . [optional]
-                max_image_number (str): [optional]
-                image_number ([str]): The image number of the page where the schedule item is reported. [optional]
-                disbursement_purpose_category ([str]): Disbursement purpose category. [optional]
-                spender_committee_org_type ([str]): The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock . [optional]
-                min_image_number (str): [optional]
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                spender_committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                line_number (str): Filter for form and line number using the following format: &#x60;FORM-LINENUMBER&#x60;.  For example an argument such as &#x60;F3X-16&#x60; would filter down to all entries from form &#x60;F3X&#x60; line number &#x60;16&#x60;.. [optional]
-                min_amount (str): Filter for all amounts greater than a value.. [optional]
-                recipient_city ([str]): City of recipient. [optional]
-                min_date (date): Minimum date. [optional]
-                recipient_state ([str]): State of recipient. [optional]
-                disbursement_description ([str]): Description of disbursement. [optional]
-                two_year_transaction_period ([int]):  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle. . [optional]
-                recipient_name ([str]): Name of the entity receiving the disbursement. [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                max_amount (str): Filter for all amounts less than a value.. [optional]
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of '-disbursement_date'
-                last_index (int, none_type): Index of last result from previous page. [optional]
-                max_date (date): Maximum date. [optional]
-                recipient_committee_id ([str]): The FEC identifier should be represented here if the contributor is registered with the FEC.. [optional]
-                last_disbursement_date (date, none_type): When sorting by &#x60;disbursement_date&#x60;, this is populated with the &#x60;disbursement_date&#x60; of the last result. However, you will need to pass the index of that last result to &#x60;last_index&#x60; to get the next page.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                schedule_b_page.ScheduleBPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['sub_id'] = \
-                sub_id
-            return self.call_with_http_info(**kwargs)
-
-        self.schedules_schedule_b_sub_id_get = Endpoint(
-            settings={
-                'response_type': (schedule_b_page.ScheduleBPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/schedules/schedule_b/{sub_id}/',
-                'operation_id': 'schedules_schedule_b_sub_id_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sub_id',
-                    'last_disbursement_amount',
-                    'sort_hide_null',
-                    'spender_committee_designation',
-                    'max_image_number',
-                    'image_number',
-                    'disbursement_purpose_category',
-                    'spender_committee_org_type',
-                    'min_image_number',
-                    'committee_id',
-                    'spender_committee_type',
-                    'line_number',
-                    'min_amount',
-                    'recipient_city',
-                    'min_date',
-                    'recipient_state',
-                    'disbursement_description',
-                    'two_year_transaction_period',
-                    'recipient_name',
-                    'sort_null_only',
-                    'per_page',
-                    'max_amount',
-                    'sort',
-                    'last_index',
-                    'max_date',
-                    'recipient_committee_id',
-                    'last_disbursement_date',
-                ],
-                'required': [
-                    'api_key',
-                    'sub_id',
-                ],
-                'nullable': [
-                    'last_disbursement_amount',
-                    'last_index',
-                    'last_disbursement_date',
-                ],
-                'enum': [
-                    'spender_committee_designation',
-                    'spender_committee_org_type',
-                    'spender_committee_type',
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                    ('spender_committee_designation',): {
-
-                        'EMPTY': '',
-                        'A': 'A',
-                        'J': 'J',
-                        'P': 'P',
-                        'U': 'U',
-                        'B': 'B',
-                        'D': 'D'
-                    },
-                    ('spender_committee_org_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'L': 'L',
-                        'M': 'M',
-                        'T': 'T',
-                        'V': 'V',
-                        'W': 'W'
-                    },
-                    ('spender_committee_type',): {
-
-                        'EMPTY': '',
-                        'C': 'C',
-                        'D': 'D',
-                        'E': 'E',
-                        'H': 'H',
-                        'I': 'I',
-                        'N': 'N',
-                        'O': 'O',
-                        'P': 'P',
-                        'Q': 'Q',
-                        'S': 'S',
-                        'U': 'U',
-                        'V': 'V',
-                        'W': 'W',
-                        'X': 'X',
-                        'Y': 'Y',
-                        'Z': 'Z'
-                    },
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sub_id':
-                        (str,),
-                    'last_disbursement_amount':
-                        (float, none_type,),
-                    'sort_hide_null':
-                        (bool,),
-                    'spender_committee_designation':
-                        ([str],),
-                    'max_image_number':
-                        (str,),
-                    'image_number':
-                        ([str],),
-                    'disbursement_purpose_category':
-                        ([str],),
-                    'spender_committee_org_type':
-                        ([str],),
-                    'min_image_number':
-                        (str,),
-                    'committee_id':
-                        ([str],),
-                    'spender_committee_type':
-                        ([str],),
-                    'line_number':
-                        (str,),
-                    'min_amount':
-                        (str,),
-                    'recipient_city':
-                        ([str],),
-                    'min_date':
-                        (date,),
-                    'recipient_state':
-                        ([str],),
-                    'disbursement_description':
-                        ([str],),
-                    'two_year_transaction_period':
-                        ([int],),
-                    'recipient_name':
-                        ([str],),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'max_amount':
-                        (str,),
-                    'sort':
-                        (str,),
-                    'last_index':
-                        (int, none_type,),
-                    'max_date':
-                        (date,),
-                    'recipient_committee_id':
-                        ([str],),
-                    'last_disbursement_date':
-                        (date, none_type,),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sub_id': 'sub_id',
-                    'last_disbursement_amount': 'last_disbursement_amount',
-                    'sort_hide_null': 'sort_hide_null',
-                    'spender_committee_designation': 'spender_committee_designation',
-                    'max_image_number': 'max_image_number',
-                    'image_number': 'image_number',
-                    'disbursement_purpose_category': 'disbursement_purpose_category',
-                    'spender_committee_org_type': 'spender_committee_org_type',
-                    'min_image_number': 'min_image_number',
-                    'committee_id': 'committee_id',
-                    'spender_committee_type': 'spender_committee_type',
-                    'line_number': 'line_number',
-                    'min_amount': 'min_amount',
-                    'recipient_city': 'recipient_city',
-                    'min_date': 'min_date',
-                    'recipient_state': 'recipient_state',
-                    'disbursement_description': 'disbursement_description',
-                    'two_year_transaction_period': 'two_year_transaction_period',
-                    'recipient_name': 'recipient_name',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'max_amount': 'max_amount',
-                    'sort': 'sort',
-                    'last_index': 'last_index',
-                    'max_date': 'max_date',
-                    'recipient_committee_id': 'recipient_committee_id',
-                    'last_disbursement_date': 'last_disbursement_date',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sub_id': 'path',
-                    'last_disbursement_amount': 'query',
-                    'sort_hide_null': 'query',
-                    'spender_committee_designation': 'query',
-                    'max_image_number': 'query',
-                    'image_number': 'query',
-                    'disbursement_purpose_category': 'query',
-                    'spender_committee_org_type': 'query',
-                    'min_image_number': 'query',
-                    'committee_id': 'query',
-                    'spender_committee_type': 'query',
-                    'line_number': 'query',
-                    'min_amount': 'query',
-                    'recipient_city': 'query',
-                    'min_date': 'query',
-                    'recipient_state': 'query',
-                    'disbursement_description': 'query',
-                    'two_year_transaction_period': 'query',
-                    'recipient_name': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'max_amount': 'query',
-                    'sort': 'query',
-                    'last_index': 'query',
-                    'max_date': 'query',
-                    'recipient_committee_id': 'query',
-                    'last_disbursement_date': 'query',
-                },
-                'collection_format_map': {
-                    'spender_committee_designation': 'multi',
-                    'image_number': 'multi',
-                    'disbursement_purpose_category': 'multi',
-                    'spender_committee_org_type': 'multi',
-                    'committee_id': 'multi',
-                    'spender_committee_type': 'multi',
-                    'recipient_city': 'multi',
-                    'recipient_state': 'multi',
-                    'disbursement_description': 'multi',
-                    'two_year_transaction_period': 'multi',
-                    'recipient_name': 'multi',
-                    'recipient_committee_id': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__schedules_schedule_b_sub_id_get
-        )
-
-
-class Endpoint(object):
-    def __init__(self, settings=None, params_map=None, root_map=None,
-                 headers_map=None, api_client=None, callable=None):
-        """Creates an endpoint
-
-        Args:
-            settings (dict): see below key value pairs
-                'response_type' (tuple/None): response type
-                'auth' (list): a list of auth type keys
-                'endpoint_path' (str): the endpoint path
-                'operation_id' (str): endpoint string identifier
-                'http_method' (str): POST/PUT/PATCH/GET etc
-                'servers' (list): list of str servers that this endpoint is at
-            params_map (dict): see below key value pairs
-                'all' (list): list of str endpoint parameter names
-                'required' (list): list of required parameter names
-                'nullable' (list): list of nullable parameter names
-                'enum' (list): list of parameters with enum values
-                'validation' (list): list of parameters with validations
-            root_map
-                'validations' (dict): the dict mapping endpoint parameter tuple
-                    paths to their validation dictionaries
-                'allowed_values' (dict): the dict mapping endpoint parameter
-                    tuple paths to their allowed_values (enum) dictionaries
-                'openapi_types' (dict): param_name to openapi type
-                'attribute_map' (dict): param_name to camelCase name
-                'location_map' (dict): param_name to  'body', 'file', 'form',
-                    'header', 'path', 'query'
-                collection_format_map (dict): param_name to `csv` etc.
-            headers_map (dict): see below key value pairs
-                'accept' (list): list of Accept header strings
-                'content_type' (list): list of Content-Type header strings
-            api_client (ApiClient) api client instance
-            callable (function): the function which is invoked when the
-                Endpoint is called
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] purpose: Disbursement purpose category
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBByPurposePage
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        self.settings = settings
-        self.params_map = params_map
-        self.params_map['all'].extend([
-            'async_req',
-            '_host_index',
-            '_preload_content',
-            '_request_timeout',
-            '_return_http_data_only',
-            '_check_input_type',
-            '_check_return_type'
-        ])
-        self.params_map['nullable'].extend(['_request_timeout'])
-        self.validations = root_map['validations']
-        self.allowed_values = root_map['allowed_values']
-        self.openapi_types = root_map['openapi_types']
-        extra_types = {
-            'async_req': (bool,),
-            '_host_index': (int,),
-            '_preload_content': (bool,),
-            '_request_timeout': (none_type, int, (int,), [int]),
-            '_return_http_data_only': (bool,),
-            '_check_input_type': (bool,),
-            '_check_return_type': (bool,)
-        }
-        self.openapi_types.update(extra_types)
-        self.attribute_map = root_map['attribute_map']
-        self.location_map = root_map['location_map']
-        self.collection_format_map = root_map['collection_format_map']
-        self.headers_map = headers_map
-        self.api_client = api_client
-        self.callable = callable
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_by_purpose_get_with_http_info(api_key, **kwargs)  # noqa: E501
 
-    def __validate_inputs(self, kwargs):
-        for param in self.params_map['enum']:
-            if param in kwargs:
-                check_allowed_values(
-                    self.allowed_values,
-                    (param,),
-                    kwargs[param]
-                )
+    def schedules_schedule_b_by_purpose_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_purpose_get  # noqa: E501
 
-        for param in self.params_map['validation']:
-            if param in kwargs:
-                check_validations(
-                    self.validations,
-                    (param,),
-                    kwargs[param]
-                )
+         Schedule B disbursements aggregated by disbursement purpose category. To avoid double counting, memoed items are not included. Purpose is a combination of transaction codes, category codes and disbursement description. See the `disbursement_purpose` sql function within the migrations for more details.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_purpose_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
 
-        if kwargs['_check_input_type'] is False:
-            return
-
-        for key, value in six.iteritems(kwargs):
-            fixed_val = validate_and_convert_types(
-                value,
-                self.openapi_types[key],
-                [key],
-                False,
-                kwargs['_check_input_type'],
-                configuration=self.api_client.configuration
-            )
-            kwargs[key] = fixed_val
-
-    def __gather_params(self, kwargs):
-        params = {
-            'body': None,
-            'collection_format': {},
-            'file': {},
-            'form': [],
-            'header': {},
-            'path': {},
-            'query': []
-        }
-
-        for param_name, param_value in six.iteritems(kwargs):
-            param_location = self.location_map.get(param_name)
-            if param_location is None:
-                continue
-            if param_location:
-                if param_location == 'body':
-                    params['body'] = param_value
-                    continue
-                base_name = self.attribute_map[param_name]
-                if (param_location == 'form' and
-                        self.openapi_types[param_name] == (file_type,)):
-                    params['file'][param_name] = [param_value]
-                elif (param_location == 'form' and
-                        self.openapi_types[param_name] == ([file_type],)):
-                    # param_value is already a list
-                    params['file'][param_name] = param_value
-                elif param_location in {'form', 'query'}:
-                    param_value_full = (base_name, param_value)
-                    params[param_location].append(param_value_full)
-                if param_location not in {'form', 'query'}:
-                    params[param_location][base_name] = param_value
-                collection_format = self.collection_format_map.get(param_name)
-                if collection_format:
-                    params['collection_format'][base_name] = collection_format
-
-        return params
-
-    def __call__(self, *args, **kwargs):
-        """ This method is invoked when endpoints are called
-        Example:
-        pet_api = PetApi()
-        pet_api.add_pet  # this is an instance of the class Endpoint
-        pet_api.add_pet()  # this invokes pet_api.add_pet.__call__()
-        which then invokes the callable functions stored in that endpoint at
-        pet_api.add_pet.callable or self.callable in this class
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] purpose: Disbursement purpose category
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBByPurposePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        return self.callable(self, *args, **kwargs)
 
-    def call_with_http_info(self, **kwargs):
+        local_var_params = locals()
 
-        try:
-            _host = self.settings['servers'][kwargs['_host_index']]
-        except IndexError:
-            if self.settings['servers']:
-                raise ApiValueError(
-                    'Invalid host index. Must be 0 <= index < %s' %
-                    len(self.settings['servers'])
-                )
-            _host = None
+        all_params = [
+            'api_key',
+            'purpose',
+            'sort',
+            'sort_hide_null',
+            'per_page',
+            'sort_nulls_last',
+            'committee_id',
+            'cycle',
+            'page',
+            'sort_null_only'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, value in six.iteritems(kwargs):
-            if key not in self.params_map['all']:
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected parameter '%s'"
-                    ' to method `%s`' %
-                    (key, self.settings['operation_id'])
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_by_purpose_get' % key
                 )
-            # only throw this nullable ApiValueError if _check_input_type
-            # is False, if _check_input_type==True we catch this case
-            # in self.__validate_inputs
-            if (key not in self.params_map['nullable'] and value is None
-                    and kwargs['_check_input_type'] is False):
-                raise ApiValueError(
-                    'Value may not be None for non-nullable parameter `%s`'
-                    ' when calling `%s`' %
-                    (key, self.settings['operation_id'])
-                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_by_purpose_get`')  # noqa: E501
 
-        for key in self.params_map['required']:
-            if key not in kwargs.keys():
-                raise ApiValueError(
-                    'Missing the required parameter `%s` when calling '
-                    '`%s`' % (key, self.settings['operation_id'])
-                )
+        collection_formats = {}
 
-        self.__validate_inputs(kwargs)
+        path_params = {}
 
-        params = self.__gather_params(kwargs)
+        query_params = []
+        if 'purpose' in local_var_params and local_var_params['purpose'] is not None:  # noqa: E501
+            query_params.append(('purpose', local_var_params['purpose']))  # noqa: E501
+            collection_formats['purpose'] = 'multi'  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
 
-        accept_headers_list = self.headers_map['accept']
-        if accept_headers_list:
-            params['header']['Accept'] = self.api_client.select_header_accept(
-                accept_headers_list)
+        header_params = {}
 
-        content_type_headers_list = self.headers_map['content_type']
-        if content_type_headers_list:
-            header_list = self.api_client.select_header_content_type(
-                content_type_headers_list)
-            params['header']['Content-Type'] = header_list
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
 
         return self.api_client.call_api(
-            self.settings['endpoint_path'], self.settings['http_method'],
-            params['path'],
-            params['query'],
-            params['header'],
-            body=params['body'],
-            post_params=params['form'],
-            files=params['file'],
-            response_type=self.settings['response_type'],
-            auth_settings=self.settings['auth'],
-            async_req=kwargs['async_req'],
-            _check_type=kwargs['_check_return_type'],
-            _return_http_data_only=kwargs['_return_http_data_only'],
-            _preload_content=kwargs['_preload_content'],
-            _request_timeout=kwargs['_request_timeout'],
-            _host=_host,
-            collection_formats=params['collection_format'])
+            '/schedules/schedule_b/by_purpose/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBByPurposePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def schedules_schedule_b_by_recipient_get(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_recipient_get  # noqa: E501
+
+         Schedule B disbursements aggregated by recipient name. To avoid double counting, memoed items are not included.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_recipient_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBByRecipientPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_by_recipient_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def schedules_schedule_b_by_recipient_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_recipient_get  # noqa: E501
+
+         Schedule B disbursements aggregated by recipient name. To avoid double counting, memoed items are not included.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_recipient_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBByRecipientPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort',
+            'sort_hide_null',
+            'per_page',
+            'recipient_name',
+            'sort_nulls_last',
+            'committee_id',
+            'cycle',
+            'page',
+            'sort_null_only'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_by_recipient_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_by_recipient_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'recipient_name' in local_var_params and local_var_params['recipient_name'] is not None:  # noqa: E501
+            query_params.append(('recipient_name', local_var_params['recipient_name']))  # noqa: E501
+            collection_formats['recipient_name'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/schedules/schedule_b/by_recipient/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBByRecipientPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def schedules_schedule_b_by_recipient_id_get(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_recipient_id_get  # noqa: E501
+
+         Schedule B disbursements aggregated by recipient committee ID, if applicable. To avoid double counting, memoed items are not included.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_recipient_id_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[str] recipient_id: The FEC identifier should be represented here if the entity receiving the disbursement is registered with the FEC.
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBByRecipientIDPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_by_recipient_id_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def schedules_schedule_b_by_recipient_id_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_by_recipient_id_get  # noqa: E501
+
+         Schedule B disbursements aggregated by recipient committee ID, if applicable. To avoid double counting, memoed items are not included.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_by_recipient_id_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param list[str] recipient_id: The FEC identifier should be represented here if the entity receiving the disbursement is registered with the FEC.
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param list[int] cycle:  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBByRecipientIDPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort',
+            'recipient_id',
+            'per_page',
+            'sort_hide_null',
+            'sort_nulls_last',
+            'committee_id',
+            'cycle',
+            'page',
+            'sort_null_only'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_by_recipient_id_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_by_recipient_id_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'recipient_id' in local_var_params and local_var_params['recipient_id'] is not None:  # noqa: E501
+            query_params.append(('recipient_id', local_var_params['recipient_id']))  # noqa: E501
+            collection_formats['recipient_id'] = 'multi'  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/schedules/schedule_b/by_recipient_id/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBByRecipientIDPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def schedules_schedule_b_efile_get(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_efile_get  # noqa: E501
+
+         Efiling endpoints provide real-time campaign finance data received from electronic filers. Efiling endpoints only contain the most recent four months of data and don't contain the processed and coded data that you can find on other endpoints.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_efile_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] disbursement_description: Description of disbursement
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date min_date: When sorting by `disbursement_date`, this is populated with the         `disbursement_date` of the last result. However, you will need to pass the index         of that last result to `last_index` to get the next page.
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param int page: For paginating through results, starting at page 1
+        :param str min_amount: Filter for all amounts less than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param date max_date: When sorting by `disbursement_date`, this is populated with the         `disbursement_date` of the last result. However, you will need to pass the index         of that last result to `last_index` to get the next page.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBEfilePage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_efile_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def schedules_schedule_b_efile_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_efile_get  # noqa: E501
+
+         Efiling endpoints provide real-time campaign finance data received from electronic filers. Efiling endpoints only contain the most recent four months of data and don't contain the processed and coded data that you can find on other endpoints.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_efile_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] disbursement_description: Description of disbursement
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date min_date: When sorting by `disbursement_date`, this is populated with the         `disbursement_date` of the last result. However, you will need to pass the index         of that last result to `last_index` to get the next page.
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param int page: For paginating through results, starting at page 1
+        :param str min_amount: Filter for all amounts less than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param date max_date: When sorting by `disbursement_date`, this is populated with the         `disbursement_date` of the last result. However, you will need to pass the index         of that last result to `last_index` to get the next page.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBEfilePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'disbursement_description',
+            'sort',
+            'min_date',
+            'per_page',
+            'sort_hide_null',
+            'recipient_city',
+            'recipient_state',
+            'image_number',
+            'sort_nulls_last',
+            'committee_id',
+            'page',
+            'min_amount',
+            'max_amount',
+            'sort_null_only',
+            'max_date'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_efile_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_efile_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'disbursement_description' in local_var_params and local_var_params['disbursement_description'] is not None:  # noqa: E501
+            query_params.append(('disbursement_description', local_var_params['disbursement_description']))  # noqa: E501
+            collection_formats['disbursement_description'] = 'multi'  # noqa: E501
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'min_date' in local_var_params and local_var_params['min_date'] is not None:  # noqa: E501
+            query_params.append(('min_date', local_var_params['min_date']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'recipient_city' in local_var_params and local_var_params['recipient_city'] is not None:  # noqa: E501
+            query_params.append(('recipient_city', local_var_params['recipient_city']))  # noqa: E501
+            collection_formats['recipient_city'] = 'multi'  # noqa: E501
+        if 'recipient_state' in local_var_params and local_var_params['recipient_state'] is not None:  # noqa: E501
+            query_params.append(('recipient_state', local_var_params['recipient_state']))  # noqa: E501
+            collection_formats['recipient_state'] = 'multi'  # noqa: E501
+        if 'image_number' in local_var_params and local_var_params['image_number'] is not None:  # noqa: E501
+            query_params.append(('image_number', local_var_params['image_number']))  # noqa: E501
+            collection_formats['image_number'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'min_amount' in local_var_params and local_var_params['min_amount'] is not None:  # noqa: E501
+            query_params.append(('min_amount', local_var_params['min_amount']))  # noqa: E501
+        if 'max_amount' in local_var_params and local_var_params['max_amount'] is not None:  # noqa: E501
+            query_params.append(('max_amount', local_var_params['max_amount']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'max_date' in local_var_params and local_var_params['max_date'] is not None:  # noqa: E501
+            query_params.append(('max_date', local_var_params['max_date']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/schedules/schedule_b/efile/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBEfilePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def schedules_schedule_b_get(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_get  # noqa: E501
+
+         Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str min_image_number:
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date last_disbursement_date: When sorting by `disbursement_date`, this is populated with the `disbursement_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] spender_committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param float last_disbursement_amount: When sorting by `disbursement_amount`, this is populated with the `disbursement_amount` of the last result.  However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_committee_id: The FEC identifier should be represented here if the contributor is registered with the FEC.
+        :param str min_amount: Filter for all amounts greater than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param int last_index: Index of last result from previous page
+        :param list[str] spender_committee_designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] disbursement_purpose_category: Disbursement purpose category
+        :param date max_date: Maximum date
+        :param list[str] disbursement_description: Description of disbursement
+        :param list[str] spender_committee_org_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param date min_date: Minimum date
+        :param list[int] two_year_transaction_period:  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param str max_image_number:
+        :param str line_number: Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def schedules_schedule_b_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """schedules_schedule_b_get  # noqa: E501
+
+         Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str min_image_number:
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date last_disbursement_date: When sorting by `disbursement_date`, this is populated with the `disbursement_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] spender_committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param float last_disbursement_amount: When sorting by `disbursement_amount`, this is populated with the `disbursement_amount` of the last result.  However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_committee_id: The FEC identifier should be represented here if the contributor is registered with the FEC.
+        :param str min_amount: Filter for all amounts greater than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param int last_index: Index of last result from previous page
+        :param list[str] spender_committee_designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] disbursement_purpose_category: Disbursement purpose category
+        :param date max_date: Maximum date
+        :param list[str] disbursement_description: Description of disbursement
+        :param list[str] spender_committee_org_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param date min_date: Minimum date
+        :param list[int] two_year_transaction_period:  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param str max_image_number:
+        :param str line_number: Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'min_image_number',
+            'sort',
+            'last_disbursement_date',
+            'spender_committee_type',
+            'last_disbursement_amount',
+            'recipient_name',
+            'recipient_city',
+            'recipient_committee_id',
+            'min_amount',
+            'max_amount',
+            'last_index',
+            'spender_committee_designation',
+            'sort_null_only',
+            'disbursement_purpose_category',
+            'max_date',
+            'disbursement_description',
+            'spender_committee_org_type',
+            'min_date',
+            'two_year_transaction_period',
+            'sort_hide_null',
+            'per_page',
+            'recipient_state',
+            'image_number',
+            'committee_id',
+            'max_image_number',
+            'line_number'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'min_image_number' in local_var_params and local_var_params['min_image_number'] is not None:  # noqa: E501
+            query_params.append(('min_image_number', local_var_params['min_image_number']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'last_disbursement_date' in local_var_params and local_var_params['last_disbursement_date'] is not None:  # noqa: E501
+            query_params.append(('last_disbursement_date', local_var_params['last_disbursement_date']))  # noqa: E501
+        if 'spender_committee_type' in local_var_params and local_var_params['spender_committee_type'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_type', local_var_params['spender_committee_type']))  # noqa: E501
+            collection_formats['spender_committee_type'] = 'multi'  # noqa: E501
+        if 'last_disbursement_amount' in local_var_params and local_var_params['last_disbursement_amount'] is not None:  # noqa: E501
+            query_params.append(('last_disbursement_amount', local_var_params['last_disbursement_amount']))  # noqa: E501
+        if 'recipient_name' in local_var_params and local_var_params['recipient_name'] is not None:  # noqa: E501
+            query_params.append(('recipient_name', local_var_params['recipient_name']))  # noqa: E501
+            collection_formats['recipient_name'] = 'multi'  # noqa: E501
+        if 'recipient_city' in local_var_params and local_var_params['recipient_city'] is not None:  # noqa: E501
+            query_params.append(('recipient_city', local_var_params['recipient_city']))  # noqa: E501
+            collection_formats['recipient_city'] = 'multi'  # noqa: E501
+        if 'recipient_committee_id' in local_var_params and local_var_params['recipient_committee_id'] is not None:  # noqa: E501
+            query_params.append(('recipient_committee_id', local_var_params['recipient_committee_id']))  # noqa: E501
+            collection_formats['recipient_committee_id'] = 'multi'  # noqa: E501
+        if 'min_amount' in local_var_params and local_var_params['min_amount'] is not None:  # noqa: E501
+            query_params.append(('min_amount', local_var_params['min_amount']))  # noqa: E501
+        if 'max_amount' in local_var_params and local_var_params['max_amount'] is not None:  # noqa: E501
+            query_params.append(('max_amount', local_var_params['max_amount']))  # noqa: E501
+        if 'last_index' in local_var_params and local_var_params['last_index'] is not None:  # noqa: E501
+            query_params.append(('last_index', local_var_params['last_index']))  # noqa: E501
+        if 'spender_committee_designation' in local_var_params and local_var_params['spender_committee_designation'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_designation', local_var_params['spender_committee_designation']))  # noqa: E501
+            collection_formats['spender_committee_designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'disbursement_purpose_category' in local_var_params and local_var_params['disbursement_purpose_category'] is not None:  # noqa: E501
+            query_params.append(('disbursement_purpose_category', local_var_params['disbursement_purpose_category']))  # noqa: E501
+            collection_formats['disbursement_purpose_category'] = 'multi'  # noqa: E501
+        if 'max_date' in local_var_params and local_var_params['max_date'] is not None:  # noqa: E501
+            query_params.append(('max_date', local_var_params['max_date']))  # noqa: E501
+        if 'disbursement_description' in local_var_params and local_var_params['disbursement_description'] is not None:  # noqa: E501
+            query_params.append(('disbursement_description', local_var_params['disbursement_description']))  # noqa: E501
+            collection_formats['disbursement_description'] = 'multi'  # noqa: E501
+        if 'spender_committee_org_type' in local_var_params and local_var_params['spender_committee_org_type'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_org_type', local_var_params['spender_committee_org_type']))  # noqa: E501
+            collection_formats['spender_committee_org_type'] = 'multi'  # noqa: E501
+        if 'min_date' in local_var_params and local_var_params['min_date'] is not None:  # noqa: E501
+            query_params.append(('min_date', local_var_params['min_date']))  # noqa: E501
+        if 'two_year_transaction_period' in local_var_params and local_var_params['two_year_transaction_period'] is not None:  # noqa: E501
+            query_params.append(('two_year_transaction_period', local_var_params['two_year_transaction_period']))  # noqa: E501
+            collection_formats['two_year_transaction_period'] = 'multi'  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'recipient_state' in local_var_params and local_var_params['recipient_state'] is not None:  # noqa: E501
+            query_params.append(('recipient_state', local_var_params['recipient_state']))  # noqa: E501
+            collection_formats['recipient_state'] = 'multi'  # noqa: E501
+        if 'image_number' in local_var_params and local_var_params['image_number'] is not None:  # noqa: E501
+            query_params.append(('image_number', local_var_params['image_number']))  # noqa: E501
+            collection_formats['image_number'] = 'multi'  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'max_image_number' in local_var_params and local_var_params['max_image_number'] is not None:  # noqa: E501
+            query_params.append(('max_image_number', local_var_params['max_image_number']))  # noqa: E501
+        if 'line_number' in local_var_params and local_var_params['line_number'] is not None:  # noqa: E501
+            query_params.append(('line_number', local_var_params['line_number']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/schedules/schedule_b/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def schedules_schedule_b_sub_id_get(self, api_key, sub_id, **kwargs):  # noqa: E501
+        """schedules_schedule_b_sub_id_get  # noqa: E501
+
+         Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_sub_id_get(api_key, sub_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sub_id: (required)
+        :param str min_image_number:
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date last_disbursement_date: When sorting by `disbursement_date`, this is populated with the `disbursement_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] spender_committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param float last_disbursement_amount: When sorting by `disbursement_amount`, this is populated with the `disbursement_amount` of the last result.  However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_committee_id: The FEC identifier should be represented here if the contributor is registered with the FEC.
+        :param str min_amount: Filter for all amounts greater than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param int last_index: Index of last result from previous page
+        :param list[str] spender_committee_designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] disbursement_purpose_category: Disbursement purpose category
+        :param date max_date: Maximum date
+        :param list[str] disbursement_description: Description of disbursement
+        :param list[str] spender_committee_org_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param date min_date: Minimum date
+        :param list[int] two_year_transaction_period:  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param str max_image_number:
+        :param str line_number: Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ScheduleBPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.schedules_schedule_b_sub_id_get_with_http_info(api_key, sub_id, **kwargs)  # noqa: E501
+
+    def schedules_schedule_b_sub_id_get_with_http_info(self, api_key, sub_id, **kwargs):  # noqa: E501
+        """schedules_schedule_b_sub_id_get  # noqa: E501
+
+         Schedule B filings describe itemized disbursements. This data explains how committees and other filers spend their money. These figures are reported as part of forms F3, F3X and F3P.  The data is divided in two-year periods, called `two_year_transaction_period`, which is derived from the `report_year` submitted of the corresponding form. If no value is supplied, the results will default to the most recent two-year period that is named after the ending, even-numbered year.  Due to the large quantity of Schedule B filings, this endpoint is not paginated by page number. Instead, you can request the next page of results by adding the values in the `last_indexes` object from `pagination` to the URL of your last request. For example, when sorting by `disbursement_date`, you might receive a page of results with the following pagination information:  ``` pagination: {     pages: 965191,     per_page: 20,     count: 19303814,     last_indexes: {         last_index: \"230906248\",         last_disbursement_date: \"2014-07-04\"     } } ```  To fetch the next page of sorted results, append `last_index=230906248` and `last_disbursement_date=2014-07-04` to the URL.  We strongly advise paging through these results by using the sort indices (defaults to sort by disbursement date, e.g. `last_disbursement_date`), otherwise some resources may be unintentionally filtered out. This resource uses keyset pagination to improve query performance and these indices are required to properly page through this large dataset.  Note: because the Schedule B data includes many records, counts for large result sets are approximate; you will want to page through the records until no records are returned.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.schedules_schedule_b_sub_id_get_with_http_info(api_key, sub_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sub_id: (required)
+        :param str min_image_number:
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param date last_disbursement_date: When sorting by `disbursement_date`, this is populated with the `disbursement_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] spender_committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param float last_disbursement_amount: When sorting by `disbursement_amount`, this is populated with the `disbursement_amount` of the last result.  However, you will need to pass the index of that last result to `last_index` to get the next page.
+        :param list[str] recipient_name: Name of the entity receiving the disbursement
+        :param list[str] recipient_city: City of recipient
+        :param list[str] recipient_committee_id: The FEC identifier should be represented here if the contributor is registered with the FEC.
+        :param str min_amount: Filter for all amounts greater than a value.
+        :param str max_amount: Filter for all amounts less than a value.
+        :param int last_index: Index of last result from previous page
+        :param list[str] spender_committee_designation: The one-letter designation code of the organization:          - A authorized by a candidate          - J joint fundraising committee          - P principal campaign committee of a candidate          - U unauthorized          - B lobbyist/registrant PAC          - D leadership PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param list[str] disbursement_purpose_category: Disbursement purpose category
+        :param date max_date: Maximum date
+        :param list[str] disbursement_description: Description of disbursement
+        :param list[str] spender_committee_org_type: The one-letter code for the kind for organization:         - C corporation         - L labor organization         - M membership organization         - T trade association         - V cooperative         - W corporation without capital stock
+        :param date min_date: Minimum date
+        :param list[int] two_year_transaction_period:  This is a two-year period that is derived from the year a transaction took place in the Itemized Schedule A and Schedule B tables. In cases where we have the date of the transaction (contribution_receipt_date in schedules/schedule_a, disbursement_date in schedules/schedule_b) the two_year_transaction_period is named after the ending, even-numbered year. If we do not have the date  of the transaction, we fall back to using the report year (report_year in both tables) instead,  making the same cycle adjustment as necessary. If no transaction year is specified, the results default to the most current cycle.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] recipient_state: State of recipient
+        :param list[str] image_number: The image number of the page where the schedule item is reported
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param str max_image_number:
+        :param str line_number: Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ScheduleBPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sub_id',
+            'min_image_number',
+            'sort',
+            'last_disbursement_date',
+            'spender_committee_type',
+            'last_disbursement_amount',
+            'recipient_name',
+            'recipient_city',
+            'recipient_committee_id',
+            'min_amount',
+            'max_amount',
+            'last_index',
+            'spender_committee_designation',
+            'sort_null_only',
+            'disbursement_purpose_category',
+            'max_date',
+            'disbursement_description',
+            'spender_committee_org_type',
+            'min_date',
+            'two_year_transaction_period',
+            'sort_hide_null',
+            'per_page',
+            'recipient_state',
+            'image_number',
+            'committee_id',
+            'max_image_number',
+            'line_number'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method schedules_schedule_b_sub_id_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `schedules_schedule_b_sub_id_get`')  # noqa: E501
+        # verify the required parameter 'sub_id' is set
+        if self.api_client.client_side_validation and ('sub_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['sub_id'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `sub_id` when calling `schedules_schedule_b_sub_id_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'sub_id' in local_var_params:
+            path_params['sub_id'] = local_var_params['sub_id']  # noqa: E501
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'min_image_number' in local_var_params and local_var_params['min_image_number'] is not None:  # noqa: E501
+            query_params.append(('min_image_number', local_var_params['min_image_number']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'last_disbursement_date' in local_var_params and local_var_params['last_disbursement_date'] is not None:  # noqa: E501
+            query_params.append(('last_disbursement_date', local_var_params['last_disbursement_date']))  # noqa: E501
+        if 'spender_committee_type' in local_var_params and local_var_params['spender_committee_type'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_type', local_var_params['spender_committee_type']))  # noqa: E501
+            collection_formats['spender_committee_type'] = 'multi'  # noqa: E501
+        if 'last_disbursement_amount' in local_var_params and local_var_params['last_disbursement_amount'] is not None:  # noqa: E501
+            query_params.append(('last_disbursement_amount', local_var_params['last_disbursement_amount']))  # noqa: E501
+        if 'recipient_name' in local_var_params and local_var_params['recipient_name'] is not None:  # noqa: E501
+            query_params.append(('recipient_name', local_var_params['recipient_name']))  # noqa: E501
+            collection_formats['recipient_name'] = 'multi'  # noqa: E501
+        if 'recipient_city' in local_var_params and local_var_params['recipient_city'] is not None:  # noqa: E501
+            query_params.append(('recipient_city', local_var_params['recipient_city']))  # noqa: E501
+            collection_formats['recipient_city'] = 'multi'  # noqa: E501
+        if 'recipient_committee_id' in local_var_params and local_var_params['recipient_committee_id'] is not None:  # noqa: E501
+            query_params.append(('recipient_committee_id', local_var_params['recipient_committee_id']))  # noqa: E501
+            collection_formats['recipient_committee_id'] = 'multi'  # noqa: E501
+        if 'min_amount' in local_var_params and local_var_params['min_amount'] is not None:  # noqa: E501
+            query_params.append(('min_amount', local_var_params['min_amount']))  # noqa: E501
+        if 'max_amount' in local_var_params and local_var_params['max_amount'] is not None:  # noqa: E501
+            query_params.append(('max_amount', local_var_params['max_amount']))  # noqa: E501
+        if 'last_index' in local_var_params and local_var_params['last_index'] is not None:  # noqa: E501
+            query_params.append(('last_index', local_var_params['last_index']))  # noqa: E501
+        if 'spender_committee_designation' in local_var_params and local_var_params['spender_committee_designation'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_designation', local_var_params['spender_committee_designation']))  # noqa: E501
+            collection_formats['spender_committee_designation'] = 'multi'  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'disbursement_purpose_category' in local_var_params and local_var_params['disbursement_purpose_category'] is not None:  # noqa: E501
+            query_params.append(('disbursement_purpose_category', local_var_params['disbursement_purpose_category']))  # noqa: E501
+            collection_formats['disbursement_purpose_category'] = 'multi'  # noqa: E501
+        if 'max_date' in local_var_params and local_var_params['max_date'] is not None:  # noqa: E501
+            query_params.append(('max_date', local_var_params['max_date']))  # noqa: E501
+        if 'disbursement_description' in local_var_params and local_var_params['disbursement_description'] is not None:  # noqa: E501
+            query_params.append(('disbursement_description', local_var_params['disbursement_description']))  # noqa: E501
+            collection_formats['disbursement_description'] = 'multi'  # noqa: E501
+        if 'spender_committee_org_type' in local_var_params and local_var_params['spender_committee_org_type'] is not None:  # noqa: E501
+            query_params.append(('spender_committee_org_type', local_var_params['spender_committee_org_type']))  # noqa: E501
+            collection_formats['spender_committee_org_type'] = 'multi'  # noqa: E501
+        if 'min_date' in local_var_params and local_var_params['min_date'] is not None:  # noqa: E501
+            query_params.append(('min_date', local_var_params['min_date']))  # noqa: E501
+        if 'two_year_transaction_period' in local_var_params and local_var_params['two_year_transaction_period'] is not None:  # noqa: E501
+            query_params.append(('two_year_transaction_period', local_var_params['two_year_transaction_period']))  # noqa: E501
+            collection_formats['two_year_transaction_period'] = 'multi'  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'recipient_state' in local_var_params and local_var_params['recipient_state'] is not None:  # noqa: E501
+            query_params.append(('recipient_state', local_var_params['recipient_state']))  # noqa: E501
+            collection_formats['recipient_state'] = 'multi'  # noqa: E501
+        if 'image_number' in local_var_params and local_var_params['image_number'] is not None:  # noqa: E501
+            query_params.append(('image_number', local_var_params['image_number']))  # noqa: E501
+            collection_formats['image_number'] = 'multi'  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'max_image_number' in local_var_params and local_var_params['max_image_number'] is not None:  # noqa: E501
+            query_params.append(('max_image_number', local_var_params['max_image_number']))  # noqa: E501
+        if 'line_number' in local_var_params and local_var_params['line_number'] is not None:  # noqa: E501
+            query_params.append(('line_number', local_var_params['line_number']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/schedules/schedule_b/{sub_id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ScheduleBPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

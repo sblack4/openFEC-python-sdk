@@ -1,4 +1,4 @@
-# audit_committee_search.AuditCommitteeSearch
+# AuditCommitteeSearch
 
 ## Properties
 Name | Type | Description | Notes

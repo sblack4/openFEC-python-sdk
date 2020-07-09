@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = 'v0.1.0'
+__version__ = 'v0.2.0'
 
 # import apis into sdk package
 from openfec_sdk.audit_api import AuditApi
@@ -39,17 +39,12 @@ from openfec_sdk.search_api import SearchApi
 
 # import ApiClient
 from openfec_sdk.api_client import ApiClient
-
-# import Configuration
 from openfec_sdk.configuration import Configuration
-
-# import exceptions
 from openfec_sdk.exceptions import OpenApiException
 from openfec_sdk.exceptions import ApiTypeError
 from openfec_sdk.exceptions import ApiValueError
 from openfec_sdk.exceptions import ApiKeyError
 from openfec_sdk.exceptions import ApiException
-
 # import models into sdk package
 from openfec_sdk.models.audit_candidate_search import AuditCandidateSearch
 from openfec_sdk.models.audit_candidate_search_list import AuditCandidateSearchList
@@ -73,6 +68,8 @@ from openfec_sdk.models.base_f3_p_filing import BaseF3PFiling
 from openfec_sdk.models.base_f3_p_filing_page import BaseF3PFilingPage
 from openfec_sdk.models.base_f3_x_filing import BaseF3XFiling
 from openfec_sdk.models.base_f3_x_filing_page import BaseF3XFilingPage
+from openfec_sdk.models.cc_totals_by_candidate import CCTotalsByCandidate
+from openfec_sdk.models.cc_totals_by_candidate_page import CCTotalsByCandidatePage
 from openfec_sdk.models.calendar_date import CalendarDate
 from openfec_sdk.models.calendar_date_page import CalendarDatePage
 from openfec_sdk.models.candidate import Candidate
@@ -93,8 +90,6 @@ from openfec_sdk.models.candidate_search import CandidateSearch
 from openfec_sdk.models.candidate_search_list import CandidateSearchList
 from openfec_sdk.models.candidate_total import CandidateTotal
 from openfec_sdk.models.candidate_total_page import CandidateTotalPage
-from openfec_sdk.models.cc_totals_by_candidate import CCTotalsByCandidate
-from openfec_sdk.models.cc_totals_by_candidate_page import CCTotalsByCandidatePage
 from openfec_sdk.models.committee import Committee
 from openfec_sdk.models.committee_detail import CommitteeDetail
 from openfec_sdk.models.committee_detail_page import CommitteeDetailPage
@@ -129,10 +124,10 @@ from openfec_sdk.models.communication_cost import CommunicationCost
 from openfec_sdk.models.communication_cost_by_candidate import CommunicationCostByCandidate
 from openfec_sdk.models.communication_cost_by_candidate_page import CommunicationCostByCandidatePage
 from openfec_sdk.models.communication_cost_page import CommunicationCostPage
-from openfec_sdk.models.e_filings import EFilings
-from openfec_sdk.models.e_filings_page import EFilingsPage
 from openfec_sdk.models.ec_totals_by_candidate import ECTotalsByCandidate
 from openfec_sdk.models.ec_totals_by_candidate_page import ECTotalsByCandidatePage
+from openfec_sdk.models.e_filings import EFilings
+from openfec_sdk.models.e_filings_page import EFilingsPage
 from openfec_sdk.models.efilings_amendments import EfilingsAmendments
 from openfec_sdk.models.efilings_amendments_page import EfilingsAmendmentsPage
 from openfec_sdk.models.election import Election

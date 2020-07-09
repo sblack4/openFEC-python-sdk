@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.base_f3_filing_page import BaseF3FilingPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestBaseF3FilingPage(unittest.TestCase):
     """BaseF3FilingPage unit test stubs"""
@@ -26,11 +28,85 @@ class TestBaseF3FilingPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test BaseF3FilingPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.base_f3_filing_page.BaseF3FilingPage()  # noqa: E501
+        if include_optional :
+            return BaseF3FilingPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.base_f3_filing.BaseF3Filing(
+                        amended_address = '0',
+                        amended_by = 56,
+                        amendment = '0',
+                        amendment_chain = [
+                            56
+                            ],
+                        beginning_image_number = '0',
+                        candidate_first_name = '0',
+                        candidate_id = '0',
+                        candidate_last_name = '0',
+                        candidate_middle_name = '0',
+                        candidate_name = '0',
+                        candidate_prefix = '0',
+                        candidate_suffix = '0',
+                        cash_on_hand_beginning_period = 56,
+                        city = '0',
+                        committee_id = '0',
+                        committee_name = '0',
+                        coverage_end_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        coverage_start_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        csv_url = '0',
+                        district = 56,
+                        document_description = '0',
+                        election_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        election_state = '0',
+                        f3z1 = 56,
+                        fec_file_id = '0',
+                        fec_url = '0',
+                        file_number = 56,
+                        general_election = '0',
+                        is_amended = True,
+                        most_recent = True,
+                        most_recent_filing = 56,
+                        pdf_url = '0',
+                        prefix = '0',
+                        primary_election = '0',
+                        receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        report = '0',
+                        report_type = '0',
+                        report_year = 56,
+                        rpt_pgi = '0',
+                        runoff_election = '0',
+                        sign_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        special_election = '0',
+                        state = '0',
+                        street_1 = '0',
+                        street_2 = '0',
+                        suffix = '0',
+                        summary_lines = '0',
+                        treasurer_first_name = '0',
+                        treasurer_last_name = '0',
+                        treasurer_middle_name = '0',
+                        treasurer_name = '0',
+                        zip = '0', )
+                    ]
+            )
+        else :
+            return BaseF3FilingPage(
+        )
+
     def testBaseF3FilingPage(self):
         """Test BaseF3FilingPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.BaseF3FilingPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

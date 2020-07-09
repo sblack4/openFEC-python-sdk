@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.communication_cost_by_candidate import CommunicationCostByCandidate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommunicationCostByCandidate(unittest.TestCase):
     """CommunicationCostByCandidate unit test stubs"""
@@ -26,11 +28,34 @@ class TestCommunicationCostByCandidate(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommunicationCostByCandidate
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.communication_cost_by_candidate.CommunicationCostByCandidate()  # noqa: E501
+        if include_optional :
+            return CommunicationCostByCandidate(
+                candidate = '0',
+                candidate_id = '0',
+                candidate_name = '0',
+                committee = '0',
+                committee_id = '0',
+                committee_name = '0',
+                count = 56,
+                cycle = 56,
+                support_oppose_indicator = '0',
+                total = 1.337
+            )
+        else :
+            return CommunicationCostByCandidate(
+                support_oppose_indicator = '0',
+        )
+
     def testCommunicationCostByCandidate(self):
         """Test CommunicationCostByCandidate"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommunicationCostByCandidate()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

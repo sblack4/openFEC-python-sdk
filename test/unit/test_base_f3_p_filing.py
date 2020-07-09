@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.base_f3_p_filing import BaseF3PFiling  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestBaseF3PFiling(unittest.TestCase):
     """BaseF3PFiling unit test stubs"""
@@ -26,11 +28,72 @@ class TestBaseF3PFiling(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test BaseF3PFiling
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.base_f3_p_filing.BaseF3PFiling()  # noqa: E501
+        if include_optional :
+            return BaseF3PFiling(
+                amended_by = 56,
+                amendment = '0',
+                amendment_chain = [
+                    56
+                    ],
+                beginning_image_number = '0',
+                cash_on_hand_beginning_period = 1.337,
+                cash_on_hand_end_period = 1.337,
+                city = '0',
+                committee_id = '0',
+                committee_name = '0',
+                coverage_end_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                coverage_start_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                csv_url = '0',
+                debts_owed_by_committee = 1.337,
+                debts_owed_to_committee = 1.337,
+                document_description = '0',
+                election_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                election_state = '0',
+                expenditure_subject_to_limits = 1.337,
+                fec_file_id = '0',
+                fec_url = '0',
+                file_number = 56,
+                general_election = '0',
+                is_amended = True,
+                most_recent = True,
+                most_recent_filing = 56,
+                net_contributions_cycle_to_date = 1.337,
+                net_operating_expenditures_cycle_to_date = 1.337,
+                pdf_url = '0',
+                prefix = '0',
+                primary_election = '0',
+                receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                report = '0',
+                report_type = '0',
+                report_year = 56,
+                rpt_pgi = '0',
+                sign_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                state = '0',
+                street_1 = '0',
+                street_2 = '0',
+                subtotal_summary_period = '0',
+                suffix = '0',
+                summary_lines = '0',
+                treasurer_first_name = '0',
+                treasurer_last_name = '0',
+                treasurer_middle_name = '0',
+                treasurer_name = '0',
+                zip = '0'
+            )
+        else :
+            return BaseF3PFiling(
+        )
+
     def testBaseF3PFiling(self):
         """Test BaseF3PFiling"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.BaseF3PFiling()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

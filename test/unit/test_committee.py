@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee import Committee  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommittee(unittest.TestCase):
     """Committee unit test stubs"""
@@ -26,11 +28,47 @@ class TestCommittee(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Committee
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee.Committee()  # noqa: E501
+        if include_optional :
+            return Committee(
+                affiliated_committee_name = '0',
+                candidate_ids = [
+                    '0'
+                    ],
+                committee_id = '0',
+                committee_type = '0',
+                committee_type_full = '0',
+                cycles = [
+                    56
+                    ],
+                designation = '0',
+                designation_full = '0',
+                filing_frequency = '0',
+                first_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                last_f1_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                last_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                name = '0',
+                organization_type = '0',
+                organization_type_full = '0',
+                party = '0',
+                party_full = '0',
+                state = '0',
+                treasurer_name = '0'
+            )
+        else :
+            return Committee(
+                committee_id = '0',
+        )
+
     def testCommittee(self):
         """Test Committee"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.Committee()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

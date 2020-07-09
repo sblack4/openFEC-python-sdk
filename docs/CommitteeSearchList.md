@@ -1,8 +1,8 @@
-# committee_search_list.CommitteeSearchList
+# CommitteeSearchList
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**[committee_search.CommitteeSearch]**](CommitteeSearch.md) |  | [optional]
+**results** | [**list[CommitteeSearch]**](CommitteeSearch.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

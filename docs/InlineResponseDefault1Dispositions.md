@@ -1,9 +1,9 @@
-# inline_response_default1_dispositions.InlineResponseDefault1Dispositions
+# InlineResponseDefault1Dispositions
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**citations** | [**[inline_response_default1_citations.InlineResponseDefault1Citations]**](InlineResponseDefault1Citations.md) |  | [optional]
+**citations** | [**list[InlineResponseDefault1Citations]**](InlineResponseDefault1Citations.md) |  | [optional]
 **disposition** | **str** |  | [optional]
 **penalty** | **float** |  | [optional]
 **respondent** | **str** |  | [optional]

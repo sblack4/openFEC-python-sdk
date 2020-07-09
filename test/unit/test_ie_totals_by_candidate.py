@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.ie_totals_by_candidate import IETotalsByCandidate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestIETotalsByCandidate(unittest.TestCase):
     """IETotalsByCandidate unit test stubs"""
@@ -26,11 +28,27 @@ class TestIETotalsByCandidate(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test IETotalsByCandidate
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.ie_totals_by_candidate.IETotalsByCandidate()  # noqa: E501
+        if include_optional :
+            return IETotalsByCandidate(
+                candidate_id = '0',
+                cycle = 56,
+                support_oppose_indicator = '0',
+                total = 1.337
+            )
+        else :
+            return IETotalsByCandidate(
+        )
+
     def testIETotalsByCandidate(self):
         """Test IETotalsByCandidate"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.IETotalsByCandidate()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

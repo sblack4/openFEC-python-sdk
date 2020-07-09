@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.candidate_history_page import CandidateHistoryPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCandidateHistoryPage(unittest.TestCase):
     """CandidateHistoryPage unit test stubs"""
@@ -26,11 +28,72 @@ class TestCandidateHistoryPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CandidateHistoryPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.candidate_history_page.CandidateHistoryPage()  # noqa: E501
+        if include_optional :
+            return CandidateHistoryPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.candidate_history.CandidateHistory(
+                        active_through = 56,
+                        address_city = '0',
+                        address_state = '0',
+                        address_street_1 = '0',
+                        address_street_2 = '0',
+                        address_zip = '0',
+                        candidate_election_year = 56,
+                        candidate_id = '0',
+                        candidate_inactive = True,
+                        candidate_status = '0',
+                        cycles = [
+                            56
+                            ],
+                        district = '0',
+                        district_number = 56,
+                        election_districts = [
+                            '0'
+                            ],
+                        election_years = [
+                            56
+                            ],
+                        fec_cycles_in_election = [
+                            56
+                            ],
+                        first_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        flags = '0',
+                        incumbent_challenge = '0',
+                        incumbent_challenge_full = '0',
+                        last_f2_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        last_file_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        load_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                        name = '0',
+                        office = '0',
+                        office_full = '0',
+                        party = '0',
+                        party_full = '0',
+                        rounded_election_years = [
+                            56
+                            ],
+                        state = '0',
+                        two_year_period = 56, )
+                    ]
+            )
+        else :
+            return CandidateHistoryPage(
+        )
+
     def testCandidateHistoryPage(self):
         """Test CandidateHistoryPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CandidateHistoryPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

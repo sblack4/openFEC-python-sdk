@@ -1,4 +1,4 @@
-# inline_response_default1_ao_citations.InlineResponseDefault1AoCitations
+# InlineResponseDefault1AoCitations
 
 ## Properties
 Name | Type | Description | Notes

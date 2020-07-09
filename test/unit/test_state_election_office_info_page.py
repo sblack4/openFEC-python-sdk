@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.state_election_office_info_page import StateElectionOfficeInfoPage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestStateElectionOfficeInfoPage(unittest.TestCase):
     """StateElectionOfficeInfoPage unit test stubs"""
@@ -26,11 +28,50 @@ class TestStateElectionOfficeInfoPage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test StateElectionOfficeInfoPage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.state_election_office_info_page.StateElectionOfficeInfoPage()  # noqa: E501
+        if include_optional :
+            return StateElectionOfficeInfoPage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.state_election_office_info.StateElectionOfficeInfo(
+                        address_line1 = '0',
+                        address_line2 = '0',
+                        city = '0',
+                        email = '0',
+                        fax_number = '0',
+                        mailing_address1 = '0',
+                        mailing_address2 = '0',
+                        mailing_city = '0',
+                        mailing_state = '0',
+                        mailing_zipcode = '0',
+                        office_name = '0',
+                        office_type = '0',
+                        primary_phone_number = '0',
+                        secondary_phone_number = '0',
+                        state = '0',
+                        state_full_name = '0',
+                        website_url1 = '0',
+                        website_url2 = '0',
+                        zip_code = '0', )
+                    ]
+            )
+        else :
+            return StateElectionOfficeInfoPage(
+        )
+
     def testStateElectionOfficeInfoPage(self):
         """Test StateElectionOfficeInfoPage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.StateElectionOfficeInfoPage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.presidential_by_size_page import PresidentialBySizePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestPresidentialBySizePage(unittest.TestCase):
     """PresidentialBySizePage unit test stubs"""
@@ -26,11 +28,36 @@ class TestPresidentialBySizePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PresidentialBySizePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.presidential_by_size_page.PresidentialBySizePage()  # noqa: E501
+        if include_optional :
+            return PresidentialBySizePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.presidential_by_size.PresidentialBySize(
+                        candidate_id = '0',
+                        contribution_receipt_amount = 1.337,
+                        election_year = 56,
+                        size = 56,
+                        size_range_id = 56, )
+                    ]
+            )
+        else :
+            return PresidentialBySizePage(
+        )
+
     def testPresidentialBySizePage(self):
         """Test PresidentialBySizePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.PresidentialBySizePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

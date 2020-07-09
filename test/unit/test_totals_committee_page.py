@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.totals_committee_page import TotalsCommitteePage  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestTotalsCommitteePage(unittest.TestCase):
     """TotalsCommitteePage unit test stubs"""
@@ -26,11 +28,71 @@ class TestTotalsCommitteePage(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TotalsCommitteePage
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.totals_committee_page.TotalsCommitteePage()  # noqa: E501
+        if include_optional :
+            return TotalsCommitteePage(
+                pagination = openfec_sdk.models.offset_info.OffsetInfo(
+                    count = 56,
+                    page = 56,
+                    pages = 56,
+                    per_page = 56, ),
+                results = [
+                    openfec_sdk.models.totals_committee.TotalsCommittee(
+                        affiliated_committee_name = '0',
+                        candidate_ids = [
+                            '0'
+                            ],
+                        cash_on_hand_end_period = 1.337,
+                        city = '0',
+                        committee_id = '0',
+                        committee_type = '0',
+                        committee_type_full = '0',
+                        cycle = 56,
+                        cycles = [
+                            56
+                            ],
+                        cycles_has_activity = [
+                            56
+                            ],
+                        cycles_has_financial = [
+                            56
+                            ],
+                        debts_owed_by_committee = 1.337,
+                        designation = '0',
+                        designation_full = '0',
+                        disbursements = 1.337,
+                        filing_frequency = '0',
+                        independent_expenditures = 1.337,
+                        is_active = True,
+                        last_cycle_has_activity = 56,
+                        last_cycle_has_financial = 56,
+                        name = '0',
+                        organization_type = '0',
+                        organization_type_full = '0',
+                        party = '0',
+                        party_full = '0',
+                        receipts = 1.337,
+                        state = '0',
+                        state_full = '0',
+                        street_1 = '0',
+                        street_2 = '0',
+                        treasurer_name = '0',
+                        zip = '0', )
+                    ]
+            )
+        else :
+            return TotalsCommitteePage(
+        )
+
     def testTotalsCommitteePage(self):
         """Test TotalsCommitteePage"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.TotalsCommitteePage()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

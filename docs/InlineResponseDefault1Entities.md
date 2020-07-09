@@ -1,4 +1,4 @@
-# inline_response_default1_entities.InlineResponseDefault1Entities
+# InlineResponseDefault1Entities
 
 ## Properties
 Name | Type | Description | Notes

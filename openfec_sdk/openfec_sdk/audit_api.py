@@ -13,32 +13,15 @@
 from __future__ import absolute_import
 
 import re  # noqa: F401
-import sys  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
 
 from openfec_sdk.api_client import ApiClient
-from openfec_sdk.exceptions import (
+from openfec_sdk.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
-from openfec_sdk.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    int,
-    none_type,
-    str,
-    validate_and_convert_types
-)
-from openfec_sdk.models import audit_case_page
-from openfec_sdk.models import audit_category_page
-from openfec_sdk.models import audit_primary_category_page
-from openfec_sdk.models import audit_candidate_search_list
-from openfec_sdk.models import audit_committee_search_list
 
 
 class AuditApi(object):
@@ -53,1067 +36,780 @@ class AuditApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __audit_case_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """audit_case_get  # noqa: E501
+    def audit_case_get(self, api_key, **kwargs):  # noqa: E501
+        """audit_case_get  # noqa: E501
 
-             This endpoint contains Final Audit Reports approved by the Commission since inception. The search can be based on information about the audited committee (Name, FEC ID Number, Type,  Election Cycle) or the issues covered in the report.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.audit_case_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
+         This endpoint contains Final Audit Reports approved by the Commission since inception. The search can be based on information about the audited committee (Name, FEC ID Number, Type,  Election Cycle) or the issues covered in the report.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_case_get(api_key, async_req=True)
+        >>> result = thread.get()
 
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                committee_id ([str]):  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id&#39;s begin with the letter C which is followed by eight digits. . [optional]
-                candidate_id ([str]):  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office. . [optional]
-                min_election_cycle (int):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                committee_designation (str): Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC  . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                audit_id ([int]):  The audit issue. Each subcategory has an unique ID . [optional]
-                primary_category_id (str):  Audit category ID (table PK) . [optional] if omitted the server will use the default value of 'all'
-                qq ([str]): Name of candidate running for office. [optional]
-                audit_case_id ([str]):  Primary/foreign key for audit tables . [optional]
-                cycle ([int]):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                max_election_cycle (int):  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year. . [optional]
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort ([str], none_type): Provide a field to sort by. Use - for descending order.. [optional] if omitted the server will use the default value of ["-cycle","committee_name"]
-                sub_category_id (str):  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID. . [optional] if omitted the server will use the default value of 'all'
-                committee_type ([str]): The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account . [optional]
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                q ([str]): The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                audit_case_page.AuditCasePage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.audit_case_get = Endpoint(
-            settings={
-                'response_type': (audit_case_page.AuditCasePage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/audit-case/',
-                'operation_id': 'audit_case_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'committee_id',
-                    'candidate_id',
-                    'min_election_cycle',
-                    'committee_designation',
-                    'page',
-                    'audit_id',
-                    'primary_category_id',
-                    'qq',
-                    'audit_case_id',
-                    'cycle',
-                    'max_election_cycle',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'sub_category_id',
-                    'committee_type',
-                    'sort_nulls_last',
-                    'q',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                    'sort',
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'committee_id':
-                        ([str],),
-                    'candidate_id':
-                        ([str],),
-                    'min_election_cycle':
-                        (int,),
-                    'committee_designation':
-                        (str,),
-                    'page':
-                        (int,),
-                    'audit_id':
-                        ([int],),
-                    'primary_category_id':
-                        (str,),
-                    'qq':
-                        ([str],),
-                    'audit_case_id':
-                        ([str],),
-                    'cycle':
-                        ([int],),
-                    'max_election_cycle':
-                        (int,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        ([str], none_type,),
-                    'sub_category_id':
-                        (str,),
-                    'committee_type':
-                        ([str],),
-                    'sort_nulls_last':
-                        (bool,),
-                    'q':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'committee_id': 'committee_id',
-                    'candidate_id': 'candidate_id',
-                    'min_election_cycle': 'min_election_cycle',
-                    'committee_designation': 'committee_designation',
-                    'page': 'page',
-                    'audit_id': 'audit_id',
-                    'primary_category_id': 'primary_category_id',
-                    'qq': 'qq',
-                    'audit_case_id': 'audit_case_id',
-                    'cycle': 'cycle',
-                    'max_election_cycle': 'max_election_cycle',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'sub_category_id': 'sub_category_id',
-                    'committee_type': 'committee_type',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'q': 'q',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'committee_id': 'query',
-                    'candidate_id': 'query',
-                    'min_election_cycle': 'query',
-                    'committee_designation': 'query',
-                    'page': 'query',
-                    'audit_id': 'query',
-                    'primary_category_id': 'query',
-                    'qq': 'query',
-                    'audit_case_id': 'query',
-                    'cycle': 'query',
-                    'max_election_cycle': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'sub_category_id': 'query',
-                    'committee_type': 'query',
-                    'sort_nulls_last': 'query',
-                    'q': 'query',
-                },
-                'collection_format_map': {
-                    'committee_id': 'multi',
-                    'candidate_id': 'multi',
-                    'audit_id': 'multi',
-                    'qq': 'multi',
-                    'audit_case_id': 'multi',
-                    'cycle': 'multi',
-                    'sort': 'multi',
-                    'committee_type': 'multi',
-                    'q': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__audit_case_get
-        )
-
-        def __audit_category_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """audit_category_get  # noqa: E501
-
-             This lists the options for the categories and subcategories available in the /audit-search/ endpoint.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.audit_category_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'primary_category_name'
-                primary_category_name ([str]): Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                audit_category_page.AuditCategoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.audit_category_get = Endpoint(
-            settings={
-                'response_type': (audit_category_page.AuditCategoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/audit-category/',
-                'operation_id': 'audit_category_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'primary_category_name',
-                    'page',
-                    'sort_nulls_last',
-                    'primary_category_id',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'primary_category_name':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'primary_category_id':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'primary_category_name': 'primary_category_name',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'primary_category_id': 'primary_category_id',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'primary_category_name': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'primary_category_id': 'query',
-                },
-                'collection_format_map': {
-                    'primary_category_name': 'multi',
-                    'primary_category_id': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__audit_category_get
-        )
-
-        def __audit_primary_category_get(
-            self,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """audit_primary_category_get  # noqa: E501
-
-             This lists the options for the primary categories available in the /audit-search/ endpoint.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.audit_primary_category_get(api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                sort_hide_null (bool): Hide null values on sorted column(s).. [optional] if omitted the server will use the default value of False
-                sort_null_only (bool): Toggle that filters out all rows having sort column that is non-null. [optional] if omitted the server will use the default value of False
-                per_page (int): The number of results returned per page. Defaults to 20.. [optional] if omitted the server will use the default value of 20
-                sort (str): Provide a field to sort by. Use &#x60;-&#x60; for descending order. . [optional] if omitted the server will use the default value of 'primary_category_name'
-                primary_category_name ([str]): Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed . [optional]
-                page (int): For paginating through results, starting at page 1. [optional] if omitted the server will use the default value of 1
-                sort_nulls_last (bool): Toggle that sorts null values last. [optional] if omitted the server will use the default value of False
-                primary_category_id ([str]):  Audit category ID (table PK) . [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                audit_primary_category_page.AuditPrimaryCategoryPage
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            return self.call_with_http_info(**kwargs)
-
-        self.audit_primary_category_get = Endpoint(
-            settings={
-                'response_type': (audit_primary_category_page.AuditPrimaryCategoryPage,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/audit-primary-category/',
-                'operation_id': 'audit_primary_category_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'sort_hide_null',
-                    'sort_null_only',
-                    'per_page',
-                    'sort',
-                    'primary_category_name',
-                    'page',
-                    'sort_nulls_last',
-                    'primary_category_id',
-                ],
-                'required': [
-                    'api_key',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'sort_hide_null':
-                        (bool,),
-                    'sort_null_only':
-                        (bool,),
-                    'per_page':
-                        (int,),
-                    'sort':
-                        (str,),
-                    'primary_category_name':
-                        ([str],),
-                    'page':
-                        (int,),
-                    'sort_nulls_last':
-                        (bool,),
-                    'primary_category_id':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'sort_hide_null': 'sort_hide_null',
-                    'sort_null_only': 'sort_null_only',
-                    'per_page': 'per_page',
-                    'sort': 'sort',
-                    'primary_category_name': 'primary_category_name',
-                    'page': 'page',
-                    'sort_nulls_last': 'sort_nulls_last',
-                    'primary_category_id': 'primary_category_id',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'sort_hide_null': 'query',
-                    'sort_null_only': 'query',
-                    'per_page': 'query',
-                    'sort': 'query',
-                    'primary_category_name': 'query',
-                    'page': 'query',
-                    'sort_nulls_last': 'query',
-                    'primary_category_id': 'query',
-                },
-                'collection_format_map': {
-                    'primary_category_name': 'multi',
-                    'primary_category_id': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__audit_primary_category_get
-        )
-
-        def __names_audit_candidates_get(
-            self,
-            q,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """names_audit_candidates_get  # noqa: E501
-
-             Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.names_audit_candidates_get(q, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                q ([str]): Name (candidate or committee) to search for
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                audit_candidate_search_list.AuditCandidateSearchList
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['q'] = \
-                q
-            return self.call_with_http_info(**kwargs)
-
-        self.names_audit_candidates_get = Endpoint(
-            settings={
-                'response_type': (audit_candidate_search_list.AuditCandidateSearchList,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/names/audit_candidates/',
-                'operation_id': 'names_audit_candidates_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'q',
-                ],
-                'required': [
-                    'api_key',
-                    'q',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'q':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'q': 'q',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'q': 'query',
-                },
-                'collection_format_map': {
-                    'q': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__names_audit_candidates_get
-        )
-
-        def __names_audit_committees_get(
-            self,
-            q,
-            api_key='DEMO_KEY',
-            **kwargs
-        ):
-            """names_audit_committees_get  # noqa: E501
-
-             Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-            >>> thread = api.names_audit_committees_get(q, api_key='DEMO_KEY', async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                q ([str]): Name (candidate or committee) to search for
-                api_key (str):  API key for https://api.data.gov. Get one at https://api.data.gov/signup. . defaults to 'DEMO_KEY', must be one of ['DEMO_KEY']
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int): specifies the index of the server
-                    that we want to use.
-                    Default is 0.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                audit_committee_search_list.AuditCommitteeSearchList
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index', 0)
-            kwargs['api_key'] = \
-                api_key
-            kwargs['q'] = \
-                q
-            return self.call_with_http_info(**kwargs)
-
-        self.names_audit_committees_get = Endpoint(
-            settings={
-                'response_type': (audit_committee_search_list.AuditCommitteeSearchList,),
-                'auth': [
-                    'ApiKeyHeaderAuth',
-                    'ApiKeyQueryAuth',
-                    'apiKey'
-                ],
-                'endpoint_path': '/names/audit_committees/',
-                'operation_id': 'names_audit_committees_get',
-                'http_method': 'GET',
-                'servers': [],
-            },
-            params_map={
-                'all': [
-                    'api_key',
-                    'q',
-                ],
-                'required': [
-                    'api_key',
-                    'q',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'api_key':
-                        (str,),
-                    'q':
-                        ([str],),
-                },
-                'attribute_map': {
-                    'api_key': 'api_key',
-                    'q': 'q',
-                },
-                'location_map': {
-                    'api_key': 'query',
-                    'q': 'query',
-                },
-                'collection_format_map': {
-                    'q': 'multi',
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__names_audit_committees_get
-        )
-
-
-class Endpoint(object):
-    def __init__(self, settings=None, params_map=None, root_map=None,
-                 headers_map=None, api_client=None, callable=None):
-        """Creates an endpoint
-
-        Args:
-            settings (dict): see below key value pairs
-                'response_type' (tuple/None): response type
-                'auth' (list): a list of auth type keys
-                'endpoint_path' (str): the endpoint path
-                'operation_id' (str): endpoint string identifier
-                'http_method' (str): POST/PUT/PATCH/GET etc
-                'servers' (list): list of str servers that this endpoint is at
-            params_map (dict): see below key value pairs
-                'all' (list): list of str endpoint parameter names
-                'required' (list): list of required parameter names
-                'nullable' (list): list of nullable parameter names
-                'enum' (list): list of parameters with enum values
-                'validation' (list): list of parameters with validations
-            root_map
-                'validations' (dict): the dict mapping endpoint parameter tuple
-                    paths to their validation dictionaries
-                'allowed_values' (dict): the dict mapping endpoint parameter
-                    tuple paths to their allowed_values (enum) dictionaries
-                'openapi_types' (dict): param_name to openapi type
-                'attribute_map' (dict): param_name to camelCase name
-                'location_map' (dict): param_name to  'body', 'file', 'form',
-                    'header', 'path', 'query'
-                collection_format_map (dict): param_name to `csv` etc.
-            headers_map (dict): see below key value pairs
-                'accept' (list): list of Accept header strings
-                'content_type' (list): list of Content-Type header strings
-            api_client (ApiClient) api client instance
-            callable (function): the function which is invoked when the
-                Endpoint is called
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] sort: Provide a field to sort by. Use - for descending order.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param list[str] q: The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param str primary_category_id:  Audit category ID (table PK)
+        :param str sub_category_id:  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] audit_case_id:  Primary/foreign key for audit tables
+        :param str committee_designation: Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int min_election_cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[int] audit_id:  The audit issue. Each subcategory has an unique ID
+        :param int max_election_cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param list[str] qq: Name of candidate running for office
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AuditCasePage
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        self.settings = settings
-        self.params_map = params_map
-        self.params_map['all'].extend([
-            'async_req',
-            '_host_index',
-            '_preload_content',
-            '_request_timeout',
-            '_return_http_data_only',
-            '_check_input_type',
-            '_check_return_type'
-        ])
-        self.params_map['nullable'].extend(['_request_timeout'])
-        self.validations = root_map['validations']
-        self.allowed_values = root_map['allowed_values']
-        self.openapi_types = root_map['openapi_types']
-        extra_types = {
-            'async_req': (bool,),
-            '_host_index': (int,),
-            '_preload_content': (bool,),
-            '_request_timeout': (none_type, int, (int,), [int]),
-            '_return_http_data_only': (bool,),
-            '_check_input_type': (bool,),
-            '_check_return_type': (bool,)
-        }
-        self.openapi_types.update(extra_types)
-        self.attribute_map = root_map['attribute_map']
-        self.location_map = root_map['location_map']
-        self.collection_format_map = root_map['collection_format_map']
-        self.headers_map = headers_map
-        self.api_client = api_client
-        self.callable = callable
+        kwargs['_return_http_data_only'] = True
+        return self.audit_case_get_with_http_info(api_key, **kwargs)  # noqa: E501
 
-    def __validate_inputs(self, kwargs):
-        for param in self.params_map['enum']:
-            if param in kwargs:
-                check_allowed_values(
-                    self.allowed_values,
-                    (param,),
-                    kwargs[param]
-                )
+    def audit_case_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """audit_case_get  # noqa: E501
 
-        for param in self.params_map['validation']:
-            if param in kwargs:
-                check_validations(
-                    self.validations,
-                    (param,),
-                    kwargs[param]
-                )
+         This endpoint contains Final Audit Reports approved by the Commission since inception. The search can be based on information about the audited committee (Name, FEC ID Number, Type,  Election Cycle) or the issues covered in the report.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_case_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
 
-        if kwargs['_check_input_type'] is False:
-            return
-
-        for key, value in six.iteritems(kwargs):
-            fixed_val = validate_and_convert_types(
-                value,
-                self.openapi_types[key],
-                [key],
-                False,
-                kwargs['_check_input_type'],
-                configuration=self.api_client.configuration
-            )
-            kwargs[key] = fixed_val
-
-    def __gather_params(self, kwargs):
-        params = {
-            'body': None,
-            'collection_format': {},
-            'file': {},
-            'form': [],
-            'header': {},
-            'path': {},
-            'query': []
-        }
-
-        for param_name, param_value in six.iteritems(kwargs):
-            param_location = self.location_map.get(param_name)
-            if param_location is None:
-                continue
-            if param_location:
-                if param_location == 'body':
-                    params['body'] = param_value
-                    continue
-                base_name = self.attribute_map[param_name]
-                if (param_location == 'form' and
-                        self.openapi_types[param_name] == (file_type,)):
-                    params['file'][param_name] = [param_value]
-                elif (param_location == 'form' and
-                        self.openapi_types[param_name] == ([file_type],)):
-                    # param_value is already a list
-                    params['file'][param_name] = param_value
-                elif param_location in {'form', 'query'}:
-                    param_value_full = (base_name, param_value)
-                    params[param_location].append(param_value_full)
-                if param_location not in {'form', 'query'}:
-                    params[param_location][base_name] = param_value
-                collection_format = self.collection_format_map.get(param_name)
-                if collection_format:
-                    params['collection_format'][base_name] = collection_format
-
-        return params
-
-    def __call__(self, *args, **kwargs):
-        """ This method is invoked when endpoints are called
-        Example:
-        pet_api = PetApi()
-        pet_api.add_pet  # this is an instance of the class Endpoint
-        pet_api.add_pet()  # this invokes pet_api.add_pet.__call__()
-        which then invokes the callable functions stored in that endpoint at
-        pet_api.add_pet.callable or self.callable in this class
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] sort: Provide a field to sort by. Use - for descending order.
+        :param list[str] candidate_id:  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
+        :param list[str] q: The name of the committee. If a committee changes its name,     the most recent name will be shown. Committee names are not unique. Use committee_id     for looking up records.
+        :param list[str] committee_type: The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account
+        :param str primary_category_id:  Audit category ID (table PK)
+        :param str sub_category_id:  The finding id of an audit. Finding are a category of broader issues. Each category has an unique ID.
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param list[str] audit_case_id:  Primary/foreign key for audit tables
+        :param str committee_designation: Type of committee:         - H or S - Congressional         - P - Presidential         - X or Y or Z - Party         - N or Q - PAC         - I - Independent expenditure         - O - Super PAC
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param int min_election_cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[int] audit_id:  The audit issue. Each subcategory has an unique ID
+        :param int max_election_cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param list[str] committee_id:  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
+        :param int page: For paginating through results, starting at page 1
+        :param list[int] cycle:  Filter records to only those that are applicable to a given two-year period. This cycle follows the traditional House election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. The cycle begins with an odd year and is named for its ending, even year.
+        :param list[str] qq: Name of candidate running for office
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AuditCasePage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
         """
-        return self.callable(self, *args, **kwargs)
 
-    def call_with_http_info(self, **kwargs):
+        local_var_params = locals()
 
-        try:
-            _host = self.settings['servers'][kwargs['_host_index']]
-        except IndexError:
-            if self.settings['servers']:
-                raise ApiValueError(
-                    'Invalid host index. Must be 0 <= index < %s' %
-                    len(self.settings['servers'])
-                )
-            _host = None
+        all_params = [
+            'api_key',
+            'sort',
+            'candidate_id',
+            'q',
+            'committee_type',
+            'primary_category_id',
+            'sub_category_id',
+            'sort_nulls_last',
+            'audit_case_id',
+            'committee_designation',
+            'sort_null_only',
+            'min_election_cycle',
+            'sort_hide_null',
+            'per_page',
+            'audit_id',
+            'max_election_cycle',
+            'committee_id',
+            'page',
+            'cycle',
+            'qq'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, value in six.iteritems(kwargs):
-            if key not in self.params_map['all']:
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected parameter '%s'"
-                    ' to method `%s`' %
-                    (key, self.settings['operation_id'])
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method audit_case_get' % key
                 )
-            # only throw this nullable ApiValueError if _check_input_type
-            # is False, if _check_input_type==True we catch this case
-            # in self.__validate_inputs
-            if (key not in self.params_map['nullable'] and value is None
-                    and kwargs['_check_input_type'] is False):
-                raise ApiValueError(
-                    'Value may not be None for non-nullable parameter `%s`'
-                    ' when calling `%s`' %
-                    (key, self.settings['operation_id'])
-                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `audit_case_get`')  # noqa: E501
 
-        for key in self.params_map['required']:
-            if key not in kwargs.keys():
-                raise ApiValueError(
-                    'Missing the required parameter `%s` when calling '
-                    '`%s`' % (key, self.settings['operation_id'])
-                )
+        collection_formats = {}
 
-        self.__validate_inputs(kwargs)
+        path_params = {}
 
-        params = self.__gather_params(kwargs)
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+            collection_formats['sort'] = 'multi'  # noqa: E501
+        if 'candidate_id' in local_var_params and local_var_params['candidate_id'] is not None:  # noqa: E501
+            query_params.append(('candidate_id', local_var_params['candidate_id']))  # noqa: E501
+            collection_formats['candidate_id'] = 'multi'  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+        if 'committee_type' in local_var_params and local_var_params['committee_type'] is not None:  # noqa: E501
+            query_params.append(('committee_type', local_var_params['committee_type']))  # noqa: E501
+            collection_formats['committee_type'] = 'multi'  # noqa: E501
+        if 'primary_category_id' in local_var_params and local_var_params['primary_category_id'] is not None:  # noqa: E501
+            query_params.append(('primary_category_id', local_var_params['primary_category_id']))  # noqa: E501
+        if 'sub_category_id' in local_var_params and local_var_params['sub_category_id'] is not None:  # noqa: E501
+            query_params.append(('sub_category_id', local_var_params['sub_category_id']))  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'audit_case_id' in local_var_params and local_var_params['audit_case_id'] is not None:  # noqa: E501
+            query_params.append(('audit_case_id', local_var_params['audit_case_id']))  # noqa: E501
+            collection_formats['audit_case_id'] = 'multi'  # noqa: E501
+        if 'committee_designation' in local_var_params and local_var_params['committee_designation'] is not None:  # noqa: E501
+            query_params.append(('committee_designation', local_var_params['committee_designation']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+        if 'min_election_cycle' in local_var_params and local_var_params['min_election_cycle'] is not None:  # noqa: E501
+            query_params.append(('min_election_cycle', local_var_params['min_election_cycle']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'audit_id' in local_var_params and local_var_params['audit_id'] is not None:  # noqa: E501
+            query_params.append(('audit_id', local_var_params['audit_id']))  # noqa: E501
+            collection_formats['audit_id'] = 'multi'  # noqa: E501
+        if 'max_election_cycle' in local_var_params and local_var_params['max_election_cycle'] is not None:  # noqa: E501
+            query_params.append(('max_election_cycle', local_var_params['max_election_cycle']))  # noqa: E501
+        if 'committee_id' in local_var_params and local_var_params['committee_id'] is not None:  # noqa: E501
+            query_params.append(('committee_id', local_var_params['committee_id']))  # noqa: E501
+            collection_formats['committee_id'] = 'multi'  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'cycle' in local_var_params and local_var_params['cycle'] is not None:  # noqa: E501
+            query_params.append(('cycle', local_var_params['cycle']))  # noqa: E501
+            collection_formats['cycle'] = 'multi'  # noqa: E501
+        if 'qq' in local_var_params and local_var_params['qq'] is not None:  # noqa: E501
+            query_params.append(('qq', local_var_params['qq']))  # noqa: E501
+            collection_formats['qq'] = 'multi'  # noqa: E501
 
-        accept_headers_list = self.headers_map['accept']
-        if accept_headers_list:
-            params['header']['Accept'] = self.api_client.select_header_accept(
-                accept_headers_list)
+        header_params = {}
 
-        content_type_headers_list = self.headers_map['content_type']
-        if content_type_headers_list:
-            header_list = self.api_client.select_header_content_type(
-                content_type_headers_list)
-            params['header']['Content-Type'] = header_list
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
 
         return self.api_client.call_api(
-            self.settings['endpoint_path'], self.settings['http_method'],
-            params['path'],
-            params['query'],
-            params['header'],
-            body=params['body'],
-            post_params=params['form'],
-            files=params['file'],
-            response_type=self.settings['response_type'],
-            auth_settings=self.settings['auth'],
-            async_req=kwargs['async_req'],
-            _check_type=kwargs['_check_return_type'],
-            _return_http_data_only=kwargs['_return_http_data_only'],
-            _preload_content=kwargs['_preload_content'],
-            _request_timeout=kwargs['_request_timeout'],
-            _host=_host,
-            collection_formats=params['collection_format'])
+            '/audit-case/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditCasePage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def audit_category_get(self, api_key, **kwargs):  # noqa: E501
+        """audit_category_get  # noqa: E501
+
+         This lists the options for the categories and subcategories available in the /audit-search/ endpoint.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_category_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] primary_category_id:  Audit category ID (table PK)
+        :param list[str] primary_category_name: Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AuditCategoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audit_category_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def audit_category_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """audit_category_get  # noqa: E501
+
+         This lists the options for the categories and subcategories available in the /audit-search/ endpoint.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_category_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] primary_category_id:  Audit category ID (table PK)
+        :param list[str] primary_category_name: Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AuditCategoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort',
+            'sort_hide_null',
+            'per_page',
+            'primary_category_id',
+            'primary_category_name',
+            'sort_nulls_last',
+            'page',
+            'sort_null_only'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method audit_category_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `audit_category_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'primary_category_id' in local_var_params and local_var_params['primary_category_id'] is not None:  # noqa: E501
+            query_params.append(('primary_category_id', local_var_params['primary_category_id']))  # noqa: E501
+            collection_formats['primary_category_id'] = 'multi'  # noqa: E501
+        if 'primary_category_name' in local_var_params and local_var_params['primary_category_name'] is not None:  # noqa: E501
+            query_params.append(('primary_category_name', local_var_params['primary_category_name']))  # noqa: E501
+            collection_formats['primary_category_name'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/audit-category/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditCategoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def audit_primary_category_get(self, api_key, **kwargs):  # noqa: E501
+        """audit_primary_category_get  # noqa: E501
+
+         This lists the options for the primary categories available in the /audit-search/ endpoint.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_primary_category_get(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] primary_category_id:  Audit category ID (table PK)
+        :param list[str] primary_category_name: Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AuditPrimaryCategoryPage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audit_primary_category_get_with_http_info(api_key, **kwargs)  # noqa: E501
+
+    def audit_primary_category_get_with_http_info(self, api_key, **kwargs):  # noqa: E501
+        """audit_primary_category_get  # noqa: E501
+
+         This lists the options for the primary categories available in the /audit-search/ endpoint.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audit_primary_category_get_with_http_info(api_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param str sort: Provide a field to sort by. Use `-` for descending order.
+        :param bool sort_hide_null: Hide null values on sorted column(s).
+        :param int per_page: The number of results returned per page. Defaults to 20.
+        :param list[str] primary_category_id:  Audit category ID (table PK)
+        :param list[str] primary_category_name: Primary Audit Category     - No Findings or Issues/Not a Committee     - Net Outstanding Campaign/Convention Expenditures/Obligations     - Payments/Disgorgements     - Allocation Issues     - Prohibited Contributions     - Disclosure     - Recordkeeping     - Repayment to US Treasury     - Other     - Misstatement of Financial Activity     - Excessive Contributions     - Failure to File Reports/Schedules/Notices     - Loans     - Referred Findings Not Listed
+        :param bool sort_nulls_last: Toggle that sorts null values last
+        :param int page: For paginating through results, starting at page 1
+        :param bool sort_null_only: Toggle that filters out all rows having sort column that is non-null
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AuditPrimaryCategoryPage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'sort',
+            'sort_hide_null',
+            'per_page',
+            'primary_category_id',
+            'primary_category_name',
+            'sort_nulls_last',
+            'page',
+            'sort_null_only'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method audit_primary_category_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `audit_primary_category_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+        if 'sort_hide_null' in local_var_params and local_var_params['sort_hide_null'] is not None:  # noqa: E501
+            query_params.append(('sort_hide_null', local_var_params['sort_hide_null']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'primary_category_id' in local_var_params and local_var_params['primary_category_id'] is not None:  # noqa: E501
+            query_params.append(('primary_category_id', local_var_params['primary_category_id']))  # noqa: E501
+            collection_formats['primary_category_id'] = 'multi'  # noqa: E501
+        if 'primary_category_name' in local_var_params and local_var_params['primary_category_name'] is not None:  # noqa: E501
+            query_params.append(('primary_category_name', local_var_params['primary_category_name']))  # noqa: E501
+            collection_formats['primary_category_name'] = 'multi'  # noqa: E501
+        if 'sort_nulls_last' in local_var_params and local_var_params['sort_nulls_last'] is not None:  # noqa: E501
+            query_params.append(('sort_nulls_last', local_var_params['sort_nulls_last']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'sort_null_only' in local_var_params and local_var_params['sort_null_only'] is not None:  # noqa: E501
+            query_params.append(('sort_null_only', local_var_params['sort_null_only']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/audit-primary-category/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditPrimaryCategoryPage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def names_audit_candidates_get(self, api_key, q, **kwargs):  # noqa: E501
+        """names_audit_candidates_get  # noqa: E501
+
+         Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.names_audit_candidates_get(api_key, q, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] q: Name (candidate or committee) to search for (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AuditCandidateSearchList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.names_audit_candidates_get_with_http_info(api_key, q, **kwargs)  # noqa: E501
+
+    def names_audit_candidates_get_with_http_info(self, api_key, q, **kwargs):  # noqa: E501
+        """names_audit_candidates_get  # noqa: E501
+
+         Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.names_audit_candidates_get_with_http_info(api_key, q, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] q: Name (candidate or committee) to search for (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AuditCandidateSearchList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'q'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method names_audit_candidates_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `names_audit_candidates_get`')  # noqa: E501
+        # verify the required parameter 'q' is set
+        if self.api_client.client_side_validation and ('q' not in local_var_params or  # noqa: E501
+                                                        local_var_params['q'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `q` when calling `names_audit_candidates_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/names/audit_candidates/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditCandidateSearchList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def names_audit_committees_get(self, api_key, q, **kwargs):  # noqa: E501
+        """names_audit_committees_get  # noqa: E501
+
+         Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.names_audit_committees_get(api_key, q, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] q: Name (candidate or committee) to search for (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AuditCommitteeSearchList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.names_audit_committees_get_with_http_info(api_key, q, **kwargs)  # noqa: E501
+
+    def names_audit_committees_get_with_http_info(self, api_key, q, **kwargs):  # noqa: E501
+        """names_audit_committees_get  # noqa: E501
+
+         Search for candidates or committees by name. If you're looking for information on a particular person or group, using a name to find the `candidate_id` or `committee_id` on this endpoint can be a helpful first step.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.names_audit_committees_get_with_http_info(api_key, q, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str api_key:  API key for https://api.data.gov. Get one at https://api.data.gov/signup.  (required)
+        :param list[str] q: Name (candidate or committee) to search for (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AuditCommitteeSearchList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'api_key',
+            'q'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    ' to method names_audit_committees_get' % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'api_key' is set
+        if self.api_client.client_side_validation and ('api_key' not in local_var_params or  # noqa: E501
+                                                        local_var_params['api_key'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `api_key` when calling `names_audit_committees_get`')  # noqa: E501
+        # verify the required parameter 'q' is set
+        if self.api_client.client_side_validation and ('q' not in local_var_params or  # noqa: E501
+                                                        local_var_params['q'] is None):  # noqa: E501
+            raise ApiValueError('Missing the required parameter `q` when calling `names_audit_committees_get`')  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'api_key' in local_var_params and local_var_params['api_key'] is not None:  # noqa: E501
+            query_params.append(('api_key', local_var_params['api_key']))  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+            collection_formats['q'] = 'multi'  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeaderAuth', 'ApiKeyQueryAuth', 'apiKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/names/audit_committees/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditCommitteeSearchList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

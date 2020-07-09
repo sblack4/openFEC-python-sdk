@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.audit_case import AuditCase  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestAuditCase(unittest.TestCase):
     """AuditCase unit test stubs"""
@@ -26,11 +28,45 @@ class TestAuditCase(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test AuditCase
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.audit_case.AuditCase()  # noqa: E501
+        if include_optional :
+            return AuditCase(
+                audit_case_id = '0',
+                audit_id = 56,
+                candidate_id = '0',
+                candidate_name = '0',
+                committee_description = '0',
+                committee_designation = '0',
+                committee_id = '0',
+                committee_name = '0',
+                committee_type = '0',
+                cycle = 56,
+                far_release_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                link_to_report = '0',
+                primary_category_list = [
+                    openfec_sdk.models.audit_case_category_relation.AuditCaseCategoryRelation(
+                        primary_category_id = '0',
+                        primary_category_name = '0',
+                        sub_category_list = [
+                            openfec_sdk.models.audit_case_sub_category.AuditCaseSubCategory(
+                                sub_category_id = '0',
+                                sub_category_name = '0', )
+                            ], )
+                    ]
+            )
+        else :
+            return AuditCase(
+        )
+
     def testAuditCase(self):
         """Test AuditCase"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.AuditCase()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

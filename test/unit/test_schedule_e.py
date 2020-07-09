@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.schedule_e import ScheduleE  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestScheduleE(unittest.TestCase):
     """ScheduleE unit test stubs"""
@@ -26,11 +28,137 @@ class TestScheduleE(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ScheduleE
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.schedule_e.ScheduleE()  # noqa: E501
+        if include_optional :
+            return ScheduleE(
+                action_code = '0',
+                action_code_full = '0',
+                amendment_indicator = '0',
+                amendment_number = 56,
+                back_reference_schedule_name = '0',
+                back_reference_transaction_id = '0',
+                candidate = '0',
+                candidate_first_name = '0',
+                candidate_id = '0',
+                candidate_last_name = '0',
+                candidate_middle_name = '0',
+                candidate_name = '0',
+                candidate_office = '0',
+                candidate_office_district = '0',
+                candidate_office_state = '0',
+                candidate_party = '0',
+                candidate_prefix = '0',
+                candidate_suffix = '0',
+                category_code = '0',
+                category_code_full = '0',
+                committee = openfec_sdk.models.committee_history.CommitteeHistory(
+                    affiliated_committee_name = '0',
+                    candidate_ids = [
+                        '0'
+                        ],
+                    city = '0',
+                    committee_id = '0',
+                    committee_type = '0',
+                    committee_type_full = '0',
+                    cycle = 56,
+                    cycles = [
+                        56
+                        ],
+                    cycles_has_activity = [
+                        56
+                        ],
+                    cycles_has_financial = [
+                        56
+                        ],
+                    designation = '0',
+                    designation_full = '0',
+                    filing_frequency = '0',
+                    is_active = True,
+                    last_cycle_has_activity = 56,
+                    last_cycle_has_financial = 56,
+                    name = '0',
+                    organization_type = '0',
+                    organization_type_full = '0',
+                    party = '0',
+                    party_full = '0',
+                    state = '0',
+                    state_full = '0',
+                    street_1 = '0',
+                    street_2 = '0',
+                    treasurer_name = '0',
+                    zip = '0', ),
+                committee_id = '0',
+                conduit_committee_city = '0',
+                conduit_committee_id = '0',
+                conduit_committee_name = '0',
+                conduit_committee_state = '0',
+                conduit_committee_street1 = '0',
+                conduit_committee_street2 = '0',
+                conduit_committee_zip = 56,
+                dissemination_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                election_type = '0',
+                election_type_full = '0',
+                expenditure_amount = 1.337,
+                expenditure_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                expenditure_description = '0',
+                file_number = 56,
+                filer_first_name = '0',
+                filer_last_name = '0',
+                filer_middle_name = '0',
+                filer_prefix = '0',
+                filer_suffix = '0',
+                filing_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                filing_form = '0',
+                image_number = '0',
+                independent_sign_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                independent_sign_name = '0',
+                is_notice = True,
+                line_number = '0',
+                link_id = 56,
+                memo_code = '0',
+                memo_code_full = '0',
+                memo_text = '0',
+                memoed_subtotal = True,
+                most_recent = True,
+                notary_commission_expiration_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                notary_sign_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                notary_sign_name = '0',
+                office_total_ytd = 1.337,
+                original_sub_id = '0',
+                payee_city = '0',
+                payee_first_name = '0',
+                payee_last_name = '0',
+                payee_middle_name = '0',
+                payee_name = '0',
+                payee_prefix = '0',
+                payee_state = '0',
+                payee_street_1 = '0',
+                payee_street_2 = '0',
+                payee_suffix = '0',
+                payee_zip = '0',
+                pdf_url = '0',
+                previous_file_number = 56,
+                report_type = '0',
+                report_year = 56,
+                schedule_type = '0',
+                schedule_type_full = '0',
+                sub_id = '0',
+                support_oppose_indicator = '0',
+                transaction_id = '0'
+            )
+        else :
+            return ScheduleE(
+        )
+
     def testScheduleE(self):
         """Test ScheduleE"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ScheduleE()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

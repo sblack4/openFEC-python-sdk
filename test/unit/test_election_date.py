@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.election_date import ElectionDate  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestElectionDate(unittest.TestCase):
     """ElectionDate unit test stubs"""
@@ -26,11 +28,36 @@ class TestElectionDate(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ElectionDate
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.election_date.ElectionDate()  # noqa: E501
+        if include_optional :
+            return ElectionDate(
+                active_election = True,
+                create_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                election_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                election_district = 56,
+                election_notes = '0',
+                election_party = '0',
+                election_state = '0',
+                election_type_full = '0',
+                election_type_id = '0',
+                election_year = 56,
+                office_sought = '0',
+                primary_general_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                update_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            )
+        else :
+            return ElectionDate(
+        )
+
     def testElectionDate(self):
         """Test ElectionDate"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.ElectionDate()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

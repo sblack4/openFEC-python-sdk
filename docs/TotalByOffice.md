@@ -1,4 +1,4 @@
-# total_by_office.TotalByOffice
+# TotalByOffice
 
 ## Properties
 Name | Type | Description | Notes

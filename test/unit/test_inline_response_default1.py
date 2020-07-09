@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default1 import InlineResponseDefault1  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault1(unittest.TestCase):
     """InlineResponseDefault1 unit test stubs"""
@@ -26,11 +28,259 @@ class TestInlineResponseDefault1(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault1
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default1.InlineResponseDefault1()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault1(
+                admin_fines = [
+                    openfec_sdk.models.inline_response_default_1_admin_fines.inline_response_default_1_admin_fines(
+                        challenge_outcome = '0',
+                        challenge_receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        check_amount = 1.337,
+                        commission_votes = [
+                            openfec_sdk.models.inline_response_default_1_commission_votes.inline_response_default_1_commission_votes(
+                                action = '0',
+                                vote_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), )
+                            ],
+                        committee_id = '0',
+                        doc_id = '0',
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        documents = [
+                            openfec_sdk.models.inline_response_default_1_documents.inline_response_default_1_documents(
+                                category = '0',
+                                description = '0',
+                                document_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                                document_id = 56,
+                                length = 56,
+                                url = '0', )
+                            ],
+                        final_determination_amount = 1.337,
+                        final_determination_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        highlights = [
+                            '0'
+                            ],
+                        name = '0',
+                        no = '0',
+                        petition_court_decision_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        petition_court_filing_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        reason_to_believe_action_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        reason_to_believe_fine_amount = 1.337,
+                        report_type = '0',
+                        report_year = '0',
+                        treasury_referral_amount = 1.337,
+                        treasury_referral_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        url = '0', )
+                    ],
+                adrs = [
+                    openfec_sdk.models.inline_response_default_1_adrs.inline_response_default_1_adrs(
+                        close_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        commission_votes = [
+                            openfec_sdk.models.inline_response_default_1_commission_votes.inline_response_default_1_commission_votes(
+                                action = '0',
+                                vote_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), )
+                            ],
+                        dispositions = [
+                            openfec_sdk.models.inline_response_default_1_dispositions.inline_response_default_1_dispositions(
+                                citations = [
+                                    openfec_sdk.models.inline_response_default_1_citations.inline_response_default_1_citations(
+                                        text = '0',
+                                        title = '0',
+                                        type = '0',
+                                        url = '0', )
+                                    ],
+                                disposition = '0',
+                                penalty = 1.337,
+                                respondent = '0', )
+                            ],
+                        doc_id = '0',
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        documents = [
+                            openfec_sdk.models.inline_response_default_1_documents.inline_response_default_1_documents(
+                                category = '0',
+                                description = '0',
+                                document_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                                document_id = 56,
+                                length = 56,
+                                url = '0', )
+                            ],
+                        election_cycles = 56,
+                        highlights = [
+                            '0'
+                            ],
+                        name = '0',
+                        no = '0',
+                        open_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        participants = [
+                            openfec_sdk.models.inline_response_default_1_participants.inline_response_default_1_participants(
+                                name = '0',
+                                role = '0', )
+                            ],
+                        respondents = [
+                            '0'
+                            ],
+                        subjects = [
+                            '0'
+                            ],
+                        url = '0', )
+                    ],
+                advisory_opinions = [
+                    openfec_sdk.models.inline_response_default_1_advisory_opinions.inline_response_default_1_advisory_opinions(
+                        ao_citations = [
+                            openfec_sdk.models.inline_response_default_1_ao_citations.inline_response_default_1_ao_citations(
+                                name = '0',
+                                no = '0', )
+                            ],
+                        aos_cited_by = [
+                            openfec_sdk.models.inline_response_default_1_ao_citations.inline_response_default_1_ao_citations(
+                                name = '0',
+                                no = '0', )
+                            ],
+                        commenter_names = [
+                            '0'
+                            ],
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        documents = [
+                            openfec_sdk.models.inline_response_default_1_documents_1.inline_response_default_1_documents_1(
+                                category = '0',
+                                date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                                description = '0',
+                                document_id = 56,
+                                url = '0', )
+                            ],
+                        entities = [
+                            openfec_sdk.models.inline_response_default_1_entities.inline_response_default_1_entities(
+                                name = '0',
+                                role = '0',
+                                type = '0', )
+                            ],
+                        highlights = [
+                            '0'
+                            ],
+                        is_pending = True,
+                        issue_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        name = '0',
+                        no = '0',
+                        regulatory_citations = [
+                            openfec_sdk.models.inline_response_default_1_regulatory_citations.inline_response_default_1_regulatory_citations(
+                                part = 56,
+                                section = 56,
+                                title = 56, )
+                            ],
+                        representative_names = [
+                            '0'
+                            ],
+                        request_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        requestor_names = [
+                            '0'
+                            ],
+                        requestor_types = [
+                            '0'
+                            ],
+                        status = '0',
+                        statutory_citations = [
+                            openfec_sdk.models.inline_response_default_1_statutory_citations.inline_response_default_1_statutory_citations(
+                                section = '0',
+                                title = 56, )
+                            ],
+                        summary = '0', )
+                    ],
+                murs = [
+                    openfec_sdk.models.inline_response_default_1_murs.inline_response_default_1_murs(
+                        close_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        commission_votes = [
+                            openfec_sdk.models.inline_response_default_1_commission_votes.inline_response_default_1_commission_votes(
+                                action = '0',
+                                vote_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), )
+                            ],
+                        dispositions = [
+                            openfec_sdk.models.inline_response_default_1_dispositions.inline_response_default_1_dispositions(
+                                citations = [
+                                    openfec_sdk.models.inline_response_default_1_citations.inline_response_default_1_citations(
+                                        text = '0',
+                                        title = '0',
+                                        type = '0',
+                                        url = '0', )
+                                    ],
+                                disposition = '0',
+                                penalty = 1.337,
+                                respondent = '0', )
+                            ],
+                        doc_id = '0',
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        documents = [
+                            openfec_sdk.models.inline_response_default_1_documents.inline_response_default_1_documents(
+                                category = '0',
+                                description = '0',
+                                document_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                                document_id = 56,
+                                length = 56,
+                                url = '0', )
+                            ],
+                        election_cycles = 56,
+                        highlights = [
+                            '0'
+                            ],
+                        mur_type = 'current',
+                        name = '0',
+                        no = '0',
+                        open_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                        participants = [
+                            openfec_sdk.models.inline_response_default_1_participants.inline_response_default_1_participants(
+                                name = '0',
+                                role = '0', )
+                            ],
+                        respondents = [
+                            '0'
+                            ],
+                        subjects = [
+                            '0'
+                            ],
+                        url = '0', )
+                    ],
+                regulations = [
+                    openfec_sdk.models.inline_response_default_1_regulations.inline_response_default_1_regulations(
+                        doc_id = '0',
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        highlights = [
+                            '0'
+                            ],
+                        name = '0',
+                        no = '0',
+                        url = '0', )
+                    ],
+                statutes = [
+                    openfec_sdk.models.inline_response_default_1_statutes.inline_response_default_1_statutes(
+                        chapter = '0',
+                        doc_id = '0',
+                        document_highlights = openfec_sdk.models.document_highlights.document_highlights(),
+                        highlights = [
+                            '0'
+                            ],
+                        name = '0',
+                        no = '0',
+                        title = '0',
+                        url = '0', )
+                    ],
+                total_admin_fines = 56,
+                total_adrs = 56,
+                total_advisory_opinions = 56,
+                total_all = 56,
+                total_murs = 56,
+                total_regulations = 56,
+                total_statutes = 56
+            )
+        else :
+            return InlineResponseDefault1(
+        )
+
     def testInlineResponseDefault1(self):
         """Test InlineResponseDefault1"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault1()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

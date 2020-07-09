@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.filings import Filings  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestFilings(unittest.TestCase):
     """Filings unit test stubs"""
@@ -26,11 +28,81 @@ class TestFilings(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Filings
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.filings.Filings()  # noqa: E501
+        if include_optional :
+            return Filings(
+                amendment_chain = [
+                    1.337
+                    ],
+                amendment_indicator = '0',
+                amendment_version = 56,
+                beginning_image_number = '0',
+                candidate_id = '0',
+                candidate_name = '0',
+                cash_on_hand_beginning_period = 1.337,
+                cash_on_hand_end_period = 1.337,
+                committee_id = '0',
+                committee_name = '0',
+                committee_type = '0',
+                coverage_end_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                coverage_start_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                csv_url = '0',
+                cycle = 56,
+                debts_owed_by_committee = 1.337,
+                debts_owed_to_committee = 1.337,
+                document_description = '0',
+                document_type = '0',
+                document_type_full = '0',
+                election_year = 56,
+                ending_image_number = '0',
+                fec_file_id = '0',
+                fec_url = '0',
+                file_number = 56,
+                form_category = '0',
+                form_type = '0',
+                house_personal_funds = 1.337,
+                html_url = '0',
+                is_amended = True,
+                means_filed = '0',
+                most_recent = True,
+                most_recent_file_number = 56,
+                net_donations = 1.337,
+                office = '0',
+                opposition_personal_funds = 1.337,
+                pages = 56,
+                party = '0',
+                pdf_url = '0',
+                previous_file_number = 56,
+                primary_general_indicator = '0',
+                receipt_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                report_type = '0',
+                report_type_full = '0',
+                report_year = 56,
+                request_type = '0',
+                senate_personal_funds = 1.337,
+                state = '0',
+                sub_id = '0',
+                total_communication_cost = 1.337,
+                total_disbursements = 1.337,
+                total_independent_expenditures = 1.337,
+                total_individual_contributions = 1.337,
+                total_receipts = 1.337,
+                treasurer_name = '0',
+                update_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date()
+            )
+        else :
+            return Filings(
+        )
+
     def testFilings(self):
         """Test Filings"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.Filings()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

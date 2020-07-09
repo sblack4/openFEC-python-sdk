@@ -1,4 +1,4 @@
-# ie_totals_by_candidate.IETotalsByCandidate
+# IETotalsByCandidate
 
 ## Properties
 Name | Type | Description | Notes

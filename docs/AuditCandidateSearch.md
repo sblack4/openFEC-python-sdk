@@ -1,4 +1,4 @@
-# audit_candidate_search.AuditCandidateSearch
+# AuditCandidateSearch
 
 ## Properties
 Name | Type | Description | Notes

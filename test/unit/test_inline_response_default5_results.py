@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.inline_response_default5_results import InlineResponseDefault5Results  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestInlineResponseDefault5Results(unittest.TestCase):
     """InlineResponseDefault5Results unit test stubs"""
@@ -26,11 +28,158 @@ class TestInlineResponseDefault5Results(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test InlineResponseDefault5Results
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.inline_response_default5_results.InlineResponseDefault5Results()  # noqa: E501
+        if include_optional :
+            return InlineResponseDefault5Results(
+                action_code = '0',
+                action_code_full = '0',
+                aggregate_general_election_expenditure = '0',
+                back_reference_schedule_name = '0',
+                back_reference_transaction_id = '0',
+                candidate_first_name = '0',
+                candidate_id = '0',
+                candidate_last_name = '0',
+                candidate_middle_name = '0',
+                candidate_name = '0',
+                candidate_office = '0',
+                candidate_office_district = '0',
+                candidate_office_full = '0',
+                candidate_office_state = '0',
+                candidate_office_state_full = '0',
+                candidate_prefix = '0',
+                candidate_suffix = '0',
+                catolog_code = '0',
+                catolog_code_full = '0',
+                committee = openfec_sdk.models.committee_history.CommitteeHistory(
+                    affiliated_committee_name = '0',
+                    candidate_ids = [
+                        '0'
+                        ],
+                    city = '0',
+                    committee_id = '0',
+                    committee_type = '0',
+                    committee_type_full = '0',
+                    cycle = 56,
+                    cycles = [
+                        56
+                        ],
+                    cycles_has_activity = [
+                        56
+                        ],
+                    cycles_has_financial = [
+                        56
+                        ],
+                    designation = '0',
+                    designation_full = '0',
+                    filing_frequency = '0',
+                    is_active = True,
+                    last_cycle_has_activity = 56,
+                    last_cycle_has_financial = 56,
+                    name = '0',
+                    organization_type = '0',
+                    organization_type_full = '0',
+                    party = '0',
+                    party_full = '0',
+                    state = '0',
+                    state_full = '0',
+                    street_1 = '0',
+                    street_2 = '0',
+                    treasurer_name = '0',
+                    zip = '0', ),
+                committee_designated_coordinated_expenditure_indicator = '0',
+                committee_id = '0',
+                committee_name = '0',
+                conduit_committee_city = '0',
+                conduit_committee_id = '0',
+                conduit_committee_name = '0',
+                conduit_committee_state = '0',
+                conduit_committee_street1 = '0',
+                conduit_committee_street2 = '0',
+                conduit_committee_zip = 56,
+                designated_committee_id = '0',
+                designated_committee_name = '0',
+                election_cycle = 56,
+                entity_type = '0',
+                entity_type_desc = '0',
+                expenditure_amount = 56,
+                expenditure_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                expenditure_purpose_full = '0',
+                expenditure_type = '0',
+                expenditure_type_full = '0',
+                file_number = 56,
+                filing_form = '0',
+                image_number = '0',
+                line_number = '0',
+                link_id = 56,
+                load_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                memo_code = '0',
+                memo_code_full = '0',
+                memo_text = '0',
+                original_sub_id = 56,
+                payee_first_name = '0',
+                payee_last_name = '0',
+                payee_middle_name = '0',
+                payee_name = '0',
+                pdf_url = '0',
+                report_type = '0',
+                report_year = 56,
+                schedule_type = '0',
+                schedule_type_full = '0',
+                sub_id = '0',
+                subordinate_committee = openfec_sdk.models.committee_history.CommitteeHistory(
+                    affiliated_committee_name = '0',
+                    candidate_ids = [
+                        '0'
+                        ],
+                    city = '0',
+                    committee_id = '0',
+                    committee_type = '0',
+                    committee_type_full = '0',
+                    cycle = 56,
+                    cycles = [
+                        56
+                        ],
+                    cycles_has_activity = [
+                        56
+                        ],
+                    cycles_has_financial = [
+                        56
+                        ],
+                    designation = '0',
+                    designation_full = '0',
+                    filing_frequency = '0',
+                    is_active = True,
+                    last_cycle_has_activity = 56,
+                    last_cycle_has_financial = 56,
+                    name = '0',
+                    organization_type = '0',
+                    organization_type_full = '0',
+                    party = '0',
+                    party_full = '0',
+                    state = '0',
+                    state_full = '0',
+                    street_1 = '0',
+                    street_2 = '0',
+                    treasurer_name = '0',
+                    zip = '0', ),
+                subordinate_committee_id = '0',
+                transaction_id = '0',
+                unlimited_spending_flag = '0',
+                unlimited_spending_flag_full = '0'
+            )
+        else :
+            return InlineResponseDefault5Results(
+        )
+
     def testInlineResponseDefault5Results(self):
         """Test InlineResponseDefault5Results"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.InlineResponseDefault5Results()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

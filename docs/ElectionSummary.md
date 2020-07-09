@@ -1,4 +1,4 @@
-# election_summary.ElectionSummary
+# ElectionSummary
 
 ## Properties
 Name | Type | Description | Notes

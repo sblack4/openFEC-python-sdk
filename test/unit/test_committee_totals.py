@@ -13,9 +13,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import openfec_sdk
-
+from openfec_sdk.models.committee_totals import CommitteeTotals  # noqa: E501
+from openfec_sdk.rest import ApiException
 
 class TestCommitteeTotals(unittest.TestCase):
     """CommitteeTotals unit test stubs"""
@@ -26,11 +28,128 @@ class TestCommitteeTotals(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommitteeTotals
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = openfec_sdk.models.committee_totals.CommitteeTotals()  # noqa: E501
+        if include_optional :
+            return CommitteeTotals(
+                all_loans_received = 1.337,
+                all_other_loans = 1.337,
+                allocated_federal_election_levin_share = 1.337,
+                candidate_contribution = 1.337,
+                cash_on_hand_beginning_period = 1.337,
+                committee_designation = '0',
+                committee_designation_full = '0',
+                committee_id = '0',
+                committee_name = '0',
+                committee_type = '0',
+                committee_type_full = '0',
+                contribution_refunds = 1.337,
+                contributions = 1.337,
+                convention_exp = 1.337,
+                coordinated_expenditures_by_party_committee = 1.337,
+                coverage_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                coverage_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                cycle = 56,
+                disbursements = 1.337,
+                exempt_legal_accounting_disbursement = 1.337,
+                exp_prior_years_subject_limits = 1.337,
+                exp_subject_limits = 1.337,
+                fed_candidate_committee_contributions = 1.337,
+                fed_candidate_contribution_refunds = 1.337,
+                fed_disbursements = 1.337,
+                fed_election_activity = 1.337,
+                fed_operating_expenditures = 1.337,
+                fed_receipts = 1.337,
+                federal_funds = 1.337,
+                fundraising_disbursements = 1.337,
+                independent_expenditures = 1.337,
+                individual_contributions = 1.337,
+                individual_itemized_contributions = 1.337,
+                individual_unitemized_contributions = 1.337,
+                itemized_convention_exp = 1.337,
+                itemized_other_disb = 1.337,
+                itemized_other_income = 1.337,
+                itemized_other_refunds = 1.337,
+                itemized_refunds_relating_convention_exp = 1.337,
+                last_beginning_image_number = '0',
+                last_cash_on_hand_end_period = 1.337,
+                last_debts_owed_by_committee = 1.337,
+                last_debts_owed_to_committee = 1.337,
+                last_report_type_full = '0',
+                last_report_year = 56,
+                loan_repayments = 1.337,
+                loan_repayments_candidate_loans = 1.337,
+                loan_repayments_made = 1.337,
+                loan_repayments_other_loans = 1.337,
+                loan_repayments_received = 1.337,
+                loans = 1.337,
+                loans_and_loan_repayments_made = 1.337,
+                loans_and_loan_repayments_received = 1.337,
+                loans_made = 1.337,
+                loans_made_by_candidate = 1.337,
+                loans_received = 1.337,
+                loans_received_from_candidate = 1.337,
+                net_contributions = 1.337,
+                net_operating_expenditures = 1.337,
+                non_allocated_fed_election_activity = 1.337,
+                offsets_to_fundraising_expenditures = 1.337,
+                offsets_to_legal_accounting = 1.337,
+                offsets_to_operating_expenditures = 1.337,
+                operating_expenditures = 1.337,
+                other_disbursements = 1.337,
+                other_fed_operating_expenditures = 1.337,
+                other_fed_receipts = 1.337,
+                other_loans_received = 1.337,
+                other_political_committee_contributions = 1.337,
+                other_receipts = 1.337,
+                other_refunds = 1.337,
+                party_full = '0',
+                pdf_url = '0',
+                political_party_committee_contributions = 1.337,
+                receipts = 1.337,
+                refunded_individual_contributions = 1.337,
+                refunded_other_political_committee_contributions = 1.337,
+                refunded_political_party_committee_contributions = 1.337,
+                refunds_relating_convention_exp = 1.337,
+                repayments_loans_made_by_candidate = 1.337,
+                repayments_other_loans = 1.337,
+                report_form = '0',
+                shared_fed_activity = 1.337,
+                shared_fed_activity_nonfed = 1.337,
+                shared_fed_operating_expenditures = 1.337,
+                shared_nonfed_operating_expenditures = 1.337,
+                total_exp_subject_limits = 1.337,
+                total_independent_contributions = 1.337,
+                total_independent_expenditures = 1.337,
+                total_offsets_to_operating_expenditures = 1.337,
+                total_transfers = 1.337,
+                transaction_coverage_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
+                transfers_from_affiliated_committee = 1.337,
+                transfers_from_affiliated_party = 1.337,
+                transfers_from_nonfed_account = 1.337,
+                transfers_from_nonfed_levin = 1.337,
+                transfers_from_other_authorized_committee = 1.337,
+                transfers_to_affiliated_committee = 1.337,
+                transfers_to_other_authorized_committee = 1.337,
+                unitemized_convention_exp = 1.337,
+                unitemized_other_disb = 1.337,
+                unitemized_other_income = 1.337,
+                unitemized_other_refunds = 1.337,
+                unitemized_refunds_relating_convention_exp = 1.337
+            )
+        else :
+            return CommitteeTotals(
+                cycle = 56,
+        )
+
     def testCommitteeTotals(self):
         """Test CommitteeTotals"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = openfec_sdk.CommitteeTotals()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':
