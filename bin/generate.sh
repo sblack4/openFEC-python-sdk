@@ -17,6 +17,6 @@ mv README.md docs/
 
 git restore README.md
 
-echo 'update configuration.py so that basePath points to https://api.open.fec.gov/v1'
-
 pre-commit run -a
+
+echo 'update configuration.py so that basePath points to https://api.open.fec.gov/v1'
