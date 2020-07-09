@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestScheduleAByStatePage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestScheduleAByStatePage(unittest.TestCase):
     def testScheduleAByStatePage(self):
         """Test ScheduleAByStatePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ScheduleAByStatePage()  # noqa: E501
+        # model = openfec_sdk.ScheduleAByStatePage()  # noqa: E501
         pass
 
 

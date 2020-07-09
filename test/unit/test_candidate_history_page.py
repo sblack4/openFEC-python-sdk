@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCandidateHistoryPage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCandidateHistoryPage(unittest.TestCase):
     def testCandidateHistoryPage(self):
         """Test CandidateHistoryPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.CandidateHistoryPage()  # noqa: E501
+        # model = openfec_sdk.CandidateHistoryPage()  # noqa: E501
         pass
 
 

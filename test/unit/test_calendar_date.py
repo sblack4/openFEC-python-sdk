@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCalendarDate(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCalendarDate(unittest.TestCase):
     def testCalendarDate(self):
         """Test CalendarDate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.CalendarDate()  # noqa: E501
+        # model = openfec_sdk.CalendarDate()  # noqa: E501
         pass
 
 

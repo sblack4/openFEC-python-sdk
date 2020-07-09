@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestScheduleH4Page(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestScheduleH4Page(unittest.TestCase):
     def testScheduleH4Page(self):
         """Test ScheduleH4Page"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ScheduleH4Page()  # noqa: E501
+        # model = openfec_sdk.ScheduleH4Page()  # noqa: E501
         pass
 
 

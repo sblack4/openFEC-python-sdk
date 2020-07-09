@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCommittee(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCommittee(unittest.TestCase):
     def testCommittee(self):
         """Test Committee"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.Committee()  # noqa: E501
+        # model = openfec_sdk.Committee()  # noqa: E501
         pass
 
 

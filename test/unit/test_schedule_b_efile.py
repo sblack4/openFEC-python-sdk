@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestScheduleBEfile(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestScheduleBEfile(unittest.TestCase):
     def testScheduleBEfile(self):
         """Test ScheduleBEfile"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ScheduleBEfile()  # noqa: E501
+        # model = openfec_sdk.ScheduleBEfile()  # noqa: E501
         pass
 
 

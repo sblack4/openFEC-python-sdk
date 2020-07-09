@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestScheduleBByRecipientID(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestScheduleBByRecipientID(unittest.TestCase):
     def testScheduleBByRecipientID(self):
         """Test ScheduleBByRecipientID"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ScheduleBByRecipientID()  # noqa: E501
+        # model = openfec_sdk.ScheduleBByRecipientID()  # noqa: E501
         pass
 
 

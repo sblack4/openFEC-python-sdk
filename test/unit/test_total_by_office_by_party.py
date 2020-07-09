@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestTotalByOfficeByParty(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestTotalByOfficeByParty(unittest.TestCase):
     def testTotalByOfficeByParty(self):
         """Test TotalByOfficeByParty"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.TotalByOfficeByParty()  # noqa: E501
+        # model = openfec_sdk.TotalByOfficeByParty()  # noqa: E501
         pass
 
 

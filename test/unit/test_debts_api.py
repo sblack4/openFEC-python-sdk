@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 from openfec_sdk.debts_api import DebtsApi  # noqa: E501
-from openapi_client.rest import ApiException
+from openfec_sdk.rest import ApiException
 
 
 class TestDebtsApi(unittest.TestCase):

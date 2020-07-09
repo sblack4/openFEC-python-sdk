@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestPresidentialBySizePage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestPresidentialBySizePage(unittest.TestCase):
     def testPresidentialBySizePage(self):
         """Test PresidentialBySizePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.PresidentialBySizePage()  # noqa: E501
+        # model = openfec_sdk.PresidentialBySizePage()  # noqa: E501
         pass
 
 

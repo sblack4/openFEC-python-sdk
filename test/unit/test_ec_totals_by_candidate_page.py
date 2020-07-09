@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestECTotalsByCandidatePage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestECTotalsByCandidatePage(unittest.TestCase):
     def testECTotalsByCandidatePage(self):
         """Test ECTotalsByCandidatePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ECTotalsByCandidatePage()  # noqa: E501
+        # model = openfec_sdk.ECTotalsByCandidatePage()  # noqa: E501
         pass
 
 

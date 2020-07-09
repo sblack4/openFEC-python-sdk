@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestAuditCategoryRelation(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestAuditCategoryRelation(unittest.TestCase):
     def testAuditCategoryRelation(self):
         """Test AuditCategoryRelation"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.AuditCategoryRelation()  # noqa: E501
+        # model = openfec_sdk.AuditCategoryRelation()  # noqa: E501
         pass
 
 

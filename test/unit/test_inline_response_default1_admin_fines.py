@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestInlineResponseDefault1AdminFines(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestInlineResponseDefault1AdminFines(unittest.TestCase):
     def testInlineResponseDefault1AdminFines(self):
         """Test InlineResponseDefault1AdminFines"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.InlineResponseDefault1AdminFines()  # noqa: E501
+        # model = openfec_sdk.InlineResponseDefault1AdminFines()  # noqa: E501
         pass
 
 

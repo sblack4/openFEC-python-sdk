@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCommunicationCostByCandidatePage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCommunicationCostByCandidatePage(unittest.TestCase):
     def testCommunicationCostByCandidatePage(self):
         """Test CommunicationCostByCandidatePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.CommunicationCostByCandidatePage()  # noqa: E501
+        # model = openfec_sdk.CommunicationCostByCandidatePage()  # noqa: E501
         pass
 
 

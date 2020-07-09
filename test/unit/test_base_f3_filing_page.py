@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestBaseF3FilingPage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestBaseF3FilingPage(unittest.TestCase):
     def testBaseF3FilingPage(self):
         """Test BaseF3FilingPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.BaseF3FilingPage()  # noqa: E501
+        # model = openfec_sdk.BaseF3FilingPage()  # noqa: E501
         pass
 
 

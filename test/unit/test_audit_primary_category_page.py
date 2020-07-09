@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestAuditPrimaryCategoryPage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestAuditPrimaryCategoryPage(unittest.TestCase):
     def testAuditPrimaryCategoryPage(self):
         """Test AuditPrimaryCategoryPage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.AuditPrimaryCategoryPage()  # noqa: E501
+        # model = openfec_sdk.AuditPrimaryCategoryPage()  # noqa: E501
         pass
 
 

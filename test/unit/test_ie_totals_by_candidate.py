@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestIETotalsByCandidate(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestIETotalsByCandidate(unittest.TestCase):
     def testIETotalsByCandidate(self):
         """Test IETotalsByCandidate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.IETotalsByCandidate()  # noqa: E501
+        # model = openfec_sdk.IETotalsByCandidate()  # noqa: E501
         pass
 
 

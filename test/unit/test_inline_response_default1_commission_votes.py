@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestInlineResponseDefault1CommissionVotes(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestInlineResponseDefault1CommissionVotes(unittest.TestCase):
     def testInlineResponseDefault1CommissionVotes(self):
         """Test InlineResponseDefault1CommissionVotes"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.InlineResponseDefault1CommissionVotes()  # noqa: E501
+        # model = openfec_sdk.InlineResponseDefault1CommissionVotes()  # noqa: E501
         pass
 
 

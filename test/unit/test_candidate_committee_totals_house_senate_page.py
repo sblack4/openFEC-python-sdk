@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCandidateCommitteeTotalsHouseSenatePage(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCandidateCommitteeTotalsHouseSenatePage(unittest.TestCase):
     def testCandidateCommitteeTotalsHouseSenatePage(self):
         """Test CandidateCommitteeTotalsHouseSenatePage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.CandidateCommitteeTotalsHouseSenatePage()  # noqa: E501
+        # model = openfec_sdk.CandidateCommitteeTotalsHouseSenatePage()  # noqa: E501
         pass
 
 

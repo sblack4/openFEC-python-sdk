@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestAuditCandidateSearch(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestAuditCandidateSearch(unittest.TestCase):
     def testAuditCandidateSearch(self):
         """Test AuditCandidateSearch"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.AuditCandidateSearch()  # noqa: E501
+        # model = openfec_sdk.AuditCandidateSearch()  # noqa: E501
         pass
 
 

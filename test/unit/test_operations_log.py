@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestOperationsLog(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestOperationsLog(unittest.TestCase):
     def testOperationsLog(self):
         """Test OperationsLog"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.OperationsLog()  # noqa: E501
+        # model = openfec_sdk.OperationsLog()  # noqa: E501
         pass
 
 

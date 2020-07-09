@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestReportType(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestReportType(unittest.TestCase):
     def testReportType(self):
         """Test ReportType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ReportType()  # noqa: E501
+        # model = openfec_sdk.ReportType()  # noqa: E501
         pass
 
 

@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestScheduleABySize(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestScheduleABySize(unittest.TestCase):
     def testScheduleABySize(self):
         """Test ScheduleABySize"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ScheduleABySize()  # noqa: E501
+        # model = openfec_sdk.ScheduleABySize()  # noqa: E501
         pass
 
 

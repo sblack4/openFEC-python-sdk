@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestCommitteeSearchList(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestCommitteeSearchList(unittest.TestCase):
     def testCommitteeSearchList(self):
         """Test CommitteeSearchList"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.CommitteeSearchList()  # noqa: E501
+        # model = openfec_sdk.CommitteeSearchList()  # noqa: E501
         pass
 
 

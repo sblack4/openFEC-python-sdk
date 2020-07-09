@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestEfilingsAmendments(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestEfilingsAmendments(unittest.TestCase):
     def testEfilingsAmendments(self):
         """Test EfilingsAmendments"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.EfilingsAmendments()  # noqa: E501
+        # model = openfec_sdk.EfilingsAmendments()  # noqa: E501
         pass
 
 

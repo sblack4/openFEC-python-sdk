@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestReportDate(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestReportDate(unittest.TestCase):
     def testReportDate(self):
         """Test ReportDate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.ReportDate()  # noqa: E501
+        # model = openfec_sdk.ReportDate()  # noqa: E501
         pass
 
 

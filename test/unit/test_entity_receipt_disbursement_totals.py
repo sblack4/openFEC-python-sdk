@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestEntityReceiptDisbursementTotals(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestEntityReceiptDisbursementTotals(unittest.TestCase):
     def testEntityReceiptDisbursementTotals(self):
         """Test EntityReceiptDisbursementTotals"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.EntityReceiptDisbursementTotals()  # noqa: E501
+        # model = openfec_sdk.EntityReceiptDisbursementTotals()  # noqa: E501
         pass
 
 

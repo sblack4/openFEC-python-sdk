@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestPresidentialByCandidate(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestPresidentialByCandidate(unittest.TestCase):
     def testPresidentialByCandidate(self):
         """Test PresidentialByCandidate"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.PresidentialByCandidate()  # noqa: E501
+        # model = openfec_sdk.PresidentialByCandidate()  # noqa: E501
         pass
 
 

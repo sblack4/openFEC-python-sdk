@@ -14,7 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
+import openfec_sdk
 
 
 class TestRadAnalyst(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestRadAnalyst(unittest.TestCase):
     def testRadAnalyst(self):
         """Test RadAnalyst"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = openapi_client.RadAnalyst()  # noqa: E501
+        # model = openfec_sdk.RadAnalyst()  # noqa: E501
         pass
 
 
