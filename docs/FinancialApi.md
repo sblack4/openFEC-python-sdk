@@ -1,4 +1,4 @@
-# openapi_client.FinancialApi
+# openfec_sdk.FinancialApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -29,11 +29,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -43,7 +43,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -53,7 +53,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -63,7 +63,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -73,9 +73,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
     max_receipts_amount = 'max_receipts_amount_example' # str |  Filter for all amounts less than a value.  (optional)
 max_debts_owed_expenditures = 'max_debts_owed_expenditures_example' # str |  Filter for all amounts less than a value.  (optional)
@@ -109,7 +109,7 @@ report_type = ['report_type_example'] # [str] | Report type; prefix with \"-\" t
     try:
         api_response = api_instance.committee_committee_id_reports_get(committee_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->committee_committee_id_reports_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -117,7 +117,7 @@ report_type = ['report_type_example'] # [str] | Report type; prefix with \"-\" t
     try:
         api_response = api_instance.committee_committee_id_reports_get(committee_id, max_receipts_amount=max_receipts_amount, max_debts_owed_expenditures=max_debts_owed_expenditures, type=type, page=page, sort_nulls_last=sort_nulls_last, max_independent_expenditures=max_independent_expenditures, min_party_coordinated_expenditures=min_party_coordinated_expenditures, per_page=per_page, sort=sort, min_receipts_amount=min_receipts_amount, sort_hide_null=sort_hide_null, candidate_id=candidate_id, year=year, max_cash_on_hand_end_period_amount=max_cash_on_hand_end_period_amount, cycle=cycle, max_party_coordinated_expenditures=max_party_coordinated_expenditures, max_total_contributions=max_total_contributions, is_amended=is_amended, sort_null_only=sort_null_only, min_independent_expenditures=min_independent_expenditures, min_total_contributions=min_total_contributions, beginning_image_number=beginning_image_number, max_disbursements_amount=max_disbursements_amount, min_cash_on_hand_end_period_amount=min_cash_on_hand_end_period_amount, min_disbursements_amount=min_disbursements_amount, min_debts_owed_amount=min_debts_owed_amount, report_type=report_type)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->committee_committee_id_reports_get: %s\n" % e)
 ```
 
@@ -190,11 +190,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -204,7 +204,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -214,7 +214,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -224,7 +224,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -234,9 +234,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
     type = 'type_example' # str | The one-letter type code of the organization:         - C communication cost         - D delegate         - E electioneering communication         - H House         - I independent expenditor (person or group)         - N PAC - nonqualified         - O independent expenditure-only (super PACs)         - P presidential         - Q PAC - qualified         - S Senate         - U single candidate independent expenditure         - V PAC with non-contribution account, nonqualified         - W PAC with non-contribution account, qualified         - X party, nonqualified         - Y party, qualified         - Z national party non-federal account  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -252,7 +252,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.committee_committee_id_totals_get(committee_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->committee_committee_id_totals_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -260,7 +260,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.committee_committee_id_totals_get(committee_id, type=type, page=page, sort_nulls_last=sort_nulls_last, designation=designation, sort_null_only=sort_null_only, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->committee_committee_id_totals_get: %s\n" % e)
 ```
 
@@ -315,11 +315,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -329,7 +329,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -339,7 +339,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -349,7 +349,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -359,9 +359,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     cycle = 56 # int |  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
     office = 'office_example' # str | Federal office candidate runs for: H, S or P
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -378,7 +378,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.elections_get(cycle, office)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -386,7 +386,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.elections_get(cycle, office, page=page, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, election_full=election_full, district=district, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_get: %s\n" % e)
 ```
 
@@ -442,11 +442,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -456,7 +456,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -466,7 +466,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -476,7 +476,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -486,9 +486,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
@@ -505,7 +505,7 @@ cycle = [56] # [int] |  Two-year election cycle in which a candidate runs for of
     try:
         api_response = api_instance.elections_search_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_search_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -513,7 +513,7 @@ cycle = [56] # [int] |  Two-year election cycle in which a candidate runs for of
     try:
         api_response = api_instance.elections_search_get(page=page, sort_nulls_last=sort_nulls_last, sort_null_only=sort_null_only, district=district, state=state, per_page=per_page, zip=zip, sort=sort, office=office, sort_hide_null=sort_hide_null, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_search_get: %s\n" % e)
 ```
 
@@ -569,11 +569,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -583,7 +583,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -593,7 +593,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -603,7 +603,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -613,9 +613,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     cycle = 56 # int |  Two-year election cycle in which a candidate runs for office. Calculated from FEC Form 2. The cycle begins with an odd year and is named for its ending, even year. This cycle follows the traditional house election cycle and subdivides the presidential and Senate elections into comparable two-year blocks. To see data for the entire four years of a presidential term or six years of a senatorial term, you will need the `election_full` flag.
     office = 'office_example' # str | Federal office candidate runs for: H, S or P
     election_full = True # bool | `True` indicates that full election period of a candidate. `False` indicates that two year election cycle. (optional) if omitted the server will use the default value of True
@@ -626,7 +626,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.elections_summary_get(cycle, office)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_summary_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -634,7 +634,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.elections_summary_get(cycle, office, election_full=election_full, district=district, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->elections_summary_get: %s\n" % e)
 ```
 
@@ -684,11 +684,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -698,7 +698,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -708,7 +708,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -718,7 +718,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -728,9 +728,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     committee_type = 'committee_type_example' # str | House, Senate, presidential, independent expenditure only
     max_receipts_amount = 'max_receipts_amount_example' # str |  Filter for all amounts less than a value.  (optional)
 max_debts_owed_expenditures = 'max_debts_owed_expenditures_example' # str |  Filter for all amounts less than a value.  (optional)
@@ -770,7 +770,7 @@ min_receipt_date = '2013-10-20' # date |  Selects all items received by FEC afte
     try:
         api_response = api_instance.reports_committee_type_get(committee_type)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->reports_committee_type_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -778,7 +778,7 @@ min_receipt_date = '2013-10-20' # date |  Selects all items received by FEC afte
     try:
         api_response = api_instance.reports_committee_type_get(committee_type, max_receipts_amount=max_receipts_amount, max_debts_owed_expenditures=max_debts_owed_expenditures, committee_id=committee_id, max_independent_expenditures=max_independent_expenditures, filer_type=filer_type, sort=sort, sort_hide_null=sort_hide_null, year=year, cycle=cycle, max_total_contributions=max_total_contributions, is_amended=is_amended, min_independent_expenditures=min_independent_expenditures, min_total_contributions=min_total_contributions, beginning_image_number=beginning_image_number, max_disbursements_amount=max_disbursements_amount, min_disbursements_amount=min_disbursements_amount, min_cash_on_hand_end_period_amount=min_cash_on_hand_end_period_amount, report_type=report_type, type=type, page=page, sort_nulls_last=sort_nulls_last, min_party_coordinated_expenditures=min_party_coordinated_expenditures, amendment_indicator=amendment_indicator, per_page=per_page, most_recent=most_recent, min_receipts_amount=min_receipts_amount, candidate_id=candidate_id, max_cash_on_hand_end_period_amount=max_cash_on_hand_end_period_amount, max_party_coordinated_expenditures=max_party_coordinated_expenditures, sort_null_only=sort_null_only, min_debts_owed_amount=min_debts_owed_amount, max_receipt_date=max_receipt_date, min_receipt_date=min_receipt_date)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->reports_committee_type_get: %s\n" % e)
 ```
 
@@ -857,11 +857,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -871,7 +871,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -881,7 +881,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -891,7 +891,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -901,9 +901,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     cycle = 56 # int |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.
     per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -916,7 +916,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.totals_by_entity_get(cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->totals_by_entity_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -924,7 +924,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.totals_by_entity_get(cycle, per_page=per_page, page=page, sort_nulls_last=sort_nulls_last, sort=sort, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->totals_by_entity_get: %s\n" % e)
 ```
 
@@ -976,11 +976,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -990,7 +990,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -1000,7 +1000,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -1010,7 +1010,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -1020,9 +1020,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FinancialApi(api_client)
+    api_instance = openfec_sdk.FinancialApi(api_client)
     committee_type = 'committee_type_example' # str | House, Senate, presidential, independent expenditure only
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
@@ -1039,7 +1039,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.totals_committee_type_get(committee_type)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->totals_committee_type_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -1047,7 +1047,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.totals_committee_type_get(committee_type, page=page, committee_id=committee_id, sort_nulls_last=sort_nulls_last, committee_designation_full=committee_designation_full, sort_null_only=sort_null_only, per_page=per_page, sort=sort, committee_type_full=committee_type_full, sort_hide_null=sort_hide_null, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FinancialApi->totals_committee_type_get: %s\n" % e)
 ```
 

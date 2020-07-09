@@ -1,4 +1,4 @@
-# openapi_client.LoansApi
+# openfec_sdk.LoansApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -23,11 +23,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -37,7 +37,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -47,7 +47,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -57,7 +57,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -67,21 +67,21 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LoansApi(api_client)
+    api_instance = openfec_sdk.LoansApi(api_client)
     min_payment_to_date = 56 # int |  Minimum payment to date  (optional)
-min_incurred_date = openapi_client.date, none_type() # date, none_type |  Minimum incurred date  (optional)
+min_incurred_date = openfec_sdk.date, none_type() # date, none_type |  Minimum incurred date  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_amount = 'min_amount_example' # str |  Filter for all amounts greater than a value.  (optional)
 committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 sort_nulls_last = True # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of True
-max_incurred_date = openapi_client.date, none_type() # date, none_type |  Maximum incurred date  (optional)
+max_incurred_date = openfec_sdk.date, none_type() # date, none_type |  Maximum incurred date  (optional)
 loan_source_name = ['loan_source_name_example'] # [str] | Source of the loan (i.e., bank loan, brokerage account, credit card, home equity line of credit,               other line of credit, or personal funds of the candidate (optional)
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 sort = '-incurred_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-incurred_date'
 sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
-last_index = openapi_client.int, none_type() # int, none_type | Index of last result from previous page (optional)
+last_index = openfec_sdk.int, none_type() # int, none_type | Index of last result from previous page (optional)
 candidate_name = ['candidate_name_example'] # [str] | Name of candidate running for office (optional)
 line_number = 'line_number_example' # str |  Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`.  (optional)
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
@@ -95,7 +95,7 @@ max_payment_to_date = 56 # int |  Maximum payment to date  (optional)
     try:
         api_response = api_instance.schedules_schedule_c_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LoansApi->schedules_schedule_c_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -103,7 +103,7 @@ max_payment_to_date = 56 # int |  Maximum payment to date  (optional)
     try:
         api_response = api_instance.schedules_schedule_c_get(min_payment_to_date=min_payment_to_date, min_incurred_date=min_incurred_date, page=page, min_amount=min_amount, committee_id=committee_id, sort_nulls_last=sort_nulls_last, max_incurred_date=max_incurred_date, loan_source_name=loan_source_name, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null, last_index=last_index, candidate_name=candidate_name, line_number=line_number, sort_null_only=sort_null_only, max_image_number=max_image_number, max_amount=max_amount, image_number=image_number, min_image_number=min_image_number, max_payment_to_date=max_payment_to_date)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LoansApi->schedules_schedule_c_get: %s\n" % e)
 ```
 
@@ -168,11 +168,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -182,7 +182,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -192,7 +192,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -202,7 +202,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -212,9 +212,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LoansApi(api_client)
+    api_instance = openfec_sdk.LoansApi(api_client)
     sub_id = 'sub_id_example' # str |
     per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -227,7 +227,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.schedules_schedule_c_sub_id_get(sub_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LoansApi->schedules_schedule_c_sub_id_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -235,7 +235,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.schedules_schedule_c_sub_id_get(sub_id, per_page=per_page, page=page, sort_nulls_last=sort_nulls_last, sort=sort, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LoansApi->schedules_schedule_c_sub_id_get: %s\n" % e)
 ```
 

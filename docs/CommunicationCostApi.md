@@ -1,4 +1,4 @@
-# openapi_client.CommunicationCostApi
+# openfec_sdk.CommunicationCostApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -26,11 +26,11 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -40,7 +40,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -50,7 +50,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -60,7 +60,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -70,9 +70,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommunicationCostApi(api_client)
+    api_instance = openfec_sdk.CommunicationCostApi(api_client)
     committee_id = 'committee_id_example' # str |
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
@@ -92,7 +92,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.committee_committee_id_communication_costs_by_candidate_get(committee_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->committee_committee_id_communication_costs_by_candidate_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -100,7 +100,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.committee_committee_id_communication_costs_by_candidate_get(committee_id, page=page, cycle=cycle, support_oppose=support_oppose, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, district=district, election_full=election_full, office=office, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->committee_committee_id_communication_costs_by_candidate_get: %s\n" % e)
 ```
 
@@ -159,11 +159,11 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -173,7 +173,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -183,7 +183,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -193,7 +193,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -203,9 +203,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommunicationCostApi(api_client)
+    api_instance = openfec_sdk.CommunicationCostApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
@@ -221,7 +221,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.communication_costs_aggregates_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_aggregates_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -229,7 +229,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.communication_costs_aggregates_get(page=page, committee_id=committee_id, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, support_oppose_indicator=support_oppose_indicator, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_aggregates_get: %s\n" % e)
 ```
 
@@ -284,11 +284,11 @@ Communication cost aggregated by candidate ID and committee ID.
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -298,7 +298,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -308,7 +308,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -318,7 +318,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -328,9 +328,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommunicationCostApi(api_client)
+    api_instance = openfec_sdk.CommunicationCostApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 support_oppose = 'null' # str, none_type | Support or opposition (optional) if omitted the server will use the default value of 'null'
@@ -349,7 +349,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.communication_costs_by_candidate_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_by_candidate_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -357,7 +357,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.communication_costs_by_candidate_get(page=page, cycle=cycle, support_oppose=support_oppose, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, district=district, election_full=election_full, office=office, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_by_candidate_get: %s\n" % e)
 ```
 
@@ -415,11 +415,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -429,7 +429,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -439,7 +439,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -449,7 +449,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -459,9 +459,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommunicationCostApi(api_client)
+    api_instance = openfec_sdk.CommunicationCostApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_amount = 'min_amount_example' # str | Filter for all amounts greater than a value. (optional)
 min_date = '2013-10-20' # date | Minimum date (optional)
@@ -484,7 +484,7 @@ min_image_number = 'min_image_number_example' # str |  (optional)
     try:
         api_response = api_instance.communication_costs_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -492,7 +492,7 @@ min_image_number = 'min_image_number_example' # str |  (optional)
     try:
         api_response = api_instance.communication_costs_get(page=page, min_amount=min_amount, min_date=min_date, committee_id=committee_id, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, max_date=max_date, support_oppose_indicator=support_oppose_indicator, line_number=line_number, sort_null_only=sort_null_only, max_image_number=max_image_number, max_amount=max_amount, image_number=image_number, min_image_number=min_image_number)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_get: %s\n" % e)
 ```
 
@@ -554,11 +554,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -568,7 +568,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -578,7 +578,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -588,7 +588,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -598,9 +598,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommunicationCostApi(api_client)
+    api_instance = openfec_sdk.CommunicationCostApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
@@ -615,7 +615,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.communication_costs_totals_by_candidate_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_totals_by_candidate_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -623,7 +623,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.communication_costs_totals_by_candidate_get(page=page, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, election_full=election_full, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommunicationCostApi->communication_costs_totals_by_candidate_get: %s\n" % e)
 ```
 

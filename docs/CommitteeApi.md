@@ -1,4 +1,4 @@
-# openapi_client.CommitteeApi
+# openfec_sdk.CommitteeApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -28,11 +28,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -42,7 +42,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -52,7 +52,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -62,7 +62,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -72,9 +72,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     candidate_id = 'candidate_id_example' # str |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
@@ -93,7 +93,7 @@ cycle = [56] # [int] |  A two year election cycle that the committee was active-
     try:
         api_response = api_instance.candidate_candidate_id_committees_get(candidate_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -101,7 +101,7 @@ cycle = [56] # [int] |  A two year election cycle that the committee was active-
     try:
         api_response = api_instance.candidate_candidate_id_committees_get(candidate_id, page=page, sort_nulls_last=sort_nulls_last, committee_type=committee_type, designation=designation, sort_null_only=sort_null_only, organization_type=organization_type, per_page=per_page, sort=sort, filing_frequency=filing_frequency, sort_hide_null=sort_hide_null, year=year, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_get: %s\n" % e)
 ```
 
@@ -159,11 +159,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -173,7 +173,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -183,7 +183,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -193,7 +193,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -203,9 +203,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     cycle = 56 # int |  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
     candidate_id = 'candidate_id_example' # str |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -221,7 +221,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.candidate_candidate_id_committees_history_cycle_get(cycle, candidate_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_history_cycle_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -229,7 +229,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.candidate_candidate_id_committees_history_cycle_get(cycle, candidate_id, page=page, sort_null_only=sort_null_only, designation=designation, election_full=election_full, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_history_cycle_get: %s\n" % e)
 ```
 
@@ -284,11 +284,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -298,7 +298,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -308,7 +308,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -318,7 +318,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -328,9 +328,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     candidate_id = 'candidate_id_example' # str |  A unique identifier assigned to each candidate registered with the FEC. If a person runs for several offices, that person will have separate candidate IDs for each office.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
@@ -345,7 +345,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.candidate_candidate_id_committees_history_get(candidate_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_history_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -353,7 +353,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.candidate_candidate_id_committees_history_get(candidate_id, page=page, sort_null_only=sort_null_only, designation=designation, election_full=election_full, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->candidate_candidate_id_committees_history_get: %s\n" % e)
 ```
 
@@ -407,11 +407,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -421,7 +421,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -431,7 +431,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -441,7 +441,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -451,9 +451,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
@@ -472,7 +472,7 @@ cycle = [56] # [int] |  A two year election cycle that the committee was active-
     try:
         api_response = api_instance.committee_committee_id_get(committee_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -480,7 +480,7 @@ cycle = [56] # [int] |  A two year election cycle that the committee was active-
     try:
         api_response = api_instance.committee_committee_id_get(committee_id, page=page, sort_nulls_last=sort_nulls_last, committee_type=committee_type, designation=designation, sort_null_only=sort_null_only, organization_type=organization_type, per_page=per_page, sort=sort, filing_frequency=filing_frequency, sort_hide_null=sort_hide_null, year=year, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_get: %s\n" % e)
 ```
 
@@ -538,11 +538,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -552,7 +552,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -562,7 +562,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -572,7 +572,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -582,9 +582,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
     cycle = 56 # int |  A two year election cycle that the committee was active- (after original registration date but before expiration date in FEC Form 1s) The cycle begins with an odd year and is named for its ending, even year.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -600,7 +600,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.committee_committee_id_history_cycle_get(committee_id, cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_history_cycle_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -608,7 +608,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.committee_committee_id_history_cycle_get(committee_id, cycle, page=page, sort_null_only=sort_null_only, designation=designation, election_full=election_full, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_history_cycle_get: %s\n" % e)
 ```
 
@@ -663,11 +663,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -677,7 +677,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -687,7 +687,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -697,7 +697,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -707,9 +707,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     committee_id = 'committee_id_example' # str |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
@@ -724,7 +724,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.committee_committee_id_history_get(committee_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_history_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -732,7 +732,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.committee_committee_id_history_get(committee_id, page=page, sort_null_only=sort_null_only, designation=designation, election_full=election_full, sort_nulls_last=sort_nulls_last, per_page=per_page, sort=sort, sort_hide_null=sort_hide_null)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committee_committee_id_history_get: %s\n" % e)
 ```
 
@@ -786,11 +786,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -800,7 +800,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -810,7 +810,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -820,7 +820,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -830,9 +830,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.CommitteeApi(api_client)
+    api_instance = openfec_sdk.CommitteeApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 max_first_file_date = '2013-10-20' # date | Filter for committees whose first filing was received on or before this date. (optional)
 committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
@@ -860,7 +860,7 @@ state = ['state_example'] # [str] | US state or territory (optional)
     try:
         api_response = api_instance.committees_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committees_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -868,7 +868,7 @@ state = ['state_example'] # [str] | US state or territory (optional)
     try:
         api_response = api_instance.committees_get(page=page, max_first_file_date=max_first_file_date, committee_id=committee_id, sort_nulls_last=sort_nulls_last, designation=designation, q=q, organization_type=organization_type, per_page=per_page, max_last_f1_date=max_last_f1_date, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, year=year, cycle=cycle, min_last_f1_date=min_last_f1_date, party=party, committee_type=committee_type, sort_null_only=sort_null_only, filing_frequency=filing_frequency, treasurer_name=treasurer_name, min_first_file_date=min_first_file_date, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling CommitteeApi->committees_get: %s\n" % e)
 ```
 

@@ -1,4 +1,4 @@
-# openapi_client.LegalApi
+# openfec_sdk.LegalApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -22,11 +22,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -36,7 +36,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -46,7 +46,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -56,7 +56,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -66,9 +66,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LegalApi(api_client)
+    api_instance = openfec_sdk.LegalApi(api_client)
     af_name = ['af_name_example'] # [str] | Admin fine committee name (optional)
 case_max_close_date = '2013-10-20' # date | Filter cases by latest date closed (optional)
 ao_entity_name = ['ao_entity_name_example'] # [str] | Search by name of commenter or representative (optional)
@@ -111,7 +111,7 @@ q = 'q_example' # str | Text to search legal documents for. (optional)
     try:
         api_response = api_instance.legal_search_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LegalApi->legal_search_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -119,7 +119,7 @@ q = 'q_example' # str | Text to search legal documents for. (optional)
     try:
         api_response = api_instance.legal_search_get(af_name=af_name, case_max_close_date=case_max_close_date, ao_entity_name=ao_entity_name, af_min_rtb_date=af_min_rtb_date, from_hit=from_hit, af_rtb_fine_amount=af_rtb_fine_amount, case_document_category=case_document_category, af_max_fd_date=af_max_fd_date, case_dispositions=case_dispositions, ao_statutory_citation=ao_statutory_citation, case_election_cycles=case_election_cycles, ao_max_issue_date=ao_max_issue_date, af_fd_fine_amount=af_fd_fine_amount, ao_category=ao_category, ao_max_request_date=ao_max_request_date, case_max_open_date=case_max_open_date, ao_citation_require_all=ao_citation_require_all, ao_requestor_type=ao_requestor_type, ao_min_issue_date=ao_min_issue_date, case_no=case_no, case_respondents=case_respondents, ao_status=ao_status, case_min_close_date=case_min_close_date, type=type, af_report_year=af_report_year, hits_returned=hits_returned, af_min_fd_date=af_min_fd_date, ao_no=ao_no, ao_name=ao_name, ao_requestor=ao_requestor, case_min_open_date=case_min_open_date, ao_regulatory_citation=ao_regulatory_citation, af_max_rtb_date=af_max_rtb_date, af_committee_id=af_committee_id, ao_min_request_date=ao_min_request_date, ao_is_pending=ao_is_pending, q=q)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling LegalApi->legal_search_get: %s\n" % e)
 ```
 

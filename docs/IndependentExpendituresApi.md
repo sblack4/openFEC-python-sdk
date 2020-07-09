@@ -1,4 +1,4 @@
-# openapi_client.IndependentExpendituresApi
+# openfec_sdk.IndependentExpendituresApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -25,11 +25,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -39,7 +39,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -49,7 +49,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -59,7 +59,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -69,9 +69,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.IndependentExpendituresApi(api_client)
+    api_instance = openfec_sdk.IndependentExpendituresApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
 support_oppose = 'null' # str, none_type | Support or opposition (optional) if omitted the server will use the default value of 'null'
@@ -91,7 +91,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.schedules_schedule_e_by_candidate_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_by_candidate_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -99,7 +99,7 @@ state = 'state_example' # str | US state or territory where a candidate runs for
     try:
         api_response = api_instance.schedules_schedule_e_by_candidate_get(page=page, cycle=cycle, support_oppose=support_oppose, committee_id=committee_id, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, district=district, election_full=election_full, office=office, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, state=state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_by_candidate_get: %s\n" % e)
 ```
 
@@ -158,11 +158,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -172,7 +172,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -182,7 +182,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -192,7 +192,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -202,9 +202,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.IndependentExpendituresApi(api_client)
+    api_instance = openfec_sdk.IndependentExpendituresApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_dissemination_date = '2013-10-20' # date | Selects all items distributed by this committee after this date (optional)
 committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
@@ -238,7 +238,7 @@ filing_form = ['filing_form_example'] # [str] | The form where the underlying da
     try:
         api_response = api_instance.schedules_schedule_e_efile_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_efile_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -246,7 +246,7 @@ filing_form = ['filing_form_example'] # [str] | The form where the underlying da
     try:
         api_response = api_instance.schedules_schedule_e_efile_get(page=page, min_dissemination_date=min_dissemination_date, committee_id=committee_id, sort_nulls_last=sort_nulls_last, spender_name=spender_name, per_page=per_page, candidate_search=candidate_search, most_recent=most_recent, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, candidate_office=candidate_office, candidate_party=candidate_party, candidate_office_state=candidate_office_state, support_oppose_indicator=support_oppose_indicator, max_expenditure_date=max_expenditure_date, max_expenditure_amount=max_expenditure_amount, is_notice=is_notice, sort_null_only=sort_null_only, min_expenditure_date=min_expenditure_date, min_filed_date=min_filed_date, candidate_office_district=candidate_office_district, max_filed_date=max_filed_date, payee_name=payee_name, max_dissemination_date=max_dissemination_date, image_number=image_number, min_expenditure_amount=min_expenditure_amount, filing_form=filing_form)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_efile_get: %s\n" % e)
 ```
 
@@ -319,11 +319,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -333,7 +333,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -343,7 +343,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -353,7 +353,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -363,9 +363,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.IndependentExpendituresApi(api_client)
+    api_instance = openfec_sdk.IndependentExpendituresApi(api_client)
     min_dissemination_date = '2013-10-20' # date | Selects all items distributed by this committee after this date (optional)
 min_amount = 'min_amount_example' # str | Filter for all amounts greater than a value. (optional)
 min_date = '2013-10-20' # date | Minimum date (optional)
@@ -374,12 +374,12 @@ min_filing_date = '2013-10-20' # date |  Selects all filings received after this
 sort = '-expenditure_date' # str | Provide a field to sort by. Use `-` for descending order.  (optional) if omitted the server will use the default value of '-expenditure_date'
 sort_hide_null = False # bool | Hide null values on sorted column(s). (optional) if omitted the server will use the default value of False
 candidate_office = ['candidate_office_example'] # [str] | Federal office candidate runs for: H, S or P (optional)
-last_index = openapi_client.int, none_type() # int, none_type | Index of last result from previous page (optional)
+last_index = openfec_sdk.int, none_type() # int, none_type | Index of last result from previous page (optional)
 candidate_office_state = ['candidate_office_state_example'] # [str] | US state or territory (optional)
 cycle = [56] # [int] |  Filter records to only those that were applicable to a given two-year period.The cycle begins with an odd year and is named for its ending, even year.  (optional)
-last_expenditure_date = openapi_client.date, none_type() # date, none_type |  When sorting by `expenditure_date`, this is populated with the `expenditure_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.  (optional)
+last_expenditure_date = openfec_sdk.date, none_type() # date, none_type |  When sorting by `expenditure_date`, this is populated with the `expenditure_date` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.  (optional)
 last_support_oppose_indicator = 'null' # str, none_type |  When sorting by `support_oppose_indicator`, this is populated with the `support_oppose_indicator` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.'  (optional) if omitted the server will use the default value of 'null'
-last_office_total_ytd = openapi_client.float, none_type() # float, none_type |  When sorting by `office_total_ytd`, this is populated with the `office_total_ytd` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.'  (optional)
+last_office_total_ytd = openfec_sdk.float, none_type() # float, none_type |  When sorting by `office_total_ytd`, this is populated with the `office_total_ytd` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.'  (optional)
 line_number = 'line_number_example' # str | Filter for form and line number using the following format: `FORM-LINENUMBER`.  For example an argument such as `F3X-16` would filter down to all entries from form `F3X` line number `16`. (optional)
 max_image_number = 'max_image_number_example' # str |  (optional)
 max_amount = 'max_amount_example' # str | Filter for all amounts less than a value. (optional)
@@ -389,7 +389,7 @@ image_number = ['image_number_example'] # [str] | The image number of the page w
 min_image_number = 'min_image_number_example' # str |  (optional)
 is_notice = [True] # [bool] |  Record filed as 24- or 48-hour notice.  (optional)
 filing_form = ['filing_form_example'] # [str] | The form where the underlying data comes from, for example, Form 1 would appear as F1:     - F1   Statement of Organization     - F1M  Notification of Multicandidate Status     - F2   Statement of Candidacy     - F3   Report of Receipts and Disbursements for an Authorized Committee     - F3P  Report of Receipts and Disbursements by an Authorized Committee of a Candidate for     The Office of President or Vice President     - F3L  Report of Contributions Bundled by Lobbyists/Registrants and Lobbyist/Registrant PACs     - F3X  Report of Receipts and Disbursements for other than an Authorized Committee     - F4   Report of Receipts and Disbursements for a Committee or Organization Supporting a Nomination Convention     - F5   Report of Independent Expenditures Made and Contributions Received     - F6   48 Hour Notice of Contributions/Loans Received     - F7   Report of Communication Costs by Corporations and Membership Organizations     - F8   Debt Settlement Plan     - F9   24 Hour Notice of Disbursements for Electioneering Communications     - F13  Report of Donations Accepted for Inaugural Committee     - F99  Miscellaneous Text     - FRQ  Request for Additional Information  (optional)
-last_expenditure_amount = openapi_client.float, none_type() # float, none_type |  When sorting by `expenditure_amount`, this is populated with the `expenditure_amount` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.  (optional)
+last_expenditure_amount = openfec_sdk.float, none_type() # float, none_type |  When sorting by `expenditure_amount`, this is populated with the `expenditure_amount` of the last result. However, you will need to pass the index of that last result to `last_index` to get the next page.  (optional)
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
 per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 most_recent = True # bool |  The report associated with the transaction is either new or is the most-recently filed amendment. Undetermined version (`null`) is always included.  (optional)
@@ -405,7 +405,7 @@ payee_name = ['payee_name_example'] # [str] |  Name of the entity that received 
     try:
         api_response = api_instance.schedules_schedule_e_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -413,7 +413,7 @@ payee_name = ['payee_name_example'] # [str] |  Name of the entity that received 
     try:
         api_response = api_instance.schedules_schedule_e_get(min_dissemination_date=min_dissemination_date, min_amount=min_amount, min_date=min_date, committee_id=committee_id, min_filing_date=min_filing_date, sort=sort, sort_hide_null=sort_hide_null, candidate_office=candidate_office, last_index=last_index, candidate_office_state=candidate_office_state, cycle=cycle, last_expenditure_date=last_expenditure_date, last_support_oppose_indicator=last_support_oppose_indicator, last_office_total_ytd=last_office_total_ytd, line_number=line_number, max_image_number=max_image_number, max_amount=max_amount, candidate_office_district=candidate_office_district, max_dissemination_date=max_dissemination_date, image_number=image_number, min_image_number=min_image_number, is_notice=is_notice, filing_form=filing_form, last_expenditure_amount=last_expenditure_amount, sort_nulls_last=sort_nulls_last, per_page=per_page, most_recent=most_recent, candidate_id=candidate_id, max_date=max_date, candidate_party=candidate_party, support_oppose_indicator=support_oppose_indicator, sort_null_only=sort_null_only, max_filing_date=max_filing_date, payee_name=payee_name)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_get: %s\n" % e)
 ```
 
@@ -492,11 +492,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -506,7 +506,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -516,7 +516,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -526,7 +526,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -536,9 +536,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.IndependentExpendituresApi(api_client)
+    api_instance = openfec_sdk.IndependentExpendituresApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 sort_null_only = False # bool | Toggle that filters out all rows having sort column that is non-null (optional) if omitted the server will use the default value of False
 sort_nulls_last = False # bool | Toggle that sorts null values last (optional) if omitted the server will use the default value of False
@@ -553,7 +553,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.schedules_schedule_e_totals_by_candidate_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_totals_by_candidate_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -561,7 +561,7 @@ cycle = [56] # [int] |  Filter records to only those that were applicable to a g
     try:
         api_response = api_instance.schedules_schedule_e_totals_by_candidate_get(page=page, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, election_full=election_full, per_page=per_page, sort=sort, candidate_id=candidate_id, sort_hide_null=sort_hide_null, cycle=cycle)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling IndependentExpendituresApi->schedules_schedule_e_totals_by_candidate_get: %s\n" % e)
 ```
 

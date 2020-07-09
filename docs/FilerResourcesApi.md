@@ -1,4 +1,4 @@
-# openapi_client.FilerResourcesApi
+# openfec_sdk.FilerResourcesApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -23,11 +23,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -37,7 +37,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -47,7 +47,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -57,7 +57,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -67,9 +67,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FilerResourcesApi(api_client)
+    api_instance = openfec_sdk.FilerResourcesApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 analyst_short_id = [56] # [int] | Short ID of RAD analyst (optional)
 committee_id = ['committee_id_example'] # [str] |  A unique identifier assigned to each committee or filer registered with the FEC. In general committee id's begin with the letter C which is followed by eight digits.  (optional)
@@ -90,7 +90,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.rad_analyst_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->rad_analyst_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -98,7 +98,7 @@ sort_hide_null = False # bool | Hide null values on sorted column(s). (optional)
     try:
         api_response = api_instance.rad_analyst_get(page=page, analyst_short_id=analyst_short_id, committee_id=committee_id, title=title, sort_null_only=sort_null_only, max_assignment_update_date=max_assignment_update_date, min_assignment_update_date=min_assignment_update_date, sort_nulls_last=sort_nulls_last, name=name, email=email, per_page=per_page, telephone_ext=telephone_ext, analyst_id=analyst_id, sort=sort, sort_hide_null=sort_hide_null)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->rad_analyst_get: %s\n" % e)
 ```
 
@@ -158,11 +158,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -172,7 +172,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -182,7 +182,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -192,7 +192,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -202,9 +202,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.FilerResourcesApi(api_client)
+    api_instance = openfec_sdk.FilerResourcesApi(api_client)
     state = 'state_example' # str |  Enter a state (Ex: AK, TX, VA etc..) to find the local election offices contact information.
     per_page = 20 # int | The number of results returned per page. Defaults to 20. (optional) if omitted the server will use the default value of 20
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
@@ -217,7 +217,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.state_election_office_get(state)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->state_election_office_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -225,7 +225,7 @@ sort_null_only = False # bool | Toggle that filters out all rows having sort col
     try:
         api_response = api_instance.state_election_office_get(state, per_page=per_page, page=page, sort_nulls_last=sort_nulls_last, sort=sort, sort_hide_null=sort_hide_null, sort_null_only=sort_null_only)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling FilerResourcesApi->state_election_office_get: %s\n" % e)
 ```
 

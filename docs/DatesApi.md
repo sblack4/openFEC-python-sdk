@@ -1,4 +1,4 @@
-# openapi_client.DatesApi
+# openfec_sdk.DatesApi
 
 All URIs are relative to *http://localhost/v1*
 
@@ -25,11 +25,11 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -39,7 +39,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -49,7 +49,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -59,7 +59,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -69,9 +69,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DatesApi(api_client)
+    api_instance = openfec_sdk.DatesApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_start_date = '2013-10-20' # date |  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 description = ['description_example'] # [str] | Brief description of event (optional)
@@ -92,7 +92,7 @@ max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YY
     try:
         api_response = api_instance.calendar_dates_export_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_export_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -100,7 +100,7 @@ max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YY
     try:
         api_response = api_instance.calendar_dates_export_get(page=page, min_start_date=min_start_date, description=description, min_end_date=min_end_date, event_id=event_id, sort_null_only=sort_null_only, max_end_date=max_end_date, sort_nulls_last=sort_nulls_last, renderer=renderer, summary=summary, per_page=per_page, calendar_category_id=calendar_category_id, sort=sort, sort_hide_null=sort_hide_null, max_start_date=max_start_date)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_export_get: %s\n" % e)
 ```
 
@@ -160,11 +160,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -174,7 +174,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -184,7 +184,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -194,7 +194,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -204,9 +204,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DatesApi(api_client)
+    api_instance = openfec_sdk.DatesApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_start_date = '2013-10-20' # date |  The minimum start date.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 description = ['description_example'] # [str] | Brief description of event (optional)
@@ -226,7 +226,7 @@ max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YY
     try:
         api_response = api_instance.calendar_dates_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -234,7 +234,7 @@ max_start_date = '2013-10-20' # date |  The maximum start date.(MM/DD/YYYY or YY
     try:
         api_response = api_instance.calendar_dates_get(page=page, min_start_date=min_start_date, description=description, min_end_date=min_end_date, event_id=event_id, sort_null_only=sort_null_only, max_end_date=max_end_date, sort_nulls_last=sort_nulls_last, summary=summary, per_page=per_page, calendar_category_id=calendar_category_id, sort=sort, sort_hide_null=sort_hide_null, max_start_date=max_start_date)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->calendar_dates_get: %s\n" % e)
 ```
 
@@ -293,11 +293,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -307,7 +307,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -317,7 +317,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -327,7 +327,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -337,9 +337,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DatesApi(api_client)
+    api_instance = openfec_sdk.DatesApi(api_client)
     election_type_id = ['election_type_id_example'] # [str] |  Election type id  (optional)
 page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 election_state = ['election_state_example'] # [str] |  State or territory of the office sought.  (optional)
@@ -365,7 +365,7 @@ max_election_date = '2013-10-20' # date |  The maximum date of election.  (optio
     try:
         api_response = api_instance.election_dates_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->election_dates_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -373,7 +373,7 @@ max_election_date = '2013-10-20' # date |  The maximum date of election.  (optio
     try:
         api_response = api_instance.election_dates_get(election_type_id=election_type_id, page=page, election_state=election_state, election_party=election_party, sort_nulls_last=sort_nulls_last, office_sought=office_sought, election_year=election_year, per_page=per_page, max_update_date=max_update_date, min_update_date=min_update_date, sort=sort, sort_hide_null=sort_hide_null, max_primary_general_date=max_primary_general_date, max_create_date=max_create_date, election_district=election_district, sort_null_only=sort_null_only, min_primary_general_date=min_primary_general_date, min_election_date=min_election_date, min_create_date=min_create_date, max_election_date=max_election_date)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->election_dates_get: %s\n" % e)
 ```
 
@@ -438,11 +438,11 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import openapi_client
+import openfec_sdk
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost/v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1"
 )
 
@@ -452,7 +452,7 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: ApiKeyHeaderAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'X-Api-Key': 'YOUR_API_KEY'
@@ -462,7 +462,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['X-Api-Key'] = 'Bearer'
 
 # Configure API key authorization: ApiKeyQueryAuth
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -472,7 +472,7 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Configure API key authorization: apiKey
-configuration = openapi_client.Configuration(
+configuration = openfec_sdk.Configuration(
     host = "http://localhost/v1",
     api_key = {
         'api_key': 'YOUR_API_KEY'
@@ -482,9 +482,9 @@ configuration = openapi_client.Configuration(
 # configuration.api_key_prefix['api_key'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with openfec_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DatesApi(api_client)
+    api_instance = openfec_sdk.DatesApi(api_client)
     page = 1 # int | For paginating through results, starting at page 1 (optional) if omitted the server will use the default value of 1
 min_due_date = '2013-10-20' # date |  The minimum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
 max_due_date = '2013-10-20' # date |  The maximum date the report is due.(MM/DD/YYYY or YYYY-MM-DD)  (optional)
@@ -504,7 +504,7 @@ report_type = ['report_type_example'] # [str] | Name of report where the underly
     try:
         api_response = api_instance.reporting_dates_get()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->reporting_dates_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -512,7 +512,7 @@ report_type = ['report_type_example'] # [str] | Name of report where the underly
     try:
         api_response = api_instance.reporting_dates_get(page=page, min_due_date=min_due_date, max_due_date=max_due_date, sort_null_only=sort_null_only, sort_nulls_last=sort_nulls_last, per_page=per_page, max_update_date=max_update_date, report_year=report_year, min_update_date=min_update_date, sort=sort, sort_hide_null=sort_hide_null, min_create_date=min_create_date, max_create_date=max_create_date, report_type=report_type)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except openfec_sdk.ApiException as e:
         print("Exception when calling DatesApi->reporting_dates_get: %s\n" % e)
 ```
 
